@@ -98,6 +98,10 @@ html_static_path = ['_static']
 #
 # html_sidebars = {}
 
+html_title = 'Personal Notes'
+html_copy_source = False
+html_show_sourcelink = False
+
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
