@@ -8,6 +8,9 @@ SPHINXPROJ    = PersonalNotes
 SOURCEDIR     = source
 BUILDDIR      = build
 
+# Uncomment the next two lines to make "html" the default target.
+# html: Makefile
+# 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
