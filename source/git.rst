@@ -1,0 +1,422 @@
+Git
+===
+
+.. contents:: Page content
+  :local:
+  :backlinks: entry
+
+.. highlight:: shell
+
+
+Installation
+------------
+
+.. index::
+  triple: Git; installation
+
+On a `Debian GNU/Linux <https://www.debian.org>`_ system, install Git (**as
+root**) with::
+
+  apt-get install git # As root.
+
+
+Configuration
+-------------
+
+
+Minimal post-install configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  triple: Git; global; configuration
+
+After installing Git, user name and e-mail address should be configured::
+
+  git config --global user.name "My Name"
+  git config --global user.email "my.id@example.com"
+
+You should probably also configure the action of the :code:`git push` (without
+argument) command. Value :code:`simple` `may be appropriate in most cases
+<https://git-scm.com/docs/git-config#git-config-pushdefault>`_::
+
+  git config --global push.default simple
+
+You can see your Git configuration with::
+
+  git config --list
+
+
+.. _git_aliases:
+
+Creating aliases
+~~~~~~~~~~~~~~~~
+
+.. index::
+  pair: Git; aliases
+
+Create aliases with commands like::
+
+  git config --global alias.ci commit # Create alias "ci" for command "commit".
+
+  git config --global \
+      alias.g 'log --pretty=oneline --abbrev-commit' # Create alias "g" for
+                                                     # command "log" with
+                                                     # options for compact
+                                                     # output.
+
+
+Splitting the configuration file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  pair: Git; configuration file split
+  pair: Git; configuration file [include] section
+
+All the :code:`git config --global` commands mentioned above actually create
+entries ("config directives") in file :code:`~/.gitconfig`. You may want to
+store some entries in one or more separate files. Create an :code:`[include]`
+section in your :code:`~/.gitconfig` file for that. `Travis Jeffery gives more
+details <http://travisjeffery.com/b/2012/03/using-git-s-include-for-private-configuration-information-like-github-tokens/>`_.
+
+
+Local configuration
+~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  triple: Git; local; configuration
+
+Configuration entries can be created in the repository local configuration
+(file :code:`.git/config`) by using the :code:`--local` option instead of the
+:code:`--global` option in the :code:`git config` commands. Repository local
+configuration can be used to define smudge and clean filters (see
+:ref:`git_maintain_work_commit_diff`).
+
+Working with a separate repository
+----------------------------------
+
+.. index::
+  pair: Git; separate Git directory
+
+This command::
+
+  git init --separate-git-dir path/to/separate_git_dir.git
+
+creates an empty Git repository like :code:`git init` but does not create a
+:code:`.git` repository in the current directory. It creates
+:code:`path/to/separate_git_dir.git` instead (plus a :code:`.git` *file* in
+the current folder containing the path to the actual repository). The same
+command *moves* the repository to the specified location if it already exists.
+
+The :code:`--git-dir` option can be used in any Git command to specify the path
+to the repository. Useful for cases where the working directory does not
+contain any :code:`.git` directory or file (and this can happen if the working
+directory is an artifact of a build process and is cleaned out and regenerated
+by, say, a :code:`make clean html` command (case of `Sphinx
+<http://www.sphinx-doc.org/en/master>`_ HTML project)). Example::
+
+  git --git-dir=path/to/separate_git_dir.git status
+
+
+Working from outside the working directory
+------------------------------------------
+
+.. index::
+  pair: Git; from outside the working directory
+
+The :code:`-C` switch can be used in any Git command to specify the path to the
+working directory. Example::
+
+  git -C path/to/working/directory status
+
+The :code:`-C` switch and the :code:`--git-dir` option can be combined to work
+from outside a working directory that does not contain any :code:`.git`
+directory or file.
+
+
+Cloning an existing repository
+------------------------------
+
+.. index::
+  pair: Git; clone
+
+Clone a repository with::
+
+  git clone repository_url
+
+Force the name of the cloned repository by providing the name as a
+supplementary argument::
+
+  git clone repository_url cloned_repository_name
+
+
+.. _git_staging:
+
+Staging changes
+---------------
+
+.. index::
+  pair: Git; stage
+  pair: Git; add
+  pair: Git; rm
+
+:code:`git add -A` stages all changes (including new files and file removals).
+:code:`git add .` is equivalent to :code:`git add -A` (except with Git version
+1.x (file removals not staged)).
+
+:code:`git add --ignore-removal` does not stage file removals.
+
+:code:`git add -u` does not stage new files.
+
+Use the :code:`-p` switch to stage only parts of the changes made to a file
+(interactive command)::
+
+  git add -p path/to/file
+
+The following commands stage the removal of a file::
+
+  git rm path/to/file
+
+  git rm --cached path/to/file # Does not remove the file from the working
+                               # directory.
+
+:code:`git status` shows the staged files (among other things).
+
+
+Committing
+----------
+
+.. index::
+  pair: Git; commit
+  pair: Git; amend
+
+The following commands commit the staged changes to the repository::
+
+  git commit                                # Opens a text editor for commit
+                                            # message edition.
+
+  git commit -m "Commit message"            # Takes the commit message from the
+                                            # command line.
+
+  git commit -F path/to/commit/message/file # Reads the commit message from a
+                                            # file.
+
+With the :code:`-a` switch, all the changes (except file addition) are staged
+before committing::
+
+  git commit -a
+
+A commit that has not been already pushed to a remote can be amended, that is
+you can :ref:`stage changes <git_staging>` and then create a commit that
+contains the changes already committed and the new changes. This new commit
+replaces the previous commit. Use the :code:`--amend` option to create the new
+commit::
+
+  git commit --amend
+
+
+Viewing the commit log
+----------------------
+
+.. index::
+  triple: Git; log; compact
+  triple: Git; log; graph
+
+Show the commit log with::
+
+  git log
+
+The :code:`log` command is extremely configurable. I have
+:ref:`aliases <git_aliases>` for those variants::
+
+  git log --pretty=oneline --abbrev-commit # Compact output.
+
+  git log --graph --oneline --alla         # Compact graphical reprszentation.
+
+
+Working with remote repositories
+--------------------------------
+
+.. index::
+  pair: Git; remote
+  pair: Git; push
+  pair: Git; fetch
+  pair: Git; pull
+
+Configure a remote named "origin" with::
+
+  git remote add origin remote_repository_url
+
+Check the configured remotes with::
+
+  git remote -v
+
+Push the commits in the "master" branch to "origin" with::
+
+  git push origin master
+
+The following command downloads changes from "origin" (but does not affect the
+history of the local repository)::
+
+  git fetch origin
+
+The following command downloads changes from "origin" for branch "master" and
+merges the changes into the local repository::
+
+  git pull origin master
+
+
+Working with branches
+---------------------
+
+.. index::
+  pair: Git; branches
+  pair: Git; checkout
+  pair: Git; fast-forward
+  pair: Git; squash
+
+:code:`git status` shows the current branch (among other things).
+
+Switch to branch named "branch_name" with::
+
+  git checkout branch_name
+
+  git checkout -b branch_name # Creates the branch named "branch_name".
+
+Merge the branch named "branch_name" into the current branch with one of the
+following commands::
+
+  git merge --no-ff branch_name # Creates a merge commit.
+
+  git merge branch_name         # Does not create a merge commit when the merge
+                                # resolves as fast-forward.
+
+It is possible to merge all changes on the branch named "branch_name" into the
+current branch without keeping the commit history::
+
+  git merge --squash branch_name # A "git commit" command is needed after that
+                                 # to actually create a merge commit.
+
+Delete the local branch named "branch_name" with one of the following
+commands::
+
+  git branch -d branch_name # Does not delete the branch if it's not fully
+                            # merged.
+
+  git branch -D branch_name # Deletes the branch even if it's not fully merged.
+
+
+Stashing changes
+----------------
+
+.. index::
+  pair: Git; stash
+
+Store the current state of the working tree and the index in the stash stack
+and go back to a clean working tree with one of the following commands::
+
+  git stash push
+  git stash                       # Equivalent to "git stash push".
+  git stash push -m "Description" # Provides a descriptive message.
+
+If you don't want to revert the staged changes, use the :code:`--keep-index`
+option::
+
+  git stash push --keep-index
+
+Each :code:`git stash push` command creates a new entry in the stash stack.
+
+List the stash entries with::
+
+  git stash list
+
+Inspect a stash entry with a command like one of the following::
+
+  git stash show stash@{0}
+  git stash show -p stash@{0} # Produces a patch-like output.
+
+Remove an entry from the stash stack and apply the changes to the working tree
+with a command like::
+
+  git stash pop stash@{0}
+  git stash pop           # Equivalent to "git stash pop stash@{0}"
+
+Use the :code:`--index` option to also reapply the staging::
+
+  git stash pop --index
+
+
+.. _git_maintain_work_commit_diff:
+
+Maintaining a difference between working and committed trees
+------------------------------------------------------------
+
+.. index::
+  pair: Git; filter
+  pair: Git; smudge
+  pair: Git; clean
+  triple: Sphinx; Makefile; default target
+
+In some cases, you want a particular file content in your working tree, that
+you don't want to commit.
+
+For example, this page you are currently reading is part of a
+`Sphinx <http://www.sphinx-doc.org/en/master>`_ project. The page you're
+reading is the result of Sphinx processing some source files and generating
+HTML output. On project creation, Sphinx writes a
+`Makefile <http://mrbook.org/blog/tutorials/make/>`_ and you just have to issue
+a :code:`make html` command to generate the HTML output. The :code:`html`
+argument is mandatory because the Makefile is so that :code:`make` (without
+argument) does not generate the HTML output (it just outputs a help message).
+
+For some reasons, I want to be able to generate the HTML output with
+:code:`make` (without argument). One way to achieve that is to add those 2
+lines somewhere in the file (the leading blank in the second line is actually a
+tabulation character)::
+
+  html: Makefile
+  	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+(You can :download:`download the whole file <sphinx_makefile_with_html_as_default/Makefile>`.)
+
+I think this change could surprise Sphinx users accustomed to the usual
+behaviour of the Sphinx Makefile, so I prefer to commit the file with the
+change commented out::
+
+  # html: Makefile
+  # 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+A Git smudge / clean filter makes that possible. Just create a
+:code:`.gitattributes` file with the following line, which indicates that file
+Makefile is to be filtered on checkout and on staging using (respectively) a
+smudge and a clean filter named "html_as_default_target"::
+
+  Makefile filter=html_as_default_target
+
+There's no point committing the :code:`.gitattributes` in such a case, so I
+added it to the `.gitignore file
+<https://www.atlassian.com/git/tutorials/saving-changes/gitignore>`_::
+
+  echo .gitattributes>>.gitignore
+
+The last step is to define the smudge and clean filters. The filters are
+commands (typically involving the
+`sed <https://www.gnu.org/software/sed/manual/sed.html>`_ program) given as
+local configuration directives::
+
+  git config --local filter.html_as_default_target.smudge 'sed "s/^# *\(.*html[ :].*\)$/\1/"'
+  git config --local filter.html_as_default_target.clean 'sed "s/^\(.*html[ :].*\)$/# \1/"'
+
+The smudge filter uncomments the lines containing "html " or "html:" and the
+clean filter comments out those lines. They're visible in the
+:code:`.git/config` file.
+
+
+Other resources
+---------------
+
+* `Git documentation <https://git-scm.com/docs>`_
+* `Git cheat sheet <https://www.git-tower.com/blog/git-cheat-sheet>`_
+* `A Git branching model <https://nvie.com/posts/a-successful-git-branching-model>`_
+* :code:`git merge` and :code:`git rebase`: `When to use? <https://delicious-insights.com/en/posts/getting-solid-at-git-rebase-vs-merge>`_
+* `Git: To squash or not to squash? <https://jamescooke.info/git-to-squash-or-not-to-squash.html>`_
+* `Git Submodules <https://blog.github.com/2016-02-01-working-with-submodules>`_
