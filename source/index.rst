@@ -11,6 +11,7 @@ Personal Notes
   :caption: Contents:
 
   git
+  sphinx
 
 
 Indices and tables
