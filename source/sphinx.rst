@@ -142,8 +142,8 @@ Having make produce HTML output by default
 
 The :code:`make` (without argument) command outputs a help message.
 Substituting the Makefile created by :code:`sphinx-quickstart` by
-:download:`this one <sphinx_makefile_with_html_as_default/Makefile>` causes
-:code:`make` (without argument) to produce the HTML output.
+:download:`this one <download/sphinx_makefile_with_html_as_default/Makefile>`
+causes :code:`make` (without argument) to produce the HTML output.
 
 If you use Git and don't want this Makefile change to be committed, see
 :ref:`git_maintain_work_commit_diff`.

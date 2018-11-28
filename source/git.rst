@@ -376,7 +376,7 @@ tabulation character)::
   html: Makefile
   	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-(You can :download:`download the whole file <sphinx_makefile_with_html_as_default/Makefile>`.)
+(You can :download:`download the whole file <download/sphinx_makefile_with_html_as_default/Makefile>`.)
 
 I think this change could surprise Sphinx users accustomed to the usual
 behaviour of the Sphinx Makefile, so I prefer to commit the file with the
