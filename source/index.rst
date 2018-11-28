@@ -12,6 +12,7 @@ Personal Notes
 
   git
   sphinx
+  reminder
 
 
 Indices and tables
