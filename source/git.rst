@@ -12,7 +12,7 @@ Installation
 ------------
 
 .. index::
-  triple: Git; installation
+  pair: Git; installation
 
 On a `Debian GNU/Linux <https://www.debian.org>`_ system, install Git (**as
 root**) with::
