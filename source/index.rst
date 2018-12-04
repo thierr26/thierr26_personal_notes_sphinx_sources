@@ -14,6 +14,7 @@ Personal Notes
   sphinx
   reminder
   base16_color_schemes_xterm_and_vim
+  tmux
 
 
 Indices and tables
