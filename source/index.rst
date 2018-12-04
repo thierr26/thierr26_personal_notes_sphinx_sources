@@ -13,6 +13,7 @@ Personal Notes
   git
   sphinx
   reminder
+  base16_color_schemes_xterm_and_vim
 
 
 Indices and tables
