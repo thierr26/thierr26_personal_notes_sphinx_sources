@@ -8,6 +8,15 @@ Git
 .. highlight:: shell
 
 
+Introduction
+------------
+
+Git (a `distributed version control system
+<https://en.wikipedia.org/wiki/Distributed_version_control>`_) is complex and
+it's easy to forget how to exactly do this or that. This page is where I note
+the Git commands and configuration items I came across.
+
+
 Installation
 ------------
 
@@ -91,6 +100,7 @@ Configuration entries can be created in the repository local configuration
 :code:`--global` option in the :code:`git config` commands. Repository local
 configuration can be used to define smudge and clean filters (see
 :ref:`git_maintain_work_commit_diff`).
+
 
 Working with a separate repository
 ----------------------------------
@@ -321,6 +331,8 @@ Working with branches
 .. index::
   pair: Git; branches
   pair: Git; checkout
+  pair: Git; rebase
+  pair: Git; merge
   pair: Git; fast-forward
   pair: Git; squash
 
@@ -331,6 +343,10 @@ Switch to branch named "branch_name" with::
   git checkout branch_name
 
   git checkout -b branch_name # Creates the branch named "branch_name".
+
+Rebase current branch on the latest commit of branch "master" with::
+
+  git rebase master
 
 Merge the branch named "branch_name" into the current branch with one of the
 following commands::
@@ -467,6 +483,7 @@ Other resources
 * `Git documentation <https://git-scm.com/docs>`_
 * `Git cheat sheet <https://www.git-tower.com/blog/git-cheat-sheet>`_
 * `A Git branching model <https://nvie.com/posts/a-successful-git-branching-model>`_
+* `The Git Rebase Introduction I Wish I'd Had <https://dev.to/maxwell_dev/the-git-rebase-introduction-i-wish-id-had>`_
 * :code:`git merge` and :code:`git rebase`: `When to use? <https://delicious-insights.com/en/posts/getting-solid-at-git-rebase-vs-merge>`_
 * `Git: To squash or not to squash? <https://jamescooke.info/git-to-squash-or-not-to-squash.html>`_
 * `Git Submodules <https://blog.github.com/2016-02-01-working-with-submodules>`_
