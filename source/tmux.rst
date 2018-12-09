@@ -8,6 +8,15 @@ tmux
 .. highlight:: shell
 
 
+Introduction
+------------
+
+I appreciate `tmux (a terminal multiplexer)
+<https://en.wikipedia.org/wiki/Tmux>`_ for its window management features. For
+terminal based activities, it can be an alternative to using a `tiling window
+manager <https://en.wikipedia.org/wiki/Tiling_window_manager>`_.
+
+
 Installation
 ------------
 
@@ -33,7 +42,7 @@ Configuration
 
 .. index::
   pair: tmux; configuration
-  pair: .tmux.conf
+  single: .tmux.conf
 
 
 My .tmux.conf
