@@ -8,8 +8,18 @@ Reminder
 .. highlight:: shell
 
 
-Graphical popup
----------------
+Introduction
+------------
+
+This page provides commands that can be used to produce a graphical popup and
+to broadcast a message to opened terminals.
+
+It also indicates how to setup reminders by having these commands called
+periodically by `cron <https://en.wikipedia.org/wiki/Cron>`_.
+
+
+Graphical popup (using xmessage)
+--------------------------------
 
 .. index::
   single: xmessage
@@ -30,12 +40,12 @@ GNU/Linux system) causes a popup message box to appear::
                                                  # is not readable if size is
                                                  # not specified.
 
-`Follow the link for more information about X applications command line
+Follow the `link for more information about X applications command line
 options <https://www.oreilly.com/library/view/x-window-system/9780937175149/Chapter08.html>`_.
 
 
-Broadcasted messsage
---------------------
+Broadcasted messsage (using wall)
+---------------------------------
 
 .. index::
   single: wall
