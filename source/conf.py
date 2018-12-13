@@ -83,7 +83,7 @@ html_theme = 'classic'
 #
 html_theme_options = {
     "stickysidebar" : True,
-    "collapsiblesidebar" : True,
+    "collapsiblesidebar" : False,
     "footerbgcolor" : '#2C3531',
     "footertextcolor" : '#F1F2F6',
     "sidebarbgcolor" : '#116466',
