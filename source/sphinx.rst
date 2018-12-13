@@ -14,8 +14,8 @@ Introduction
 `Sphinx <http://www.sphinx-doc.org/en/master>`_ is the tool I settled on to
 create this simple static website. Sphinx is primarily designed to create
 documentation for `Python
-<https://en.wikipedia.org/wiki/Python_(programming_language)>` projects, but it
-is also appropriate as a `static website generator
+<https://en.wikipedia.org/wiki/Python_(programming_language)>`_ projects, but
+it is also appropriate as a `static website generator
 <https://www.fullstackpython.com/static-site-generator.html>`_ (as others `have
 <https://nudgedelastic.band/2017/07/why-use-restructuredtext-and-sphinx-static-site-generator-for-maintaining-teaching-materials/>`_
 `pointed <http://echorand.me/site/notes/articles/sphinx/static_html.html>`_
@@ -155,7 +155,7 @@ Having make produce HTML output by default
   triple: Sphinx; Makefile; default target
 
 The :code:`make` (without argument) command outputs a help message.
-Substituting the Makefile created by :code:`sphinx-quickstart` by
+Substituting the Makefile created by :code:`sphinx-quickstart` with
 :download:`this one <download/sphinx_makefile_with_html_as_default/Makefile>`
 causes :code:`make` (without argument) to produce the HTML output.
 
