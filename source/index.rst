@@ -16,6 +16,7 @@ Personal Notes
   base16_color_schemes_xterm_and_vim
   tmux
   email_with_nmh_and_other_cli_programs
+  about
 
 
 Index & search page
