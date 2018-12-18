@@ -12,7 +12,7 @@ Introduction
 ------------
 
 `Sphinx <http://www.sphinx-doc.org/en/master>`_ is the tool I settled on to
-create this simple static website. Sphinx is primarily designed to create
+create this static website. Sphinx is primarily designed to create
 documentation for `Python
 <https://en.wikipedia.org/wiki/Python_(programming_language)>`_ projects, but
 it is also appropriate as a `static website generator
@@ -145,7 +145,7 @@ the output, do::
 If you also want to find the broken links in your project, add
 :code:`linkcheck`::
 
-  make clean linkcheck
+  make clean html linkcheck
 
 
 Having make produce HTML output by default
