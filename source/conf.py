@@ -82,25 +82,25 @@ html_theme = 'classic'
 # documentation.
 #
 html_theme_options = {
-    "stickysidebar" : True,
-    "collapsiblesidebar" : True,
-    "footerbgcolor" : '#2C3531',
-    "footertextcolor" : '#F1F2F6',
-    "sidebarbgcolor" : '#116466',
-    "sidebarbtncolor" : '#116466',
-    "sidebartextcolor" : '#D9B08C',
-    "sidebarlinkcolor" : '#FFCB9A',
-    "relbarbgcolor" : '#155765',
-    "relbartextcolor" : '#D1E8E2',
-    "relbarlinkcolor" : '#F1F2F6',
-    "bgcolor" : '#F1F2F6',
-    "textcolor" : '#2C3531',
-    "linkcolor" : '#116466',
-    "visitedlinkcolor" : '#155765',
-    "headbgcolor" : '#D1E8E2',
-    "headtextcolor" : '#116466',
-    "codebgcolor" : '#EFD9C1',
-    "codetextcolor" : '#116466'
+    "stickysidebar"      : True,
+    "collapsiblesidebar" : False,
+    "footerbgcolor"      : '#fff6a1',
+    "footertextcolor"    : '#371f05',
+    "sidebarbgcolor"     : '#fdffcf',
+    "sidebarbtncolor"    : '#e8e8e7',
+    "sidebartextcolor"   : '#106723',
+    "sidebarlinkcolor"   : '#106723',
+    "relbarbgcolor"      : '#f1ef8c',
+    "relbartextcolor"    : '#40271d',
+    "relbarlinkcolor"    : '#40271d',
+    "bgcolor"            : '#fdffe6',
+    "textcolor"          : '#181818',
+    "linkcolor"          : '#0000ee',
+    "visitedlinkcolor"   : '#551a8b',
+    "headbgcolor"        : '#fff6a1',
+    "headtextcolor"      : '#371f05',
+    "codebgcolor"        : '#f1ebd3',
+    "codetextcolor"      : '#bf17d2'
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -181,3 +181,9 @@ texinfo_documents = [
 
 
 # -- Extension configuration -------------------------------------------------
+
+
+# -- Application setup function ----------------------------------------------
+
+def setup(app):
+    app.add_stylesheet('custom.css')
