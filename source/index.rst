@@ -18,8 +18,8 @@ Personal Notes
   email_with_nmh_and_other_cli_programs
 
 
-Indices and tables
-==================
+Index & search page
+===================
 
 * :ref:`genindex`
 * :ref:`search`
