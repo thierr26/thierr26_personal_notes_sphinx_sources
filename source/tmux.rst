@@ -36,6 +36,9 @@ unprivileged user)::
   cd ~/.tmux/plugins
   git clone https://github.com/tmux-plugins/tmux-resurrect resurrect
 
+The default key bindings for tmux-resurrect are :code:`prefix + Ctrl-s` (save
+session) and :code:`prefix + Ctrl-r` (restore session).
+
 
 Configuration
 -------------
@@ -97,3 +100,32 @@ Enable the use of the mouse in terminal Vim by adding this line to your
   set mouse=a
 
 .. highlight:: shell
+
+
+Listing / killing tmux sessions
+-------------------------------
+
+.. index::
+  pair: tmux; list sessions
+  pair: tmux; ls
+  pair: tmux; kill all sessions
+  pair: tmux; kill-server
+  pair: tmux; kill session
+  pair: tmux; kill all other sessions
+  pair: tmux; kill-session
+
+List your opened tmux sessions with::
+
+  tmux ls
+
+Kill all the opened tmux sessions and the tmux server with::
+
+  tmux kill-server
+
+If you're in a tmux session and want to kill all the other sessions, use::
+
+  tmux kill-session -a
+
+To kill a specific session, read session number from :code:`tmux ls` and do::
+
+  tmux kill-session -t session_number
