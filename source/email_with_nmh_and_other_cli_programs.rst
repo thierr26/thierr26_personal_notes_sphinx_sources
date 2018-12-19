@@ -24,11 +24,10 @@ I have a few email accounts that offer `POP3 access
 the `SMTP <https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol>`_
 server of my Internet service Provider.
 
-I'm a happy `Claws Mail <https://www.claws-mail.org>`_ (with the `Bogofilter
-plugin <https://www.claws-mail.org/plugin.php?plugin=bogofilter>`_) user on my
-`Debian GNU/Linux <https://www.debian.org>`_ box, but I'm interested in being
-able to manage email via command-line programs. Claws Mail stores mails in the
-so called MH mailbox format. This mailbox format is the one of the `MH Message
+I'm a happy `Claws Mail <https://www.claws-mail.org>`_ user on my `Debian
+GNU/Linux <https://www.debian.org>`_ box, but I'm interested in being able to
+manage email via command-line programs. Claws Mail stores mails in the so
+called MH mailbox format. This mailbox format is the one of the `MH Message
 Handling System <https://en.wikipedia.org/wiki/MH_Message_Handling_System>`_, a
 command-line based mail handling system.
 
@@ -38,9 +37,7 @@ to use both Claws Mail and nmh
 <http://lists.nongnu.org/archive/html/nmh-workers/2014-02/msg00049.html>`_.
 
 This page gives the various actions I had to take to be able to receive and
-send emails using the nmh command-line programs. Filtering the incoming
-messages with `Bogofilter <http://bogofilter.sourceforge.net/>`_ (anti-spam
-filter) is also covered.
+send emails using the nmh command-line programs.
 
 
 Installation
@@ -204,36 +201,11 @@ Retrieving mails
   single: fetchmail
   pair: nmh; inc
 
-
-Without any filtering
-~~~~~~~~~~~~~~~~~~~~~
-
 Run the two following commands to retrieve mails::
 
   fetchmail       # Retrieves new mails.
   /usr/bin/mh/inc # Incorporates retrieved mails to the inbox folder of the nmh
                   # directory.
-
-
-With filtering by Bogofilter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. index::
-  single: procmail
-  single: .procmailrc
-  single: Bogofilter
-
-Make sure procmail and bogofilter are installed::
-
-  apt-get install procmail bogofilter # As root.
-
-Create a :code:`~/.procmailrc` like :download:`this example .procmailrc file
-<download/.procmailrc>` and when invoking :code:`fetchmail`, use the
-:code:`--mda` option::
-
-  fetchmail --mda "procmail -f %F"
-
-Don't forget to :ref:`train Bogofilter <training_bogofilter>`!
 
 
 Sending a mail
@@ -275,40 +247,6 @@ nmh also offers other programs to send mails: :code:`repl` (to reply to a
 message) and :code:`forw` (to forward a message) for example. They don't use
 the same message templates as :code:`comp`. :code:`repl` uses
 :code:`/etc/nmh/replcomps` and :code:`forw` uses :code:`/etc/nmh/forwcomps`.
-
-
-.. _training_bogofilter:
-
-Training Bogofilter (anti-spam filter)
---------------------------------------
-
-.. index::
-  pair: Bogofilter; training
-  pair: find; -mindepth
-  pair: find; -type
-  pair: find; -not
-  pair: find; -path
-  pair: find; -exec
-
-Assuming that your current working directory is your standard nmh directory and
-your spam messages are in the "Spam" subfolder, you can (re)train Bogofilter
-with the three following commands::
-
-  rm -f ~/.bogofilter/wordlist.db # Don't do this if you don't want to entirely
-                                  # reset the training.
-  cat Spam/* | bogofilter -s
-  find . -mindepth 1 -type f -not -path "./Spam/*" -exec cat {} \; \
-      | bogofilter -n
-
-You can check in which category (spam (S), ham (H), unsure (U)) Bogofilter
-classifies a message with commands like::
-
-  cat Spam/1 | bogofilter -t
-
-Such commands output one line. The first character of the line is S, H or U.
-
-Follow the `link for interesting details about how Bogofilter works (in
-French) <http://bogofilter.sourceforge.net/>`_.
 
 
 Other resources
