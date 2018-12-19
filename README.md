@@ -3,7 +3,7 @@
 ## General information
 
 This repository contains the [Sphinx](http://www.sphinx-doc.org) sources for
-this website: http://thierr26.github.io
+my "Personal Notes" website (http://thierr26.github.io).
 
 
 ## Author
