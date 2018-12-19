@@ -1,0 +1,10 @@
+From: My Name <my_email_id@example.com>
+%<{to}%(void(width))%(putaddr To: )%|To:%>
+%<{cc}%(void(width))%(putaddr cc: )%|cc:%>
+Fcc: %<{fcc}%(putstr)%|+outbox%>
+Subject:%<{subject} %(putstr)%>
+--------
+
+
+-- 
+My Name

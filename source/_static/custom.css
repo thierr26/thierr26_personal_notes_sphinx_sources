@@ -1,0 +1,46 @@
+/* Underline links. */
+a,
+a:visited,
+a:hover {
+    text-decoration: underline;
+}
+
+/* Don't underline links in headers, relation and side bar and page content. */
+h2 > a,
+h3 > a,
+h4 > a,
+h5 > a,
+h6 > a,
+.related a,
+.sphinxsidebar a,
+.contents a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Set custom visited color for side bar links. */
+.sphinxsidebar a:visited {
+    color: #252d25;
+}
+
+/* Set custom background color for page content. */
+div.topic {
+    background-color: #fdffcf;
+}
+
+/* Set custom background color for elements with "code" role. */
+code {
+    background-color: #fdffe6;
+}
+
+/* Set custom color for permalink (pilcrow) symbol. */
+a.headerlink {
+    color: #bf17d2;
+}
+
+/* Set custom color and background color for permalink (pilcrow) symbol (when
+ * hovered). */
+a.headerlink:hover {
+    color: #bf17d2;
+    background-color: #f1ebd3;
+}

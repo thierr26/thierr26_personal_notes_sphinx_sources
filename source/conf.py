@@ -75,13 +75,33 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'classic'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {
+    "stickysidebar"      : True,
+    "collapsiblesidebar" : False,
+    "footerbgcolor"      : '#fff6a1',
+    "footertextcolor"    : '#371f05',
+    "sidebarbgcolor"     : '#fdffcf',
+    "sidebarbtncolor"    : '#e8e8e7',
+    "sidebartextcolor"   : '#106723',
+    "sidebarlinkcolor"   : '#106723',
+    "relbarbgcolor"      : '#f1ef8c',
+    "relbartextcolor"    : '#40271d',
+    "relbarlinkcolor"    : '#40271d',
+    "bgcolor"            : '#fdffe6',
+    "textcolor"          : '#181818',
+    "linkcolor"          : '#0000ee',
+    "visitedlinkcolor"   : '#551a8b',
+    "headbgcolor"        : '#fff6a1',
+    "headtextcolor"      : '#371f05',
+    "codebgcolor"        : '#f1ebd3',
+    "codetextcolor"      : '#bf17d2'
+}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -97,6 +117,10 @@ html_static_path = ['_static']
 # 'searchbox.html']``.
 #
 # html_sidebars = {}
+
+html_title = 'Personal Notes'
+html_copy_source = False
+html_show_sourcelink = False
 
 
 # -- Options for HTMLHelp output ---------------------------------------------
@@ -157,3 +181,9 @@ texinfo_documents = [
 
 
 # -- Extension configuration -------------------------------------------------
+
+
+# -- Application setup function ----------------------------------------------
+
+def setup(app):
+    app.add_stylesheet('custom.css')

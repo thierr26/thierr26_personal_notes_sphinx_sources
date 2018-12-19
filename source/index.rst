@@ -3,18 +3,24 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Personal Notes's documentation!
-==========================================
+Personal Notes
+==============
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+  :maxdepth: 1
+  :caption: Contents:
+
+  git
+  sphinx
+  reminder
+  base16_color_schemes_xterm_and_vim
+  tmux
+  email_with_nmh_and_other_cli_programs
+  about
 
 
-
-Indices and tables
-==================
+Index & search page
+===================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
