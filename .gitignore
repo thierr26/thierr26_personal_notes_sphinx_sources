@@ -1,3 +1,4 @@
 build
 .gitattributes
 Session.vim
+.git_build_html
