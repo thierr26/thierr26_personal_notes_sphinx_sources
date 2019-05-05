@@ -44,3 +44,7 @@ a.headerlink:hover {
     color: #bf17d2;
     background-color: #f1ebd3;
 }
+
+.line-block {
+    font-family: monospace;
+}

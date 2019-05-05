@@ -51,6 +51,8 @@ run :code:`sphinx-quickstart`::
 :code:`sphinx-quickstart` session run to start this "Personal Notes" project
 you are currently reading:
 
+.. line-block::
+
   Welcome to the Sphinx 1.7.9 quickstart utility.
 
   Please enter values for the following settings (just press Enter to
