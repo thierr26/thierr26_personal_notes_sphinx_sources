@@ -41,14 +41,14 @@ Starting a project
   pair: Sphinx; sphinx-quickstart
 
 To create a new Sphinx project, create a directory, move to that directory and
-run :code:`sphinx-quickstart`::
+run ``sphinx-quickstart``::
 
   mkdir my_sphinx_project
   cd my_sphinx_project
   sphinx-quickstart
 
-:code:`sphinx-quickstart` is an interactive command. Here's the quote of the
-:code:`sphinx-quickstart` session run to start this "Personal Notes" project
+``sphinx-quickstart`` is an interactive command. Here's the quote of the
+``sphinx-quickstart`` session run to start this "Personal Notes" project
 you are currently reading:
 
 .. line-block::
@@ -132,20 +132,19 @@ Generating HTML output
   pair: Sphinx; clean
   pair: Sphinx; linkcheck
 
-Assuming :code:`sphinx-quickstart` has created a Makefile,  you can build the
-HTML output with::
+Assuming ``sphinx-quickstart`` has created a Makefile,  you can build the HTML
+output with::
 
   make html
 
-This will write the output in the :code:`build/html` subdirectory.
+This will write the output in the ``build/html`` subdirectory.
 
-If you want the :code:`build/html` subdirectory to be cleaned up before writing
-the output, do::
+If you want the ``build/html`` subdirectory to be cleaned up before writing the
+output, do::
 
   make clean html
 
-If you also want to find the broken links in your project, add
-:code:`linkcheck`::
+If you also want to find the broken links in your project, add ``linkcheck``::
 
   make clean html linkcheck
 
@@ -156,10 +155,10 @@ Having make produce HTML output by default
 .. index::
   triple: Sphinx; Makefile; default target
 
-The :code:`make` (without argument) command outputs a help message.
-Substituting the Makefile created by :code:`sphinx-quickstart` with
-:download:`this one <download/sphinx_makefile_with_html_as_default/Makefile>`
-causes :code:`make` (without argument) to produce the HTML output.
+The ``make`` (without argument) command outputs a help message. Substituting
+the Makefile created by ``sphinx-quickstart`` with :download:`this one
+<download/sphinx_makefile_with_html_as_default/Makefile>` causes ``make``
+(without argument) to produce the HTML output.
 
 If you use Git and don't want this Makefile change to be committed, see
 :ref:`git_maintain_work_commit_diff`.

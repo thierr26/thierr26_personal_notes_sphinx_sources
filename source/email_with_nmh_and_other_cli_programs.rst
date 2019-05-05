@@ -60,14 +60,14 @@ nmh (**as root**) with::
 
   apt-get install fetchmail nmh mh-book # As root.
 
-The nmh programs are installed in :code:`/usr/bin/mh`. This directory is not in
-the search path by default. You can add it to the search path by adding this
-line to your :code:`~/.profile` file::
+The nmh programs are installed in ``/usr/bin/mh``. This directory is not in the
+search path by default. You can add it to the search path by adding this line
+to your ``~/.profile`` file::
 
   PATH="$PATH:/usr/bin/mh"
 
 This makes it possible to invoke the nmh programs by their base name (e.g.
-:code:`inc`) instead of their full path (e.g. :code:`/usr/bin/mh/inc`).
+``inc``) instead of their full path (e.g. ``/usr/bin/mh/inc``).
 
 If exim4 is not already installed, install it (**as root**) with::
 
@@ -131,7 +131,7 @@ containing "Test" to a recipient (the -v switch is for verbosity)::
   Test
   .
 
-:code:`/usr/sbin/sendmail` is a symbolic link to exim4 executable.
+``/usr/sbin/sendmail`` is a symbolic link to exim4 executable.
 
 
 fetchmail
@@ -141,7 +141,7 @@ fetchmail
   pair: fetchmail; configuration
   single: .fetchmailrc
 
-Create a :code:`~/.fetchmailrc` file and change its permission so that only the
+Create a ``~/.fetchmailrc`` file and change its permission so that only the
 user can read and write it::
 
   chmod 600 ~/.fetchmailrc
@@ -161,7 +161,7 @@ Perform nmh user installation with::
 
   install-mh
 
-Here's the quote of my :code:`install-mh` session:
+Here's the quote of my ``install-mh`` session:
 
 
   Do you want help? yes
@@ -227,9 +227,9 @@ Make sure procmail and bogofilter are installed::
 
   apt-get install procmail bogofilter # As root.
 
-Create a :code:`~/.procmailrc` like :download:`this example .procmailrc file
-<download/.procmailrc>` and when invoking :code:`fetchmail`, use the
-:code:`--mda` option::
+Create a ``~/.procmailrc`` like :download:`this example .procmailrc file
+<download/.procmailrc>` and when invoking ``fetchmail``, use the ``--mda``
+option::
 
   fetchmail --mda "procmail -f %F"
 
@@ -248,33 +248,32 @@ Sending a mail
   pair: nmh; comp
   pair: nmh; send
 
-Use :code:`/usr/bin/mh/comp`. This program opens the text editor (on my `Debian
+Use ``/usr/bin/mh/comp``. This program opens the text editor (on my `Debian
 GNU/Linux <https://www.debian.org>`_ system at least, on other system it may
-just launch :code:`/usr/bin/mh/prompter`) so that you can edit the message
-draft. Save and quit when you are done. You'll then get a prompt. Just hit
-"Enter" to see the list of available commands. One of these commands is "send".
+just launch ``/usr/bin/mh/prompter``) so that you can edit the message draft.
+Save and quit when you are done. You'll then get a prompt. Just hit "Enter" to
+see the list of available commands. One of these commands is "send".
 
-By default, :code:`/etc/nmh/components` is used as message template. If your
-nmh directory is :code:`/home/my_user_name/Mail`, you can put a custom
-:code:`components` file there. It will be used automatically by
-:code:`/usr/bin/mh/comp`. You can :download:`download an example components
-file with sender's name, address and signature
-<download/nmh_custom_components/components>`.
+By default, ``/etc/nmh/components`` is used as message template. If your nmh
+directory is ``/home/my_user_name/Mail``, you can put a custom ``components``
+file there. It will be used automatically by ``/usr/bin/mh/comp``. You can
+:download:`download an example components file with sender's name, address and
+signature <download/nmh_custom_components/components>`.
 
-To force :code:`/usr/bin/mh/comp` to use a specific message template, use the
-:code:`-form` switch::
+To force ``/usr/bin/mh/comp`` to use a specific message template, use the
+``-form`` switch::
 
   /usr/bin/mh/comp -form path/to/components/file
 
 To send a message that has already been prepared and saved in a file, use
-:code:`/usr/bin/mh/send`::
+``/usr/bin/mh/send``::
 
   /usr/bin/mh/send path/to/message/file
 
-nmh also offers other programs to send mails: :code:`repl` (to reply to a
-message) and :code:`forw` (to forward a message) for example. They don't use
-the same message templates as :code:`comp`. :code:`repl` uses
-:code:`/etc/nmh/replcomps` and :code:`forw` uses :code:`/etc/nmh/forwcomps`.
+nmh also offers other programs to send mails: ``repl`` (to reply to a message)
+and ``forw`` (to forward a message) for example. They don't use the same
+message templates as ``comp``. ``repl`` uses ``/etc/nmh/replcomps`` and
+``forw`` uses ``/etc/nmh/forwcomps``.
 
 
 .. _training_bogofilter:

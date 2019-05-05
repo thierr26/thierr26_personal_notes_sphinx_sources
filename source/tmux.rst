@@ -36,8 +36,8 @@ unprivileged user)::
   cd ~/.tmux/plugins
   git clone https://github.com/tmux-plugins/tmux-resurrect resurrect
 
-The default key bindings for tmux-resurrect are :code:`prefix + Ctrl-s` (save
-session) and :code:`prefix + Ctrl-r` (restore session).
+The default key bindings for tmux-resurrect are ``prefix + Ctrl-s`` (save
+session) and ``prefix + Ctrl-r`` (restore session).
 
 
 Configuration
@@ -61,7 +61,7 @@ Disabling control flow
   single: control flow
 
 You should probably disable control flow by adding this line to your
-:code:`~/.bashrc`::
+``~/.bashrc``::
 
   stty -ixon
 
@@ -95,7 +95,7 @@ Vim configuration
 .. highlight:: vim
 
 Enable the use of the mouse in terminal Vim by adding this line to your
-:code:`~/.vimrc`::
+``~/.vimrc``::
 
   set mouse=a
 
@@ -126,6 +126,6 @@ If you're in a tmux session and want to kill all the other sessions, use::
 
   tmux kill-session -a
 
-To kill a specific session, read session number from :code:`tmux ls` and do::
+To kill a specific session, read session number from ``tmux ls`` and do::
 
   tmux kill-session -t session_number

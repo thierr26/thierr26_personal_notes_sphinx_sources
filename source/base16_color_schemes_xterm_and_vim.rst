@@ -9,13 +9,14 @@ Base16 color schemes (xterm and Vim)
 Base16 is a set of color schemes, available for various applications. I like
 that it makes it possible to have the same color scheme in my terminals (`xterm
 <https://en.wikipedia.org/wiki/Xterm>`_) and in `Vim
-<https://en.wikipedia.org/wiki/Vim_(text_editor)>`_ and to switch color scheme very easily
-(by issuing a single command in the terminal like :code:`base16_classic-dark`).
+<https://en.wikipedia.org/wiki/Vim_(text_editor)>`_ and to switch color scheme
+very easily (by issuing a single command in the terminal like
+``base16_classic-dark``).
 
 I just followed the instructions in Scott Pierce's
 `Base16 Shell blog post <https://ddrscott.github.io/blog/2017/base16-shell>`_.
 
-I also have this line in my :code:`~/.Xresources`:
+I also have this line in my ``~/.Xresources``:
 
   XTerm*termName: xterm-256color
 

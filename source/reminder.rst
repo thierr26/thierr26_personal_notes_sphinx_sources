@@ -25,8 +25,8 @@ Graphical popup (using xmessage)
   single: xmessage
   single: graphical popup
 
-The :code:`xmessage` command (provided by package x11-utils on a Debian
-GNU/Linux system) causes a popup message box to appear::
+The ``xmessage`` command (provided by package x11-utils on a Debian GNU/Linux
+system) causes a popup message box to appear::
 
   xmessage 'My message'
 
@@ -51,7 +51,7 @@ Broadcasted messsage (using wall)
   single: wall
   single: broadcasted message
 
-The :code:`wall` command (provided by package bsdutils on a Debian GNU/Linux
+The ``wall`` command (provided by package bsdutils on a Debian GNU/Linux
 system) causes a message to be broadcasted to every terminal::
 
   wall 'My message'
