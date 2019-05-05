@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Personal Notes'
-copyright = '2018, Thierry Rascle'
+copyright = '2018-2019, Thierry Rascle'
 author = 'Thierry Rascle'
 
 # The short X.Y version
