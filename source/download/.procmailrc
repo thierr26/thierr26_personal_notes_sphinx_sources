@@ -1,0 +1,13 @@
+MAILDIR=/home/my_user_name/Mail
+LOGFILE=$MAILDIR/procmail.log
+
+:0fw
+| /usr/bin/bogofilter -uep
+
+:0:
+* ^X-Bogosity: Spam, tests=bogofilter
+Spam/.
+
+:0:
+* ^X-Bogosity: Unsure, tests=bogofilter
+Unsure\ spam/.

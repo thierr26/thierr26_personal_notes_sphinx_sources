@@ -10,12 +10,14 @@ Personal Notes
   :maxdepth: 1
   :caption: Contents:
 
+  debian_base_install
   git
   sphinx
   reminder
   base16_color_schemes_xterm_and_vim
   tmux
   email_with_nmh_and_other_cli_programs
+  wifi
   about
 
 
