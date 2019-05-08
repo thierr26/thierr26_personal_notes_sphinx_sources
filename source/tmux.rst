@@ -36,8 +36,8 @@ unprivileged user)::
   cd ~/.tmux/plugins
   git clone https://github.com/tmux-plugins/tmux-resurrect resurrect
 
-The default key bindings for tmux-resurrect are ``prefix + Ctrl-s`` (save
-session) and ``prefix + Ctrl-r`` (restore session).
+The default key bindings for tmux-resurrect are ``prefix Ctrl-s`` (save
+session) and ``prefix Ctrl-r`` (restore session).
 
 
 Configuration
@@ -65,7 +65,7 @@ You should probably disable control flow by adding this line to your
 
   stty -ixon
 
-You can find more details about that in Tom Ryder's `Terminal annoyances blog
+You can find more details about that in Tom Ryder's `"Terminal annoyances" blog
 post <https://sanctum.geek.nz/arabesque/terminal-annoyances>`_.
 
 
@@ -106,13 +106,13 @@ Listing / killing tmux sessions
 -------------------------------
 
 .. index::
-  pair: tmux; list sessions
-  pair: tmux; ls
-  pair: tmux; kill all sessions
-  pair: tmux; kill-server
-  pair: tmux; kill session
-  pair: tmux; kill all other sessions
-  pair: tmux; kill-session
+  pair: tmux commands; list sessions
+  pair: tmux commands; ls
+  pair: tmux commands; kill all sessions
+  pair: tmux commands; kill-server
+  pair: tmux commands; kill session
+  pair: tmux commands; kill all other sessions
+  pair: tmux commands; kill-session
 
 List your opened tmux sessions with::
 
@@ -126,6 +126,54 @@ If you're in a tmux session and want to kill all the other sessions, use::
 
   tmux kill-session -a
 
-To kill a specific session, read session number from ``tmux ls`` and do::
+To kill a specific session, read session ID from ``tmux ls`` and do::
 
-  tmux kill-session -t session_number
+  tmux kill-session -t <session_id>
+
+
+Detaching client / attaching session
+------------------------------------
+
+.. index::
+  pair: tmux commands; attach
+  pair: tmux commands; detach
+
+Detach the current client with ``prefix d`` or::
+
+  tmux detach
+
+Reattach with one off::
+
+  tmux attach
+  tmux a
+  tmux attach -d -t <session_id> # To attach to a specific session.
+                                 # -d causes any other clients attached to the
+                                 # session to be detached.
+
+
+Managing windows and panes
+--------------------------
+
+.. index::
+  pair: tmux; windows
+  pair: tmux; panes
+
+Create a new window with ``prefix c``.
+
+Rename the current window with ``prefix ,``.
+
+Close the current window with ``prefix &``.
+
+Split pane vertically with ``prefix %``.
+
+Split pane horizontally with ``prefix "``.
+
+Resize pane with ``prefix + left/down/up/right arrow``. See also `this article
+by Michael Lee <https://michaelsoolee.com/resize-tmux-panes/>`_.
+
+
+Other resources
+---------------
+
+* `tmux cheatsheet <https://tmuxcheatsheet.com/>`_
+
