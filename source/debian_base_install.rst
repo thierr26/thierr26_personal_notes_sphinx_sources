@@ -54,8 +54,8 @@ devices)::
   cdrskin dev=<cd_burning_drive_device_file> -eject -v -data debian-9.9.0-amd64-netinst.iso
 
 You might want to verify the authenticity of the ISO image. Follow the same
-procedure as for the firmware archive verification provided in the next
-section (:ref:`firmware_archive_media`).
+procedure as for the firmware archive verification provided in the
+:ref:`firmware archive section <firmware_archive_media>`.
 
 When the burning is done, you might also want to check the integrity of the
 burned CD. Just compare the output of the following command with the checksum
@@ -79,7 +79,7 @@ Preparing a media with firmware archive, just in case
 
 Note that this step is **not necessary if your installation CD already includes
 firmware** (that is if you have downloaded the image from a subdirectory of
-``cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware``).
+cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware).
 
 The `Debian Wiki <https://wiki.debian.org/Firmware>`_ provides some
 instructions, but here are the details of what I've done (for a Debian Buster
@@ -109,8 +109,9 @@ this is confirmed by the fact that it does not appear in the output of ``gpg
   gpg --keyserver keyring.debian.org --recv F41D30342F3546695F65C66942468F4009EA8AC3
 
 A new attempt to check the signature with ``gpg --verify SHA512SUMS.sign`` now
-produces a line like ``gpg: Good signature from "Debian Testing CDs Automatic
-Signing Key <debian-cd@lists.debian.org>"``.
+produces a line like
+
+| gpg: Good signature from "Debian Testing CDs Automatic Signing Key <debian-cd@lists.debian.org>"
 
 The final steps consisted in extracting the files from the firmware archive
 (``tar xvzf firmware.tar.gz``) and copy all the files with ``.deb`` extension
