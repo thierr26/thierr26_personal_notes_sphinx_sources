@@ -6,4 +6,8 @@ LOGFILE=$MAILDIR/procmail.log
 
 :0:
 * ^X-Bogosity: Spam, tests=bogofilter
-Spam
+Spam/.
+
+:0:
+* ^X-Bogosity: Unsure, tests=bogofilter
+Unsure\ spam/.

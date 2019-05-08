@@ -163,37 +163,36 @@ Perform nmh user installation with::
 
 Here's the quote of my ``install-mh`` session:
 
-
-  Do you want help? yes
-
-  Prior to using nmh, it is necessary to have a file in your login
-  directory (/home/my_user_name) named .mh_profile which contains information
-  to direct certain nmh operations.  The only item which is required
-  is the path to use for all nmh folder operations.  The suggested nmh
-  path for you is /home/my_user_name/Mail...
-
-  You already have the standard nmh directory "/home/my_user_name/Mail".
-  Do you want to use it for nmh? yes
-  [Using existing directory]
-
-  Please see the nmh(7) man page for an introduction to nmh.
-
-  Send bug reports, questions, suggestions, and patches to
-  nmh-workers@nongnu.org.  That mailing list is relatively quiet, so user
-  questions are encouraged.  Users are also encouraged to subscribe, and
-  view the archives, at ``http://lists.gnu.org/mailman/listinfo/nmh-workers``
-
-  If problems are encountered with an nmh program, they should be
-  reported to the local maintainers of nmh, if any, or to the mailing
-  list noted above.  When doing this, the name of the program should be
-  reported, along with the version information for the program.
-
-  To find out what version of an nmh program is being run, invoke the
-  program with the -version switch.  This prints the version of nmh, the
-  host it was compiled on, and the date the program was linked.
-
-  New releases and other information of potential interest are announced
-  at http://www.nongnu.org/nmh/ .
+| Do you want help? yes
+|
+| Prior to using nmh, it is necessary to have a file in your login
+| directory (/home/my_user_name) named .mh_profile which contains information
+| to direct certain nmh operations.  The only item which is required
+| is the path to use for all nmh folder operations.  The suggested nmh
+| path for you is /home/my_user_name/Mail...
+|
+| You already have the standard nmh directory "/home/my_user_name/Mail".
+| Do you want to use it for nmh? yes
+| [Using existing directory]
+|
+| Please see the nmh(7) man page for an introduction to nmh.
+|
+| Send bug reports, questions, suggestions, and patches to
+| nmh-workers@nongnu.org.  That mailing list is relatively quiet, so user
+| questions are encouraged.  Users are also encouraged to subscribe, and
+| view the archives, at ``http://lists.gnu.org/mailman/listinfo/nmh-workers``
+|
+| If problems are encountered with an nmh program, they should be
+| reported to the local maintainers of nmh, if any, or to the mailing
+| list noted above.  When doing this, the name of the program should be
+| reported, along with the version information for the program.
+|
+| To find out what version of an nmh program is being run, invoke the
+| program with the -version switch.  This prints the version of nmh, the
+| host it was compiled on, and the date the program was linked.
+|
+| New releases and other information of potential interest are announced
+| at http://www.nongnu.org/nmh/ .
 
 
 Retrieving mails
@@ -214,6 +213,13 @@ Run the two following commands to retrieve mails::
   /usr/bin/mh/inc # Incorporates retrieved mails to the inbox folder of the nmh
                   # directory.
 
+If the ``fetchmail`` command fails with a "upgrade to TLS failed" error message
+as described in `one of messages of Debian bug #921450
+<https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=921450#32>`_, use the
+``--sslproto=""`` option::
+
+  fetchmail --sslproto=""
+
 
 With filtering by Bogofilter
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -228,12 +234,20 @@ Make sure procmail and bogofilter are installed::
   apt-get install procmail bogofilter # As root.
 
 Create a ``~/.procmailrc`` like :download:`this example .procmailrc file
-<download/.procmailrc>` and when invoking ``fetchmail``, use the ``--mda``
+<download/.procmailrc>` and when invoking fetchmail, use the ``--mda``
 option::
 
   fetchmail --mda "procmail -f %F"
 
-Don't forget to :ref:`train Bogofilter <training_bogofilter>`!
+This results in the messages classified as spam being moved automatically to
+the "Spam" subdirectory of your nmh directory, and messages classified as
+unsure to the "Unsure spam" subdirectory.
+
+Note the "slash dot" after the subdirectory names in the ``~/.procmailrc``
+file. That's how procmail knows that we're talking MH subdirectories. See here:
+https://unix.stackexchange.com/a/336422
+
+And also, don't forget to :ref:`train Bogofilter <training_bogofilter>`!
 
 
 Sending a mail
@@ -274,6 +288,24 @@ nmh also offers other programs to send mails: ``repl`` (to reply to a message)
 and ``forw`` (to forward a message) for example. They don't use the same
 message templates as ``comp``. ``repl`` uses ``/etc/nmh/replcomps`` and
 ``forw`` uses ``/etc/nmh/forwcomps``.
+
+
+Deleting mails
+--------------
+
+.. index::
+  pair: email; deletion
+  pair: nmh; rmm
+  single: find
+
+You can delete the mail with number 421 in the "Sent" folder with::
+
+  rmm +Sent 421
+
+This does not really delete the mail, but renames it to ",421". You may want to
+periodically erase your deleted mails with a command like::
+
+  find /home/my_user_name/Mail -name ,* -exec rm -f {} \;
 
 
 .. _training_bogofilter:
