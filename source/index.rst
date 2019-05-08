@@ -10,6 +10,7 @@ Personal Notes
   :maxdepth: 1
   :caption: Contents:
 
+  debian_base_install
   git
   sphinx
   reminder
