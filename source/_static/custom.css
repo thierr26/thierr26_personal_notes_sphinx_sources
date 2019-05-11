@@ -48,3 +48,11 @@ a.headerlink:hover {
 .line-block {
     font-family: monospace;
 }
+
+/* Neutralize the effect of the "code" markup that Sphinx (Debian version
+ * 1.8.4-1 at least) nests within the "a" markup of a file download link. */
+code.download {
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+}
