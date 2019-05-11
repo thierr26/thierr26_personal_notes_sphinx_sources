@@ -401,13 +401,11 @@ else
     SED=$(echo_cmd_fatal sed);
 
     GRPAR="$GIT rev-parse --abbrev-ref";
-    GBD="$GIT -C build/html --git-dir ../../.git_build_html";
 
     ABORT=false;
 
     MASTER_BRCH=master;
     DEV_BRCH=develop;
-    BUILD_DIR=build/html;
 
     check_checked_out_branch "$DEV_BRCH"                       || ABORT=true;
     if ! $ABORT; then
@@ -434,11 +432,14 @@ else
         $GIT push;
         $GIT checkout "$DEV_BRCH";
 
-        $GBD checkout LICENSE;
-        $GBD checkout README.md;
-        $GBD add .;
-        $GBD commit -m "Rebuild (source commit hash $SHORT_HASH)";
-        $GBD push;
+        unset GIT_INDEX_FILE;
+        export GIT_WORK_TREE=$PWD/build/html;
+        export GIT_DIR=$PWD/.git_build_html;
+        $GIT checkout LICENSE;
+        $GIT checkout README.md;
+        $GIT add .;
+        $GIT commit -m "Rebuild (source commit hash $SHORT_HASH)";
+        $GIT push;
 
         EXIT_STATUS=0;
 
