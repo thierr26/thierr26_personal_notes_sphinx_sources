@@ -1,0 +1,451 @@
+#!/bin/sh
+
+# -----------------------------------------------------------------------------
+
+# Prepends the argument with "FATAL ERROR: " and echoes it to standard error,
+# then terminates the script with exit status 1. If no argument or empty
+# argument given, echoes "FATAL_ERROR" to standard error then terminates the
+# script with exit status 1.
+#
+# ARGUMENT:
+# $1: Any string.
+fatal() {
+
+    FATAL_ERROR="FATAL ERROR";
+    if [ $# -gt 0 ] && [ -n "$1" ]; then
+        echo "$FATAL_ERROR: $1">&2;
+    else
+        echo "$FATAL_ERROR">&2;
+    fi;
+    echo "Use \"$SCRIPT_PATH --help\" for documentation">&2;
+
+    exit 1;
+}
+
+# -----------------------------------------------------------------------------
+
+# Echoes the first argument being an executable command. Echoes nothing if none
+# of the arguments is an executable command.
+#
+# ARGUMENTS:
+# Any strings.
+echo_cmd() {
+    until [ $# -eq 0 ] || command -v "$1"; do
+        shift;
+    done;
+}
+
+# -----------------------------------------------------------------------------
+
+# Echoes the first argument being an executable command and returns with exit
+# status 0. If none of the arguments is an executable command, then terminates
+# the script with a call to function fatal and thus exit status 1.
+#
+# ARGUMENTS:
+# Any strings.
+echo_cmd_fatal() {
+
+    until [ $# -eq 0 ] || command -v "$1"; do
+        LAST_CMD="$1";
+        shift;
+    done;
+
+    if [ $# -eq 0 ]; then
+        if [ -n "$LAST_CMD" ]; then
+            fatal "$LAST_CMD does not seem to be installed.";
+        else
+            fatal;
+        fi;
+    fi;
+}
+
+# -----------------------------------------------------------------------------
+
+# Echoes the first argument being an executable command and returns with exit
+# status 0. If none of the arguments is an executable command, then terminates
+# the script with a call to function fatal and thus exit status 1.
+#
+# ARGUMENTS:
+# Any strings.
+echo_error() {
+
+    echo "$SCRIPT_BASE_NAME: $@">&2;
+}
+
+# -----------------------------------------------------------------------------
+
+# Prints the documentation for the script to the standard output.
+#
+# ARGUMENT
+# $1: Script name.
+documentation() {
+
+    FMT="fmt";
+    CMD=$(echo_cmd_fatal "$FMT" cat);
+    if [ ${CMD##*/} = "$FMT" ] && [ -n "$(echo_cmd tput)" ]; then
+        CMD="fmt --width=$(tput cols)";
+    fi;
+
+    local SCRIPT_NAME="$1";
+    $CMD <<EOF
+Usage:
+
+    $SCRIPT_NAME [-f|--force]
+EOF
+    $CMD <<EOF
+    $SCRIPT_NAME -h|--help
+
+Description:
+
+    $SCRIPT_NAME performs successively two sequences of actions.
+
+    The first sequence applies to the Git repository in the current \
+directory. This repository is referred to as the source repository.
+
+    The second sequence applies to the Git repository located in the \
+subdirectory "build/html". The repository in "build/html" is referred to as \
+the build repository and is supposed to have an external .git directory \
+actually called .git_build_html and located in the directory that contains \
+the program.
+
+    The first sequence of actions is:
+EOF
+    $CMD <<EOF
+    - Issuing a "make clean html" command;
+EOF
+    $CMD <<EOF
+    - Check out of the "master" branch;
+EOF
+    $CMD <<EOF
+    - Merging of the "develop" branch into the "master" branch;
+EOF
+    $CMD <<EOF
+    - Issuing a "git push" command;
+EOF
+    $CMD <<EOF
+    - Check out of the "develop" branch.
+
+    The second sequence of actions is:
+EOF
+    $CMD <<EOF
+    - Check out of the LICENSE file;
+EOF
+    $CMD <<EOF
+    - Check out of the README.md file;
+EOF
+    $CMD <<EOF
+    - Staging of the whole working directory;
+EOF
+    $CMD <<EOF
+    - Committing with message like
+    "Rebuild (source commit hash <short_source_commit_hash>)".
+EOF
+    $CMD <<EOF
+    - Issuing a "git push" command;
+
+    The script stops as soon as an action fails.
+
+    Note also that if all the following conditions are not fulfilled then \
+$SCRIPT_NAME aborts with exit status 2 without attempting to do anything:
+EOF
+    $CMD <<EOF
+    - Checked out branch in the source repository is "develop";
+EOF
+    $CMD <<EOF
+    - The working tree in the source repository is clean (nothing to commit);
+EOF
+    $CMD <<EOF
+    - A "master" branch exists in the source repository;
+EOF
+    $CMD <<EOF
+    - A fast forward merge of "develop" into "master" is possible.
+
+    If Git, Make, Grep and/or sed is not installed then $SCRIPT_NAME aborts \
+    with exit status 1.
+
+    $SCRIPT_NAME is aimed at being used as a post-commit Git hook. You can
+    create the hook as a symbolic link to $SCRIPT_NAME with this command:
+
+        ln -s ./$SCRIPT_NAME .git/hooks/post-commit
+
+Options:
+
+    -f, --force
+        Do not ask confirmation to user before starting the job.
+
+    -h, --help
+        Display this documentation and exit.
+EOF
+}
+
+# -----------------------------------------------------------------------------
+
+# Returns 0 if the argument starts with "-". Returns 1 otherwise.
+#
+# ARGUMENT
+# $1: Any string.
+has_hyphen_leader() {
+    if [ -n "$1" ] && [ -z ${1%%-*} ]; then
+        return 0;
+    else
+        return 1;
+    fi;
+}
+
+# -----------------------------------------------------------------------------
+
+# Returns 0 if the argument starts with "--". Returns 1 otherwise.
+#
+# ARGUMENT
+# $1: Any string.
+has_double_hyphen_leader() {
+    if [ -n "$1" ] && [ -z ${1%%--*} ]; then
+        return 0;
+    else
+        return 1;
+    fi;
+}
+
+# -----------------------------------------------------------------------------
+
+# Is supposed to be called with all the arguments to the current script.
+#
+# Affects the following variables:
+#   HELP_OPT:  true if the user has requested the printing of the script
+#              documentation, false otherwise.
+#   FORCE_OPT: true if the user allows the overwriting of the destination files
+#              without confirmation, false otherwise.
+#
+# An unrecognized option or an empty destination directory will cause the
+# script to terminate with a call to the fatal function and thus exit status 1.
+#
+# ARGUMENTS
+# All the arguments to the current script.
+process_args() {
+
+    HELP_OPT=false;
+    FORCE_OPT=false;
+    DEST=$HOME;
+
+    # Process the options.
+    OPT_PROCESSED=false;
+    while ! $OPT_PROCESSED && [ $# -gt 0 ] && has_hyphen_leader "$1"; do
+
+        OPT_STRING=${1#?}; # If $1 is "-abc" then $OPT_STRING is "abc".
+                           # If $1 is "--force" then $OPT_STRING is "-force".
+
+        if has_double_hyphen_leader "$1"; then
+            N=1;
+        else
+            N=${#OPT_STRING};
+        fi;
+
+        for k in $(seq 1 $N); do
+            if [ $N -gt 1 ]; then
+                OPT=${OPT_STRING%${OPT_STRING#?}}; # If $OPT_STRING is "abc" at
+                                                   # the beginning of the loop,
+                                                   # then $OPT is "a",
+                                                   # then "b", then "c".
+            else
+                OPT="$OPT_STRING";
+            fi;
+
+            case "-$OPT" in
+                --) OPT_PROCESSED=true;;
+                -h|--help) HELP_OPT=true;;
+                -f|--force) FORCE_OPT=true;;
+                *) fatal "Unrecognized option: -$OPT"
+            esac;
+
+            if [ $N -gt 1 ]; then
+                OPT_STRING=${OPT_STRING#?};
+            fi;
+        done;
+
+        shift;
+    done;
+}
+
+# -----------------------------------------------------------------------------
+
+# Issues a message and returns 1 if the Git checked out branch is not the one
+# provided as argument. Returns 0 without doing anything otherwise.
+#
+# ARGUMENTS
+# $1: Name of expected checked out branch.
+check_checked_out_branch() {
+    local CHECKED_OUT_BRCH=$($GRPAR HEAD);
+    if [ "$CHECKED_OUT_BRCH" = "$1" ]; then
+        return 0;
+    else
+        echo_error Checked out branch is not \""$1"\" but \
+            \""$CHECKED_OUT_BRCH"\".
+        return 1;
+    fi;
+}
+
+# -----------------------------------------------------------------------------
+
+# Issues a message and returns 1 if there is no Git branch with the name
+# provided as argument. Returns 0 without doing anything otherwise.
+#
+# ARGUMENTS
+# $1: Branch name.
+check_branch_exists() {
+    if [ "$($GRPAR --branches|$GREP "^$1$")" = "$1" ]; then
+        return 0;
+    else
+        echo_error No \""$1"\" branch.
+        return 1;
+    fi;
+}
+
+# -----------------------------------------------------------------------------
+
+# Issues a message and returns 1 if the working tree is not clean. Returns 0
+# without doing anything otherwise.
+check_working_tree_clean() {
+    if $GIT diff-index --quiet HEAD; then
+        return 0;
+    else
+        echo_error Working tree not clean.
+        return 1;
+    fi;
+}
+
+# -----------------------------------------------------------------------------
+
+# Issues a "git show-ref --heads" command and keeps only the hash part of the
+# output.
+#
+# ARGUMENT
+# Any arguments to the "git show-ref --heads" command.
+commit_hash() {
+    $GIT show-ref --heads "$@"|$SED "s/\s.\+//";
+}
+
+# -----------------------------------------------------------------------------
+
+# Issues a message and returns 1 if a fast forward merge of the branch provided
+# as first agument into the branch provided as second argument is not possible
+# Returns 0 without doing anything otherwise.
+#
+# ARGUMENTS
+# $1: Branch to be merged.
+# $2: Branch receiving the merge.
+check_fast_forward_possible() {
+
+    # Get commit hashes of the heads of the two branches.
+    local FROM=$(commit_hash "$2");
+    local TO=$(commit_hash "$1");
+
+    if $GIT merge-base --is-ancestor $FROM $TO; then
+        return 0;
+    else
+        echo_error Fast forward merge of \""$1"\" into \""$2"\" is not \
+            possible.
+        return 1;
+    fi;
+}
+
+# -----------------------------------------------------------------------------
+
+# If the first argument is true, then returns 0. Otherwise, prompts the user
+# for a confirmation. If the user answers negatively, then returns 1. Returns 0
+# otherwise.
+#
+# ARGUMENTS
+# $1: true to cause the function to return 0 without any confirmation.
+publication_confirmed() {
+    if ! $1; then
+
+        # Without the exec line below, the script is not fed by keyboard input
+        # when the script is used as post-commit Git hook.
+        exec < /dev/tty
+
+        while true; do
+            echo -n "Do you want to publish (y/n)? ";
+            read ANSWER;
+            case $ANSWER in
+                y|Y) return 0;;
+                n|N) return 1;;
+                *) echo "Please answer y (for yes) or n (for no)."
+            esac;
+        done;
+    fi
+}
+
+# -----------------------------------------------------------------------------
+
+# The script will terminate if trying to use an uninitialized variable.
+set -o nounset
+
+# The script will terminate if any statement returns a non-true return value.
+set -o errexit
+
+# Get the path to the script.
+SCRIPT_PATH="$0";
+
+# Get the base name of the script.
+SCRIPT_BASE_NAME=$(basename "$SCRIPT_PATH");
+
+process_args "$@";
+
+if $HELP_OPT; then
+    documentation $SCRIPT_BASE_NAME;
+else
+
+    MAKE=$(echo_cmd_fatal make);
+    GIT=$(echo_cmd_fatal git);
+    GREP=$(echo_cmd_fatal grep);
+    SED=$(echo_cmd_fatal sed);
+
+    GRPAR="$GIT rev-parse --abbrev-ref";
+    GBD="$GIT -C build/html --git-dir ../../.git_build_html";
+
+    ABORT=false;
+
+    MASTER_BRCH=master;
+    DEV_BRCH=develop;
+    BUILD_DIR=build/html;
+
+    check_checked_out_branch "$DEV_BRCH"                       || ABORT=true;
+    if ! $ABORT; then
+        check_working_tree_clean                               || ABORT=true;
+        check_branch_exists "$MASTER_BRCH"                     || ABORT=true;
+    fi;
+    if ! $ABORT; then
+        check_fast_forward_possible "$DEV_BRCH" "$MASTER_BRCH" || ABORT=true;
+    fi;
+
+    if $ABORT; then
+
+        echo "Script $SCRIPT_BASE_NAME won't attempt to publish.";
+        EXIT_STATUS=2;
+
+    elif publication_confirmed $FORCE_OPT; then
+
+        echo "Script $SCRIPT_BASE_NAME starts publishing.";
+
+        $MAKE clean html;
+        $GIT checkout "$MASTER_BRCH";
+        $GIT merge --ff-only "$DEV_BRCH";
+        SHORT_HASH=$(commit_hash --abbrev "$MASTER_BRCH");
+        $GIT push;
+        $GIT checkout "$DEV_BRCH";
+
+        $GBD checkout LICENSE;
+        $GBD checkout README.md;
+        $GBD add .;
+        $GBD commit -m "Rebuild (source commit hash $SHORT_HASH)";
+
+        EXIT_STATUS=0;
+
+    else
+
+        EXIT_STATUS=0;
+
+    fi;
+
+    exit $EXIT_STATUS;
+fi;
