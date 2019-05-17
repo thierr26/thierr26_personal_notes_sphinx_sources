@@ -145,7 +145,6 @@ At the disk partitioning stage, two non-trivial questions arise:
 I settled on the following partitioning schemes:
 
 .. list-table::
-  :widths: 50 50
   :header-rows: 1
 
   * - Machine with spinning HDD only

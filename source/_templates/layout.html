@@ -16,11 +16,13 @@
     Work licensed under a
     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br />
     {%- if show_sphinx %}
+      <div class="generator_mention">
       {% trans sphinx_version=sphinx_version|e %}
       Static website generated using
       <a href="http://sphinx-doc.org/">Sphinx</a>
       {{ sphinx_version }}.{% endtrans %}
-    {%- endif %}<br />
+      </div>
+    {%- endif %}
     <a href="mailto:thierr26@free.fr">Feedback welcome</a>.
   </div>
 {% endblock %}

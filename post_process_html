@@ -1,0 +1,41 @@
+#!/usr/bin/ruby
+
+require 'nokogiri'
+
+if ARGV.empty?
+    STDERR.puts File.basename("#{$PROGRAM_NAME}") \
+                              + ": Directory argument missing."
+    exit 1
+end
+
+path = "#{ARGV[0]}"
+
+Dir.glob(path + "/**/*.html").each do |html_file|
+    doc = File.open(html_file) { |f| Nokogiri::HTML(f) }
+    doc.xpath('//meta').remove
+    doc.xpath('//script').remove_attr("type")
+    doc.xpath('//form[@action=""]').remove_attr("action")
+    doc.xpath('//table').remove_attr("border")
+    doc.xpath('//table').remove_attr("class")
+    doc.xpath('//table/thead').remove_attr("valign")
+    doc.xpath('//table/tbody').remove_attr("valign")
+    doc.xpath('//table/colgroup').remove
+
+    generator_mention_children \
+        = doc.xpath('//div[@class="footer" and @role="contentinfo"]' \
+                    '/div[@class="generator_mention"]').children
+    generator_mention_children.first.replace \
+        "Static website built using "
+    generator_mention_children.last.replace \
+        " and <a href=\"https://nokogiri.org/\">Nokogiri</a>. Validated " \
+        "<a href=\"http://validator.w3.org/check/referer\">HTML5</a> / " \
+        "<a href=\"https://jigsaw.w3.org/css-validator/check/referer\">CSS3" \
+        "</a>."
+    # doc.xpath('//div[@class="footer" and @role="contentinfo"]' \
+    #           '/div[@class="generator_mention"]').children.reverse_each do |e|
+    #     e.replace " and <a href=\"https://nokogiri.org/\">Nokogiri</a>."
+    #     break
+    # end
+
+    doc.write_html_to(File.new(html_file, 'w'), :encoding => 'UTF-8')
+end

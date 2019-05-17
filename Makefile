@@ -8,9 +8,18 @@ SPHINXPROJ    = PersonalNotes
 SOURCEDIR     = source
 BUILDDIR      = build
 
-# Uncomment the next two lines to make "html" the default target.
-# html: Makefile
-# 	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+# Uncomment the next three lines to make "html" the default target and have the
+# "html" build post-processed automatically.
+html: Makefile
+	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@./post_process_html build/html
+
+# Uncomment the next two lines to enable the "htmlcheck" target (needs v.Nu
+# installed in /usr/local/nu_html_checker, see
+# https://validator.github.io/validator/#build-instructions).
+htmlcheck: html
+	@java -jar /usr/local/nu_html_checker/build/dist/vnu.jar build/html/*.html
+
 # Put it first so that "make" without argument is like "make help".
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

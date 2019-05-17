@@ -56,3 +56,13 @@ code.download {
     font-weight: inherit;
     font-family: inherit;
 }
+
+table, th, td {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    font-size: 93%;
+}
+
+th, td {
+    padding: 7px 35px;
+}
