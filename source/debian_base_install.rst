@@ -204,8 +204,8 @@ System update
 
 Update the system **as root** with::
 
-  apt-get update       # As root
-  apt-get dist-upgrade # As root
+  apt-get update       # As root.
+  apt-get dist-upgrade # As root.
 
 
 Adding deb-multimedia to the sources
@@ -251,7 +251,7 @@ Check the configured time zone with::
 
 If the configuration is not correct, you can change it **as root** with::
 
-  dpkg-reconfigure tzdata # As root
+  dpkg-reconfigure tzdata # As root.
 
 
 Synchronizing the system date with network time servers
@@ -262,7 +262,7 @@ Synchronizing the system date with network time servers
 
 Just install the ntp package::
 
-  apt-get install ntp # As root
+  apt-get install ntp # As root.
 
 See the `Debian Wiki NTP page <https://wiki.debian.org/NTP>`_ for more details.
 
@@ -276,7 +276,7 @@ Installing a console locker
 There are many screen and/or console locker programs. I've installed `physlock
 <https://github.com/muennich/physlock>`_::
 
-  apt-get install physlock # As root
+  apt-get install physlock # As root.
 
 
 Installing a memory (RAM) tester
@@ -293,7 +293,7 @@ RAM failures are not so rare in my experience. A tester like `Memtest86+
 `Grub <https://en.wikipedia.org/wiki/GNU_GRUB>`_ menu (you have to reboot your
 machine and select the Memtest86+ grub entry to start Memtest86+)::
 
-  apt-get install memtest86+ # As root
+  apt-get install memtest86+ # As root.
 
 
 Installing a wireless devices status management tool
@@ -307,7 +307,7 @@ On a laptop computer, it may be useful to check the status (enabled, hard
 blocked, soft blocked) of the wireless devices. The rfkill package makes that
 possible::
 
-  apt-get install rfkill # As root
+  apt-get install rfkill # As root.
 
 Check the statuses with::
 

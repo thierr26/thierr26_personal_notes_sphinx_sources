@@ -87,7 +87,7 @@ Exim4
 
 Configure Exim4 (**as root**) with::
 
-  dpkg-reconfigure exim4-config # As root
+  dpkg-reconfigure exim4-config # As root.
 
 I gave the following answers:
 

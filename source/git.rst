@@ -67,10 +67,11 @@ Creating aliases
 
 Create aliases with commands like::
 
-  git config --global alias.ci commit # Create alias "ci" for command "commit".
+  git config --global alias.ci commit # Creates alias "ci" for command
+                                      # "commit".
 
   git config --global \
-      alias.g 'log --pretty=oneline --abbrev-commit' # Create alias "g" for
+      alias.g 'log --pretty=oneline --abbrev-commit' # Creates alias "g" for
                                                      # command "log" with
                                                      # options for compact
                                                      # output.
@@ -225,14 +226,14 @@ change is staged) and the working tree with::
 
   git diff
 
-  git diff -- path/to/files # Show changes for the specified files only.
+  git diff -- path/to/files # Shows changes for the specified files only.
 
 Show the difference between the last commit of branch "branch_name" and the
 working tree with::
 
   git diff branch_name
 
-  git diff branch_name -- path/to/files # Show changes for the specified files
+  git diff branch_name -- path/to/files # Shows changes for the specified files
                                         # only.
 
 Assuming at least one of the path is outside the working tree, the following
@@ -244,7 +245,7 @@ Show the difference between what is staged and the last commit with::
 
   git diff --staged
 
-  git diff --staged -- path/to/file # Show changes for the specified files
+  git diff --staged -- path/to/file # Shows changes for the specified files
                                     # only.
 
 Show the difference between a particular commit and the working tree with
@@ -252,14 +253,14 @@ commands like::
 
   git diff 42b9c3b
 
-  git diff 42b9c3b -- path/to/files # Show changes for the specified files
+  git diff 42b9c3b -- path/to/files # Shows changes for the specified files
                                     # only.
 
 Show the difference between two particular commits with commands like::
 
   git diff 42b9c3b a92c02a
 
-  git diff 42b9c3b a92c02a -- path/to/files # Show changes for the specified
+  git diff 42b9c3b a92c02a -- path/to/files # Shows changes for the specified
                                             # files only.
 
 
