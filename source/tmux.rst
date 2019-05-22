@@ -121,6 +121,8 @@ List your opened tmux sessions with::
 Kill all the opened tmux sessions and the tmux server with::
 
   tmux kill-server
+  tmux confirm-before kill-server # Prompts the user for confirmation in
+                                  # tmux status bar.
 
 If you're in a tmux session and want to kill all the other sessions, use::
 
