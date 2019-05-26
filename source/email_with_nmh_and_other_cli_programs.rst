@@ -84,6 +84,7 @@ Exim4
 .. index::
   pair: exim4; configuration
   single: sendmail
+  single: dpkg-reconfigure
 
 Configure Exim4 (**as root**) with::
 
@@ -159,7 +160,7 @@ nmh user installation
 
 Perform nmh user installation with::
 
-  install-mh
+  /usr/bin/mh/install-mh
 
 Here's the quote of my ``install-mh`` session:
 
@@ -299,7 +300,7 @@ Deleting mails
 
 You can delete the mail with number 421 in the "Sent" folder with::
 
-  rmm +Sent 421
+  /usr/bin/mh/rmm +Sent 421
 
 This does not really delete the mail, but renames it to ",421". You may want to
 periodically erase your deleted mails with a command like::
@@ -314,6 +315,7 @@ Training Bogofilter (anti-spam filter)
 
 .. index::
   pair: Bogofilter; training
+  single: ~/.bogofilter/wordlist.db
   pair: find; -mindepth
   pair: find; -type
   pair: find; -not
