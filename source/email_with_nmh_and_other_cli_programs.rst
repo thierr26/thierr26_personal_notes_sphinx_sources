@@ -25,12 +25,13 @@ the `SMTP <https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol>`_
 server of my Internet service Provider.
 
 I'm a happy `Claws Mail <https://www.claws-mail.org>`_ (with the `Bogofilter
-plugin <https://www.claws-mail.org/plugin.php?plugin=bogofilter>`_) user on my
-`Debian GNU/Linux <https://www.debian.org>`_ box, but I'm interested in being
-able to manage email via command-line programs. Claws Mail stores mails in the
-so called MH mailbox format. This mailbox format is the one of the `MH Message
-Handling System <https://en.wikipedia.org/wiki/MH_Message_Handling_System>`_, a
-command-line based mail handling system.
+plugin <https://www.claws-mail.org/plugin.php?plugin=bogofilter>`_ for spam
+filtering) user on my `Debian GNU/Linux <https://www.debian.org>`_ box, but I'm
+interested in being able to manage email via command-line programs. Claws Mail
+stores mails in the so called MH mailbox format. This mailbox format is the one
+of the `MH Message Handling System
+<https://en.wikipedia.org/wiki/MH_Message_Handling_System>`_, a command-line
+based mail handling system.
 
 `nmh <http://www.nongnu.org/nmh>`_ is the current implementation of the MH
 system (provided by package nmh on a Debian GNU/Linux system). It is `possible
@@ -316,21 +317,35 @@ Training Bogofilter (anti-spam filter)
 .. index::
   pair: Bogofilter; training
   single: ~/.bogofilter/wordlist.db
+  single: spam
+  single: ham
   pair: find; -mindepth
   pair: find; -type
   pair: find; -not
   pair: find; -path
   pair: find; -exec
+  pair: nmh; refile
 
-Assuming that your current working directory is your standard nmh directory and
-your spam messages are in the "Spam" subfolder, you can (re)train Bogofilter
-with the three following commands::
+Assuming that:
+- Your current working directory is your standard nmh directory,
+- Your spam messages are in the "Spam" folder,
+- You also have an "Unsure spam" folder that contains only spam messages (which
+  implies that you have moved any ham (non spam) message away from this folder
+  with (for example) commands like
+  ``/usr/bin/mh/refile 1 -src +'Unsure spam' +'Any ham folder'``),
+you can move the messages in 'Unsure spam' to Spam and (re)train Bogofilter
+with the following commands::
 
-  rm -f ~/.bogofilter/wordlist.db # Don't do this if you don't want to entirely
-                                  # reset the training.
-  cat Spam/* | bogofilter -s
+  rm -f ~/.bogofilter/wordlist.db      # Don't do this if you don't want to
+                                       # entirely reset the training.
+
+  refile all -src +'Unsure spam' +Spam # Move the messages in 'Unsure spam' to
+                                       # Spam.
+
+  cat Spam/* | bogofilter -s           # Register spam messages.
+
   find . -mindepth 1 -type f -not -path "./Spam/*" -exec cat {} \; \
-      | bogofilter -n
+      | bogofilter -n                  # Register ham messages.
 
 You can check in which category (spam (S), ham (H), unsure (U)) Bogofilter
 classifies a message with commands like::
