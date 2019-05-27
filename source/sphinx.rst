@@ -77,8 +77,6 @@ you are currently reading:
 | you can select a language here by its language code. Sphinx will then
 | translate text that it generates into that language.
 |
-| For a list of supported codes, see
-| http://sphinx-doc.org/config.html#confval-language.
 | > Project language [en]: 
 |
 | The file name suffix for source files. Commonly, this is either ".txt"
