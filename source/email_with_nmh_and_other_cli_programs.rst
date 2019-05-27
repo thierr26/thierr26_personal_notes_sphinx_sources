@@ -327,25 +327,27 @@ Training Bogofilter (anti-spam filter)
   pair: nmh; refile
 
 Assuming that:
-- Your current working directory is your standard nmh directory,
-- Your spam messages are in the "Spam" folder,
-- You also have an "Unsure spam" folder that contains only spam messages (which
+
+* Your current working directory is your MH mailbox,
+* Your spam messages are in the "Spam" folder,
+* You also have an "Unsure spam" folder that contains only spam messages (which
   implies that you have moved any ham (non spam) message away from this folder
   with (for example) commands like
   ``/usr/bin/mh/refile 1 -src +'Unsure spam' +'Any ham folder'``),
+
 you can move the messages in 'Unsure spam' to Spam and (re)train Bogofilter
 with the following commands::
 
   rm -f ~/.bogofilter/wordlist.db      # Don't do this if you don't want to
                                        # entirely reset the training.
 
-  refile all -src +'Unsure spam' +Spam # Move the messages in 'Unsure spam' to
+  refile all -src +'Unsure spam' +Spam # Moves the messages in 'Unsure spam' to
                                        # Spam.
 
-  cat Spam/* | bogofilter -s           # Register spam messages.
+  cat Spam/* | bogofilter -s           # Registers spam messages.
 
   find . -mindepth 1 -type f -not -path "./Spam/*" -exec cat {} \; \
-      | bogofilter -n                  # Register ham messages.
+      | bogofilter -n                  # Registers ham messages.
 
 You can check in which category (spam (S), ham (H), unsure (U)) Bogofilter
 classifies a message with commands like::
