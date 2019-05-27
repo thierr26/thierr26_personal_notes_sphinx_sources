@@ -41,7 +41,10 @@ to use both Claws Mail and nmh
 This page gives the various actions I had to take to be able to receive and
 send emails using the nmh command-line programs. Filtering the incoming
 messages with `Bogofilter <http://bogofilter.sourceforge.net/>`_ (anti-spam
-filter) is also covered.
+filter) is also covered. Some basic commands for message management (deletion,
+search) are also provided. Of course, nmh programs have many options that are
+not covered here. Please refer to the `nmh man pages
+<http://manpages.org/nmh/7>`_ for all the details.
 
 
 Installation
@@ -291,8 +294,45 @@ message templates as ``comp``. ``repl`` uses ``/etc/nmh/replcomps`` and
 ``forw`` uses ``/etc/nmh/forwcomps``.
 
 
+Message management
+------------------
+
+.. index::
+  pair: nmh; folder
+
+This section provides a few examples of commands you can use to manage the
+messages in your MH mailbox with nmh. Please keep in mind that nmh message
+management programs operate by default on *the current folder*. You can set the
+current folder with the ``folder`` program::
+
+  /usr/bin/mh/folder +'any folder' # Selects folder "any folder" as the current
+                                   # folder.
+
+  /usr/bin/mh/folder +any/folder   # Selects folder "any/folder" subfolder as
+                                   # the current folder.
+
+  /usr/bin/mh/folder +./any/folder # Selects folder "any/folder" subfolder as
+                                   # the current folder (valid if the current
+                                   # working directory is the MH mailbox).
+
+``folder`` without arguments simply indicates the current folder::
+
+  /usr/bin/mh/folder
+
+You can force an nmh program to operate on a specific folder by providing this
+folder as argument (prepended with a plus sign). Note that with most nmh
+programs, **this causes this folder to be selected as the current folder for
+the subsequent commands**.
+
+Note also that when no message (or `message sequence
+<http://manpages.org/mh-sequence/5>`_) is provided on the command line, an nmh
+program operates on the current message **or** on all messages in the current
+folder. The `nmh man pages <http://manpages.org/nmh/7>`_ state clearly what the
+default message (or message sequence) is for each program.
+
+
 Deleting mails
---------------
+~~~~~~~~~~~~~~
 
 .. index::
   pair: email; deletion
@@ -307,6 +347,34 @@ This does not really delete the mail, but renames it to ",421". You may want to
 periodically erase your deleted mails with a command like::
 
   find /home/my_user_name/Mail -name ,* -exec rm -f {} \;
+
+
+Searching for recent messages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  pair: email; search
+  pair: nmh; pick
+  pair: find; -mindepth
+  pair: find; -type
+  pair: find; -exec
+  single: echo
+
+You can search for recent messages with commands like::
+
+  /usr/bin/mh pick -after 5/15/2019 # Searches for messages dated May 5th, 2019
+                                    # or later.
+
+  /usr/bin/mh pick -after -8        # Searches for messages not older than 8
+                                    # days.
+
+I couldn't find a way of finding messages recursively (i.e. in all folders and
+subfolders) with nmh programs, but the ``find`` command can help here (it is
+assumed that the current working directory is the MH mailbox)::
+
+  find . -mindepth 1 -type d -exec sh -c \
+      '/usr/bin/mh/pick +"$1" -after -8 2>/dev/null \
+      && echo "This was for $1"' - {} \;
 
 
 .. _training_bogofilter:
@@ -365,5 +433,6 @@ Other resources
 
 * `nmh home page <http://www.nongnu.org/nmh>`_
 * `MH & nmh (book by Jerry Peek) <https://rand-mh.sourceforge.io/book/>`_
+* `nmh man pages <https://rand-mh.sourceforge.io/book/>`_
 * `Getting bogofilter to work with procmail, fetchmail, and mutt
   <http://www.exstrom.com/journal/comp/bogofilter.html>`_
