@@ -573,11 +573,136 @@ file.
 Creating an archive of the latest commit (without any history)
 --------------------------------------------------------------
 
+.. index::
+  pair: Git; archive
+
 The following commands create archives of the working directory in "tar" and
 "zip" formats::
 
   git archive -o latest.tar HEAD
   git archive -o latest.zip HEAD
+
+
+Scripting
+---------
+
+.. index::
+  pair: Git; plumbing
+  pair: Git; porcelain
+  pair: Git; status
+  pair: Git; symbolic-ref
+  pair: Git; rev-parse
+  pair: Git; for-each-ref
+  pair: Git; diff-index
+  pair: Git; show-ref
+  pair: Git; merge-base
+
+It is sometimes needed to automate a sequence of Git commands and write a
+script (a `shell script <https://en.wikipedia.org/wiki/Shell_script>`_ for
+example). Scripting makes it possible to define :ref:`hooks <hooks>`.
+
+`Git commands are divided into two categories
+<https://stackoverflow.com/a/39848551>`_:
+
+* Plumbing commands,
+* Porcelain commands.
+
+Porcelain commands should be avoided in scripts. They are meant to be used by
+end-users (i.e. human beings, not programs) and produce a user-friendly output
+which may not be stable. And output format stability is highly desirable for
+commands used in scripts.
+
+Plumbing commands provide stable, parser-friendly output and must be preferred
+over porcelain commands in scripts.
+
+As things are never as simple as they seem, some porcelain commands are
+considered plumbing commands when used with the ``--porcelain`` option. ``git
+status`` is an example of that::
+
+  git status --porcelain
+
+Here are a few Git commands that are useful for scripting::
+
+  git symbolic-ref --short HEAD             # Outputs the checked out branch.
+  git rev-parse --abbrev-ref HEAD           # Same output (but listed as
+                                            # porcelain).
+
+  git for-each-ref \                        # Lists the local branches.
+      --format='%(refname:short)' \
+      refs/heads/
+  git rev-parse --abbrev-ref --branches     # Same output (but listed as
+                                            # porcelain).
+
+  git diff-index --quiet HEAD               # Does not output anything.
+                                            # Terminates with exit status 0
+                                            # when working tree is clean, with
+                                            # non zero exit status otherwise.
+
+  git show-ref --heads branch_name          # Provides the commit hash of the
+                                            # head commit of branch
+                                            # "branch_name".
+  git show-ref --heads --abbrev branch_name # Similar, but provides short
+                                            # commit hash (7 first characters
+                                            # of commit hash).
+
+  git merge-base --is-ancestor hash1 hash2  # Does not output anything.
+                                            # Terminates with exit status 0
+                                            # when commit with hash "hash1" is
+                                            # an ancestor of commit with hash
+                                            # "hash2" (and thus a fast forward
+                                            # merge is possible from "hash1" to
+                                            # "hash2"), with non zero exit
+                                            # status otherwise.
+
+
+.. _hooks:
+
+Hooks
+-----
+
+.. index::
+  pair: Git; hooks
+  single: symbolic link
+  single: ln
+  single: chmod
+  pair: Git; .git/hooks
+
+Assuming that:
+
+* You have a script "script-name" meant to be used as, say, a post-commit hook,
+* This script is located at the top level of the working tree,
+* The repository is in the standard ``.git`` subdirectory,
+* The current working directory is the top level of the working tree,
+
+you can install the hook with::
+
+  ln -s ../../script-name .git/hooks/post-commit # Creates a symbolic link in
+                                                 # .git/hooks.
+
+Of course the script must be executable::
+
+  chmod +x script-name
+
+The `Git hooks documentation
+<https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks>`_ lists the possible
+hooks.
+
+One difficulty with Git hooks is that when the hook of a repository operates on
+another Git repository, the ``-C`` and ``--git-dir`` options may not be
+respected. One solution can be to omit those options and to set environment
+variables instead:
+
+* ``export GIT_WORK_TREE=...``
+* ``export GIT_DIR=...``
+
+Also the GIT_INDEX_FILE environment variable must probably be unset::
+
+  unset GIT_INDEX_FILE
+
+More details can be found at those locations:
+
+* https://stackoverflow.com/questions/7645480/why-doesnt-setting-git-work-tree-work-in-a-post-commit-hook
+* https://longair.net/blog/2011/04/09/missing-git-hooks-documentation/
 
 
 Other resources

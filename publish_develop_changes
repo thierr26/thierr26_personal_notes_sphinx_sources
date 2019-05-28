@@ -274,7 +274,7 @@ process_args() {
 # ARGUMENTS
 # $1: Name of expected checked out branch.
 check_checked_out_branch() {
-    local CHECKED_OUT_BRCH=$($GRPAR HEAD);
+    local CHECKED_OUT_BRCH=$($GIT symbolic-ref --short HEAD);
     if [ "$CHECKED_OUT_BRCH" = "$1" ]; then
         return 0;
     else
@@ -292,7 +292,8 @@ check_checked_out_branch() {
 # ARGUMENTS
 # $1: Branch name.
 check_branch_exists() {
-    if [ "$($GRPAR --branches|$GREP "^$1$")" = "$1" ]; then
+    local GFERH="$GIT for-each-ref --format=%(refname:short) refs/heads/";
+    if [ "$($GFERH|$GREP "^$1$")" = "$1" ]; then
         return 0;
     else
         echo_error No \""$1"\" branch.
@@ -399,8 +400,6 @@ else
     GIT=$(echo_cmd_fatal git);
     GREP=$(echo_cmd_fatal grep);
     SED=$(echo_cmd_fatal sed);
-
-    GRPAR="$GIT rev-parse --abbrev-ref";
 
     ABORT=false;
 
