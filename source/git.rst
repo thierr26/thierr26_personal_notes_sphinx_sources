@@ -83,7 +83,7 @@ Splitting the configuration file
 .. index::
   pair: Git; configuration file split
   pair: Git; configuration file [include] section
-  single: .gitconfig
+  single: ~/.gitconfig
 
 All the ``git config --global`` commands mentioned above actually create
 entries ("config directives") in file ``~/.gitconfig``. You may want to store

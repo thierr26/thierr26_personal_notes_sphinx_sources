@@ -45,7 +45,7 @@ Configuration
 
 .. index::
   pair: tmux; configuration
-  single: .tmux.conf
+  single: ~/.tmux.conf
 
 
 My .tmux.conf
@@ -90,7 +90,7 @@ Vim configuration
 .. index::
   triple: tmux; Vim; configuration
   pair: Vim; mouse
-  single: .vimrc
+  single: ~/.vimrc
 
 .. highlight:: vim
 

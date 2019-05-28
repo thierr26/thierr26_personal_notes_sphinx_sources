@@ -144,7 +144,7 @@ fetchmail
 
 .. index::
   pair: fetchmail; configuration
-  single: .fetchmailrc
+  single: ~/.fetchmailrc
 
 Create a ``~/.fetchmailrc`` file and change its permission so that only the
 user can read and write it::
@@ -160,7 +160,7 @@ nmh user installation
 
 .. index::
   pair: nmh; user installation
-  single: .mh_profile
+  single: ~/.mh_profile
 
 Perform nmh user installation with::
 
@@ -230,7 +230,7 @@ With filtering by Bogofilter
 
 .. index::
   single: procmail
-  single: .procmailrc
+  single: ~/.procmailrc
   single: Bogofilter
 
 Make sure procmail and bogofilter are installed::
