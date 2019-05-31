@@ -433,6 +433,6 @@ Other resources
 
 * `nmh home page <http://www.nongnu.org/nmh>`_
 * `MH & nmh (book by Jerry Peek) <https://rand-mh.sourceforge.io/book/>`_
-* `nmh man pages <https://rand-mh.sourceforge.io/book/>`_
+* `nmh man pages <http://manpages.org/nmh/7>`_
 * `Getting bogofilter to work with procmail, fetchmail, and mutt
   <http://www.exstrom.com/journal/comp/bogofilter.html>`_
