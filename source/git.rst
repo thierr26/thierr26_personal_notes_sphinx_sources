@@ -690,10 +690,10 @@ hooks.
 One difficulty with Git hooks is that when the hook of a repository operates on
 another Git repository, the ``-C`` and ``--git-dir`` options may not be
 respected. One solution can be to omit those options and to set environment
-variables instead:
+variables instead::
 
-* ``export GIT_WORK_TREE=...``
-* ``export GIT_DIR=...``
+  export GIT_WORK_TREE=...
+  export GIT_DIR=...
 
 Also the GIT_INDEX_FILE environment variable must probably be unset::
 
