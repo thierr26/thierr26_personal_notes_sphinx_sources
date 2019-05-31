@@ -324,7 +324,27 @@ Installing a CD burning tool
 I use cdrskin to burn CDs (in particular the Debian installation CDs) on an
 internal or external (USB) CD burning drive::
 
-  apt-get install cdrskin
+  apt-get install cdrskin # As root.
+
+
+Installing locate / updatedb
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  single: locate
+  single: updatedb
+
+Command ``locate`` is a way of finding files on your computer. It is faster
+than ``find``. It relies on a database (upatedb) which is automatically updated
+now and then.
+
+Install locate and updatedb with::
+
+  apt-get install locate # As root.
+
+You can force the database update **as root** with::
+
+  updatedb # As root.
 
 
 Post-install maintenance
