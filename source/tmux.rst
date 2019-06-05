@@ -52,7 +52,7 @@ My .tmux.conf
 
 .. index::
   single: ~/.tmux.conf
-  pair: tmux; source-file
+  pair: tmux commands; source-file
   pair: tmux; status line
   single: strftime (C library function)
   single: Caps lock mode
