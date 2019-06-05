@@ -45,13 +45,114 @@ Configuration
 
 .. index::
   pair: tmux; configuration
-  single: ~/.tmux.conf
 
 
 My .tmux.conf
 ~~~~~~~~~~~~~
 
+.. index::
+  single: ~/.tmux.conf
+  pair: tmux; source-file
+  pair: tmux; status line
+  single: strftime (C library function)
+  single: Caps lock mode
+  single: Num lock mode
+  single: head
+  single: grep
+  single: cat
+  pair: laptop; power supply
+  pair: laptop; battery
+
 You can download :download:`my ~/.tmux.conf <download/.tmux.conf>`.
+
+I had a little bit of a hard time defining the ``status-right`` option (the
+right hand side of the status line). It causes the right hand side of the
+status line to show:
+
+* A Caps lock mode indicator (a yellow "Caps lock on" when Caps lock is **on**,
+  nothing visible otherwise).
+
+* A Num lock mode indicator (a yellow "Num lock off" when Caps lock is **off**,
+  nothing visible otherwise).
+
+* A power supply indicator ("CHG" if the machine is plugged in, "BAT" if the
+  machine is running on the battery, nothing visible if the information is not
+  found).
+
+* The remaining capacity of charge in the battery in percent (yellow if lower
+  than 20% and machine not plugged in), nothing visible if the information is
+  not found.
+
+* Time and date, with the day of the week.
+
+The time / date part was easy enough, the format specification is passed
+through `strftime(3) <https://linux.die.net/man/3/strftime>`_. The sole time /
+date part could be obtained with ``set -g status-right "%H:%M %Y-%m-%d(%a)"``.
+
+I could obtain the other parts using shell statements. The shell statements
+must be enclosed in a ``#()`` construct. So my ``status-right`` option "line"
+now is something like
+``set -g status-right "#(<shell statements>) %H:%M %Y-%m-%d(%a)"``.
+
+If the shell statements are long, one solution is to write them in a separate
+script file and just call the script file in the ``#()`` construct. Another
+solution is to use line continuation. Lines can be continuated by adding ``\``
+at the end. That's the route I went, and my ``status-right`` option "line"
+now is more like::
+
+  set -g status-right "#(\
+  <shell \
+  statements>\
+  ) %H:%M %Y-%m-%d(%a)"
+
+The shell statements actually ended up being a sequence of calls to ``printf``
+in ``if ... else ... fi;`` constructs. Text coloring in the tmux status line is
+controlled using strings like ``#[fg=colour184]``. Example::
+
+  set -g status-right "#(printf '#[fg=colour184]yellow#[fg=colour0] black') %a"
+
+The Caps lock mode indicator is build from the content of a file like
+``/sys/class/leds/input5::capslock/brightness``. But there might be multiple
+files like this one (if you have multiple keyboards plugged in to your
+machine). You can ``cat`` only one of them with a command like (from my
+experience, they all have the same content at a given time)::
+
+  cat $(find /sys/class/leds -name "*capslock"|head -1)/brightness
+
+Similarly, for Num lock mode::
+
+  cat $(find /sys/class/leds -name "*numlock"|head -1)/brightness
+
+The power supply indicator is build from the content of the
+``/sys/class/power_supply/AC/online`` if it exists (from my experience, and on
+a Debian system, it exists on a laptop computer but not on a desktop computer).
+
+Finally, the remaining capacity of charge in the battery is taken in file
+``/sys/class/power_supply/BAT/capacity`` if it exists. It exists on my Debian
+laptop. On other systems, the file may be
+``/sys/class/power_supply/BAT0/capacity`` instead. And some laptop have two
+batteries. My ``status-right`` option displays the remaining capacity for only
+one battery.
+
+I've set the refresh rate of the status line to 3 seconds::
+
+  set -g status-interval 3
+
+And I also had to specify the ``status-right-length`` option, without that the
+status line is truncated::
+
+  set -g status-right-length 56
+
+
+Reloading configuration
+~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  pair: tmux; source-file
+
+After changing your ``~/.tmux.conf``, you can reload it with::
+
+  tmux source-file ~/.tmux.conf
 
 
 Disabling control flow
@@ -79,7 +180,7 @@ The following command shows the colors that can be used in a tmux
 configuration (source: https://superuser.com/a/1104214)::
 
   for i in {0..255}; \
-    do printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i; \
+    do printf "\x1b[38;5;${i}mcolour%-5i\x1b[0m" $i; \
     if ! (( ($i + 1 ) % 8 )); then echo; fi; \
   done
 
