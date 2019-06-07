@@ -80,8 +80,8 @@ status line to show:
   found).
 
 * The remaining capacity of charge in the battery in percent (yellow if lower
-  than 20% and machine not plugged in), nothing visible if the information is
-  not found.
+  than 20% and machine not plugged in, nothing visible if the information is
+  not found).
 
 * Time and date, with the day of the week.
 
@@ -89,23 +89,23 @@ The time / date part was easy enough, the format specification is passed
 through `strftime(3) <https://linux.die.net/man/3/strftime>`_. The sole time /
 date part could be obtained with ``set -g status-right "%H:%M %Y-%m-%d(%a)"``.
 
-I could obtain the other parts using shell statements. The shell statements
-must be enclosed in a ``#()`` construct. So my ``status-right`` option "line"
-now is something like
-``set -g status-right "#(<shell statements>) %H:%M %Y-%m-%d(%a)"``.
+I could obtain the other parts using shell commands. The shell commands must be
+enclosed in a ``#()`` construct. So my ``status-right`` option "line" now is
+something like
+``set -g status-right "#(<shell commands>) %H:%M %Y-%m-%d(%a)"``.
 
-If the shell statements are long, one solution is to write them in a separate
-script file and just call the script file in the ``#()`` construct. Another
-solution is to use line continuation. Lines can be continuated by adding ``\``
-at the end. That's the route I went, and my ``status-right`` option "line"
-now is more like::
+When multiple and/or long shell commands are needed, one solution is to write
+them in a separate script file and just call the script file in the ``#()``
+construct. Another solution is to use line continuation. Lines can be
+continuated by adding ``\`` at the end. That's the route I went, and my
+``status-right`` option "line" now is more like::
 
   set -g status-right "#(\
   <shell \
-  statements>\
+  commands>\
   ) %H:%M %Y-%m-%d(%a)"
 
-The shell statements actually ended up being a sequence of calls to ``printf``
+The shell commands actually ended up being a sequence of calls to ``printf``
 in ``if ... else ... fi;`` constructs. Text coloring in the tmux status line is
 controlled using strings like ``#[fg=colour184]``. Example::
 
@@ -133,6 +133,16 @@ laptop. On other systems, the file may be
 ``/sys/class/power_supply/BAT0/capacity`` instead. And some laptop have two
 batteries. My ``status-right`` option displays the remaining capacity for only
 one battery.
+
+Determining whether the remaining capacity is lower than 20% or not is achieved
+by piping the remaining capacity to a ``grep '\(^\|[0-1]\).$'`` command. If the
+output is non empty, then the remaining capacity is lower than 20%. Note that
+in the ``~/.tmux.conf`` the backslashes must be escaped:
+``grep '\\(^\\|[0-1]\\).$')``.
+
+Note also the format string in the ``printf`` command for the remaining
+capacity. The percent sign must be tripled
+(``printf '% 3d%%%' $(cat /sys/class/power_supply/BAT/capacity);``).
 
 I've set the refresh rate of the status line to 3 seconds::
 
