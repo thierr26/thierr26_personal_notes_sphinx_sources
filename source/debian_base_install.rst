@@ -12,11 +12,12 @@ Introduction
 ------------
 
 These are my notes about the installation of a `Debian GNU/Linux
-<https://www.debian.org>`_ system. A significant part of these notes describe
-the preparation of the installation medias. The assumption is made that you
-have access to a working machine with a Debian GNU/Linux system installed a
-fast enough internet connection (to download a few hundreds of megabytes). This
-machine will be used to prepare the installation medias for the new system.
+<https://www.debian.org>`_ system on a 64-bit ("AMD64" architecture) PC. A
+significant part of these notes describe the preparation of the installation
+medias. The assumption is made that you have access to a working machine with a
+Debian GNU/Linux system installed a fast enough internet connection (to
+download a few hundreds of megabytes). This machine will be used to prepare the
+installation medias for the new system.
 
 Many software packages are also downloaded during the installation, so the
 target machine should also have a fast enough internet connection.
@@ -33,7 +34,8 @@ Getting an installation CD
   single: CD burning
   single: dd
   single: stat
-  single: sha512sums
+  single: sha512sum
+  single: gpg
 
 See the `Getting Debian page <https://www.debian.org/distrib/>`_ for
 information about how to download a Debian installer CD image or buy
@@ -42,31 +44,51 @@ installation CDs.
 If you have a fast enough internet connection and a CD burning drive, you can
 download a `small (approximately 300MB) installation image
 <https://www.debian.org/distrib/netinst>`_ and burn it to a blank CD-R.
-Commands like the ones below should do it. The example is for Debian 9.9.0
-(Stretch). Note also that it is assumed that you have `cdrskin
+Commands like the ones below should do it. The example is for Debian 10.0.0
+(Buster). Note also that it is assumed that you have `cdrskin
 <http://scdbackup.sourceforge.net/cdrskin_eng.html>`_ installed. Run ``apt-get
 install cdrskin`` **as root** if not. Note also that the
 dev=<cd_burning_drive_device_file> option is probably not mandatory as cdrskin
 can detect CD burning devices (``cdrskin --devices`` lists the detected
 devices)::
 
-  wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-9.9.0-amd64-netinst.iso
-  cdrskin dev=<cd_burning_drive_device_file> -eject -v -data debian-9.9.0-amd64-netinst.iso
+  wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-10.0.0-amd64-netinst.iso
+  cdrskin dev=<cd_burning_drive_device_file> -eject -v -data debian-10.0.0-amd64-netinst.iso
 
-You might want to verify the authenticity of the ISO image. Follow the same
-procedure as for the firmware archive verification provided in the
-:ref:`firmware archive section <firmware_archive_media>`.
+You might want to verify the authenticity of the ISO image. Download the SHA512
+checksum and associated signature file::
+
+  wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA512SUMS
+  wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA512SUMS.sign
+
+Then, attempt to verify the authenticity of the image::
+
+  gpg --verify SHA512SUMS.sign
+
+If there are lines like the following in the output, it means that you have
+never imported the key used to sign the image (and this is confirmed by the
+fact that it does not appear in the output of ``gpg --list-keys``). 
+
+| gpg:                using RSA key DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+| gpg: Can't check signature: No public key
+
+You can import the key with::
+
+  gpg --keyserver keyring.debian.org --recv DF9B9C49EAA9298432589D76DA87E80D6294BE9B
+
+A new attempt to check the signature with ``gpg --verify SHA512SUMS.sign`` now
+produces a line like
+
+| gpg: Good signature from "Debian CD signing key <debian-cd@lists.debian.org>"
 
 When the burning is done, you might also want to check the integrity of the
 burned CD. Just compare the output of the following command with the checksum
 from the downloaded checksum file::
 
   dd if=/dev/<cd_burning_drive_device_file> bs=2048 \
-    count=$(($(stat -c %s debian-9.9.0-amd64-netinst.iso)/2048)) \
-    conv=notrunc,noerror | sha512sums
+    count=$(($(stat -c %s debian-10.0.0-amd64-netinst.iso)/2048)) \
+    conv=notrunc,noerror | sha512sum
 
-
-.. _firmware_archive_media:
 
 Preparing a media with firmware archive, just in case
 -----------------------------------------------------
@@ -74,8 +96,8 @@ Preparing a media with firmware archive, just in case
 .. index::
   single: Debian firmware archive
   single: wget
-  single: gpg
   triple: archives; .tar.gz archives; tar
+  single: sha512sum
 
 Note that this step is **not necessary if your installation CD already includes
 firmware** (that is if you have downloaded the image from a subdirectory of
@@ -85,33 +107,17 @@ The `Debian Wiki <https://wiki.debian.org/Firmware>`_ provides some
 instructions, but here are the details of what I've done (for a Debian Buster
 install, and including the authenticity verification of the archive)::
 
-  mkdir -p ~/download/debian_buster_firmware # Prepare a folder somewhere.
-  cd ~/download/debian_buster_firmware       # Move to that folder.
+  mkdir -p ~/download/debian_buster_firmware # Create a directory somewhere.
+  cd ~/download/debian_buster_firmware       # Move to that directory.
 
   # Download the firmware archive, its SHA512 checksum and associated signature
   # file.
   wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/buster/current/firmware.tar.gz
   wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/buster/current/SHA512SUMS
-  wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/buster/current/SHA512SUMS.sign
 
-  # Attempt to verify the authenticity of the file.
-  gpg --verify SHA512SUMS.sign
-
-In the output of the last command, there were lines like:
-
-| gpg:                using RSA key F41D30342F3546695F65C66942468F4009EA8AC3
-| gpg: Can't check signature: No public key
-
-It means I had never imported the key used to sign the firmware archive (and
-this is confirmed by the fact that it does not appear in the output of ``gpg
---list-keys``). I could import the key with::
-
-  gpg --keyserver keyring.debian.org --recv F41D30342F3546695F65C66942468F4009EA8AC3
-
-A new attempt to check the signature with ``gpg --verify SHA512SUMS.sign`` now
-produces a line like
-
-| gpg: Good signature from "Debian Testing CDs Automatic Signing Key <debian-cd@lists.debian.org>"
+I've checked the SHA512 checksum of ``firmware.tar.gz`` by issuing a
+``sha512sum firmware.tar.gz`` command and comparing the output with what is in
+SHA512SUMS.
 
 The final steps consisted in extracting the files from the firmware archive
 (``tar xvzf firmware.tar.gz``) and copy all the files with ``.deb`` extension
