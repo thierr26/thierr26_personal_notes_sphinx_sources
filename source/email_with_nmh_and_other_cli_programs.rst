@@ -138,6 +138,14 @@ containing "Test" to a recipient (the -v switch is for verbosity)::
 
 ``/usr/sbin/sendmail`` is a symbolic link to exim4 executable.
 
+You can specify the "from" address using a -f switch on the command line and
+specify the mail subject by starting the message with a ``subject:`` line::
+
+  /usr/sbin/sendmail -f your.email@address.xxx -v recipient@example.com
+  subject:Any subject
+  Test
+  .
+
 
 fetchmail
 ~~~~~~~~~
@@ -392,12 +400,15 @@ Training Bogofilter (anti-spam filter)
   pair: find; -not
   pair: find; -path
   pair: find; -exec
+  pair: find; -regex
+  pair: find; -regextype
   pair: nmh; refile
 
 Assuming that:
 
 * Your current working directory is your MH mailbox,
 * Your spam messages are in the "Spam" folder,
+* Your trash folder (if any) is empty,
 * You also have an "Unsure spam" folder that contains only spam messages (which
   implies that you have moved any ham (non spam) message away from this folder
   with (for example) commands like
@@ -412,10 +423,16 @@ with the following commands::
   refile all -src +'Unsure spam' +Spam # Moves the messages in 'Unsure spam' to
                                        # Spam.
 
-  cat Spam/* | bogofilter -s           # Registers spam messages.
+  rm 'Unsure spam'/*                   # Actually delete files in 'Unsure spam'
 
-  find . -mindepth 1 -type f -not -path "./Spam/*" -exec cat {} \; \
+  find . -mindepth 2 \
+         -type f \
+         -regextype sed -regex ".*/[0-9]\+$" \
+         -not -path "./Spam/*" \
+         -exec cat {} \; \
       | bogofilter -n                  # Registers ham messages.
+
+  cat Spam/* | bogofilter -s           # Registers spam messages.
 
 You can check in which category (spam (S), ham (H), unsure (U)) Bogofilter
 classifies a message with commands like::
@@ -423,6 +440,10 @@ classifies a message with commands like::
   cat Spam/1 | bogofilter -t
 
 Such commands output one line. The first character of the line is S, H or U.
+
+It seems to me that when trained with too many messages, Bogofilter classifies
+every message as unsure. In that case, I would recommend retraining Bogofilter
+with much less data (for example only the recent messages).
 
 Follow the `link for interesting details about how Bogofilter works (in
 French) <http://bogofilter.sourceforge.net/>`_.
