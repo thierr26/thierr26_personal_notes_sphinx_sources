@@ -394,16 +394,13 @@ Training Bogofilter (anti-spam filter)
 
 .. index::
   pair: Bogofilter; training
-  single: ~/.bogofilter/wordlist.db
+  single: ~/.bogofilter
   single: spam
   single: ham
   pair: find; -mindepth
   pair: find; -type
   pair: find; -not
   pair: find; -path
-  pair: find; -exec
-  pair: find; -regex
-  pair: find; -regextype
   pair: nmh; refile
 
 Assuming that:
