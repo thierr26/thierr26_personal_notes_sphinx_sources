@@ -34,8 +34,8 @@ of the `MH Message Handling System
 based mail handling system.
 
 `nmh <http://www.nongnu.org/nmh>`_ is the current implementation of the MH
-system (provided by package nmh on a Debian GNU/Linux system). It is `possible
-to use both Claws Mail and nmh
+system (provided by package ``nmh`` on a Debian GNU/Linux system). It is
+`possible to use both Claws Mail and nmh
 <http://lists.nongnu.org/archive/html/nmh-workers/2014-02/msg00049.html>`_.
 
 This page gives the various actions I had to take to be able to receive and

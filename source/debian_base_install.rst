@@ -266,7 +266,7 @@ Synchronizing the system date with network time servers
 .. index::
   single: Network Time Protocol (NTP)
 
-Just install the ntp package::
+Just install package ``ntp``::
 
   apt-get install ntp # As root.
 
@@ -310,7 +310,7 @@ Installing a wireless devices status management tool
   single: rfkill
 
 On a laptop computer, it may be useful to check the status (enabled, hard
-blocked, soft blocked) of the wireless devices. The rfkill package makes that
+blocked, soft blocked) of the wireless devices. Package ``rfkill`` makes that
 possible::
 
   apt-get install rfkill # As root.
