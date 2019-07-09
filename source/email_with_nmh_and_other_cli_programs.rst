@@ -130,7 +130,9 @@ Split configuration into small files:
   Default value (no)
 
 As a test, I issued the following command which is supposed to send a mail
-containing "Test" to a recipient (the -v switch is for verbosity)::
+containing "Test" to a recipient. The -v switch is for verbosity. I notice that
+the mails that I send that way are not delivered to all recipients. So **there must be something wrong**. I don't know what exactly, probably something that
+makes those mails appear as spam to certain filter programs::
 
   /usr/sbin/sendmail -v recipient@example.com
   Test
@@ -141,9 +143,9 @@ containing "Test" to a recipient (the -v switch is for verbosity)::
 You can specify the "from" address using a -f switch on the command line and
 specify the mail subject by starting the message with a ``subject:`` line::
 
-  /usr/sbin/sendmail -f your.email@address.xxx -v recipient@example.com
-  subject:Any subject
-  Test
+  /usr/sbin/sendmail -f sender@example.com -v recipient@example.com
+  subject:The subject
+  The mail body.
   .
 
 
@@ -417,7 +419,7 @@ Assuming that:
 you can move the messages in 'Unsure spam' to Spam and (re)train Bogofilter
 with the following commands::
 
-  rm -f ~/.bogofilter/wordlist.db      # Don't do this if you don't want to
+  rm -rf ~/.bogofilter                 # Don't do this if you don't want to
                                        # entirely reset the training.
 
   refile all -src +'Unsure spam' +Spam # Moves the messages in 'Unsure spam' to
@@ -425,25 +427,19 @@ with the following commands::
 
   rm 'Unsure spam'/*                   # Actually delete files in 'Unsure spam'
 
-  find . -mindepth 2 \
-         -type f \
-         -regextype sed -regex ".*/[0-9]\+$" \
-         -not -path "./Spam/*" \
-         -exec cat {} \; \
-      | bogofilter -n                  # Registers ham messages.
+  bogofilter -vsB Spam                 # Registers spam messages.
 
-  cat Spam/* | bogofilter -s           # Registers spam messages.
+  find . -mindepth 1 \
+         -type d \
+         -not -path "\./Spam" \
+    | bogofilter -vnb                  # Registers ham messages.
 
 You can check in which category (spam (S), ham (H), unsure (U)) Bogofilter
 classifies a message with commands like::
 
-  cat Spam/1 | bogofilter -t
+  bogofilter -tB Spam/1
 
 Such commands output one line. The first character of the line is S, H or U.
-
-It seems to me that when trained with too many messages, Bogofilter classifies
-every message as unsure. In that case, I would recommend retraining Bogofilter
-with much less data (for example only the recent messages).
 
 Follow the `link for interesting details about how Bogofilter works (in
 French) <http://bogofilter.sourceforge.net/>`_.
