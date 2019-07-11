@@ -214,6 +214,28 @@ Update the system **as root** with::
   apt-get dist-upgrade # As root.
 
 
+Preventing the system from beeping
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  single: lsmod
+  single: /etc/modprobe.d
+  single: beep
+  single: pcspkr
+  pair: Kernel module; blacklisting
+
+The newly installed system may emit beeps quiet often (for example when working
+in a terminal emulator). To stop that, you can blacklist module pcspkr by
+adding a file **as root** in ``/etc/modprobe.d`` (file name suggestion:
+``nobeep.conf``). The file should contain this line::
+
+  blacklist pcspkr
+
+After rebooting the system, module ``pcspkr`` should not be loaded any more
+(i.e. ``lsmod | grep pcspkr`` should output nothing) and you should not hear
+beeps any more.
+
+
 Adding deb-multimedia to the sources
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
