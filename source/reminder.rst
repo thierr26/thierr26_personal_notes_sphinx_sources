@@ -44,7 +44,7 @@ Follow the `link for more information about X applications command line
 options <https://www.oreilly.com/library/view/x-window-system/9780937175149/Chapter08.html>`_.
 
 
-Broadcasted messsage (using wall)
+Broadcasted message (using wall)
 ---------------------------------
 
 .. index::
