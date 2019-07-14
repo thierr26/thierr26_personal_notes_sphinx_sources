@@ -288,20 +288,23 @@ directory to be ignored, except:
 
 * file ``file_2``;
 
-* file ``dir/subdir/file_3``;
+* file ``dir_a/subdir/file_3``;
 
-* file ``dir/subdir/file_4``.
+* file ``dir_a/subdir/file_4``.
+
+* all files and directories in directory ``dir_b`` with infinite depth.
 
 | /*
 | !.gitignore
 | !file_1
 | !file_2
-| dir/*
-| !dir
-| dir/subdir/*
-| !dir/subdir
-| !dir/subdir/file_3
-| !dir/subdir/file_4
+| dir_a/*
+| !dir_a
+| dir_a/subdir/*
+| !dir_a/subdir
+| !dir_a/subdir/file_3
+| !dir_a/subdir/file_4
+| !dir_b
 
 
 Showing changes
