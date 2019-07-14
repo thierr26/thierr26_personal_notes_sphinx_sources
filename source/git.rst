@@ -40,6 +40,7 @@ Minimal post-install configuration
 
 .. index::
   triple: Git; global; configuration
+  pair: Git; Credential helper
 
 After installing Git, user name and e-mail address should be configured::
 
@@ -56,8 +57,24 @@ You can see your Git configuration with::
 
   git config --list
 
+If you use a git hosting service like `GitHub <https://github.com/>`_,
+`GitLab <https://about.gitlab.com/>`_ or `Bitbucket <https://bitbucket.org/>`_,
+you may want Git to store your credentials for the service. One way to achieve
+that is to use the Git credential helper.
+
+The following command causes Git to store the credentials you provide next time
+you issue a (for example) ``git push`` command, so that you won't ever have to
+retype them::
+
+  git config --global credential.helper store
+
+The credentials are stored in ``~/.git-credentials``. **They are not
+encrypted**, so check that only you have read permission on that file (if this
+is not the case, issue a ``chmod 600 ~/.git-credentials`` command).
+
 
 .. _git_aliases:
+
 
 Creating aliases
 ~~~~~~~~~~~~~~~~
@@ -213,6 +230,19 @@ The following commands stage the removal of a file::
                                # directory.
 
 ``git status`` shows the staged files (among other things).
+
+
+Unstaging changes
+-----------------
+
+.. index::
+  pair: Git; unstage
+  pair: Git; reset
+
+You can unstage a file that you have just mistakenly staged with a command
+like::
+
+  git reset -- path/to/file
 
 
 Showing changes
@@ -472,7 +502,7 @@ Find the last modification date and author of any line of a file
 ----------------------------------------------------------------
 
 .. index::
-  pair: Git; grep
+  pair: Git; blame
 
 Use this command to see the last modification date and author of any line of a
 file::
