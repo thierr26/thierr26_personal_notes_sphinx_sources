@@ -155,6 +155,7 @@ fetchmail
 .. index::
   pair: fetchmail; configuration
   single: ~/.fetchmailrc
+  single: chmod
 
 Create a ``~/.fetchmailrc`` file and change its permission so that only the
 user can read and write it::

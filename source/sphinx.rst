@@ -120,6 +120,7 @@ you are currently reading:
 |    make builder
 | where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
+
 Generating HTML output
 ----------------------
 

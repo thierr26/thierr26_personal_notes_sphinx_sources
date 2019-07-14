@@ -41,6 +41,7 @@ Minimal post-install configuration
 .. index::
   triple: Git; global; configuration
   pair: Git; Credential helper
+  single: chmod
 
 After installing Git, user name and e-mail address should be configured::
 
@@ -206,8 +207,10 @@ Staging changes
 
 .. index::
   pair: Git; stage
+  triple: Git; stage; dry run
   pair: Git; add
   pair: Git; rm
+  pair: Git; .gitignore
 
 ``git add -A`` stages all changes (including new files and file removals).
 ``git add .`` is equivalent to ``git add -A`` (except with Git version 1.x
@@ -231,6 +234,16 @@ The following commands stage the removal of a file::
 
 ``git status`` shows the staged files (among other things).
 
+Note also that there is a dry run option for ``git add``. This is the ``-n``
+switch. The following command *shows* what *would* be staged but does not
+actually stage::
+
+  git add -n .
+
+This comes especially handy when you want to :ref:`ignore files and/or
+directories <gitignore>` and you are not sure the ``.gitignore`` file is
+correct.
+
 
 Unstaging changes
 -----------------
@@ -243,6 +256,52 @@ You can unstage a file that you have just mistakenly staged with a command
 like::
 
   git reset -- path/to/file
+
+
+.. _gitignore:
+
+Ignoring files and directories
+------------------------------
+
+.. index::
+  pair: Git; ignore
+  pair: Git; .gitignore
+  pair: Git; .git/info/exclude
+
+Quiet often there are files and/or directories in the working directory that
+shouldn't be tracked by the version control system. Such files and/or
+directories must be mentioned in file ``.gitignore`` or in file
+``.git/info/exclude``. ``.gitignore`` is tracked, ``.git/info/exclude`` is not.
+Of course, you can mention some of the files/directories to be ignored in
+``.gitignore`` and the others in ``.git/info/exclude``.
+
+The official documentation provides information on the `patterns that can be
+used in .gitignore <https://git-scm.com/docs/gitignore#_pattern_format>`_.
+
+Sometimes, you want to ignore everything except a few files. For example, a
+``.gitignore`` file with the following content would cause the whole working
+directory to be ignored, except:
+
+* file ``.gitignore``
+
+* file ``file_1``;
+
+* file ``file_2``;
+
+* file ``dir/subdir/file_3``;
+
+* file ``dir/subdir/file_4``.
+
+| /*
+| !.gitignore
+| !file_1
+| !file_2
+| dir/*
+| !dir
+| dir/subdir/*
+| !dir/subdir
+| !dir/subdir/file_3
+| !dir/subdir/file_4
 
 
 Showing changes
@@ -533,10 +592,13 @@ Maintaining a difference between working and committed trees
 
 .. index::
   pair: Git; filter
-  pair: Git; smudge
-  pair: Git; clean
+  pair: Git; smudge filters
+  pair: Git; clean filters
   pair: Git; .gitignore
   pair: Git; .git/info/exclude
+  single: sed
+  single: chmod
+  single: gitk
   triple: Sphinx; Makefile; default target
 
 In some cases, you want a particular file content in your working tree, that
@@ -591,13 +653,48 @@ commands (typically involving the `sed
 <https://www.gnu.org/software/sed/manual/sed.html>`_ program) given as local
 configuration directives::
 
-  git config --local filter.html_as_default_target.smudge 'sed "s/^# *\(.*html[
-  :].*\)$/\1/"' git config --local filter.html_as_default_target.clean 'sed
-  "s/^\(.*html[ :].*\)$/# \1/"'
+  git config --local filter.html_as_default_target.smudge 'sed "s/^# *\(.*html[ :].*\)$/\1/"'
+  git config --local filter.html_as_default_target.clean 'sed "s/^\(.*html[ :].*\)$/# \1/"'
 
 The smudge filter uncomments the lines containing "html " or "html:" and the
 clean filter comments out those lines. They're visible in the ``.git/config``
 file.
+
+Note that the filters can be defined in external scripts. The clean filter
+above could be a file containing:
+
+| #!/bin/sh
+|
+| sed "s/^\(.*html[ :].*\)$/# \1/" $1
+
+Assuming that this file is named ``clean_filter`` is located in a subdirectory
+called ``filter`` of the working directory, the
+``git config --local filter.html_as_default_target.clean`` should be (note the
+``%f``)::
+
+  git config --local filter.html_as_default_target.clean 'filter/clean_filter %f'
+
+Of course, the script must be executable::
+
+  chmod +x filter/clean_filter
+
+One more thing that I've learned while working on a clean filter is that the
+``sed`` program accepts multiple substitution commands, separated with
+semicolons. It can be very useful when you need to clean multiple lines in a
+file. Be careful, in some cases you may perform two substitutions at places
+where you want only one. Try for example::
+
+  printf "one\ntwo\nthree\n" | sed "s/one/two/; s/two/three/;"
+
+I'm not sure what the most practical way to validate a clean filter is, but
+`gitk <https://git-scm.com/docs/gitk>`_ can come in handy here. Commit, browse
+the commit with gitk and check that the clean filter has caused the expected
+changes. If not, fix the clean filter and amend the commit.
+
+On a `Debian GNU/Linux <https://www.debian.org>`_ system, install gitk (**as
+root**) with::
+
+  apt-get install gitk
 
 
 Creating an archive of the latest commit (without any history)
