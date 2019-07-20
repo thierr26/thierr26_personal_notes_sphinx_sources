@@ -28,7 +28,6 @@ Getting an installation CD
 
 .. index::
   pair: Debian; installer
-  pair: Debian; installer
   single: wget
   single: cdrskin
   single: CD burning
