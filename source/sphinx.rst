@@ -16,10 +16,7 @@ create this static website. Sphinx is primarily designed to create
 documentation for `Python
 <https://en.wikipedia.org/wiki/Python_(programming_language)>`_ projects, but
 it is also appropriate as a `static website generator
-<https://www.fullstackpython.com/static-site-generator.html>`_ (as others `have
-<https://nudgedelastic.band/2017/07/why-use-restructuredtext-and-sphinx-static-site-generator-for-maintaining-teaching-materials/>`_
-`pointed <http://echorand.me/site/notes/articles/sphinx/static_html.html>`_
-`out <http://www.numericalexpert.com/blog/sphinx2website/>`_).
+<https://www.fullstackpython.com/static-site-generator.html>`_.
 
 
 Installation
