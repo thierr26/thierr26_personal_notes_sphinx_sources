@@ -180,6 +180,11 @@ texinfo_documents = [
 ]
 
 
+# -- Options for linkcheck ---------------------------------------------------
+
+linkcheck_timeout = 15
+
+
 # -- Extension configuration -------------------------------------------------
 
 
