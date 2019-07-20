@@ -32,5 +32,14 @@ Dir.glob(path + "/**/*.html").each do |html_file|
         "<a href=\"https://jigsaw.w3.org/css-validator/check/referer\">CSS3" \
         "</a>."
 
+    footer_children \
+        = doc.xpath('//div[@class="footer" and @role="contentinfo"]').children
+    footer_children_first=footer_children.first.to_s.sub("Thierry Rascle", \
+        "<a class=\"reference internal\" href=\"about.html\">"\
+        "<span class=\"doc\">"\
+        "Thierry Rascle"\
+        "</span></a>")
+    footer_children.first.replace footer_children_first
+
     doc.write_html_to(File.new(html_file, 'w'), :encoding => 'UTF-8')
 end
