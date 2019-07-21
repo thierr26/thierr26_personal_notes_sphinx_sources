@@ -284,6 +284,10 @@ Split pane horizontally with ``prefix "``.
 Resize pane with ``prefix + left/down/up/right arrow``. See also `this article
 by Michael Lee <https://michaelsoolee.com/resize-tmux-panes/>`_.
 
+To swap two windows, enter command mode with ``prefix :`` and type a command
+like ``swap-window -s 3 -t 1``. This command swaps numbering of windows 3 and
+1.
+
 
 Other resources
 ---------------
