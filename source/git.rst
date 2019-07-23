@@ -283,15 +283,10 @@ Sometimes, you want to ignore everything except a few files. For example, a
 directory to be ignored, except:
 
 * file ``.gitignore``
-
 * file ``file_1``;
-
 * file ``file_2``;
-
 * file ``dir_a/subdir/file_3``;
-
 * file ``dir_a/subdir/file_4``.
-
 * all files and directories in directory ``dir_b`` with infinite depth.
 
 | /*
