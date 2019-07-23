@@ -21,6 +21,7 @@ Installation
 ------------
 
 .. index::
+  single: xterm
   pair: tmux; installation
   pair: tmux-resurrect; installation
 
@@ -28,6 +29,10 @@ On a `Debian GNU/Linux <https://www.debian.org>`_ system, install tmux (**as
 root**) with::
 
   apt-get install tmux # As root.
+
+You can launch tmux with command ``tmux``. I always use tmux in an `xterm
+<https://en.wikipedia.org/wiki/Xterm>`_ and launch both with a single ``xterm
+tmux`` command.
 
 You may need the tmux-resurrect plugin. You can install it that way (as an
 unprivileged user)::

@@ -24,14 +24,12 @@ I have a few email accounts that offer `POP3 access
 the `SMTP <https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol>`_
 server of my Internet service Provider.
 
-I'm a happy `Claws Mail <https://www.claws-mail.org>`_ (with the `Bogofilter
-plugin <https://www.claws-mail.org/plugin.php?plugin=bogofilter>`_ for spam
-filtering) user on my `Debian GNU/Linux <https://www.debian.org>`_ box, but I'm
-interested in being able to manage email via command-line programs. Claws Mail
-stores mails in the so called MH mailbox format. This mailbox format is the one
-of the `MH Message Handling System
-<https://en.wikipedia.org/wiki/MH_Message_Handling_System>`_, a command-line
-based mail handling system.
+I'm a happy `Claws Mail <https://www.claws-mail.org>`_ user on my `Debian
+GNU/Linux <https://www.debian.org>`_ box, but I'm interested in being able to
+manage email via command-line programs. Claws Mail stores mails in the so
+called MH mailbox format. This mailbox format is the one of the `MH Message
+Handling System <https://en.wikipedia.org/wiki/MH_Message_Handling_System>`_, a
+command-line based mail handling system.
 
 `nmh <http://www.nongnu.org/nmh>`_ is the current implementation of the MH
 system (provided by package ``nmh`` on a Debian GNU/Linux system). It is

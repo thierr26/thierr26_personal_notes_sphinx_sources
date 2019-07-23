@@ -11,6 +11,9 @@ Personal Notes
   :caption: Contents:
 
   debian_base_install
+  openbox_on_debian
+  debian_apps_install
+  external_usb_drives
   git
   sphinx
   reminder
@@ -18,6 +21,8 @@ Personal Notes
   tmux
   email_with_nmh_and_other_cli_programs
   wifi
+  nu_html_checker
+  fs_win_no_privilege
   about
 
 
