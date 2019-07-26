@@ -269,6 +269,9 @@ Vim
 .. index::
   pair: Vim; Pathogen
   pair: Vim; plugins
+  pair: Vim; backup files
+  pair: Vim; swap files
+  pair: Vim; undo files
   single: ~/.vimrc
   single: ~/.vim/bundle
   triple: Debian alternatives; update-alternatives options; --display
@@ -293,8 +296,56 @@ Check that ``/usr/bin/vim.gtk`` is the selected editor in the Debian
 alternatives system with ``update-alternatives --display editor`` (**as
 root**). If not, use ``update-alternatives --config editor`` (**as root**).
 
-A (see `my ~/.vimrc file
-<https://github.com/thierr26/thierr26_config_files/blob/master/.vimrc>`_):
+Restore file ``~/.vimrc``.
+
+`my ~/.vimrc file
+<https://github.com/thierr26/thierr26_config_files/blob/master/.vimrc>`_ is
+heavily commented. The most "interesting" thing may be the affectation of the
+``backupdir`` and ``directory`` options (the directories where the backup files
+and the swap files are written respectively). They are affected to
+``~/.vim/backup`` and ``~/.vim/swap`` respectively (assuming ``~/.vim`` is the
+first entry of the ``runtimepath`` option and ``~/.vim/backup`` and
+``~/.vim/swap`` are writable directories or can be created as writable
+directories).
+
+The point of this is to avoid having backup and swap files in the working
+directories and having them in dedicated directories ``~/.vim/backup`` and
+``~/.vim/swap`` instead. You may be interested by `this page by Xilin Sun
+(which also covers the undo files)
+<https://medium.com/@Aenon/vim-swap-backup-undo-git-2bf353caa02f>`_.
+
+.. highlight:: text
+
+Here is the code (with comments removed) of my ``~/.vimrc`` that makes the
+affectation of the ``backupdir`` and ``directory`` options::
+
+
+  function s:CanWriteToDir(path_to_dir)
+
+      if !isdirectory(a:path_to_dir) && exists("*mkdir")
+          silent! call mkdir(a:path_to_dir, "p", 0700)
+      endif
+      return (filewritable(a:path_to_dir) == 2)
+
+  endfunction
+
+  let s:DotVimPath = split(&runtimepath,",")[0]
+
+  let s:BackupDir = s:DotVimPath . "/backup"
+  if s:CanWriteToDir(s:BackupDir)
+      set backup
+      let &backupdir = s:BackupDir . "," . &backupdir
+  endif
+
+  let s:SwapDir = s:DotVimPath . "/swap"
+  if s:CanWriteToDir(s:SwapDir)
+      let &directory = s:SwapDir . "//" . "," . &directory
+  endif
+
+.. highlight:: shell
+
+You may also be interested in :doc:`using the Base16 color schemes
+<base16_color_schemes_xterm_and_vim>`.
 
 
 Sakura
