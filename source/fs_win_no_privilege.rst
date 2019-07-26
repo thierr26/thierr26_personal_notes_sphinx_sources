@@ -159,3 +159,15 @@ Once more, update your ``Path`` variable (add the directory containing the
 GNU Octave for Windows comes with `MSYS2 <https://www.msys2.org>`_, and that is
 another solution (beside UnxUtils) to use the GNU commands on Windows. Launch
 ``msys2_shell.cmd``.
+
+
+GNU Privacy Guard
+-----------------
+
+.. index::
+  single: GNU Privacy Guard (on Windows)
+
+Download the Windows version of `GNU Privacy Guard
+<https://en.wikipedia.org/wiki/GNU_Privacy_Guard>`_ from
+https://gpg4win.org/download.html and run the installation program. Right after
+install you can use ``gpg`` commands in the Windows command line.
