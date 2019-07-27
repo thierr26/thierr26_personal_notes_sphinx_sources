@@ -195,7 +195,7 @@ Claws Mail
   single: ~/.signature
 
 Setup MH directory properly, restore files ``~/.claws-mail/accountrc`` and
-``.signature``.
+``.signature``, and directory ``~/.claws-mail/addrbook``.
 
 In Preferences, Themes: orbit-claws.
 
@@ -227,7 +227,7 @@ Music On Console
   single: ~/.moc/config
 
 I use Music On Console in shuffle mode. I've set the shuffle mode in the
-`~/.config/moc file
+`~/.moc/config file
 <https://github.com/thierr26/thierr26_config_files/blob/master/.moc/config>`_.
 
 Note also in the same file the ``ShowTime`` setting. It avoids a huge delay

@@ -38,6 +38,8 @@ Then an unprivileged user can start Openbox with::
 A right mouse click opens the Openbox root-menu. From there you can launch a
 terminal.
 
+If the keyboard layout is wrong, try rebooting.
+
 At this point, I :doc:`install and tweak the applications I want on the system
 <debian_apps_install>`. Then I proceed with the configuration of
 the Openbox environment and that's what is described in the rest of this page.
