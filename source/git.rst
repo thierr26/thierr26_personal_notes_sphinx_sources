@@ -179,10 +179,13 @@ repository is ``.git_build_html`` in the current directory::
 Cloning an existing repository
 ------------------------------
 
+Cloning to a new directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. index::
   pair: Git; clone
 
-Clone a repository with::
+Clone a repository to a new directory with::
 
   git clone repository_url
 
@@ -198,6 +201,27 @@ It is also possible to clone and check out a specific branch::
 You can also clone without checking out anything::
 
   git clone -n repository_url
+
+
+Cloning in an existing directory
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  pair: Git; init
+  pair: Git; pull
+  pair: Git; remote
+
+Sometimes you want to turn an existing directory into a clone of a Git
+repository. It is possible with a sequence of commands like::
+
+  cd dir/to/turn/into/a/clone          # Move to the directory.
+  git init                             # Create an empty Git repository.
+  git remote add origin repository_url # Configure the remote.
+  git pull origin master               # Pull master branch.
+
+The ``git pull origin master`` command fails if it has to overwrite existing
+local files. If you really want a clone of the remote repository, remove the
+local files and run the ``git pull origin master`` command again.
 
 
 .. _git_staging:
@@ -549,7 +573,11 @@ Use commands like the following ones to search text patterns::
   git grep <reg_exp>            # Search regular expression <reg_exp> in
                                 # indexed file.
 
+  git grep <reg_exp> <subdir>   # Restrict search to subdirectory <subdir>.
+
   git grep -i <reg_exp>         # Case insensitive search.
+
+  git grep -untracked <reg_exp> # Search also untracked files.
 
   git grep --no-index <reg_exp> # Useful to search in a directory which is not
                                 # a Git repository.

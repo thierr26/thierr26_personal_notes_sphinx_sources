@@ -52,6 +52,7 @@ Installation
       octave \
       gnat gnat-gps \
       ada-reference-manual-2012 \
+      valgrind \
       gimp jhead imagemagick \
       libimage-exiftool-perl \
       xzgv \
@@ -113,11 +114,13 @@ Installation
   * - xpdf
     - PDF reader
   * - octave
-    - GNU Octave language (Matlab clone)
+    - GNU Octave language (similar to Matlab)
   * - gnat, gnat-gps
     - Ada programming tools
   * - ada-reference-manual-2012
     - Ada 2012 reference manual
+  * - valgrind
+    - Program profiling tools
   * - gimp, jhead, imagemagick
     - GNU Manipulation Programs
   * - libimage-exiftool-perl
