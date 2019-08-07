@@ -55,6 +55,7 @@ Installation
       valgrind \
       gimp jhead imagemagick \
       libimage-exiftool-perl \
+      xsane \
       xzgv \
       rawtherapee \
       irssi \
@@ -122,9 +123,11 @@ Installation
   * - valgrind
     - Program profiling tools
   * - gimp, jhead, imagemagick
-    - GNU Manipulation Programs
+    - Image manipulation programs
   * - libimage-exiftool-perl
-    - Inc. exiftool (image metadata extraction)
+    - Includes exiftool (image metadata extraction)
+  * - xsane
+    - Frontend for SANE (Scanner Access Now Easy), includes Gimp plugin
   * - xzgv
     - Image viewer
   * - rawtherapee
