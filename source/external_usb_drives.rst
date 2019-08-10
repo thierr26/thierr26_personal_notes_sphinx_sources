@@ -54,15 +54,13 @@ Check current partition table with command ``p``.
 Delete first partition with command ``d``. If there are more than one
 partition, repeat command ``d`` as many times as needed.
 
-Command ``p`` should now show no partition.
-
 Create a new partition with command ``n``. fdisk now asks for a few questions.
 Answer ``p`` (primary), ``1`` (partition number) and just press enter when
 asked for the first and last sectors. fdisk may propose to remove the
 signature, accept.
 
-The use command ``t`` to select the partition type. Choose type 83 (Linux). Use
-``L`` to see the list of possible codes.
+Then use command ``t`` to select the partition type. Choose type 83 (Linux).
+Use ``L`` to see the list of possible codes.
 
 Finally, write the new partition table to the disk with command ``w``.
 
