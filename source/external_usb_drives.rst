@@ -16,7 +16,7 @@ external (USB) drives. This page describes how I've setup those drives, that is
 how I've recreated a partition table (with a single Linux type partition) and
 how I've formatted and labeled the partition with the ext4 filesystem. This of
 course erases all the data on the drive, so **don't do that if your external
-drive contains precious data that you must preserve and retain!**.
+drive contains precious data that you must preserve and retain!**
 
 Indications about how to format to FAT32 are also provided.
 
