@@ -53,6 +53,7 @@ Installation
       gnat gnat-gps \
       ada-reference-manual-2012 \
       valgrind \
+      lcov \
       gimp jhead imagemagick \
       libimage-exiftool-perl \
       xsane \
@@ -122,6 +123,8 @@ Installation
     - Ada 2012 reference manual
   * - valgrind
     - Program profiling tools
+  * - lcov
+    - Test coverage report generation tools
   * - gimp, jhead, imagemagick
     - Image manipulation programs
   * - libimage-exiftool-perl
