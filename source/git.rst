@@ -788,8 +788,17 @@ Here are a few Git commands that are useful for scripting::
 
   git diff-index --quiet HEAD               # Does not output anything.
                                             # Terminates with exit status 0
-                                            # when working tree is clean, with
-                                            # non zero exit status otherwise.
+                                            # when working tree is clean (but
+                                            # possibly with untracked files),
+                                            # with non zero exit status
+                                            # otherwise.
+
+  git status --porcelain                    # Outputs nothing if the working
+                                            # directory is clean (and without
+                                            # any untracked files), outputs
+                                            # something if the working
+                                            # directory is not clean and/or has
+                                            # untracked files.
 
   git show-ref --heads branch_name          # Provides the commit hash of the
                                             # head commit of branch

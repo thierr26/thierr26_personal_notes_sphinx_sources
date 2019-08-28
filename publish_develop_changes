@@ -306,7 +306,7 @@ check_branch_exists() {
 # Issues a message and returns 1 if the working tree is not clean. Returns 0
 # without doing anything otherwise.
 check_working_tree_clean() {
-    if $GIT diff-index --quiet HEAD; then
+    if [ -z "$($GIT status --porcelain)" ]; then
         return 0;
     else
         echo_error Working tree not clean.
