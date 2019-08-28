@@ -21,6 +21,7 @@ Personal Notes
   tmux
   email_with_nmh_and_other_cli_programs
   wifi
+  music
   nu_html_checker
   fs_win_no_privilege
   about

@@ -42,6 +42,7 @@ Installation
       genisoimage \
       vlc \
       ffmpeg \
+      sox \
       wkhtmltopdf \
       default-jre default-jdk \
       taskwarrior \
@@ -64,6 +65,7 @@ Installation
       claws-mail-themes \
       vim vim-pathogen \
       ifp-line-libifp \
+      unaccent \
       sudo \
       sakura # As root.
 
@@ -101,6 +103,8 @@ Installation
     - Multimedia player
   * - ffmpeg
     - Multimedia files transcoding, playing, ...
+  * - sox
+    - Audio files manipulation programs
   * - wkhtmltopdf
     - HTML to PDF conversion tool
   * - default-jre, default-jdk
@@ -143,6 +147,8 @@ Installation
     - Vim text editor and Pathogen plugin
   * - ifp-line-libifp
     - Tool to access iRiver iFP audio players
+  * - unaccent
+    - Tool to replace accented letters by unaccented equivalent
   * - sudo
     - Privilege escalation
   * - sakura

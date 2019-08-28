@@ -285,6 +285,8 @@ After rebooting the system, module ``pcspkr`` should not be loaded any more
 beeps any more.
 
 
+.. _add_debmultimedia:
+
 Adding deb-multimedia to the sources
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
