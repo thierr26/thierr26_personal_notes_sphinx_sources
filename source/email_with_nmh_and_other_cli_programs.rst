@@ -437,9 +437,6 @@ classifies a message with commands like::
 
 Such commands output one line. The first character of the line is S, H or U.
 
-Follow the `link for interesting details about how Bogofilter works (in
-French) <http://bogofilter.sourceforge.net/>`_.
-
 
 Other resources
 ---------------

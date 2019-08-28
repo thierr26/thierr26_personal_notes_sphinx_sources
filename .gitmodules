@@ -1,0 +1,3 @@
+[submodule "extensions/sphinx-linklang"]
+	path = extensions/sphinx-linklang
+	url = https://github.com/thierr26/sphinx-linklang.git

@@ -5,6 +5,12 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Show the hreflang attribute value */
+a[hreflang]:after {
+    content: " [" attr(hreflang) "]";
+    font-size: 0.75em;
+}
+
 /* Don't underline links in headers, relation and side bar and page content. */
 h2 > a,
 h3 > a,
