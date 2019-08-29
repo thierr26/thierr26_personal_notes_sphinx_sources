@@ -58,18 +58,34 @@ Burning WAV files to a CD-R
 .. index::
   single: cdrskin
   single: CD-R
+  single: audio CD
+  single: optical drives devices
   pair: WAV file; burning
 
 You can burn some WAV files to a blank CD with a command like::
 
   cdrskin -v -eject -audio -pad *.wav
 
+If you need to specify the device for the optical drive, use the ``-d``
+switch::
+
+  cdrskin -d /dev/sr1 -v -eject -audio -pad *.wav
+
+``cdrskin`` should be able to list the optical drives devices with the
+``--devices`` option::
+
+  cdrskin --devices
+
+
+.. _audio_files_from_video:
 
 Building audio files from a video
 ---------------------------------
 
 .. index::
   single: Freebox
+  single: deb-multimedia.org
+  single: ffmpeg
   single: unaccent
   single: tr
   single: SoX
@@ -157,8 +173,8 @@ And here is the source code::
 
   INTERMEDIATE_FILES_DIR=intermediate/files/directory; # Adapt to your needs.
 
-  ARTIST="artist name";                                # Adapt to your needs.
-  ALBUM="album name";                                  # Adapt to your needs.
+  ARTIST="Artist name";                                # Adapt to your needs.
+  ALBUM="Album name";                                  # Adapt to your needs.
 
   OGGEXT=.ogg;
   WAVEXT=.wav;
@@ -221,4 +237,109 @@ And here is the source code::
   done<<HEREDOC
   00:16:44 00:03:43 The mission (Ennio Morricone)
   00:33:20 00:03:19 Cinema Paradiso (Andrea & Ennio Morricone)
+  HEREDOC
+
+
+Getting the track list of an audio CD
+-------------------------------------
+
+.. index::
+  single: audio CD
+  single: cdown
+  single: cdtool
+  single: iconv
+
+The ``cdown`` command (provided by package ``cdtool`` on a Debian GNU/Linux
+system) queries the `CDDB <https://en.wikipedia.org/wiki/CDDB>`_ database. Just
+insert the Audio CD in your optical drive and run::
+
+  cdown
+
+If you need to specify the device for the optical drive, use the ``-d``
+switch::
+
+  cdown -d /dev/sr1
+
+If you have issues with accented letters, try::
+
+  cdown|iconv -f latin1
+
+Alternatively, you can search your audio CD directly on the `freedb.org
+<http://www.freedb.org>`_ website.
+
+Building audio (Ogg) files from an audio CD
+-------------------------------------------
+
+.. index::
+  single: audio CD
+  single: unaccent
+  single: tr
+  single: cdparanoia
+  single: oggenc
+  pair: Ogg; encoding
+
+When I want to rip an audio CD, I write a shell script, which has a lot of
+similarities with :ref:`the script I use to build audio files from a video
+<audio_files_from_video>`. The script is also mostly a loop over the lines of a
+here-document. There is one line in the here-document for each track of the
+audio CD. Each line provides the title of the track.
+
+``cdparanoia`` is used to extract the audio CD tracks and ``oggenc`` is used to
+encode to Ogg file.
+
+You may need to use the ``-d`` switch off ``cdparanoia`` to specify the device
+of your optical drive.
+
+If ``cdparanoia`` has difficulties extracting the audio tracks, try to add the
+``-Z`` option. See the manual for more details (``man cdparanoia``).
+
+And here is the source code::
+
+  #!/bin/sh
+
+  OUTPUT_DIR=output/directory;                         # Adapt to your needs.
+  ARTIST="Artist name";                                # Adapt to your needs.
+  ALBUM="Album name";                                  # Adapt to your needs.
+
+  OGGEXT=.ogg;
+
+  mkdir -p "$OUTPUT_DIR";
+
+  K=0;
+
+  # Loop over the lines of the here-document below.
+  while IFS= read -r LINE; do
+
+      TITLE=$(echo "$LINE");
+
+      # Substitute occurrences of ampersand with "and".
+      OUTPUT_PATH=$(echo "$TITLE"|sed "s/&/and/");
+
+      # Remove accents, cedillas, tildes, etc...
+      OUTPUT_PATH=$(echo "$OUTPUT_PATH"|unaccent UTF-8);
+
+      # Convert uppercase characters to lowercase.
+      OUTPUT_PATH=$(echo "$OUTPUT_PATH"|tr '[:upper:]' '[:lower:]');
+
+      # Substitute characters that are not lowercase letters, digits or hyphen
+      # with underscores.
+      OUTPUT_PATH=$(echo -n "$OUTPUT_PATH"|tr -c "a-z0-9-" [_*]);
+
+      # Prepend track number (2 digits).
+      K=$((K + 1));
+      K_STR=$(printf "%02d" $K);
+      OUTPUT_PATH="${K_STR}_-_$OUTPUT_PATH";
+
+      OUTPUT_PATH="$OUTPUT_DIR/$OUTPUT_PATH$OGGEXT";
+
+      echo "Creating $OUTPUT_PATH";
+
+      cdparanoia $K -|oggenc -a "$ARTIST" -t "$TITLE" -l \
+      "$ALBUM" -c "tracknumber=$K_STR" -o "$OUTPUT_PATH" -;
+
+  done<<HEREDOC
+  Title for track #1
+  Title for track #2
+  ...
+  Title for last track
   HEREDOC
