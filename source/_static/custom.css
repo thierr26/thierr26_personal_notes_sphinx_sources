@@ -5,10 +5,13 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Show the hreflang attribute value */
+/* Show the hreflang attribute value, except if it's "en" */
 a[hreflang]:after {
     content: " [" attr(hreflang) "]";
     font-size: 0.75em;
+}
+a[hreflang=en]:after {
+    display: none;
 }
 
 /* Don't underline links in headers, relation and side bar and page content. */
