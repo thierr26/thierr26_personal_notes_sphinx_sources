@@ -109,7 +109,7 @@ There is one line in the here-document for each audio file that I wanted to
 create. Each line provides the start time of the audio file in the .ts file,
 the duration of the audio file and the title of the audio file.
 
-The source code is provided below. The here-document contains two lines:
+The code is provided below. The here-document contains two lines:
 
 | 00:16:44 00:03:43 The mission (Ennio Morricone)
 | 00:33:20 00:03:19 Cinema Paradiso (Andrea & Ennio Morricone)
@@ -161,7 +161,7 @@ To list the comments of an Ogg file, use ``vorbiscomment -l``::
 ``oggenc`` and ``vorbiscomment`` are provided by package ``vorbis-tools`` on a
 Debian GNU/Linux system.
 
-And here is the source code::
+And here is the code::
 
   #!/bin/sh
 
@@ -293,7 +293,7 @@ of your optical drive.
 If ``cdparanoia`` has difficulties extracting the audio tracks, try to add the
 ``-Z`` option. See the manual for more details (``man cdparanoia``).
 
-And here is the source code::
+And here is the code::
 
   #!/bin/sh
 
