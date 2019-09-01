@@ -90,6 +90,8 @@ To show the label, just do::
   e2label /dev/sdb1 # As root.
 
 
+.. _fat32_formatting:
+
 FAT32 formatting
 -----------------
 

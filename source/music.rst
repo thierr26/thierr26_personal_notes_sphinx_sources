@@ -343,3 +343,131 @@ And here is the code::
   ...
   Title for last track
   HEREDOC
+
+
+Converting Ogg files to MP3
+---------------------------
+
+.. index::
+  single: MP3
+  single: ffmpeg
+  pair: Ogg; converting
+
+Converting an Ogg file to `MP3 <https://en.wikipedia.org/wiki/MP3>`_ is pretty
+easy with ``ffmpeg``::
+
+  ffmpeg -i my_audio_file.ogg my_audio_file.mp3
+
+Metadata can be included in the MP3 output file. Example::
+
+  ffmpeg -i my_audio_file.ogg \
+      -metadata artist="The artist" \
+      -metadata album="The album" \
+      -metadata title="The track title" \
+      my_audio_file.mp3
+
+I have a collection of Ogg files, and I need to convert them to MP3 and store
+the MP3 files on a USB stick to be able to listen to them in my car. The Ogg
+files are scattered in various directory trees on my hard drive. The directory
+trees organizations are such that an Ogg file is always in a directory with a
+name that denotes an album, which is in a directory with a name that denotes an
+artist.
+
+I use a shell script like the following to populate a (:ref:`FAT32 formatted
+<fat32_formatting>`) USB stick with the MP3 files. The tree organization on the
+USB stick is similar to the Ogg files trees organizations since an MP3 file is
+always in a directory with a name that denotes an album, which is in a
+directory with a name that denotes an artist. But all the directories denoting
+artists are directly in the USB stick root tree.
+
+Here's the code of the script::
+
+  #!/bin/sh
+
+  OGG_TREE_ROOT=path/to/root/of/ogg/trees;             # Adapt to your needs.
+  OUTPUT_DIR=path/to/usb/stick/root;                   # Adapt to your needs.
+  OGGEXT=.ogg;
+  MP3EXT=.mp3;
+
+  # -----------------------------------------------------------------------------
+
+  ogg2mp3() {
+
+      local SOURCE_FILE="$1";
+      local INTERMEDIATE_FILE="$2";
+      local TARGET_FILE="$3";
+
+      # vorbiscomment with -l switch lists the comments in the Ogg file (one line
+      # per comment, key=value format). The output is piped to a group of
+      # commands (delimited with curly braces). The whole group is executed in
+      # one subshell. This makes it possible to initialize variables before the
+      # while loop, assign the variables in the loop and use them after the loop.
+      vorbiscomment -l "$SOURCE_FILE"|
+      {
+          local LINE=
+          local ARTIST=
+          local ALBUM=
+          local TITLE=
+          local VAL=
+          while IFS= read -r LINE; do
+              VAL=$(echo "$LINE"|sed "s/^[^=]\+=//");
+              echo "$LINE"|grep -q ^artist= && ARTIST="$VAL";
+              echo "$LINE"|grep -q ^album= && ALBUM="$VAL";
+              echo "$LINE"|grep -q ^title= && TITLE="$VAL";
+          done;
+
+          # Convert Ogg source file to MP3 (INTERMEDIATE_FILE).
+          ffmpeg -nostdin -nostats -loglevel quiet -i "$SOURCE_FILE" \
+              -metadata artist="$ARTIST" \
+              -metadata album="$ALBUM" \
+              -metadata title="$TITLE" \
+              "$INTERMEDIATE_FILE";
+      }
+
+      mkdir -p "${TARGET_FILE%/*}";
+      mv "$INTERMEDIATE_FILE" "$TARGET_FILE";
+  }
+
+  # -----------------------------------------------------------------------------
+
+  process_file() {
+
+      local SOURCE_FILE="$1";
+
+      # Initialize TEMPO_TARGET_FILE with SOURCE_FILE, but with extension changed
+      # to MP3 extension.
+      local TEMPO_TARGET_FILE="${SOURCE_FILE%$OGGEXT}$MP3EXT";
+
+      # Store a copy of TEMPO_TARGET_FILE initial value, will be useful later.
+      local INTERMEDIATE_FILE="$TEMPO_TARGET_FILE";
+
+      # Remove the beginning of the path of TEMPO_TARGET_FILE (keep only the
+      # parent directory, the directory and the basename).
+      while [ "${TEMPO_TARGET_FILE%/*/*/*}" != "$TEMPO_TARGET_FILE" ]; do
+          TEMPO_TARGET_FILE="${TEMPO_TARGET_FILE#*/}";
+      done;
+
+      local TARGET_FILE="$OUTPUT_DIR/$TEMPO_TARGET_FILE";
+
+      if [ -e "$TARGET_FILE" ]; then
+          echo "Already exists in output directory: $TEMPO_TARGET_FILE";
+      else
+          echo "Creating $TEMPO_TARGET_FILE";
+          ogg2mp3 "$SOURCE_FILE" "$INTERMEDIATE_FILE" "$TARGET_FILE";
+      fi;
+  }
+
+  # -----------------------------------------------------------------------------
+
+  process_dir() {
+      local DIR="$1";
+      for OGGFILE in $(find "$DIR" -maxdepth 1 -type f -name "*$OGGEXT"|sort); do
+          process_file "$OGGFILE";
+      done;
+  }
+
+  # -----------------------------------------------------------------------------
+
+  for DIR in $(find "$OGG_TREE_ROOT" -type d); do
+      process_dir "$DIR";
+  done;
