@@ -55,6 +55,7 @@ Installation
       ada-reference-manual-2012 \
       valgrind \
       lcov \
+      libncurses5 \
       gimp jhead imagemagick \
       libimage-exiftool-perl \
       xsane \
@@ -129,6 +130,11 @@ Installation
     - Program profiling tools
   * - lcov
     - Test coverage report generation tools
+  * - libncurses5
+    - Libraries for terminal handling (legacy version), needed to run `GNAT
+      Programming Studio
+      <https://en.wikipedia.org/wiki/GNAT_Programming_Studio>`_ as provided
+      with `GNAT Community <https://www.adacore.com/community>`_ 2018 and 2019.
   * - gimp, jhead, imagemagick
     - Image manipulation programs
   * - libimage-exiftool-perl
