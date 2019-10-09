@@ -29,6 +29,7 @@ Installation
       firefox-esr \
       webext-ublock-origin \
       w3m \
+      chromium \
       fonts-inconsolata \
       ccrypt \
       rsync \
@@ -78,6 +79,8 @@ Installation
     - Ads, malware, trackers blocker
   * - w3m
     - Text-based Web browser
+  * - chromium
+    - Graphical Web browser
   * - fonts-inconsolata
     - Monospace font
   * - ccrypt
