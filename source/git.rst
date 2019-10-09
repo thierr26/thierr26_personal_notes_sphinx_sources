@@ -76,7 +76,6 @@ is not the case, issue a ``chmod 600 ~/.git-credentials`` command).
 
 .. _git_aliases:
 
-
 Creating aliases
 ~~~~~~~~~~~~~~~~
 

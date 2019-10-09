@@ -16,6 +16,8 @@ This page indicates which free softwares I've been able to install on Windows
 rights) and how I did the installations.
 
 
+.. _unxutils_win:
+
 UnxUtils
 --------
 
@@ -156,9 +158,17 @@ run the ``post-install.bat`` file.
 Once more, update your ``Path`` variable (add the directory containing the
 ``octave.vbs`` file).
 
+If you see a warning about a failure to set locale, you need to add the Perl
+executable directory to your path (Perl comes with Octave for Windows in
+subdirectory usr/bin) and set environment variable LC_ALL to a valid value ("C"
+for example). If you launch Octave from the command line, you can do (assuming
+your current directory is the one containing the ``octave.vbs`` file)::
+
+  set PATH=%PATH%;%CD%\usr\bin & set "LC_ALL=C" & octave.vbs
+
 GNU Octave for Windows comes with `MSYS2 <https://www.msys2.org>`_, and that is
-another solution (beside UnxUtils) to use the GNU commands on Windows. Launch
-``msys2_shell.cmd``.
+another solution (beside :ref:`UnxUtils <unxutils_win>`) to use the GNU
+commands on Windows. Launch ``msys2_shell.cmd``.
 
 
 GNU Privacy Guard
