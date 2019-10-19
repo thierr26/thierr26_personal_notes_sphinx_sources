@@ -406,3 +406,33 @@ An alias can come in handy (see `my ~/.bash_aliases file
 <https://github.com/thierr26/thierr26_config_files/blob/master/.bash_aliases>`_)::
 
   alias ifp='sudo ifp'
+
+
+Google Chrome installation
+--------------------------
+
+.. index::
+  single: Google Chrome
+  single: apt install -f
+  triple: Debian alternatives; update-alternatives options; --config
+
+I downloaded the 64 bit .deb Debian package from https://www.google.com/chrome
+and installed it **as root** with::
+
+  dpkg -i google-chrome-stable_current_amd64.deb # As root.
+
+The installation was not successful. I had to issue the following command to
+fix the system::
+
+  apt install -f # As root.
+
+This caused the following packages to be installed:
+
+* libappindicator3-1
+* libdbusmenu-glib4
+* libdbusmenu-gtk3-4
+* libindicator3-7
+
+I didn't want Google Chrome to be the default browser, so I reselected Firefox
+ESR in the Debian alternatives system with ``update-alternatives --config
+x-www-browser`` (**as root**).
