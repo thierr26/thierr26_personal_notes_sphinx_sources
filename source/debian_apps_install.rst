@@ -192,6 +192,22 @@ At about:preferences#privacy, uncheck "Remember logins and passwords for
 websites.
 
 
+.. _chromium_config:
+
+Chromium
+~~~~~~~~
+
+.. index::
+  pair: Chromium; default search engine
+  single: DuckDuckGo
+
+In Settings | Search engines, set DuckDuckGo as the search engine used in the
+adress bar.
+
+In Settings | Autofill | Passwords, disable "Offer to save passwords" and "Auto
+sign-in".
+
+
 Irssi
 ~~~~~
 
@@ -436,3 +452,6 @@ This caused the following packages to be installed:
 I didn't want Google Chrome to be the default browser, so I reselected Firefox
 ESR in the Debian alternatives system with ``update-alternatives --config
 x-www-browser`` (**as root**).
+
+I then tweaked Google Chrome's settings as for
+:ref:`Chromium <chromium_config>`.
