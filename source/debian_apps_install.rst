@@ -30,6 +30,7 @@ Installation
       webext-ublock-origin \
       w3m \
       chromium \
+      smartmontools \
       fonts-inconsolata \
       ccrypt \
       rsync \
@@ -82,6 +83,10 @@ Installation
     - Text-based Web browser
   * - chromium
     - Graphical Web browser
+  * - smartmontools
+    - Storage systems control and monitoring tools using `S.M.A.R.T.
+      <https://en.wikipedia.org/wiki/S.M.A.R.T.>`_ (see this `good
+      smartmontools tutorial by Random Bits <https://blog.shadypixel.com/monitoring-hard-drive-health-on-linux-with-smartmontools>`_)
   * - fonts-inconsolata
     - Monospace font
   * - ccrypt
