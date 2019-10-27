@@ -57,6 +57,7 @@ Burning WAV files to a CD-R
 
 .. index::
   single: cdrskin
+  single: wodim
   single: CD-R
   single: audio CD
   single: optical drives devices
@@ -75,6 +76,11 @@ switch::
 ``--devices`` option::
 
   cdrskin --devices
+
+Alternatively, you can use wodim. It may work better than cdrskin on Debian
+Buster::
+
+  wodim -v dev=/dev/sr1 -sao -audio -pad *.wav
 
 
 .. _audio_files_from_video:

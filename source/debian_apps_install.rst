@@ -40,6 +40,7 @@ Installation
       cdtool \
       cdparanoia \
       cdrskin \
+      wodim \
       genisoimage \
       vlc \
       ffmpeg \
@@ -99,8 +100,8 @@ Installation
     - Includes cdown (CD tracks info extraction)
   * - cdparanoia
     - CD ripper
-  * - cdrskin
-    - CD writing tool
+  * - cdrskin, wodim
+    - CD writing tools
   * - genisoimage
     - ISO-9660 CD-ROM filesystem images creation
   * - vlc
