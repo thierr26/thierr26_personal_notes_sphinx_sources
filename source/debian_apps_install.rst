@@ -245,7 +245,16 @@ Setup MH directory properly, restore files ``~/.claws-mail/accountrc`` and
 
 In Preferences, Themes: orbit-claws.
 
-In Preferences, Other, Miscellaneous : Confirm on exit.
+In Preferences, Other, Miscellaneous: Confirm on exit.
+
+In Preferences, Message View, External Programs: Uncheck "Use system defaults
+when possible". Enter external programs as follows:
+
+* Web browser: firefox '%s'
+
+* Text editor: gvim '%s'
+
+* Command for 'Display as text': gvim '%s'
 
 
 GIMP
