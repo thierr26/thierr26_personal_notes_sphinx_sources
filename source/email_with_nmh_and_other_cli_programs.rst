@@ -160,8 +160,10 @@ user can read and write it::
 
   chmod 600 ~/.fetchmailrc
 
-You can :download:`download an example .fetchmailrc file with two POP3
-connections defined <download/.fetchmailrc>`.
+You can :download:`download an example .fetchmailrc file
+<download/.fetchmailrc>`. The SSL related options may not be needed in all
+cases (see `Debian bug #922164
+<https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=922164>`_).
 
 
 nmh user installation
@@ -225,13 +227,6 @@ Run the two following commands to retrieve mails::
   fetchmail       # Retrieves new mails.
   /usr/bin/mh/inc # Incorporates retrieved mails to the inbox folder of the nmh
                   # directory.
-
-If the ``fetchmail`` command fails with a "upgrade to TLS failed" error message
-as described in `one of messages of Debian bug #921450
-<https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=921450#32>`_, use the
-``--sslproto=""`` option::
-
-  fetchmail --sslproto=""
 
 
 With filtering by Bogofilter
