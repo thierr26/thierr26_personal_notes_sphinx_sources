@@ -445,6 +445,11 @@ You can force the database update **as root** with::
 
   updatedb # As root.
 
+You can see various statistics about the database, including the last time it
+has been changed, with::
+
+  locate -S
+
 
 Post-install maintenance
 ------------------------
