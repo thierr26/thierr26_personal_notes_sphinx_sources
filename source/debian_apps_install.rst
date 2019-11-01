@@ -71,6 +71,7 @@ Installation
       ifp-line-libifp \
       unaccent \
       sudo \
+      pwgen \
       sakura # As root.
 
 .. list-table::
@@ -166,6 +167,8 @@ Installation
     - Tool to replace accented letters by unaccented equivalent
   * - sudo
     - Privilege escalation
+  * - pwgen
+    - Password generator
   * - sakura
     - Terminal emulator
 
