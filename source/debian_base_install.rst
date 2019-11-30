@@ -47,8 +47,8 @@ Commands like the ones below should do it. The example is for Debian 10.0.0
 (Buster). Note also that it is assumed that you have `cdrskin
 <http://scdbackup.sourceforge.net/cdrskin_eng.html>`_ installed. Run ``apt-get
 install cdrskin`` **as root** if not. Note also that the
-dev=<cd_burning_drive_device_file> option is probably not mandatory as cdrskin
-can detect CD burning devices (``cdrskin --devices`` lists the detected
+``dev=<cd_burning_drive_device_file>`` option is probably not mandatory as
+cdrskin can detect CD burning devices (``cdrskin --devices`` lists the detected
 devices)::
 
   wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-10.0.0-amd64-netinst.iso
