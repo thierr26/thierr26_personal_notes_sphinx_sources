@@ -7,6 +7,9 @@ Debian base installation
 
 .. highlight:: shell
 
+.. index::
+  pair: Debian; stable
+
 
 Introduction
 ------------
@@ -23,11 +26,13 @@ Many software packages are also downloaded during the installation, so the
 target machine should also have a fast enough internet connection.
 
 
+.. _getting_debian_iso_image:
+
 Getting an installation CD
 --------------------------
 
 .. index::
-  pair: Debian; installer
+  triple: Debian; stable; installer
   single: wget
   single: cdrskin
   single: CD burning
