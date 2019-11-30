@@ -88,16 +88,12 @@ For the virtual machine images
   pair: virsh commands; pool-list
   pair: virsh commands; pool-dumpxml
   pair: virsh commands; pool-edit
+  pair: virsh commands; pool-define
+  pair: virsh commands; pool-autostart
+  pair: virsh commands; pool-start
 
 The default location ("storage pool") for the virtual machines is
-``/var/lib/libvirt/images``. You can see the list of the storage pools managed
-by libvirt with::
-
-  virsh pool-list # As root.
-
-And the details for a pool with for example::
-
-  virsh pool-dumpxml default # As root.
+``/var/lib/libvirt/images``.
 
 On some of my systems, the free space in ``/var`` is very limited. I want the
 virtual machines to be located in my home directory instead. So I create a
@@ -110,8 +106,21 @@ directory with ``mkdir -p ~/vm/libvirt/images``. And then, **as root**, I do::
                                                        # read/write permission
                                                        # for non-root users).
 
-  virsh pool-edit default                              # Edit the path and
-                                                       # save.
+You can see the list of the storage pools managed by libvirt with::
+
+  virsh pool-list # As root.
+
+If this list is empty, then I define and start the default storage pool with::
+
+  virsh pool-define-as default dir \
+    --target /home/my_user_name/vm/libvirt/images # As root.
+  virsh pool-autostart default                    # As root.
+  virsh pool-start default                        # As root.
+
+If the default storage pool is already existing, then I check the path with
+``virsh pool-dumpxml default`` (**as root**) and change it if needed with::
+
+  virsh pool-edit default # Edit the path and save.
 
 After a reboot, ``virsh pool-dumpxml default`` (**as root**) shows the new
 path.
@@ -125,7 +134,7 @@ For the installer ISO image
 
 Nothing complicated here, I just create a directory as an unprivileged user::
 
-  mkdir ~/vm/installer_iso/debian_testing
+  mkdir -p ~/vm/installer_iso/debian_testing
 
 
 Searching operating systems in the osinfo database
@@ -158,8 +167,9 @@ See the `Debian installer page of the Debian developers' corner
 <https://www.debian.org/devel/debian-installer/>`_.
 
 You can download the "netinst" Debian testing installer image for the "AMD64"
-architecture with this command::
+architecture with::
 
+  cd ~/vm/installer_iso/debian_testing
   wget https://cdimage.debian.org/cdimage/daily-builds/daily/arch-latest/amd64/iso-cd/debian-testing-amd64-netinst.iso
 
 You might want to verify the authenticity of the ISO image. It is the same
@@ -239,10 +249,14 @@ Upgrade to Debian unstable
   pair: apt-get commands; dist-upgrade
   pair: Debian; unstable
 
-I then upgrade the virtual machine from Debian testing to Debian unstable by
-just substituting (**as root**) the Debian testing distribution name (which was
-"bullseye") with "unstable" in the ``/etc/apt/sources.list`` file and then
-running::
+The first step to upgrade to Debian unstable is to edit
+``/etc/apt/sources.list`` (**as root, on the guest**):
+
+* Substitute the Debian testing distribution name (which was "bullseye") with
+  "unstable".
+* Comment out any line containing ``security.debian.org``.
+
+The second step is to execute::
 
   apt-get update; apt-get dist-upgrade # As root, on the guest.
 
