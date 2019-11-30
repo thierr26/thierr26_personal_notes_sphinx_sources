@@ -70,6 +70,7 @@ Installation
       vim vim-pathogen \
       ifp-line-libifp \
       unaccent \
+      psmisc \
       sudo \
       pwgen \
       sakura # As root.
@@ -165,6 +166,8 @@ Installation
     - Tool to access iRiver iFP audio players
   * - unaccent
     - Tool to replace accented letters by unaccented equivalent
+  * - psmisc
+    - killall, ...
   * - sudo
     - Privilege escalation
   * - pwgen
