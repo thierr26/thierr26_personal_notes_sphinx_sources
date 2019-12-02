@@ -182,6 +182,7 @@ process as for a
 Creating the Debian unstable virtual machine
 --------------------------------------------
 
+.. _start_debian_unstable_vm_install:
 
 Start the installation
 ~~~~~~~~~~~~~~~~~~~~~~

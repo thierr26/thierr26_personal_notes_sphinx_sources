@@ -25,6 +25,8 @@ Personal Notes
   wifi
   music
   nu_html_checker
+  openbsd_vm
+  freebsd_vm
   fs_win_no_privilege
   about
 

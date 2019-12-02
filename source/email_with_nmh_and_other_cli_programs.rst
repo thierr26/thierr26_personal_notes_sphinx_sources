@@ -22,7 +22,7 @@ Introduction
 I have a few email accounts that offer `POP3 access
 <https://en.wikipedia.org/wiki/Post_Office_Protocol>`_ and I send my emails via
 the `SMTP <https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol>`_
-server of my Internet service Provider.
+server of my internet service provider.
 
 I'm a happy `Claws Mail <https://www.claws-mail.org>`_ user on my `Debian
 GNU/Linux <https://www.debian.org>`_ box, but I'm interested in being able to
