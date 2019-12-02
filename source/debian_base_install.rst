@@ -290,6 +290,31 @@ After rebooting the system, module ``pcspkr`` should not be loaded any more
 beeps any more.
 
 
+Adding support for other languages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  single: locales
+  single: languages
+  single: dpkg-reconfigure
+
+When installing the system, I select the English language, but I sometimes want
+to see an application in French. So I run (**as root**)::
+
+  dpkg-reconfigure locales # As root.
+
+and select the french language (and don't unselect anything).
+
+Then if I occasionally want to run an application (e.g. Gimp) in French, I can
+do (as "normal" user)::
+
+  export LANG=fr_FR.UTF-8
+  export LANGUAGE=fr_FR.UTF-8
+  gimp &
+
+More details on the locales on the `Debian Wiki locale page
+<https://wiki.debian.org/Locale>`_
+
 .. _add_debmultimedia:
 
 Adding deb-multimedia to the sources
