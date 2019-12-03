@@ -462,14 +462,24 @@ Installing locate / updatedb
 .. index::
   single: locate
   single: updatedb
+  single: anacron
+  single: /etc/crontab
+  single: /etc/cron.daily
 
 Command ``locate`` is a way of finding files on your computer. It is faster
-than ``find``. It relies on a database (upatedb) which is automatically updated
-now and then.
+than ``find``. It relies on a database (updatedb) which is automatically
+updated daily via the script ``/etc/cron.daily/locate`` (directory
+``/etc/cron.daily`` should appear in file ``/etc/crontab``).
 
 Install locate and updatedb with::
 
   apt-get install locate # As root.
+
+If you don't leave your machine running all the time, the database update may
+not happen every day if package ``anacron`` is not installed. So make sure to
+install it::
+
+  apt-get install anacron # As root.
 
 You can force the database update **as root** with::
 
