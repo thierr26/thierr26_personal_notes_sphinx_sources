@@ -63,17 +63,16 @@ with::
 
   apt-get install virtinst libvirt-daemon-system libvirt-clients # As root.
 
+The ``libvirt-clients`` package comes with the ``virsh`` program, to be used to
+manage the virtual machines and get useful information. Examples
+(**as root**)::
+
+  virsh list --all     # List the virtual machines.
+  virsh net-list --all # List the virtual networks.
+
 The `osinfo <https://libosinfo.org>`_ and its querying tools are useful too::
 
   apt-get install libosinfo-bin # As root.
-
-I'll get the status of the virtual machines with::
-
-  virsh list --all # As root.
-
-I can get information about the virtual networks with::
-
-  virsh net-list --all # As root.
 
 
 Preparing storage locations
@@ -447,6 +446,7 @@ Finding the IP address of the virtual machine
   pair: ip commands; addr
   single: net-tools
   single: ifconfig
+  pair: virsh commands; net-dhcp-leases
 
 Having the IP address of the virtual machine is useful, for example to connect
 to it from the host via :doc:`SSH <ssh>`.
@@ -462,6 +462,11 @@ If you don't have the ``ip`` command, you may have the ``ifconfig`` command
 show (among other information) the IP address::
 
   ifconfig # On the guest.
+
+Alternatively, you should be able to get the IP address of a guest without
+login into the guest, using ``virsh``::
+
+  virsh net-dhcp-leases default # As root, on the host.
 
 
 Removing the virtual machine
