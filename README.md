@@ -13,10 +13,11 @@ build. This script actually uses [Nokogiri](https://nokogiri.org).
 
 ## Author
 
-[Thierry Rascle](thierr26@free.fr)
+[Thierry Rascle](mailto:thierr26@free.fr)
 
 
 ## License
 
 This work is licensed under the "Attribution 4.0 International" Creative
-Commons license. See the LICENSE file for details.
+Commons license. For more information, please refer to the [LICENSE](LICENSE)
+file.
