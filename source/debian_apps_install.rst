@@ -53,9 +53,13 @@ Installation
       gftp \
       dlume \
       xpdf \
+      catdoc \
       octave \
-      gnat gnat-gps \
+      gnat libaunit18-dev gnat-gps \
       ada-reference-manual-2012 \
+      libxmlada-dom8-dev libxmlada-input8-dev libxmlada-sax8-dev \
+      libxmlada-schema8-dev libxmlada-unicode8-dev \
+      libgtkada-bin libgtkada-doc libgtkada18 libgtkada18-dev \
       valgrind \
       lcov \
       libncurses5 \
@@ -131,12 +135,18 @@ Installation
     - Address book
   * - xpdf
     - PDF reader
+  * - catdoc
+    - Text extractor for MS-Office files
   * - octave
     - GNU Octave language (similar to Matlab)
-  * - gnat, gnat-gps
+  * - gnat, libaunit18-dev, gnat-gps
     - Ada programming tools
   * - ada-reference-manual-2012
     - Ada 2012 reference manual
+  * - libxmlada-dom8-dev libxmlada-input8-dev libxmlada-sax8-dev
+      libxmlada-schema8-dev libxmlada-unicode8-dev libgtkada-bin libgtkada-doc
+      libgtkada18 libgtkada18-dev
+    - Ada libraries (XML/Ada and GtkAda)
   * - valgrind
     - Program profiling tools
   * - lcov
@@ -476,3 +486,21 @@ x-www-browser`` (**as root**).
 
 I then tweaked Google Chrome's settings as for
 :ref:`Chromium <chromium_config>`.
+
+
+Signal (instant messaging system) installation
+----------------------------------------------
+
+.. index::
+  single: Signal
+  single: wget
+  single: apt-key
+  single: /etc/apt/sources.list.d
+
+Here are the commands I issued (**as root**) to install Signal (you may want to
+check the `Signal official site <https://signal.org/download>`_)::
+
+  wget https://updates.signal.org/desktop/apt/keys.asc -O - | apt-key add
+  echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" > /etc/apt/sources.list.d/signal-xenial.list
+  apt-get install signal-desktop
+  chmod 4755 /opt/Signal/chrome-sandbox
