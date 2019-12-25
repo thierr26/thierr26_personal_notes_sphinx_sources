@@ -307,6 +307,8 @@ And here is the code::
   ARTIST="Artist name";                                # Adapt to your needs.
   ALBUM="Album name";                                  # Adapt to your needs.
 
+  DEVICE=/dev/cdrom;                                   # Adapt to your needs.
+
   OGGEXT=.ogg;
 
   mkdir -p "$OUTPUT_DIR";
@@ -340,7 +342,7 @@ And here is the code::
 
       echo "Creating $OUTPUT_PATH";
 
-      cdparanoia $K -|oggenc -a "$ARTIST" -t "$TITLE" -l \
+      cdparanoia -d "$DEVICE" $K -|oggenc -a "$ARTIST" -t "$TITLE" -l \
       "$ALBUM" -c "tracknumber=$K_STR" -o "$OUTPUT_PATH" -;
 
   done<<HEREDOC
