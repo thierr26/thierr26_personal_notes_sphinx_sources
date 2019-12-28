@@ -84,8 +84,9 @@ It consists in running a ``virt-install`` command, very much like for the
 :ref:`Debian unstable virtual machine creation
 <start_debian_unstable_vm_install>`.
 
-Don't forget to start the default virtual network and to run the needed
-commands so that applications running as root can connect to the X server.
+Don't forget to :ref:`start the default virtual network and to run the needed
+commands so that applications running as root can connect to the X server
+<start_debian_unstable_vm_install>`.
 
 Use ``osinfo-query os`` to find the most appropriate value for the
 ``--os-variant`` option (the closest value to the OS you're installing).
@@ -132,7 +133,7 @@ OpenBSD base installation
 .. index::
   single: X Window
 
-Not much to say here. I didn't have any major difficulties doing the base
+Not much to say here. I haven't had any major difficulty doing the base
 installation.
 
 Follow `this link if you are surprised to be asked by the installer whether you
