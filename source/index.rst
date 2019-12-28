@@ -26,6 +26,8 @@ Personal Notes
   music
   nu_html_checker
   openbsd_vm
+  first_steps_with_openbsd
+  gprbuild_on_openbsd
   freebsd_vm
   fs_win_no_privilege
   about

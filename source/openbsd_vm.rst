@@ -24,8 +24,9 @@ The process is very similar to :doc:`the installation of a Debian GNU/Linux
 virtual machine <debian_unstable_vm>` and this page does not repeat all the
 details and mentions only the specific actions.
 
-This page does not deal at all with the post-install configuration and usage of
-the OpenBSD system.
+If you're looking for information about the post-install configuration and
+usage of the OpenBSD system, the :doc:`"My first steps with OpenBSD" page
+<first_steps_with_openbsd>` may be more interesting.
 
 
 Installing the OpenBSD signing and verifying tool
