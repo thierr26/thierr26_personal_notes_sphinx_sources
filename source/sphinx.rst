@@ -126,8 +126,9 @@ Generating HTML output
   pair: Sphinx; clean
   pair: Sphinx; linkcheck
 
-Assuming ``sphinx-quickstart`` has created a Makefile,  you can build the HTML
-output with::
+Assuming ``sphinx-quickstart`` has created a `Makefile
+<http://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/>`_,  you can
+build the HTML output with::
 
   make html
 
