@@ -24,8 +24,9 @@ The process is very similar to :doc:`the installation of a Debian GNU/Linux
 virtual machine <debian_unstable_vm>` and this page does not repeat all the
 details and mentions only the specific actions.
 
-This page does not deal at all with the post-install configuration and usage of
-the FreeBSD system.
+If you're looking for information about the post-install configuration and
+usage of the FreeBSD system, the :doc:`"My first steps with FreeBSD" page
+<first_steps_with_freebsd>` may be more interesting.
 
 
 Getting and verifying the FreeBSD installer ISO image

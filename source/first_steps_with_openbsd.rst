@@ -111,8 +111,8 @@ Installed compilers (just after base installation)
   pair: GCC; version
   single: Clang
 
-I've written a :ref:`shell script that extracts the descriptions (as provided by the
-man pages) of the installed programs <man_page_descr_extraction>`.
+I've written a :ref:`shell script that extracts the descriptions (as provided
+by the man pages) of the installed programs <man_page_descr_extraction>`.
 
 After piping the output to grep (actually ``egrep -i
 "build|compil|link|bind|profil"``) and manually filtering again, here are the

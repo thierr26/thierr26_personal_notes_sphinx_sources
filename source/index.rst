@@ -29,6 +29,7 @@ Personal Notes
   first_steps_with_openbsd
   gprbuild_on_openbsd
   freebsd_vm
+  first_steps_with_freebsd
   fs_win_no_privilege
   about
 

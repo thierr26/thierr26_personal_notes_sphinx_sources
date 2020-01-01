@@ -59,6 +59,8 @@ Use the ``scp`` command. Examples::
   scp username@192.168.122.250:/path/on/remote/my_file path/on/local
 
 
+.. _sshd_configuration:
+
 Server configuration
 --------------------
 
