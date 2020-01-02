@@ -33,7 +33,7 @@ is not the one that must be used to build GPRbuild. A newer one must be used
 (version 8.3.0) and is not installed as ``gcc`` but as ``egcc``. ``egcc`` is
 not recognised automatically by the building tool.
 
-The GPRbuild and XML/Ada versions (commit hashes) versions I used are:
+The GPRbuild and XML/Ada versions (commit hashes) I used are:
 
 * ``f3d62455b02564a4bbdc1ec04f1da788f22702fe`` (2019-12-25) for GPRBuild.
 
