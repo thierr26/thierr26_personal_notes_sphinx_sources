@@ -77,6 +77,7 @@ Installation
       psmisc \
       sudo \
       pwgen \
+      time \
       sakura # As root.
 
 .. list-table::
@@ -182,6 +183,8 @@ Installation
     - Privilege escalation
   * - pwgen
     - Password generator
+  * - time
+    - CPU resource usage measurement
   * - sakura
     - Terminal emulator
 
