@@ -68,7 +68,7 @@ Installing Vim (and creating an alias)
 .. index::
   pair: OpenBSD package management commands; pkg_info
   pair: OpenBSD package management commands; pkg_add
-  single: vim
+  single: vim (on OpenBSD)
   single: alias
   single: /etc/installurl
   single: ~/.profile
@@ -198,8 +198,8 @@ Installing the GCC 8.3.0p4 package
 ----------------------------------
 
 .. index::
-  single: GCC
-  single: egcc
+  single: GCC (on OpenBSD)
+  single: egcc (on OpenBSD)
   pair: OpenBSD package management commands; pkg_info
   pair: OpenBSD package management commands; pkg_add
 
@@ -283,7 +283,7 @@ Installing the GNAT 8.3.0p4 package
 -----------------------------------
 
 .. index::
-  single: GNAT
+  single: GNAT (on OpenBSD)
   pair: OpenBSD package management commands; pkg_info
   pair: OpenBSD package management commands; pkg_add
 

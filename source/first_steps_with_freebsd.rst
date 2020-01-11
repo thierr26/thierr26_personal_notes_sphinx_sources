@@ -94,7 +94,7 @@ Installing bash
 ---------------
 
 .. index::
-  single: bash
+  single: bash (on FreeBSD)
   pair: FreeBSD package management commands; pkg search
   pair: FreeBSD package management commands; pkg install
 
@@ -138,7 +138,7 @@ Making it possible for a "normal" user to change user to root (with ``su -``)
 .. index::
   single: su
   single: pw
-  single wheel user group
+  single: wheel user group
 
 On FreeBSD, only users who are in the ``wheel`` are allowed to change user to
 root. You can add (**as root**) a user in the ``wheel`` group with::
@@ -153,6 +153,8 @@ Searching / installing binary packages
   pair: FreeBSD package management commands; pkg install
   pair: FreeBSD package management commands; pkg info
   pair: FreeBSD package management commands; pkg search
+  single: gmake (on FreeBSD)
+  single: Git (on FreeBSD)
 
 You can install binary packages (for example GNU make and Git) with commands
 like (**as root**)::

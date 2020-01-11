@@ -44,9 +44,9 @@ Prerequisites
 -------------
 
 .. index::
-  single: GNU make
-  single: gmake
-  single: Git
+  single: GNU make (on OpenBSD)
+  single: gmake (on OpenBSD)
+  single: Git (on OpenBSD)
   single: XML/Ada
 
 GCC and GNAT 8.3.0p4 must be installed. Please read the :doc:`"My first steps
