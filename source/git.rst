@@ -93,6 +93,12 @@ Create aliases with commands like::
                                                      # options for compact
                                                      # output.
 
+Alternatively, you can edit the aliases directly in file ``~/.gitconfig``.
+
+Some aliases can invoke shell commands. See for example the "release" alias in
+`my ~/.gitconfig file
+<https://github.com/thierr26/thierr26_config_files/blob/master/.gitconfig>`_.
+
 
 Splitting the configuration file
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -196,6 +202,11 @@ supplementary argument::
 It is also possible to clone and check out a specific branch::
 
   git clone -b branch_name repository_url
+
+Use option "--recurse-submodules" to also initialize and clone all the
+submodules::
+
+  git clone --recurse-submodules repository_url
 
 You can also clone without checking out anything::
 
@@ -464,6 +475,14 @@ merges the changes into the local repository::
 
   git pull origin master
 
+You can list the URLs for remote "origin" with::
+
+  git remote get-url --all origin
+
+You can change the URL for remote "origin" with a command like::
+
+  git remote set-url origin url
+
 
 Working with branches
 ---------------------
@@ -532,6 +551,10 @@ If you don't want to revert the staged changes, use the ``--keep-index``
 option::
 
   git stash push --keep-index
+
+Use option "--include-untracked" to also stash the untracked files::
+
+  git stash --include-untracked
 
 Each ``git stash push`` command creates a new entry in the stash stack.
 
@@ -864,6 +887,22 @@ More details can be found at those locations:
 
 * https://stackoverflow.com/questions/7645480/why-doesnt-setting-git-work-tree-work-in-a-post-commit-hook
 * https://longair.net/blog/2011/04/09/missing-git-hooks-documentation/
+
+
+Submodules
+----------
+
+.. index::
+  pair: Git; submodule
+
+You can add a repository as a submodule to your repository with a command
+like::
+
+  git submodule add submodule_repository_url subdirectory
+
+Update the submodules with::
+
+  git submodule update --remote
 
 
 Other resources
