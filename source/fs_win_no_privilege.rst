@@ -71,7 +71,7 @@ ccrypt
 .. index::
   single: ccrypt (on Windows)
 
-`ccrypt <https://en.wikipedia.org/wiki/Ccrypt>` is a program to encrypt and
+`ccrypt <https://en.wikipedia.org/wiki/Ccrypt>`_ is a program to encrypt and
 decrypt file. The same key is used on encryption and decryption.
 
 Download ccrypt archive from http://ccrypt.sourceforge.net. Unzip the archive
