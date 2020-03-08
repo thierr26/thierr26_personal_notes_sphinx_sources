@@ -53,6 +53,7 @@ Installation
       gftp \
       dlume \
       xpdf \
+      evince \
       catdoc \
       octave \
       gnat libaunit18-dev gnat-gps \
@@ -136,6 +137,8 @@ Installation
     - Address book
   * - xpdf
     - PDF reader
+  * - evince
+    - Document viewer (can fill in forms in PDF files)
   * - catdoc
     - Text extractor for MS-Office files
   * - octave
