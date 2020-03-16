@@ -394,14 +394,18 @@ Committing
 
 The following commands commit the staged changes to the repository::
 
-  git commit                                # Opens a text editor for commit
-                                            # message edition.
+  git commit                                 # Opens a text editor for commit
+                                             # message edition.
 
-  git commit -m "Commit message"            # Takes the commit message from the
-                                            # command line.
+  git commit -m "Commit message"             # Takes the commit message from
+                                             # the command line.
 
-  git commit -F path/to/commit/message/file # Reads the commit message from a
-                                            # file.
+  git commit -F path/to/commit/message/file  # Reads the commit message from a
+                                             # file.
+
+  git commit -eF path/to/commit/message/file # Reads the commit message from a
+                                             # file and opens the text editor
+                                             # for commit message edition.
 
 With the ``-a`` switch, all the changes (except file addition) are staged
 before committing::
