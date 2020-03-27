@@ -25,6 +25,7 @@ Personal Notes
   wifi
   music
   nu_html_checker
+  hp_usb_printer
   openbsd_vm
   first_steps_with_openbsd
   gprbuild_on_openbsd
