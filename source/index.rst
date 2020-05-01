@@ -26,6 +26,7 @@ Personal Notes
   music
   nu_html_checker
   hp_usb_printer
+  gnome_3
   openbsd_vm
   first_steps_with_openbsd
   gprbuild_on_openbsd
