@@ -24,8 +24,8 @@ use a machine with GNOME 3.28.2 for some kind of work. I actually use the
 I haven't done much tweaking in this environment and haven't much to say here,
 but I felt the need to keep track of the `dconf
 <https://en.wikipedia.org/wiki/Dconf>`_ commands I learned. GNOME uses a binary
-database to store the settings and the `dconf` command is a way of manipulating
-the settings. `This link made me aware of dconf
+database to store the settings and the ``dconf`` command is a way of
+manipulating the settings. `This link made me aware of dconf
 <https://bgstack15.wordpress.com/2017/10/04/dconf-save-and-load-from-file/>`_.
 
 
@@ -96,7 +96,7 @@ Reset (i.e. erase) a particular key
   pair: GNOME terminal; profiles
   pair: dconf commands; reset
 
-If you want to erase a particular key (for example the `foreground-color` key
+If you want to erase a particular key (for example the ``foreground-color`` key
 of a GNOME terminal profile), use a command like::
 
   dconf reset /org/gnome/terminal/legacy/profiles:/foreground-color
@@ -109,7 +109,8 @@ Finding the GNOME version
   single: /usr/share/gnome/gnome-version.xml
   pair: GNOME 3; version
 
-You can find the GNOME 3 version in file `/usr/share/gnome/gnome-version.xml`.
+You can find the GNOME 3 version in file
+``/usr/share/gnome/gnome-version.xml``.
 
 
 Closing the GNOME session from the command line
