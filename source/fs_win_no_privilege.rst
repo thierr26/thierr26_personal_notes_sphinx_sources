@@ -145,18 +145,23 @@ GNU Octave
 ----------
 
 .. index::
-  single: GNAT Community Edition (on Windows)
+  single: GNU Octave (on Windows)
   single: MSYS2
 
 `GNU Octave <https://wiki.octave.org/GNU_Octave_Wiki>`_ is an interpreted
 language, similar to `Matlab <https://en.wikipedia.org/wiki/MATLAB>`_.
 
-Download the Zip archive for the latest version (octave-5.1.0-w64-64.zip at the
+Download the Zip archive for the latest version (octave-5.2.0-w64-64.zip at the
 time of this writing) from https://ftp.gnu.org/gnu/octave/windows, unzip it and
 run the ``post-install.bat`` file.
 
 Once more, update your ``Path`` variable (add the directory containing the
 ``octave.vbs`` file).
+
+If you want to be able to use Octave in text mode in the Windows console, make
+sure to also add to the path the subdirectory (``mingw64\bin``) that contains
+``octave-cli.exe``. ``octave-cli.exe`` launches Octave without graphical user
+interface.
 
 If you see a warning about a failure to set locale, you need to add the Perl
 executable directory to your path (Perl comes with Octave for Windows in
@@ -165,6 +170,10 @@ for example). If you launch Octave from the command line, you can do (assuming
 your current directory is the one containing the ``octave.vbs`` file)::
 
   set PATH=%PATH%;%CD%\usr\bin & set "LC_ALL=C" & octave.vbs
+
+An Octave icon file is available in the Octave installation:
+``mingw64\share\octave\5.2.0\imagelib\octave-logo.ico``. That's good to have
+for the case where you want a shortcut on the destop.
 
 GNU Octave for Windows comes with `MSYS2 <https://www.msys2.org>`_, and that is
 another solution (beside :ref:`UnxUtils <unxutils_win>`) to use the GNU
