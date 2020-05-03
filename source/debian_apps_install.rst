@@ -79,6 +79,7 @@ Installation
       sudo \
       pwgen \
       time \
+      tree \
       sakura # As root.
 
 .. list-table::
@@ -188,6 +189,8 @@ Installation
     - Password generator
   * - time
     - CPU resource usage measurement
+  * - tree
+    - Indented directory listing tool
   * - sakura
     - Terminal emulator
 
