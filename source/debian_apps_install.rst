@@ -70,6 +70,7 @@ Installation
       xzgv \
       rawtherapee \
       irssi \
+      pan \
       claws-mail \
       claws-mail-themes \
       vim vim-pathogen \
@@ -171,6 +172,10 @@ Installation
     - Image viewer
   * - rawtherapee
     - Raw image converter
+  * - irssi
+    - IRC client
+  * - pan
+    - Usenet newsreader
   * - claws-mail
     - Mail client (MH mailbox format)
   * - claws-mail-themes
