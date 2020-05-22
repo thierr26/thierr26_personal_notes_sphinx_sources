@@ -73,7 +73,7 @@ In my case, the output file contains:
 | background-color='rgb(0,0,0)'
 | default-size-columns=161
 | use-theme-colors=false
-| default-size-rows=54
+| default-size-rows=52
 | use-system-font=false
 | visible-name='Large'
 | font='Liberation Mono 11'
@@ -81,7 +81,7 @@ In my case, the output file contains:
 | [:424cb317-4a79-4a77-be53-86b59ee1e321]
 | visible-name='Narrow'
 | default-size-columns=74
-| default-size-rows=72
+| default-size-rows=70
 | use-system-font=false
 | use-theme-colors=false
 | font='Liberation Mono 8'
