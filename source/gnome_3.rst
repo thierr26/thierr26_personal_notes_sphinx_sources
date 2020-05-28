@@ -37,7 +37,7 @@ List the keys related to the GNOME terminal profiles
   pair: GNOME terminal; profiles
   pair: dconf commands; list
 
-The following command lists the keys related the GNOME terminal::
+The following command lists the keys related to the GNOME terminal profiles::
 
   dconf list /org/gnome/terminal/legacy/profiles:/
 
@@ -79,6 +79,51 @@ In my case, the output file contains:
 | font='Liberation Mono 11'
 |
 | [:424cb317-4a79-4a77-be53-86b59ee1e321]
+| visible-name='Narrow'
+| default-size-columns=74
+| default-size-rows=70
+| use-system-font=false
+| use-theme-colors=false
+| font='Liberation Mono 8'
+| background-color='rgb(0,0,0)'
+
+
+Dump / load the keys related to all GNOME terminal options
+----------------------------------------------------------
+
+.. index::
+  single: gnome-terminal
+  pair: GNOME terminal; options
+  pair: dconf commands; dump
+  pair: dconf commands; load
+
+Use commands like the following ones to dump the keys to a file and load them::
+
+  dconf dump /org/gnome/terminal/ > output_file
+  dconf load /org/gnome/terminal/ < output_file
+
+In my case, the output file contains:
+
+| [legacy]
+| menu-accelerator-enabled=false
+| schema-version=uint32 3
+| default-show-menubar=true
+|
+| [legacy/profiles:]
+| list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '424cb317-4a79-4a77-be53-86b59ee1e321']
+| default='424cb317-4a79-4a77-be53-86b59ee1e321'
+|
+| [legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+| background-color='rgb(0,0,0)'
+| default-size-columns=161
+| use-theme-colors=false
+| default-size-rows=52
+| use-system-font=false
+| visible-name='Large'
+| font='Liberation Mono 11'
+|
+| [legacy/profiles:/:424cb317-4a79-4a77-be53-86b59ee1e321]
+| foreground-color='rgb(211,215,207)'
 | visible-name='Narrow'
 | default-size-columns=74
 | default-size-rows=70
