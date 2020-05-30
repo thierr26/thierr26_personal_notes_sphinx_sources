@@ -64,6 +64,7 @@ Installation
       valgrind \
       lcov \
       libncurses5 \
+      libb-lint-perl \
       gimp jhead imagemagick \
       libimage-exiftool-perl \
       xsane \
@@ -162,6 +163,8 @@ Installation
       Programming Studio
       <https://en.wikipedia.org/wiki/GNAT_Programming_Studio>`_ as provided
       with `GNAT Community <https://www.adacore.com/community>`_ 2018 and 2019.
+  * - libb-lint-perl
+    - Perl code checker
   * - gimp, jhead, imagemagick
     - Image manipulation programs
   * - libimage-exiftool-perl
