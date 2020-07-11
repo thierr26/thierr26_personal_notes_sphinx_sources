@@ -290,6 +290,18 @@ when possible". Enter external programs as follows:
 * Command for 'Display as text': gvim '%s'
 
 
+Pan
+~~~
+
+.. index::
+  pair: Pan; custom browser
+  single: ~/.pan2/preferences.xml
+
+In Edit Preferences, Applications, Web browser: Custom Command: firefox
+
+This changes ~/.pan2/preferences.xml.
+
+
 GIMP
 ~~~~
 
