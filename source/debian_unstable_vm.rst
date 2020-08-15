@@ -157,7 +157,6 @@ Getting a Debian testing installer image
 .. index::
   triple: Debian; testing; installer
   single: wget
-  single: sha512sum
   single: gpg
 
 Debian testing installer images are available for download and updated daily
@@ -333,8 +332,8 @@ X.org after a few seconds. We need the ``killall`` command for that, provided
 by the Debian package ``psmisc``::
 
   apt-get install psmisc # As root, on the guest.
-  Xorg -verbose 6 > xlog.txt 2>&1 sleep 3 && killall Xorg # As root, on the
-                                                          # guest.
+  Xorg -verbose 6 > xlog.txt 2>&1 & sleep 3 && killall Xorg # As root, on the
+                                                            # guest.
 
 In ``xlog.txt``, we find lines like the following, which help building the
 "Modelines":
