@@ -469,10 +469,15 @@ Push the commits in the "master" branch to "origin" with::
 
   git push origin master
 
-The following command downloads changes from "origin" (but does not affect the
+The following commands download changes from "origin" (but does not affect the
 history of the local repository)::
 
   git fetch origin
+  git fetch        # "origin" is the default remote.
+
+If you have multiple remotes, you can fetch them all with::
+
+  git fetch --all
 
 The following command downloads changes from "origin" for branch "master" and
 merges the changes into the local repository::
@@ -501,11 +506,24 @@ Working with branches
 
 ``git status`` shows the current branch (among other things).
 
+To list the branches, use::
+
+  git branch    # List the local branches.
+  git branch -a # Also includes the remote-tracking branches.
+  git branch -r # Includes only the remote-tracking branches.
+
+Adding option ``-v`` causes the commit hash and commit subject line to be shown
+for each branch head.
+
 Switch to branch named "branch_name" with::
 
   git checkout branch_name
 
   git checkout -b branch_name # Creates the branch named "branch_name".
+
+This of course raises the question of which naming scheme to use for the
+branches. `This Stack Overflow answer by Phil Hord helps.
+<https://stackoverflow.com/questions/273695/what-are-some-examples-of-commonly-used-practices-for-naming-git-branches/6065944#6065944>`_
 
 Rebase current branch on the latest commit of branch "master" with::
 
@@ -575,13 +593,14 @@ Remove an entry from the stash stack and apply the changes to the working tree
 with a command like::
 
   git stash pop stash@{0}
-  git stash pop           # Equivalent to "git stash pop stash@{0}"
+  git stash pop           # Equivalent to "git stash pop stash@{0}".
 
-You can also remove an entry from the stash stack without applying the changes
-to the working tree::
+You can also remove one entry (or even all the entries) from the stash stack
+without applying the changes to the working tree::
 
   git stash drop stash@{0}
-  git stash drop           # Equivalent to "git stash drop stash@{0}"
+  git stash drop           # Equivalent to "git stash drop stash@{0}".
+  git stash clear          # Remove all the stash entries.
 
 Use the ``--index`` option to also reapply the staging::
 
@@ -916,6 +935,6 @@ Other resources
 * `Git cheat sheet <https://www.git-tower.com/blog/git-cheat-sheet>`_
 * `A Git branching model <https://nvie.com/posts/a-successful-git-branching-model>`_
 * `The Git Rebase Introduction I Wish I'd Had <https://dev.to/maxwell_dev/the-git-rebase-introduction-i-wish-id-had>`_
-* ``git merge`` and ``git rebase``: `When to use? <https://delicious-insights.com/en/posts/getting-solid-at-git-rebase-vs-merge>`_
+* `git merge and git rebase: When to use? <https://delicious-insights.com/en/posts/getting-solid-at-git-rebase-vs-merge>`_
 * `Git: To squash or not to squash? <https://jamescooke.info/git-to-squash-or-not-to-squash.html>`_
 * `Git Submodules <https://blog.github.com/2016-02-01-working-with-submodules>`_
