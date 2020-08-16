@@ -607,6 +607,31 @@ Use the ``--index`` option to also reapply the staging::
   git stash pop --index
 
 
+Exploring the repository
+------------------------
+
+.. index::
+  pair: Git; ls-tree
+  pair: Git; ls-files
+
+You can see the list of files and directories under version control in the
+current directory using::
+
+  git ls-tree HEAD
+
+Add option ``-r`` to explore recursively the subdirectories, and option
+``--name-only`` to see only the file names and hide the other informations::
+
+  git ls-tree -r --name-only HEAD
+
+Of course, you can use a specific commit hash instead of ``HEAD``.
+
+If you need to search a file based on its file name, you can use a command
+like::
+
+  git ls-files "*abc*"
+
+
 Finding text patterns in the indexed files (or in any directory tree)
 ---------------------------------------------------------------------
 
