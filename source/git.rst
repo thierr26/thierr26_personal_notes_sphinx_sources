@@ -341,6 +341,7 @@ Showing changes
 
 .. index::
   pair: Git; diff
+  pair: Git; log
 
 Show the difference between what is staged (or what is in the last commit if no
 change is staged) and the working tree with::
@@ -383,6 +384,11 @@ Show the difference between two particular commits with commands like::
 
   git diff 42b9c3b a92c02a -- path/to/files # Shows changes for the specified
                                             # files only.
+
+In some cases, ``git log -p`` can be a good alternative to ``git diff``::
+
+  git log -p -1 a92c02a -- path/to/files # Shows log message and changes made
+                                         # for commit a92c02a.
 
 
 Committing
@@ -427,10 +433,16 @@ Viewing the commit log
 .. index::
   triple: Git; log; compact
   triple: Git; log; graph
+  triple: Git; log; commit date formatting
+  triple: Git; log; commit hash
+  pair: Git; show
 
 Show the commit log with::
 
   git log
+
+When using a Git version older than 2.13, you need to add option
+``--decorate`` to see references names (banch heads and tags) in the log.
 
 The ``log`` command is extremely configurable. I have
 :ref:`aliases <git_aliases>` for those variants::
@@ -446,6 +458,23 @@ You can limit the number of commits shown. Example with a limit set to 4::
 You can also add a "diffstat"::
 
   git log --stat
+
+For the record, here are a few more examples for ``git log`` (for commit hashes
+and dates)::
+
+  git log --pretty="%H" -1     # Commit hash.
+  git log --pretty="%h" -1     # Short commit hash.
+  git log --pretty="%ci %H" -1 # Committer date (ISO 8601 like) and hash.
+  git log --pretty="%cI" -1    # Committer date (strict ISO 8601 format).
+  git log --pretty="%cD" -1    # Committer date (RFC2822 style).
+
+In ``%ci`` or ``%cI``, the letter c stands for "committer date". Use letter a
+instead of letter c for the "author date".
+
+When interested in a specific commit, ``git show`` can be used instead of ``git
+log``::
+
+  git show -s git log --pretty="%ci %h" e66cceb
 
 
 Working with remote repositories
@@ -817,6 +846,7 @@ Scripting
   pair: Git; rev-parse
   pair: Git; for-each-ref
   pair: Git; diff-index
+  pair: Git; diff-tree
   pair: Git; show-ref
   pair: Git; merge-base
 
@@ -862,6 +892,11 @@ Here are a few Git commands that are useful for scripting::
                                             # possibly with untracked files),
                                             # with non zero exit status
                                             # otherwise.
+
+  git diff-tree --name-only -r HEAD         # Lists the files changed in the
+                                            # last commit. Use option
+                                            # ``--no-commit-id`` to suppress
+                                            # the first line (commit hash).
 
   git status --porcelain                    # Outputs nothing if the working
                                             # directory is clean (and without
