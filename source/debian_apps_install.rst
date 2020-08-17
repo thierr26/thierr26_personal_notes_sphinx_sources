@@ -297,9 +297,14 @@ Pan
   pair: Pan; custom browser
   single: ~/.pan2/preferences.xml
 
+In Edit News Servers, add a news server. I use news.free.fr, with my Free
+E-Mail login. This works even when connecting through an ISP other than `Free
+<https://www.free.fr>`_.
+
 In Edit Preferences, Applications, Web browser: Custom Command: firefox
 
-This changes ~/.pan2/preferences.xml.
+The two settings are saved in ``~/.pan2/servers.xml`` and
+``~/.pan2/preferences.xml`` respectively.
 
 
 GIMP
