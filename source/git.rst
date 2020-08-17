@@ -390,6 +390,15 @@ In some cases, ``git log -p`` can be a good alternative to ``git diff``::
   git log -p -1 a92c02a -- path/to/files # Shows log message and changes made
                                          # for commit a92c02a.
 
+You sometimes want to filter the output of git diff. The ``-G`` and ``-S``
+options can help.
+
+* `Documentation for git diff -S option
+  <https://git-scm.com/docs/git-diff#Documentation/git-diff.txt--Sltstringgt>`_,
+
+* `Documentation for git diff -G option
+  <https://git-scm.com/docs/git-diff#Documentation/git-diff.txt--Gltregexgt>`_.
+
 
 Committing
 ----------
@@ -858,6 +867,7 @@ example). Scripting makes it possible to define :ref:`hooks <hooks>`.
 <https://stackoverflow.com/a/39848551>`_:
 
 * Plumbing commands,
+
 * Porcelain commands.
 
 Porcelain commands should be avoided in scripts. They are meant to be used by
