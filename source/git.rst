@@ -40,7 +40,9 @@ Minimal post-install configuration
 
 .. index::
   triple: Git; global; configuration
-  pair: Git; Credential helper
+  pair: Git; credential helper
+  pair: Git; editor
+  pair: Git; config
   single: chmod
 
 After installing Git, user name and e-mail address should be configured::
@@ -53,6 +55,11 @@ argument) command. Value ``simple`` `may be appropriate in most cases
 <https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushdefault>`_::
 
   git config --global push.default simple
+
+You may also want to specify the editor to be used for commit messages or tag
+messages editor. Example with editor Vim::
+
+  git config --global core.editor "vim"
 
 You can see your Git configuration with::
 
@@ -80,6 +87,8 @@ Creating aliases
 ~~~~~~~~~~~~~~~~
 
 .. index::
+  triple: Git; global; configuration
+  pair: Git; config
   pair: Git; aliases
 
 Create aliases with commands like::
@@ -232,6 +241,48 @@ repository. It is possible with a sequence of commands like::
 The ``git pull origin master`` command fails if it has to overwrite existing
 local files. If you really want a clone of the remote repository, remove the
 local files and run the ``git pull origin master`` command again.
+
+
+Making a repository shareable
+-----------------------------
+
+.. index::
+  single: groupadd
+  single: chgrp
+  single: chmod
+  single: find
+  single: usermod
+  pair: Git; shared repository
+
+I've been once in a situation where I had a local repository tracking a `bare
+remote repository
+<http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/>`_ on the same
+Linux machine. The remote was initialized (``git init --bare ...``) by me (as a
+"normal" user). When other users on the machine have tried to push to the
+remote, they couldn't because they didn't have the permission and because the
+repository had not been configured to be shareable. We decided to create a
+group (called "develop" in the commands below) and to make sure the members of
+the group had the permission to push to the remote. We could achieve that with
+the following commands.
+
+As root::
+
+  groupadd develop                       # Create group.
+
+As me ("normal" user)::
+
+  cd /path/to/bare/remote/repository
+  git config core.sharedRepository group # Make repository shareable.
+
+As root::
+
+  cd /path/to/bare/remote/repository
+  chgrp -R develop .                     # Change files and directories' group.
+  chmod -R g+w .                         # Give write permission to group...
+  chmod g-w objects/pack/*               # Expect for pack files.
+  find -type d -exec chmod g+s {} +      # New files get directory's group id.
+  usermod -aG develop my_username        # Add me to group.
+  usermod -aG develop other_user         # Add another user to group, etc...
 
 
 .. _git_staging:
@@ -406,6 +457,7 @@ Committing
 .. index::
   pair: Git; commit
   pair: Git; amend
+  pair: Git; cherry-pick
 
 The following commands commit the staged changes to the repository::
 
@@ -435,6 +487,44 @@ commit::
 
   git commit --amend
 
+By default, you can't do a commit that does not change anything in the tree (an
+"empty" commit) and you can't do a commit without a commit message. If you
+really want to do one of those things, you have to use the ``--allow-empty``
+or ``--allow-empty-message`` respectively. An empty commit is interesting for
+example as the first commit of a project. Having an empty commit as first
+commit makes it possible to a `create an empty new branch if needed
+<https://stackoverflow.com/questions/15034390/how-to-create-a-new-and-empty-root-branch>`_.
+
+When needing to do a commit which is equivalent to commit already done in
+another branch, ``git cherry-pick`` comes in handy::
+
+  git cherry-pick commit_hash_of_the_existing_commit
+
+
+Tagging
+-------
+
+.. index::
+  pair: Git; tag
+  pair: Git; ls-remote
+  pair: Git; rev-list
+
+Basic tag manipulations (creation, deletion) are done using the ``git tag``
+command and its various option. But there are more things to do with tags
+(cloning, pushing). `A Stack Otherflow answer gives many details about tagging
+in Git. <https://stackoverflow.com/a/35979751>`_
+
+Note also the following commands, useful to find tags and corresponding
+commits::
+
+  git log -1 my_tag           # Show local branch commit for tag "my_tag".
+  git ls-remote --tags origin # List commit hash / tag pairs for remote
+                              # "origin".
+
+With ``git rev-list``, you get only the commit hash::
+
+  git rev-list -1 my_tag
+
 
 Viewing the commit log
 ----------------------
@@ -451,7 +541,7 @@ Show the commit log with::
   git log
 
 When using a Git version older than 2.13, you need to add option
-``--decorate`` to see references names (banch heads and tags) in the log.
+``--decorate`` to see references names (branch heads and tags) in the log.
 
 The ``log`` command is extremely configurable. I have
 :ref:`aliases <git_aliases>` for those variants::
@@ -468,14 +558,16 @@ You can also add a "diffstat"::
 
   git log --stat
 
-For the record, here are a few more examples for ``git log`` (for commit hashes
-and dates)::
+For the record, here are a few more examples for ``git log`` (for commit
+hashes, dates and commit message as raw text)::
 
   git log --pretty="%H" -1     # Commit hash.
   git log --pretty="%h" -1     # Short commit hash.
   git log --pretty="%ci %H" -1 # Committer date (ISO 8601 like) and hash.
   git log --pretty="%cI" -1    # Committer date (strict ISO 8601 format).
   git log --pretty="%cD" -1    # Committer date (RFC2822 style).
+  git log --pretty="%B" -1     # Commit message as raw text (subject and body).
+  git log --pretty="%b" -1     # Commit message as raw text (body only).
 
 In ``%ci`` or ``%cI``, the letter c stands for "committer date". Use letter a
 instead of letter c for the "author date".
@@ -498,10 +590,19 @@ Working with remote repositories
 Configure a remote named "origin" with::
 
   git remote add origin remote_repository_url
+  git remote add -t branch_name origin remote_repository_url # Track only
+                                                             # branch
+                                                             # branch_name.
 
 Check the configured remotes with::
 
   git remote -v
+
+The following commands also show interesting information about remote::
+
+  git remote show
+  git remote show remote_name
+  git branch -vv
 
 Push the commits in the "master" branch to "origin" with::
 
@@ -530,12 +631,16 @@ You can change the URL for remote "origin" with a command like::
 
   git remote set-url origin url
 
+You can remove a remote with::
+
+  git remote rm remote_name
+
 
 Working with branches
 ---------------------
 
 .. index::
-  pair: Git; branches
+  pair: Git; branch
   pair: Git; checkout
   pair: Git; rebase
   pair: Git; merge
@@ -557,7 +662,11 @@ Switch to branch named "branch_name" with::
 
   git checkout branch_name
 
-  git checkout -b branch_name # Creates the branch named "branch_name".
+  git checkout -b branch_name       # Creates the branch named "branch_name".
+
+  git checkout --orphan branch_name # Creates an orphan branch (Note that the
+                                    # files of the branch the orphan branch is
+                                    # started from are automatically staged).
 
 This of course raises the question of which naming scheme to use for the
 branches. `This Stack Overflow answer by Phil Hord helps.
@@ -592,6 +701,14 @@ commands::
 Rename the local branch named "old_name" to "new_name"::
 
   git branch -m old_name new_name
+
+Check out a file from another branch with a command like::
+
+  git checkout branch_name -- path/to/file
+
+To find the branch that contains a specific commit::
+
+  git branch -a --contains commit_hash
 
 
 Stashing changes
@@ -668,6 +785,7 @@ If you need to search a file based on its file name, you can use a command
 like::
 
   git ls-files "*abc*"
+  git ls-files -s "*abc*" # Search in staged files.
 
 
 Finding text patterns in the indexed files (or in any directory tree)
@@ -675,6 +793,8 @@ Finding text patterns in the indexed files (or in any directory tree)
 
 .. index::
   pair: Git; grep
+  pair: Git; log
+  pair: Git; for-each-ref
 
 Use commands like the following ones to search text patterns::
 
@@ -690,6 +810,13 @@ Use commands like the following ones to search text patterns::
   git grep --no-index <reg_exp> # Useful to search in a directory which is not
                                 # a Git repository.
 
+To search text in all branches, an option is to use the ``-p`` and ``-G`` (or
+``-S``) options of ``git log``, as explained in `this Stack Overflow answer by
+Edward Anderson <https://stackoverflow.com/a/26226807>`_. Another option is to
+do something like::
+
+  git grep pattern `git for-each-ref --format='%(refname)' refs/heads`
+
 
 Find the last modification date and author of any line of a file
 ----------------------------------------------------------------
@@ -703,11 +830,15 @@ file::
   git blame path/to/file
 
 
-Reverting the index and working directory to a previous commit
---------------------------------------------------------------
+Cancelling changes
+------------------
 
 .. index::
+  pair: Git; revert
   pair: Git; reset
+
+If you want to cancel changes before they have been pushed, the best option is
+probably ``git reset``.
 
 Revert the index and working directory to the last, penultimate, etc... commit
 with commands like::
@@ -717,6 +848,13 @@ with commands like::
   git reset --hard HEAD^^^
 
 Use with care, **changes to the working directory are discarded**.
+
+The Pro Git has a section with much more details about `git reset
+<https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified>`_.
+
+If you want to cancel changes after they have been pushed, the best option is
+probably ``git revert``. See the `documentation about git revert
+<https://git-scm.com/docs/git-revert>`_.
 
 
 .. _git_maintain_work_commit_diff:
@@ -947,8 +1085,11 @@ Hooks
 Assuming that:
 
 * You have a script "script-name" meant to be used as, say, a post-commit hook,
+
 * This script is located at the top level of the working tree,
+
 * The repository is in the standard ``.git`` subdirectory,
+
 * The current working directory is the top level of the working tree,
 
 you can install the hook with::
@@ -960,7 +1101,7 @@ Of course the script must be executable::
 
   chmod +x script-name
 
-The `Git hooks documentation
+The `Git hooks section of the Pro Git book
 <https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks>`_ lists the possible
 hooks.
 
@@ -979,6 +1120,7 @@ Also the GIT_INDEX_FILE environment variable must probably be unset::
 More details can be found at those locations:
 
 * https://stackoverflow.com/questions/7645480/why-doesnt-setting-git-work-tree-work-in-a-post-commit-hook
+
 * https://longair.net/blog/2011/04/09/missing-git-hooks-documentation/
 
 
@@ -987,22 +1129,33 @@ Submodules
 
 .. index::
   pair: Git; submodule
+  pair: Git; config
 
 You can add a repository as a submodule to your repository with a command
 like::
 
   git submodule add submodule_repository_url subdirectory
 
+You may want to specify which branch to track::
+
+  git config -f .gitmodules submodule.<submodule_name>.branch <branch_name>
+
 Update the submodules with::
 
+  git submodule init
   git submodule update --remote
+
+After cloning a repository with submodules, you also have to run
+``git submodule init`` and ``git submodule update --remote``.
 
 
 Other resources
 ---------------
 
 * `Git documentation <https://git-scm.com/docs>`_
+* `Pro Git book <https://git-scm.com/book/en/v2>`_
 * `Git cheat sheet <https://www.git-tower.com/blog/git-cheat-sheet>`_
+* `How to write a Git commit message <https://chris.beams.io/posts/git-commit>`_
 * `A Git branching model <https://nvie.com/posts/a-successful-git-branching-model>`_
 * `The Git Rebase Introduction I Wish I'd Had <https://dev.to/maxwell_dev/the-git-rebase-introduction-i-wish-id-had>`_
 * `git merge and git rebase: When to use? <https://delicious-insights.com/en/posts/getting-solid-at-git-rebase-vs-merge>`_
