@@ -17,6 +17,7 @@ Personal Notes
   ssh
   external_usb_drives
   git
+  sed
   sphinx
   reminder
   base16_color_schemes_xterm_and_vim
