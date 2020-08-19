@@ -279,7 +279,7 @@ Preventing the system from beeping
   pair: Kernel module; blacklisting
 
 The newly installed system may emit beeps quiet often (for example when working
-in a terminal emulator). To stop that, you can blacklist module pcspkr by
+in a terminal emulator). To stop that, you can blacklist module ``pcspkr`` by
 adding a file **as root** in ``/etc/modprobe.d`` (file name suggestion:
 ``nobeep.conf``). The file should contain this line::
 

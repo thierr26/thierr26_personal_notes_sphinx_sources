@@ -119,7 +119,7 @@ The ``gprconfig --config Ada --config C`` command should output something like:
 | *  5. GCC for C in /usr/local/bin/ version 8.3.0
 | Select or unselect the following compiler (or "s" to save):
 
-(Press Ctrl-C to exit without saving.)
+(Press Ctrl-c to exit without saving.)
 
 
 Configuring, building and installing XML/Ada

@@ -323,7 +323,7 @@ generated with (in this example, the file is called ``xlog.txt``)::
   Xorg -verbose 6 > xlog.txt 2>&1 # As root, on the guest.
 
 This gets you in Xorg with no way to exit. Use the "Send key" menu item of
-virt-viewer to send, say, "Ctrl+Alt+F3" and access a new console where you can
+virt-viewer to send, say, "Ctrl-Alt-F3" and access a new console where you can
 log in as root, find the process ID of Xorg with ``ps -ef|grep Xorg`` and kill
 Xorg with a ``kill <process_id>`` command.
 
