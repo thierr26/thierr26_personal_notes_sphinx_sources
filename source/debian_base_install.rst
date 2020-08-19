@@ -35,7 +35,7 @@ Getting an installation CD
   triple: Debian; stable; installer
   single: wget
   single: cdrskin
-  single: CD burning
+  pair: ISO image; burning
   single: dd
   single: stat
   single: sha512sum
@@ -213,6 +213,7 @@ Fixing the slow boot issue
   single: slow boot issue
   single: udevadm
   single: sed
+  single: update-initramfs
   single: /lib/udev/rules.d/60-persistent-storage.rules
   single: ATAPI
 
