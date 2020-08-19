@@ -193,15 +193,19 @@ repository is ``.git_build_html`` in the current directory::
 Cloning an existing repository
 ------------------------------
 
+
 Cloning to a new directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. index::
   pair: Git; clone
 
-Clone a repository to a new directory with::
+Clone a repository to a new directory with commands like::
 
   git clone repository_url
+  git clone user_name@repo.host:path/to/repo # scp-like syntax if you can use
+                                             # SSH to connect to the repository
+                                             # host.
 
 Force the name of the cloned repository by providing the name as a
 supplementary argument::
@@ -641,6 +645,8 @@ Working with branches
 
 .. index::
   pair: Git; branch
+  pair: Git; fetch
+  pair: Git; push
   pair: Git; checkout
   pair: Git; rebase
   pair: Git; merge
@@ -697,6 +703,15 @@ commands::
                             # merged.
 
   git branch -D branch_name # Deletes the branch even if it's not fully merged.
+
+After a branch deletion on origin, you probably need to do (locally)::
+
+  git fetch origin --prune
+  git branch --unset-upstream
+
+To push a branch to origin, do::
+
+  git push -u origin branch_name
 
 Rename the local branch named "old_name" to "new_name"::
 
