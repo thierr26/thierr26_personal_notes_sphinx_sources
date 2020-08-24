@@ -82,6 +82,8 @@ Installation
       pwgen \
       time \
       tree \
+      openconnect \
+      freerdp2-x11 \
       sakura # As root.
 
 .. list-table::
@@ -199,6 +201,13 @@ Installation
     - CPU resource usage measurement
   * - tree
     - Indented directory listing tool
+  * - openconnect
+    - Client for GlobalProtect VPN (among others)
+  * - freerdp2-x11
+    - X11 based Remote Desktop Protocol client (On Debian Buster, I have to
+      append options ``/relax-order-checks`` and ``+glyph-cache`` to the
+      ``xfreerdp`` command line. See
+      https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=954203#10.)
   * - sakura
     - Terminal emulator
 
