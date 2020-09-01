@@ -50,6 +50,11 @@ After installing Git, user name and e-mail address should be configured::
   git config --global user.name "My Name"
   git config --global user.email "my.id@example.com"
 
+If unfortunately you have done a commit with a wrong name and/or e-mail
+address, the following command may fix the problem::
+
+  git commit --amend --author="My Name <my.id@example.com>"
+
 You should probably also configure the action of the ``git push`` (without
 argument) command. Value ``simple`` `may be appropriate in most cases
 <https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushdefault>`_::
