@@ -72,6 +72,7 @@ Formatting the new partition
 ----------------------------
 
 .. index::
+  pair: formatting; ext4
   single: mkfs.ext4
   single: e2label
   single: partition label
@@ -96,6 +97,7 @@ FAT32 formatting
 -----------------
 
 .. index::
+  pair: formatting; FAT32
   single: mkfs.vfat
   single: dosfstools
   single: mlabel
@@ -116,3 +118,28 @@ is in package ``mtools``. You can install them with::
   apt-get install dosfstools mtools # As root.
 
 Chances are that ``dosfstools`` is already installed.
+
+
+NTFS formatting
+-----------------
+
+.. index::
+  pair: formatting; NTFS
+  single: mkfs.ntfs
+  single: ntfs-3g
+  single: ntfslabel
+  single: partition label
+
+For an NTFS formatting, the procedure is similar again.
+
+* In fdisk, choose partition type 7;
+* Format with ``mkfs.ntfs -L <label> /dev/sdb1`` (it takes a while, but you can
+  use option ``-f`` for faster execution);
+* Change label with ``ntfslabel /dev/sdb1 <label>`` (``ntfslabel /dev/sdb1`` to
+  show the label).
+
+On Debian GNU/Linux, ``mkfs.ntfs`` and ``ntfslabel`` are in package
+``ntfs-3g``. You can install it with the following command but chances are that
+it is already installed::
+
+  apt-get install ntfs-3g # As root.
