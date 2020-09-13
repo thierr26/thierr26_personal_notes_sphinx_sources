@@ -175,6 +175,7 @@ Disabling control flow
 
 .. index::
   single: control flow
+  single: stty
 
 You should probably disable control flow by adding this line to your
 ``~/.bashrc``::
