@@ -25,7 +25,7 @@ Base16_pop and base16_pico are two of my favorite Base16 schemes.
 
 You can see the list of the base16 schemes with this command::
 
-  alias | grep "^alias base16_"|sed "s/=.\+$//"
+  alias | grep "^alias base16_"|sed "s/=.\+$//"|sed "s/^.\+ //"
 
 As far as base16-vim is concerned, if it's the only color plugin you want
 installed and you don't use any plugin manager like `Pathogen
