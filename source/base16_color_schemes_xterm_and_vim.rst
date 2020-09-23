@@ -21,7 +21,15 @@ I also have this line in my ``~/.Xresources``:
 
 | XTerm*termName: xterm-256color
 
-Base16_pop and base16_pico are two of my favorite Base16 schemes.
+My favorite Base16 schemes are:
+
+* base16_pico
+
+* base16_atelier-forest
+
+* base16_cupertino
+
+* base16_pop
 
 You can see the list of the base16 schemes with this command::
 
