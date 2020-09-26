@@ -23,6 +23,9 @@ pages for them. Please see the :doc:`home page <index>`.
 Installation
 ------------
 
+.. index::
+  single: xfreerdp
+
 **As root**::
 
   apt-get install \
@@ -84,6 +87,7 @@ Installation
       tree \
       openconnect \
       freerdp2-x11 \
+      wireshark \
       sakura # As root.
 
 .. list-table::
@@ -208,6 +212,8 @@ Installation
       append options ``/relax-order-checks`` and ``+glyph-cache`` to the
       ``xfreerdp`` command line. See
       https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=954203#10.)
+  * - wireshark
+    - Network traffic analyzer
   * - sakura
     - Terminal emulator
 
@@ -547,3 +553,18 @@ check the `Signal official site <https://signal.org/download>`_)::
   echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" > /etc/apt/sources.list.d/signal-xenial.list
   apt-get install signal-desktop
   chmod 4755 /opt/Signal/chrome-sandbox
+
+
+Wireshark installation
+----------------------
+
+.. index::
+  single: Wireshark
+  single usermod
+
+When installing Wireshark on Debian, I choose to allow "normal" users that are
+members of the ``wireshark`` group to capture packets.
+
+You can add a user to group ``wireshark`` with a command like (**as root**)::
+
+  usermod -aG wireshark user_name # As root.
