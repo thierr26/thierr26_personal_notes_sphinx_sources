@@ -88,6 +88,9 @@ Installation
       openconnect \
       freerdp2-x11 \
       wireshark \
+      nmap \
+      openssh-server \
+      colortest \
       sakura # As root.
 
 .. list-table::
@@ -214,6 +217,12 @@ Installation
       https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=954203#10.)
   * - wireshark
     - Network traffic analyzer
+  * - nmap
+    - Network mapper
+  * - openssh-server
+    - Secure shell (SSH) server
+  * - colortest
+    - Terminal color test graphs
   * - sakura
     - Terminal emulator
 
