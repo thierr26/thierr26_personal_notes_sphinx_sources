@@ -91,6 +91,7 @@ Installation
       nmap \
       openssh-server \
       colortest \
+      mesa-utils \
       sakura # As root.
 
 .. list-table::
@@ -223,6 +224,8 @@ Installation
     - Secure shell (SSH) server
   * - colortest
     - Terminal color test graphs
+  * - mesa-utils
+    - glxgears and other programs
   * - sakura
     - Terminal emulator
 
