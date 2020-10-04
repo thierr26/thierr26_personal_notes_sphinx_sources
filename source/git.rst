@@ -788,6 +788,8 @@ Exploring the repository
 .. index::
   pair: Git; ls-tree
   pair: Git; ls-files
+  pair: Git; rev-parse
+  pair: Git; top level directory
 
 You can see the list of files and directories under version control in the
 current directory using::
@@ -805,7 +807,12 @@ If you need to search a file based on its file name, you can use a command
 like::
 
   git ls-files "*abc*"
-  git ls-files -s "*abc*" # Search in staged files.
+
+  git ls-files  \
+      $(git rev-parse --show-toplevel)/"*abc*" # Search from repository top
+                                               # directory.
+
+  git ls-files -s "*abc*"                      # Search in staged files.
 
 
 Finding text patterns in the indexed files (or in any directory tree)
