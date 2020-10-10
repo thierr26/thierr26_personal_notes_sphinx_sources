@@ -35,6 +35,17 @@ You can see the list of the base16 schemes with this command::
 
   alias | grep "^alias base16_"|sed "s/=.\+$//"|sed "s/^.\+ //"
 
+The following command is useful to choose a scheme. It traverses the list of
+schemes and switches every 3 seconds::
+
+  for SCHEME in $(alias \
+          | grep ^alias\ base16_|sed 's/=.\+$//'|sed "s/^.\+ //"|sed s/_/-/); \
+          do \
+      _base16 ~/.config/base16-shell/scripts/$SCHEME.sh ${SCHEME#base16-}; \
+      echo $SCHEME|sed s/-/_/; \
+      sleep 3; \
+   done;
+
 As far as base16-vim is concerned, if it's the only color plugin you want
 installed and you don't use any plugin manager like `Pathogen
 <https://github.com/tpope/vim-pathogen>`_ or `Vundle
