@@ -503,6 +503,6 @@ Post-install maintenance
 
 I regularly run the following commands to keep the system up to date::
 
-  apt-get update & apt-get dist-upgrade
+  apt-get update && apt-get dist-upgrade
   apt-get autoremove # Useful if some packages have become unneeded.
   apt-get autoclean  # Useful to avoid that the APT cache grows out of control.
