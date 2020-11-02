@@ -77,7 +77,7 @@ Installation
       pan \
       claws-mail \
       claws-mail-themes \
-      vim vim-pathogen \
+      vim \
       ifp-line-libifp \
       unaccent \
       psmisc \
@@ -193,8 +193,8 @@ Installation
     - Mail client (MH mailbox format)
   * - claws-mail-themes
     - Claws Mail themes
-  * - vim, vim-pathogen
-    - Vim text editor and Pathogen plugin
+  * - vim
+    - Vim text editor
   * - ifp-line-libifp
     - Tool to access iRiver iFP audio players
   * - unaccent
@@ -399,34 +399,17 @@ Vim
 ~~~
 
 .. index::
-  pair: Vim; Pathogen
-  pair: Vim; plugins
   pair: Vim; backup files
   pair: Vim; swap files
   pair: Vim; undo files
   single: ~/.vimrc
-  single: ~/.vim/bundle
   triple: Debian alternatives; update-alternatives options; --display
   triple: Debian alternatives; update-alternatives options; --config
 
-Clone favorite Vim plugins in Pathogen's bundle directory::
-
-  mkdir -p ~/.vim/bundle
-  cd ~/.vim/bundle
-  git clone https://github.com/tomtom/tcomment_vim.git
-  git clone https://github.com/kien/ctrlp.vim.git
-  git clone https://github.com/vim-scripts/a.vim.git
-  git clone https://github.com/dhruvasagar/vim-table-mode.git
-  git clone https://github.com/docunext/closetag.vim.git
-  git clone https://github.com/jlanzarotta/bufexplorer.git
-  git clone https://github.com/easymotion/vim-easymotion.git
-  git clone https://github.com/Yggdroot/indentLine.git
-  git clone https://github.com/jvirtanen/vim-octave.git
-  git clone https://github.com/chriskempson/base16-vim.git
-
-Check that ``/usr/bin/vim.gtk`` is the selected editor in the Debian
-alternatives system with ``update-alternatives --display editor`` (**as
-root**). If not, use ``update-alternatives --config editor`` (**as root**).
+Check that ``/usr/bin/vim.gtk`` is the selected editor in the `Debian
+alternatives system <https://wiki.debian.org/DebianAlternatives>`_ with
+``update-alternatives --display editor`` (**as root**). If not, use
+``update-alternatives --config editor`` (**as root**).
 
 Restore file ``~/.vimrc``.
 
@@ -542,8 +525,9 @@ This caused the following packages to be installed:
 * libindicator3-7
 
 I didn't want Google Chrome to be the default browser, so I reselected Firefox
-ESR in the Debian alternatives system with ``update-alternatives --config
-x-www-browser`` (**as root**).
+ESR in the `Debian alternatives system
+<https://wiki.debian.org/DebianAlternatives>`_ with ``update-alternatives
+--config x-www-browser`` (**as root**).
 
 I then tweaked Google Chrome's settings as for
 :ref:`Chromium <chromium_config>`.
