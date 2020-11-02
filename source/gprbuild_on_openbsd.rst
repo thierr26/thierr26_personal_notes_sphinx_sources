@@ -57,7 +57,7 @@ with OpenBSD" page <first_steps_with_openbsd>` for more details.
   pkg_add gmake # As root.
 
 Git should be installed as well. It makes cloning the GPRbuild and `XML/Ada
-<https://docs.adacore.com/xmlada-docs>`_ repositories much easier::
+<https://docs.adacore.com/xmlada-docs/index.html>`_ repositories much easier::
 
   pkg_add git # As root.
 
