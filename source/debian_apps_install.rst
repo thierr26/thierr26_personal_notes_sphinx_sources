@@ -547,6 +547,7 @@ check the `Signal official site <https://signal.org/download>`_)::
 
   wget https://updates.signal.org/desktop/apt/keys.asc -O - | apt-key add
   echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" > /etc/apt/sources.list.d/signal-xenial.list
+  apt-get update
   apt-get install signal-desktop
   chmod 4755 /opt/Signal/chrome-sandbox
 
