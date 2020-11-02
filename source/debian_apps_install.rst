@@ -92,6 +92,7 @@ Installation
       openssh-server \
       colortest \
       mesa-utils \
+      lm-sensors \
       sakura # As root.
 
 .. list-table::
@@ -226,6 +227,9 @@ Installation
     - Terminal color test graphs
   * - mesa-utils
     - glxgears and other programs
+  * - lm-sensors
+    - Utilities to read temperature/voltage/fan sensors (Run ``sensors-detect``
+      as root to configure and ``sensors`` to view a readout of the sensors.)
   * - sakura
     - Terminal emulator
 
