@@ -17,6 +17,7 @@ Personal Notes
   ssh
   external_usb_drives
   git
+  gnu_privacy_guard
   sed
   sphinx
   reminder
