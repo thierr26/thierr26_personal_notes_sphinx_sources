@@ -120,8 +120,7 @@ install, and including the authenticity verification of the archive)::
   wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/buster/current/SHA512SUMS
 
 I've checked the SHA512 checksum of ``firmware.tar.gz`` by issuing a
-``sha512sum firmware.tar.gz`` command and comparing the output with what is in
-SHA512SUMS.
+``sha512sum -c SHA512SUMS``.
 
 The final steps consisted in extracting the files from the firmware archive
 (``tar xvzf firmware.tar.gz``) and copy all the files with ``.deb`` extension

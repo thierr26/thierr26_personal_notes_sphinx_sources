@@ -189,4 +189,4 @@ GNU Privacy Guard
 Download the Windows version of `GNU Privacy Guard
 <https://en.wikipedia.org/wiki/GNU_Privacy_Guard>`_ from
 https://gpg4win.org/download.html and run the installation program. Right after
-install you can use ``gpg`` commands in the Windows command line.
+install you can issue ``gpg`` commands in the Windows command line.

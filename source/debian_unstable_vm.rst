@@ -157,7 +157,6 @@ Getting a Debian testing installer image
 .. index::
   triple: Debian; testing; installer
   single: wget
-  single: gpg
 
 Debian testing installer images are available for download and updated daily
 (for the small ("netinst") images at least).
