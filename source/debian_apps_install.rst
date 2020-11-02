@@ -254,12 +254,12 @@ Firefox ESR
   pair: Firefox ESR; default search engine
   single: DuckDuckGo
 
-At about:config, set browser.showQuitWarning to true.
+At about:config, set browser.warnOnQuit to true.
 
 At about:preferences#search, set DuckDuckGo as default search engine.
 
-At about:preferences#privacy, uncheck "Remember logins and passwords for
-websites.
+At about:preferences#privacy, uncheck "Ask to save logins and passwords for
+websites".
 
 
 .. _chromium_config:
