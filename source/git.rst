@@ -266,8 +266,8 @@ Making a repository shareable
 I've been once in a situation where I had a local repository tracking a `bare
 remote repository
 <http://www.saintsjd.com/2011/01/what-is-a-bare-git-repository/>`_ on the same
-Linux machine. The remote was initialized (``git init --bare ...``) by me (as a
-"normal" user). When other users on the machine have tried to push to the
+Linux machine. The remote had been initialized (``git init --bare ...``) by me
+(as a "normal" user). When other users on the machine have tried to push to the
 remote, they couldn't because they didn't have the permission and because the
 repository had not been configured to be shareable. We decided to create a
 group (called "develop" in the commands below) and to make sure the members of
