@@ -216,7 +216,7 @@ Fixing the slow boot issue
   single: /lib/udev/rules.d/60-persistent-storage.rules
   single: ATAPI
 
-One of my machines is affected by the
+A former machine of mine was affected by the
 `TSSTcorp <https://en.wikipedia.org/wiki/Toshiba_Samsung_Storage_Technology>`_
 CDDVDW `SH-S223C
 <https://www.newegg.com/samsung-model-sh-s223c-dvd-burner/p/N82E16827151192>`_
@@ -242,11 +242,9 @@ internet gives two solutions:
 
     sed -i '/ATAPI/,+1s/^/#/' /lib/udev/rules.d/60-persistent-storage.rules # As root.
 
-  I've been doing that for years without any issue.
-
 * Cancelling the rule for the SH-S223C only, as suggested in `Debian bug
-  #622340 <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=622340#43>`_.
-  That's what I'm doing now.
+  #622340 <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=622340#43>`_. This
+  is what I was doing.
 
 Note that the change to ``/lib/udev/rules.d/60-persistent-storage.rules`` and
 the regenration of the initramfs image have to be redone after each update of
