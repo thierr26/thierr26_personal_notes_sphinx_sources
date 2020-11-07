@@ -63,6 +63,26 @@ initialization produces output for non-interactive sessions. See the `OpenSSH
 FAQ (2.9) <http://lira.no-ip.org:8080/doc/openssh-client/faq.html#2.9>`_.
 
 
+Synchronizing directories over SSH with rsync
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  single: rsync
+
+I use a command like the following to synchronize my ``~/data`` directory on a
+remote machine with my ``~/data`` directory on the local machine::
+
+  rsync -aAXv --delete ~/data/ 192.168.122.250:data
+
+For a dry run, use option ``-n``::
+
+  rsync -n -aAXv --delete ~/data/ 192.168.122.250:data
+
+Check the `rsync documentation
+<https://download.samba.org/pub/rsync/rsync.1>`_. Rsync has a lot of options.
+You may, for example, prefer to use ``--update`` rather than ``--delete``.
+
+
 .. _sshd_configuration:
 
 Server configuration
