@@ -51,8 +51,8 @@ directory tree, clone  `the driver repository
 <https://github.com/jeremyb31/rtl8192eu-linux-driver>`_ and change directory to
 the cloned repository::
 
-  mkdir -p ~/drivers
-  cd ~/drivers
+  mkdir -p ~/local_builds
+  cd ~/local_builds
   git clone https://github.com/jeremyb31/rtl8192eu-linux-driver.git
   cd rtl8192eu-linux-driver
 
