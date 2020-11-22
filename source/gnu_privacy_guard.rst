@@ -71,6 +71,24 @@ account::
 ``gpg-agent`` is restarted automatically by GPG when needed.
 
 
+Deleting a key without confirmation prompt
+------------------------------------------
+
+.. index::
+  pair: gpg; batch mode
+
+I have once mistakenly imported a whole keyring. The ``--delete-key`` option of
+GPG makes it possible to delete a key::
+
+  gpg --delete-key <key_id>
+
+But this prompts you for confirmation. If you want to run a big number of such
+commands (in a script), you may not want to be prompted for confirmation. Use
+the ``--batch --yes`` options for that::
+
+  gpg --batch --yes --delete-key <key_id>
+
+
 .. _tutonics_gpg_encryption_guide_links:
 
 Other resources
