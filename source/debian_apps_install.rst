@@ -219,7 +219,9 @@ Installation
     - X11 based Remote Desktop Protocol client (On Debian Buster, I have to
       append options ``/relax-order-checks`` and ``+glyph-cache`` to the
       ``xfreerdp`` command line. See
-      https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=954203#10.)
+      https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=954203#10. My command
+      line is like: ``xfreerdp +glyph-cache /relax-order-checks /u:my_user_name
+      /v:my.server /kbd:0x40c /f``)
   * - wireshark
     - Network traffic analyzer
   * - nmap
