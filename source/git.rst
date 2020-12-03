@@ -459,6 +459,10 @@ options can help.
 * `Documentation for git diff -G option
   <https://git-scm.com/docs/git-diff#Documentation/git-diff.txt--Gltregexgt>`_.
 
+If you want to see only the names of the changed files, do::
+
+  git diff --name-only 42b9c3b a92c02a # Shows names of changed files only.
+
 
 Committing
 ----------
