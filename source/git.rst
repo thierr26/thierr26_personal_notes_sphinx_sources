@@ -85,6 +85,11 @@ The credentials are stored in ``~/.git-credentials``. **They are not
 encrypted**, so check that only you have read permission on that file (if this
 is not the case, issue a ``chmod 600 ~/.git-credentials`` command).
 
+Alternatively, you can use the "cache" credential helper. The following command
+causes Git to cache the credentials for 20 minutes (1200 seconds)::
+
+  git config --global credential.helper 'cache --timeout 1200'
+
 
 .. _git_aliases:
 
