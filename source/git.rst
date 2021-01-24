@@ -773,6 +773,10 @@ Inspect a stash entry with a command like one of the following::
   git stash show stash@{0}
   git stash show -p stash@{0} # Produces a patch-like output.
 
+Extract changes for a specific files from the stash with a command like::
+
+  git checkout stash@{0} -- path/to/file
+
 Remove an entry from the stash stack and apply the changes to the working tree
 with a command like::
 
