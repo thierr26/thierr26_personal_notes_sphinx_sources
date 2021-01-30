@@ -259,7 +259,11 @@ Firefox ESR
   pair: Firefox ESR; default search engine
   single: DuckDuckGo
 
-At about:config, set browser.warnOnQuit to true.
+At about:config, set the following options to true:
+  * browser.sessionstore.warnOnQuit
+  * browser.tabs.warnOnClose
+  * browser.tabs.warnOnCloseOtherTabs
+  * browser.warnOnQuit
 
 At about:preferences#search, set DuckDuckGo as default search engine.
 
