@@ -94,6 +94,7 @@ Installation
       colortest \
       mesa-utils \
       lm-sensors \
+      zbar-tools \
       sakura # As root.
 
 .. list-table::
@@ -235,6 +236,8 @@ Installation
   * - lm-sensors
     - Utilities to read temperature/voltage/fan sensors (Run ``sensors-detect``
       as root to configure and ``sensors`` to view a readout of the sensors.)
+  * - zbar-tools
+    - Bar code / QR-code related utilities
   * - sakura
     - Terminal emulator
 
@@ -260,10 +263,11 @@ Firefox ESR
   single: DuckDuckGo
 
 At about:config, set the following options to true:
-  * browser.sessionstore.warnOnQuit
-  * browser.tabs.warnOnClose
-  * browser.tabs.warnOnCloseOtherTabs
-  * browser.warnOnQuit
+
+* browser.sessionstore.warnOnQuit
+* browser.tabs.warnOnClose
+* browser.tabs.warnOnCloseOtherTabs
+* browser.warnOnQuit
 
 At about:preferences#search, set DuckDuckGo as default search engine.
 
@@ -546,23 +550,78 @@ I then tweaked Google Chrome's settings as for
 :ref:`Chromium <chromium_config>`.
 
 
-Signal (instant messaging system) installation
-----------------------------------------------
+signal-desktop installation and linking to a "dumb phone"
+---------------------------------------------------------
 
 .. index::
-  single: Signal
+  single: signal-desktop
+  single: signal-cli
+  single: zbarimg
   single: wget
   single: apt-key
   single: /etc/apt/sources.list.d
 
-Here are the commands I issued (**as root**) to install Signal (you may want to
-check the `Signal official site <https://signal.org/download>`_)::
+Here are the commands I issued (**as root**) to install signal-desktop (you may
+want to check the `Signal official site <https://signal.org/download>`_)::
 
   wget https://updates.signal.org/desktop/apt/keys.asc -O - | apt-key add
-  echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" > /etc/apt/sources.list.d/signal-xenial.list
+  echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" \
+      > /etc/apt/sources.list.d/signal-xenial.list
   apt-get update
   apt-get install signal-desktop
   chmod 4755 /opt/Signal/chrome-sandbox
+
+The rest of this section is largely taken from the `"How to install and use
+Signal messenger without a smartphone" ctrl.alt.coop page
+<https://ctrl.alt.coop/en/post/signal-without-a-smartphone>`_.
+
+If your phone is not able to read `QR codes
+<https://en.wikipedia.org/wiki/QR_code>`_ (like my "dumb phone"), you can link
+it using `signal-cli <https://github.com/AsamK/signal-cli>`_. You will also
+need a QR code decoder program. zbarimg (provided by Debian package zbar-tools)
+is an example of such a program.
+
+First, download signal-cli (as a normal user, and check the latest version
+number on `<https://github.com/AsamK/signal-cli/releases>`_)::
+
+  cd ~/Downloads
+  wget https://github.com/AsamK/signal-cli/releases/download/v0.7.4/signal-cli-0.7.4.tar.gz
+
+Then install it **as root**::
+
+  cd /opt
+  tar -xvf /home/<username>/Downloads/signal-cli-0.7.4.tar.gz
+
+Then, as a normal user (substitute +336xxxxxxxx with your real phone number)::
+
+  # Request a verification code (you'll receive it in an SMS).
+  /opt/signal-cli-0.7.4/bin/signal-cli -u +336xxxxxxxx register
+
+  # Verify your account.
+  /opt/signal-cli-0.7.4/bin/signal-cli \
+      -u +336xxxxxxxx verify <verification_code_received_by_sms>
+
+  # Launch signal-desktop.
+  signal-desktop &
+
+You're presented with a QR code. You need to save the QR code image to a file
+(say, ~/qr.png):
+
+* Open developer tools (menu View | Toggle Developer Tools).
+* Go to Network tab.
+* Click All.
+* Type "data:image/png" in the filter text box.
+* Hit Ctrl-R if you don't see any "data:image/png" entry appear.
+* Click the "data:image/png" entry.
+* Save the image (right click on it, save to ~/qr.png).
+
+Finally, use zbarimg to extract the tsdevice link and link your computer with
+your phone::
+
+  zbarimg ~/qr.png 2>/dev/null|head -1|sed "s/^[^:]\+://"
+
+  /opt/signal-cli-0.7.4/bin/signal-cli -u +336xxxxxxxx \
+    addDevice --uri "<tsdevice_link>"
 
 
 Wireshark installation
