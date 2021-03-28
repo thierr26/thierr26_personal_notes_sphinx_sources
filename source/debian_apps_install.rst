@@ -637,3 +637,24 @@ When installing Wireshark (Debian package wireshark), I choose to allow
 You can add a user to group ``wireshark`` with a command like (**as root**)::
 
   usermod -aG wireshark user_name # As root.
+
+
+Session for desktop installation
+--------------------------------
+
+.. index::
+  single: Session
+
+Here is how I currently install and use Session for desktop. I download the
+Appimage file for Linux from https://www.getsession.org/linux and place it
+in my home directory. Then I give the file executable permission with a command
+like::
+
+  chmod +x session-desktop-linux-x86_64-1.5.2.AppImage
+
+I launch Session for desktop with a command like::
+
+  session-desktop-linux-x86_64-1.5.2.AppImage --no-sandbox &
+
+(See https://github.com/oxen-io/session-desktop/issues/1418 for a discussion
+about the use of the ``--no-sandbox`` flag).
