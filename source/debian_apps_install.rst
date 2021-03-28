@@ -631,8 +631,8 @@ Wireshark installation
   single: Wireshark
   single usermod
 
-When installing Wireshark on Debian, I choose to allow "normal" users that are
-members of the ``wireshark`` group to capture packets.
+When installing Wireshark (Debian package wireshark), I choose to allow
+"normal" users that are members of the ``wireshark`` group to capture packets.
 
 You can add a user to group ``wireshark`` with a command like (**as root**)::
 
