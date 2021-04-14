@@ -259,16 +259,16 @@ The ``cdown`` command (provided by package ``cdtool`` on a Debian GNU/Linux
 system) queries the `CDDB <https://en.wikipedia.org/wiki/CDDB>`_ database. Just
 insert the Audio CD in your optical drive and run::
 
-  cdown
+  cdown -H gnudb.gnudb.org -P 8880
 
 If you need to specify the device for the optical drive, use the ``-d``
 switch::
 
-  cdown -d /dev/sr1
+  cdown -H gnudb.gnudb.org -P 8880 -d /dev/sr1
 
 If you have issues with accented letters, try::
 
-  cdown|iconv -f latin1
+  cdown -H gnudb.gnudb.org -P 8880|iconv -f latin1
 
 Alternatively, you can search your audio CD directly on the `freedb.org
 <http://www.freedb.org>`_ website.
