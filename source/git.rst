@@ -663,6 +663,7 @@ Working with branches
   pair: Git; push
   pair: Git; checkout
   pair: Git; rebase
+  pair: Git; commit
   pair: Git; merge
   pair: Git; fast-forward
   pair: Git; squash
@@ -692,9 +693,29 @@ This of course raises the question of which naming scheme to use for the
 branches. `This Stack Overflow answer by Phil Hord helps.
 <https://stackoverflow.com/questions/273695/what-are-some-examples-of-commonly-used-practices-for-naming-git-branches/6065944#6065944>`_
 
-Rebase current branch on the latest commit of branch "master" with::
+Working with branches, you inevitably have to do some merging (using the ``git
+merge`` command) or rebasing (using the ``git rebase`` command). Rebasing is
+not always easy. I found `this article by Chris Jones
+<https://www.viget.com/articles/how-to-fix-your-git-branches-after-a-rebase>`_
+very enlightening, with a clear explanation of the ``--onto`` option of ``git
+rebase``.
 
-  git rebase master
+I usually use ``git rebase`` in commands like the following ones. See
+`Filippo Vasorda's post
+<https://blog.filippo.io/git-fixup-amending-an-older-commit>`_ for explanations
+about the ``git commit --fixup`` / ``git rebase`` combination)::
+
+  git rebase branch_name                 # Rebases the current branch on the
+                                         # latest commit of branch
+                                         # "branch_name".
+
+  git rebase --onto branch_name old_base # "Moves" the commits of the current
+                                         # branch (starting with the commit
+                                         # following "old_base") to the "top"
+                                         # of "branch_name".
+
+  git commit --fixup=target_commit \
+      && git rebase -i -autosquash commit_before_target_commit
 
 Merge the branch named "branch_name" into the current branch with one of the
 following commands::
@@ -1206,7 +1227,7 @@ Other resources
 * `Git cheat sheet <https://www.git-tower.com/blog/git-cheat-sheet>`_
 * `How to write a Git commit message <https://chris.beams.io/posts/git-commit>`_
 * `A Git branching model <https://nvie.com/posts/a-successful-git-branching-model>`_
-* `The Git Rebase Introduction I Wish I'd Had <https://dev.to/maxwell_dev/the-git-rebase-introduction-i-wish-id-had>`_
-* `git merge and git rebase: When to use? <https://delicious-insights.com/en/posts/getting-solid-at-git-rebase-vs-merge>`_
+* `How to fix your Git branches after a rebase <https://www.viget.com/articles/how-to-fix-your-git-branches-after-a-rebase>`_
+* `git fixup: --amend for older commits <https://blog.filippo.io/git-fixup-amending-an-older-commit>`_
 * `Git: To squash or not to squash? <https://jamescooke.info/git-to-squash-or-not-to-squash.html>`_
 * `Git Submodules <https://blog.github.com/2016-02-01-working-with-submodules>`_
