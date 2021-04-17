@@ -684,7 +684,7 @@ Switch to branch named "branch_name" with::
 
   git checkout -b branch_name       # Creates the branch named "branch_name".
 
-  git checkout --orphan branch_name # Creates an orphan branch (Note that the
+  git checkout --orphan branch_name # Creates an orphan branch (note that the
                                     # files of the branch the orphan branch is
                                     # started from are automatically staged).
 
