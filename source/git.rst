@@ -636,10 +636,14 @@ If you have multiple remotes, you can fetch them all with::
 
   git fetch --all
 
-The following command downloads changes from "origin" for branch "master" and
-merges the changes into the local repository::
+The following commands fetch changes from the given repository for branch
+"master" and merges the changes into the local repository::
 
-  git pull origin master
+  git pull origin master                   # Download from remote named
+                                           # "origin".
+
+  git pull <repository_url_or_path> master # Specify the repository using an
+                                           # URL or a directory path.
 
 You can list the URLs for remote "origin" with::
 
