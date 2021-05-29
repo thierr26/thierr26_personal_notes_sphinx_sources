@@ -21,7 +21,7 @@ Introduction
 
 This page describes how I could build `GPRbuild (the project manager of the
 GNAT toolchain)
-<https://learn.adacore.com/courses/GNAT_Toolchain_Intro/chapters/gprbuild.html>`_.
+<https://learn.adacore.com/courses/GNAT_Toolchain_Intro/chapters/gprbuild.html>`_
 from source on `OpenBSD <https://www.openbsd.org>`_ 6.6.
 
 The process is documented in the `GPRbuild GitHub repository
