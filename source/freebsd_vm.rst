@@ -47,7 +47,7 @@ needed for the verification::
 
 Then I do the verification with::
 
-  sha512sum -c CHECKSUM.SHA512-FreeBSD-12.1-RELEASE-amd64 FreeBSD-12.1-RELEASE-amd64-bootonly.iso
+  sha512sum -c --ignore-missing CHECKSUM.SHA512-FreeBSD-12.1-RELEASE-amd64
 
 
 Creating the FreeBSD virtual machine

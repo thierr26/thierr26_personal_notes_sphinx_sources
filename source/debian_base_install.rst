@@ -87,7 +87,7 @@ produces a line like
 
 When the burning is done, you might also want to check the integrity of the
 burned CD. Just compare the output of the following command with the checksum
-from the downloaded checksum file::
+from the downloaded checksum file as provided in file SHA512SUMS::
 
   dd if=/dev/<cd_burning_drive_device_file> bs=2048 \
     count=$(($(stat -c %s debian-10.0.0-amd64-netinst.iso)/2048)) \
@@ -118,9 +118,13 @@ install, and including the authenticity verification of the archive)::
   # file.
   wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/buster/current/firmware.tar.gz
   wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/buster/current/SHA512SUMS
+  wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/buster/current/SHA512SUMS.sign
 
 I've checked the SHA512 checksum of ``firmware.tar.gz`` by issuing a
-``sha512sum -c SHA512SUMS``.
+``sha512sum -c --ignore-missing SHA512SUMS``.
+
+I've checked the signature by issuing a ``gpg --verify SHA512SUMS.sign``
+command.
 
 The final steps consisted in extracting the files from the firmware archive
 (``tar xvzf firmware.tar.gz``) and copy all the files with ``.deb`` extension
