@@ -95,6 +95,7 @@ Installation
       mesa-utils \
       lm-sensors \
       zbar-tools \
+      hexedit \
       sakura # As root.
 
 .. list-table::
@@ -238,6 +239,8 @@ Installation
       as root to configure and ``sensors`` to view a readout of the sensors.)
   * - zbar-tools
     - Bar code / QR-code related utilities
+  * - hexedit
+    - Hexadecimal editor
   * - sakura
     - Terminal emulator
 
