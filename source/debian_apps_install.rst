@@ -89,6 +89,7 @@ Installation
       openconnect \
       freerdp2-x11 \
       wireshark \
+      tcpdump \
       nmap \
       openssh-server \
       colortest \
@@ -225,7 +226,9 @@ Installation
       line is like: ``xfreerdp +glyph-cache /relax-order-checks /u:my_user_name
       /v:my.server /kbd:0x40c /f``)
   * - wireshark
-    - Network traffic analyzer
+    - Graphical network traffic analyzer
+  * - tcpdump
+    - Command-line network traffic analyzer
   * - nmap
     - Network mapper
   * - openssh-server
