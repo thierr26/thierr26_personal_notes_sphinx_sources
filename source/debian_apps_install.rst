@@ -29,7 +29,7 @@ Installation
 **As root**::
 
   apt-get install \
-      firefox-esr \
+      firefox-esr midori \
       grip \
       webext-ublock-origin \
       w3m \
@@ -101,8 +101,8 @@ Installation
 
 .. list-table::
 
-  * - firefox-esr
-    - Graphical Web browser
+  * - firefox-esr, midori
+    - Graphical Web browsers
   * - grip
     - Server application to render local markdown files
   * - webext-ublock-origin
