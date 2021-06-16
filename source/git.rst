@@ -464,9 +464,25 @@ options can help.
 * `Documentation for git diff -G option
   <https://git-scm.com/docs/git-diff#Documentation/git-diff.txt--Gltregexgt>`_.
 
+If you don't want to see the lines changed by the addition or the removal of
+whites spaces only, use option ``-w`` (equivalent to ``--ignore-all-space``)::
+
+  git diff -w
+
 If you want to see only the names of the changed files, do::
 
   git diff --name-only 42b9c3b a92c02a # Shows names of changed files only.
+
+The output of a ``git diff`` command is a patch that can be used as input to
+the ``git apply`` command::
+
+  git diff > my_patch
+  git apply my_patch
+
+A patch may be applicable or not. Use the ``--check`` option of ``git apply``
+to see if the patch is applicable or not::
+
+  git apply --check my_patch
 
 
 Committing
@@ -504,6 +520,7 @@ replaces the previous commit. Use the ``--amend`` option to create the new
 commit::
 
   git commit --amend
+  git commit --amend --no-edit # Reuse existing commit message.
 
 By default, you can't do a commit that does not change anything in the tree (an
 "empty" commit) and you can't do a commit without a commit message. If you
@@ -1232,6 +1249,7 @@ Other resources
 * `How to write a Git commit message <https://chris.beams.io/posts/git-commit>`_
 * `A Git branching model <https://nvie.com/posts/a-successful-git-branching-model>`_
 * `How to fix your Git branches after a rebase <https://www.viget.com/articles/how-to-fix-your-git-branches-after-a-rebase>`_
+* `Getting solid at Git rebase vs. merge <https://delicious-insights.com/en/posts/getting-solid-at-git-rebase-vs-merge>`_
 * `git fixup: --amend for older commits <https://blog.filippo.io/git-fixup-amending-an-older-commit>`_
 * `Git: To squash or not to squash? <https://jamescooke.info/git-to-squash-or-not-to-squash.html>`_
 * `Git Submodules <https://blog.github.com/2016-02-01-working-with-submodules>`_
