@@ -65,6 +65,7 @@ Installation
       libxmlada-dom8-dev libxmlada-input8-dev libxmlada-sax8-dev \
       libxmlada-schema8-dev libxmlada-unicode8-dev \
       libgtkada-bin libgtkada-doc libgtkada18 libgtkada18-dev \
+      gdb gdb-doc gdbserver \
       valgrind \
       lcov \
       libncurses5 \
@@ -167,10 +168,12 @@ Installation
     - Ada programming tools
   * - ada-reference-manual-2012
     - Ada 2012 reference manual
-  * - libxmlada-dom8-dev libxmlada-input8-dev libxmlada-sax8-dev
-      libxmlada-schema8-dev libxmlada-unicode8-dev libgtkada-bin libgtkada-doc
-      libgtkada18 libgtkada18-dev
+  * - libxmlada-dom8-dev, libxmlada-input8-dev, libxmlada-sax8-dev,
+      libxmlada-schema8-dev, libxmlada-unicode8-dev,
+      libgtkada-bin libgtkada-doc, libgtkada18, libgtkada18-dev
     - Ada libraries (XML/Ada and GtkAda)
+  * - gdb, gdb-doc, gdbserver
+    - GNU debugger (including remote server)
   * - valgrind
     - Program profiling tools
   * - lcov
