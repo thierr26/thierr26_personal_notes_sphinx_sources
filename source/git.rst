@@ -55,16 +55,31 @@ address, the following command may fix the problem::
 
   git commit --amend --author="My Name <my.id@example.com>"
 
-You should probably also configure the action of the ``git push`` (without
-argument) command. Value ``simple`` `may be appropriate in most cases
-<https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushdefault>`_::
-
-  git config --global push.default simple
-
 You may also want to specify the editor to be used for commit messages or tag
 messages editor. Example with editor Vim::
 
   git config --global core.editor "vim"
+
+You should probably also configure the actions of the ``git push`` and ``git
+pull`` commands, as well as the default branch name.
+
+For ``git push``::
+
+  git config --global push.default simple
+
+(See the `Git push documentation
+<https://git-scm.com/docs/git-config#Documentation/git-config.txt-pushdefault>`_).
+
+For ``git pull``::
+
+  git config --global pull.ff only
+
+(See this `tip by Sal Ferrarello
+<https://salferrarello.com/git-warning-pulling-without-specifying-how-to-reconcile-divergent-branches-is-discouraged>`_).
+
+For the default branch name::
+
+  git config --global init.defaultBranch master
 
 You can see your Git configuration with::
 
