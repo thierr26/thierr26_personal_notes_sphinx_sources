@@ -177,39 +177,6 @@ Perform nmh user installation with::
 
   /usr/bin/mh/install-mh
 
-Here's the quote of my ``install-mh`` session:
-
-| Do you want help? yes
-|
-| Prior to using nmh, it is necessary to have a file in your login
-| directory (/home/my_user_name) named .mh_profile which contains information
-| to direct certain nmh operations.  The only item which is required
-| is the path to use for all nmh folder operations.  The suggested nmh
-| path for you is /home/my_user_name/Mail...
-|
-| You already have the standard nmh directory "/home/my_user_name/Mail".
-| Do you want to use it for nmh? yes
-| [Using existing directory]
-|
-| Please see the nmh(7) man page for an introduction to nmh.
-|
-| Send bug reports, questions, suggestions, and patches to
-| nmh-workers@nongnu.org.  That mailing list is relatively quiet, so user
-| questions are encouraged.  Users are also encouraged to subscribe, and
-| view the archives, at ``http://lists.gnu.org/mailman/listinfo/nmh-workers``
-|
-| If problems are encountered with an nmh program, they should be
-| reported to the local maintainers of nmh, if any, or to the mailing
-| list noted above.  When doing this, the name of the program should be
-| reported, along with the version information for the program.
-|
-| To find out what version of an nmh program is being run, invoke the
-| program with the -version switch.  This prints the version of nmh, the
-| host it was compiled on, and the date the program was linked.
-|
-| New releases and other information of potential interest are announced
-| at http://www.nongnu.org/nmh/ .
-
 
 Retrieving mails
 ----------------
