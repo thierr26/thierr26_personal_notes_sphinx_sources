@@ -58,9 +58,9 @@ Use the ``scp`` command. Examples::
   scp file_on_local_machine username@192.168.122.250:/path/on/remote
   scp username@192.168.122.250:/path/on/remote/my_file path/on/local
 
-If ``scp`` doesn't work as expected or hangs, It could be because shell
-initialization produces output for non-interactive sessions. See the `OpenSSH
-FAQ (2.9) <http://lira.no-ip.org:8080/doc/openssh-client/faq.html#2.9>`_.
+**Make sure the shell initialization (.profile, .bashrc, etc...) doesn't
+produce output for non-interactive sessions**, otherwise ``scp`` does not work
+properly.
 
 
 Synchronizing directories over SSH with rsync
