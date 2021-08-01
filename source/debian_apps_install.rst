@@ -60,7 +60,7 @@ Installation
       evince \
       catdoc \
       octave \
-      gnat libaunit18-dev gnat-gps \
+      gnat gprbuild libaunit18-dev \
       ada-reference-manual-2012 \
       libxmlada-dom8-dev libxmlada-input8-dev libxmlada-sax8-dev \
       libxmlada-schema8-dev libxmlada-unicode8-dev \
@@ -164,7 +164,7 @@ Installation
     - Text extractor for MS-Office files
   * - octave
     - GNU Octave language (similar to Matlab)
-  * - gnat, libaunit18-dev, gnat-gps
+  * - gnat, gprbuild, libaunit18-dev
     - Ada programming tools
   * - ada-reference-manual-2012
     - Ada 2012 reference manual
