@@ -27,7 +27,9 @@ Dir.glob(path + "/**/*.html").each do |html_file|
 
     generator_mention_children \
         = doc.xpath('//div[@class="footer" and @role="contentinfo"]' \
-                    '/div[@class="generator_mention"]').children
+                    '/div[@class="generator_mention"]').children[0, 3]
+    doc.xpath('//div[@class="footer" and @role="contentinfo"]' \
+              '/div[@class="generator_mention"]').children[3...].remove
     generator_mention_children.first.replace \
         "Static website built using "
     generator_mention_children.last.replace \
@@ -38,8 +40,8 @@ Dir.glob(path + "/**/*.html").each do |html_file|
 
     footer_children \
         = doc.xpath('//div[@class="footer" and @role="contentinfo"]').children
-    footer_children_first=footer_children.first.to_s.sub("Thierry Rascle", \
-        "<a class=\"reference internal\" href=\"about.html\">"\
+    footer_children_first=footer_children.first.to_s.sub(" Thierry Rascle", \
+        " <a class=\"reference internal\" href=\"about.html\">"\
         "<span class=\"doc\">"\
         "Thierry Rascle"\
         "</span></a>")
