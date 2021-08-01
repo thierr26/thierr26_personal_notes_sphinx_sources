@@ -14,10 +14,11 @@ Nu HTML Checker
 Introduction
 ------------
 
-You can install the `Nu HTML Checker <https://validator.w3.org/nu/>`_ on your
-machine. It makes it possible to validate HTML files locally. This page gives
-the actions I had to take to install the Nu HTML Checker and shows how to use
-it (command line use only).
+This page gives the actions I had to take to install the Nu HTML Checker on a
+Debian GNU/Linux 10 (Buster) machine and shows how to use it (command line use
+only).
+
+This page is **not valid for Debian GNU/Linux 11 (Bullseye)**.
 
 
 Installation
