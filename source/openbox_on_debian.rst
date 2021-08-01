@@ -29,7 +29,7 @@ Installation
 I install `X.Org X Window System <https://www.x.org>`_ and Openbox with the
 following command (**as root**)::
 
-  apt-get install xorg openbox obmenu openbox-menu menu # As root.
+  apt-get install xorg openbox openbox-menu menu # As root.
 
 Then an unprivileged user can start Openbox with::
 

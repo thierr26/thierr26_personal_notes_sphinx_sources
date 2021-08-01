@@ -30,7 +30,6 @@ Installation
 
   apt-get install \
       firefox-esr midori \
-      grip \
       webext-ublock-origin \
       w3m \
       chromium \
@@ -105,8 +104,6 @@ Installation
 
   * - firefox-esr, midori
     - Graphical Web browsers
-  * - grip
-    - Server application to render local markdown files
   * - webext-ublock-origin
     - Ads, malware, trackers blocker
   * - w3m
