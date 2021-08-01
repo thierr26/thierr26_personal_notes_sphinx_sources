@@ -80,7 +80,6 @@ Installation
       claws-mail \
       claws-mail-themes \
       vim \
-      ifp-line-libifp \
       unaccent \
       psmisc \
       sudo \
@@ -205,8 +204,6 @@ Installation
     - Claws Mail themes
   * - vim
     - Vim text editor
-  * - ifp-line-libifp
-    - Tool to access iRiver iFP audio players
   * - unaccent
     - Tool to replace accented letters by unaccented equivalent
   * - psmisc
@@ -496,33 +493,6 @@ Sakura
   single: Sakura
 
 Set font to Inconsolata Medium 12.
-
-
-Privilege escalation for use of ifp-line-libifp
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. index::
-  single: sudo
-  single: visudo
-  single: iRiver iFP audio player
-  single: ifp-line
-  single: ifp-line-libifp
-  single: /etc/sudoers
-  single: alias
-  single: ~/.bash_aliases
-
-Use ``visudo`` to add a line in ``/etc/sudoers``. This line allows any user to
-execute ``/usr/bin/ifp`` without password. See `my /etc/sudoers file
-<https://github.com/thierr26/thierr26_config_files/blob/master/system_config/etc/sudoers>`_.
-
-Run ``ifp`` with ``sudo``::
-
-  sudo ifp ls
-
-An alias can come in handy (see `my ~/.bash_aliases file
-<https://github.com/thierr26/thierr26_config_files/blob/master/.bash_aliases>`_)::
-
-  alias ifp='sudo ifp'
 
 
 Google Chrome installation
