@@ -54,4 +54,4 @@ following commands::
 
   cd ~/.vim
   git clone https://github.com/chriskempson/base16-vim
-  ln -s base16-vim/colors colors
+  ln -s base16-vim/colors
