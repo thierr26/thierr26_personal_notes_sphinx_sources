@@ -385,19 +385,6 @@ If the configuration is not correct, you can change it **as root** with::
   dpkg-reconfigure tzdata # As root.
 
 
-Synchronizing the system date with network time servers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. index::
-  single: Network Time Protocol (NTP)
-
-Just install package ``ntp``::
-
-  apt-get install ntp # As root.
-
-See the `Debian Wiki NTP page <https://wiki.debian.org/NTP>`_ for more details.
-
-
 Installing a console locker
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
