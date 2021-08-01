@@ -59,11 +59,11 @@ Installation
       evince \
       catdoc \
       octave \
-      gnat gprbuild libaunit18-dev \
+      gnat gprbuild libaunit20-dev \
       ada-reference-manual-2012 \
-      libxmlada-dom8-dev libxmlada-input8-dev libxmlada-sax8-dev \
-      libxmlada-schema8-dev libxmlada-unicode8-dev \
-      libgtkada-bin libgtkada-doc libgtkada18 libgtkada18-dev \
+      libxmlada-dom10-dev libxmlada-input10-dev libxmlada-sax10-dev \
+      libxmlada-schema10-dev libxmlada-unicode10-dev \
+      libgtkada-bin libgtkada-doc libgtkada20 libgtkada20-dev \
       gdb gdb-doc gdbserver \
       valgrind \
       lcov \
@@ -162,13 +162,13 @@ Installation
     - Text extractor for MS-Office files
   * - octave
     - GNU Octave language (similar to Matlab)
-  * - gnat, gprbuild, libaunit18-dev
+  * - gnat, gprbuild, libaunit20-dev
     - Ada programming tools
   * - ada-reference-manual-2012
     - Ada 2012 reference manual
-  * - libxmlada-dom8-dev, libxmlada-input8-dev, libxmlada-sax8-dev,
-      libxmlada-schema8-dev, libxmlada-unicode8-dev,
-      libgtkada-bin libgtkada-doc, libgtkada18, libgtkada18-dev
+  * - libxmlada-dom10-dev, libxmlada-input10-dev, libxmlada-sax10-dev,
+      libxmlada-schema10-dev, libxmlada-unicode10-dev,
+      libgtkada-bin libgtkada-doc, libgtkada20, libgtkada20-dev
     - Ada libraries (XML/Ada and GtkAda)
   * - gdb, gdb-doc, gdbserver
     - GNU debugger (including remote server)
