@@ -426,7 +426,7 @@ Vim
   triple: Debian alternatives; update-alternatives options; --display
   triple: Debian alternatives; update-alternatives options; --config
 
-Check that ``/usr/bin/vim.gtk`` is the selected editor in the `Debian
+Check that ``/usr/bin/vim.gtk3`` is the selected editor in the `Debian
 alternatives system <https://wiki.debian.org/DebianAlternatives>`_ with
 ``update-alternatives --display editor`` (**as root**). If not, use
 ``update-alternatives --config editor`` (**as root**).
