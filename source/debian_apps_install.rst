@@ -595,9 +595,9 @@ You're presented with a QR code. You need to save the QR code image to a file
 * Open developer tools (menu View | Toggle Developer Tools).
 * Go to Network tab.
 * Click All.
-* Type "data:image/png" in the filter text box.
-* Hit Ctrl-R if you don't see any "data:image/png" entry appear.
-* Click the "data:image/png" entry.
+* Type ``data:image/png`` in the filter text box.
+* Hit Ctrl-R if you don't see any ``data:image/png`` entry appear.
+* Click the ``data:image/png`` entry.
 * Save the image (right click on it, save to ~/qr.png).
 
 Finally, use zbarimg to extract the tsdevice link and link your computer with
