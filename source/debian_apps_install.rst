@@ -97,6 +97,8 @@ Installation
       lm-sensors \
       zbar-tools \
       hexedit \
+      python3-sphinx \
+      ruby-nokogiri \
       sakura # As root.
 
 .. list-table::
@@ -244,6 +246,10 @@ Installation
     - Bar code / QR-code related utilities
   * - hexedit
     - Hexadecimal editor
+  * - python3-sphinx
+    - Documentation generator
+  * - ruby-nokogiri
+    - HTML, XML, SAX, and Reader parser for Ruby
   * - sakura
     - Terminal emulator
 
