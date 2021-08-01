@@ -28,7 +28,7 @@ Installation
 On a `Debian GNU/Linux <https://www.debian.org>`_ system, install Sphinx (**as
 root**) with::
 
-  apt-get install python-sphinx # As root.
+  apt-get install python3-sphinx make # As root.
 
 
 Starting a project
