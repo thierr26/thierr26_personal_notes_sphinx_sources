@@ -85,6 +85,7 @@ Installation
       pwgen \
       time \
       tree \
+      network-manager \
       openconnect \
       freerdp2-x11 \
       wireshark \
@@ -215,6 +216,8 @@ Installation
     - CPU resource usage measurement
   * - tree
     - Indented directory listing tool
+  * - network-manager
+    - Network management framework
   * - openconnect
     - Client for GlobalProtect VPN (among others)
   * - freerdp2-x11
@@ -249,15 +252,6 @@ Installation
     - HTML, XML, SAX, and Reader parser for Ruby
   * - sakura
     - Terminal emulator
-
-
-Flash player plugin installation
---------------------------------
-
-.. index::
-  single: Flash player plugin
-
-See instructions here: https://wiki.debian.org/FlashPlayer
 
 
 Configuration, preferences
