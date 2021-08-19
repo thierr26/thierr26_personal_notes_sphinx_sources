@@ -91,6 +91,20 @@ the ``--batch --yes`` options for that::
 
 .. _tutonics_gpg_encryption_guide_links:
 
+
+Configuring a default recipient
+-------------------------------
+
+.. index::
+  pair: gpg; default recipient
+  single: ~/.gnupg/gpg.conf
+
+You can configure a default recipient for ``gpg --encrypt`` commands by adding
+a line like the following in the ``~/.gnupg/gpg.conf`` file:
+
+| default-recipient <key_id>
+
+
 Other resources
 ---------------
 
