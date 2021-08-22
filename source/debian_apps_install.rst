@@ -321,7 +321,7 @@ Claws Mail
   single: ~/.signature
 
 Setup MH directory properly, restore files ``~/.claws-mail/accountrc`` and
-``.signature``, and directory ``~/.claws-mail/addrbook``.
+``~/.signature``, and directory ``~/.claws-mail/addrbook``.
 
 In Preferences, Themes: orbit-claws.
 
