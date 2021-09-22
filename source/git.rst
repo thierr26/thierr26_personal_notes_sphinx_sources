@@ -1268,3 +1268,4 @@ Other resources
 * `git fixup: --amend for older commits <https://blog.filippo.io/git-fixup-amending-an-older-commit>`_
 * `Git: To squash or not to squash? <https://jamescooke.info/git-to-squash-or-not-to-squash.html>`_
 * `Git Submodules <https://blog.github.com/2016-02-01-working-with-submodules>`_
+* `How To: Merge a Git submodule into its main repository <https://medium.com/walkme-engineering/how-to-merge-a-git-submodule-into-its-main-repository-d83a215a319c>`_
