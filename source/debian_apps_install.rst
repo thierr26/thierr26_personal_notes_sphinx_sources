@@ -95,6 +95,7 @@ Installation
       colortest \
       mesa-utils \
       lm-sensors \
+      hwloc \
       zbar-tools \
       hexedit \
       python3-sphinx \
@@ -242,6 +243,8 @@ Installation
   * - lm-sensors
     - Utilities to read temperature/voltage/fan sensors (Run ``sensors-detect``
       as root to configure and ``sensors`` to view a readout of the sensors.)
+  * - hwloc
+    - Hardware Locality tool suite
   * - zbar-tools
     - Bar code / QR-code related utilities
   * - hexedit
