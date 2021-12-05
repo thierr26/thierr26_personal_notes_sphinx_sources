@@ -295,6 +295,23 @@ like ``swap-window -s 3 -t 1``. This command swaps numbering of windows 3 and
 1.
 
 
+Zooming a window to fit it to full terminal size
+------------------------------------------------
+
+.. index::
+  single: kill
+  pair: signal, SIGCONT
+
+Just use ``prefix z``. This does also unzoom the window.
+
+Doing this I sometimes accidentally hit ``Ctrl-z``, which suspends the tmux
+process. The solution in this case is to grab another terminal, to `find the
+PID <https://www.configserverfirewall.com/linux-tutorials/how-to-get-pid-of-a-process/>`_
+of the tmux process and to send a SIGCONT signal to it::
+
+  kill -cont <PID>
+
+
 Other resources
 ---------------
 
