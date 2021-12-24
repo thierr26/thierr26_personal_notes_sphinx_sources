@@ -300,7 +300,7 @@ Zooming a window to fit it to full terminal size
 
 .. index::
   single: kill
-  pair: signal, SIGCONT
+  pair: signal; SIGCONT
 
 Just use ``prefix z``. This does also unzoom the window.
 
