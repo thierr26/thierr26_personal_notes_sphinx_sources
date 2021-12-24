@@ -90,6 +90,7 @@ Installation
       freerdp2-x11 \
       wireshark \
       tcpdump \
+      ncat \
       nmap \
       openssh-server \
       colortest \
@@ -232,6 +233,8 @@ Installation
     - Graphical network traffic analyzer
   * - tcpdump
     - Command-line network traffic analyzer
+  * - ncat
+    - Utility to read / write data across networks from the command line
   * - nmap
     - Network mapper
   * - openssh-server
