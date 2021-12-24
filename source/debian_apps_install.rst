@@ -85,6 +85,7 @@ Installation
       pwgen \
       time \
       tree \
+      mmv \
       network-manager \
       openconnect \
       freerdp2-x11 \
@@ -218,6 +219,8 @@ Installation
     - CPU resource usage measurement
   * - tree
     - Indented directory listing tool
+  * - mmv
+    - Tool to move/copy/append/link multiple files by wildcard patterns
   * - network-manager
     - Network management framework
   * - openconnect
