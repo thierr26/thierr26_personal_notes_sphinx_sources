@@ -887,7 +887,7 @@ like::
 
   git ls-files "*abc*"
 
-  git ls-files  \
+  git ls-files \
       $(git rev-parse --show-toplevel)/"*abc*" # Search from repository top
                                                # directory.
 
