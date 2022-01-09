@@ -465,6 +465,12 @@ Show the difference between two particular commits with commands like::
   git diff 42b9c3b a92c02a -- path/to/files # Shows changes for the specified
                                             # files only.
 
+You can get a compact overview of the difference using some ``git diff``
+options::
+
+  git diff --stat
+  git diff --numstat
+
 In some cases, ``git log -p`` can be a good alternative to ``git diff``::
 
   git log -p -1 a92c02a -- path/to/files # Shows log message and changes made
@@ -604,9 +610,18 @@ You can limit the number of commits shown. Example with a limit set to 4::
 
   git log -4
 
-You can also add a "diffstat"::
+You can limit the ``git log`` output to a range of commits using the "double
+dot" syntax (note that **the first hash must be the one of the commit preceding
+the first commit of the range!**)::
+
+  git log 9369edb..1989336
+
+You can also add various overviews of the changes done in the commits::
 
   git log --stat
+  git log --numstat
+  git log --name-only
+  git log --name-status
 
 For the record, here are a few more examples for ``git log`` (for commit
 hashes, dates and commit message as raw text)::
