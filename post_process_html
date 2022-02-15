@@ -21,6 +21,14 @@ Dir.glob(path + "/**/*.html").each do |html_file|
     doc.xpath('//table/tbody').remove_attr("valign")
     doc.xpath('//table/colgroup').remove
 
+    doc.xpath('//a[starts-with(@href, "mailto:ssh")]').each do |anchor|
+        anchor.replace anchor.children
+    end
+
+    doc.xpath('//a[starts-with(@href, "mailto:debian")]').each do |anchor|
+        anchor.replace anchor.children
+    end
+
     doc.xpath('//a[starts-with(@href, "about:")]').each do |anchor|
         anchor.replace anchor.attr('href')
     end
