@@ -92,7 +92,7 @@ Server configuration
   pair: SSH; root password login
   pair: SSH; X11 forwarding
   single: /etc/ssh/sshd_config
-  pair: systemctl commands; restart
+  pair: systemctl commands; reload
 
 You may not need to tweak anything in the server configuration.
 
@@ -106,8 +106,8 @@ Note however that enabling root password login is not recommended in the
 general case as it leaves the server root account as a possible target for a
 `brute force attack <https://linuxhint.com/bruteforce_ssh_ftp>`_.
 
-Let's mention also X11 forwarding. If you have the following line in
-`/etc/ssh/sshd_config`, then X11 forwarding is enabled:
+If you have the following line in `/etc/ssh/sshd_config`, then X11 forwarding
+is enabled:
 
 | X11Forwarding yes
 
@@ -117,9 +117,16 @@ launching the client::
 
   ssh -X username@192.168.122.250 # Use server IP address.
 
-After modifying file /etc/ssh/sshd_config, make sure you restart the server::
+You may want to allow only some kind of keys to be used for public key
+authentication. Add a "PubkeyAcceptedKeyTypes" line to `/etc/ssh/sshd_config`
+for that (example to allow only "Ed25519" keys):
 
-  systemctl restart ssh # As root, on the remote machine.
+| PubkeyAcceptedKeyTypes ssh-ed25519-cert-v01@openssh.com,ssh-ed25519
+
+After modifying file `/etc/ssh/sshd_config`, make sure you reload the
+configuration::
+
+  systemctl reload ssh # As root, on the remote machine.
 
 
 Using public key authentication
@@ -133,9 +140,13 @@ Using public key authentication
 
 Instead of password authentication, you may use public key authentication. For
 that you have to first generate your public/private key pair **on your local
-machine** with for example::
+machine** with for example a command like::
 
-  ssh-keygen -t rsa -b 2048
+  ssh-keygen -t rsa -b 2048 # 2048 bits RSA key.
+
+or::
+
+  ssh-keygen -t ed25519     # Ed25519 key, recommended.
 
 ``ssh-keygen`` requires a passphrase. It is possible to leave it empty but in
 this case the key is not encrypted and anyone obtaining your private key can
