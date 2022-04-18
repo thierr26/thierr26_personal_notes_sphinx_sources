@@ -48,7 +48,7 @@ installation CDs.
 If you have a fast enough internet connection and a CD burning drive, you can
 download a `small (approximately 300MB) installation image
 <https://www.debian.org/distrib/netinst>`_ and burn it to a blank CD-R.
-Commands like the ones below should do it. The example is for Debian 11.0.0
+Commands like the ones below should do it. The example is for Debian 11.3.0
 (Bullseye). Note also that it is assumed that you have `cdrskin
 <http://scdbackup.sourceforge.net/cdrskin_eng.html>`_ installed. Run ``apt-get
 install cdrskin`` **as root** if not. Note also that the
@@ -56,8 +56,8 @@ install cdrskin`` **as root** if not. Note also that the
 cdrskin can detect CD burning devices (``cdrskin --devices`` lists the detected
 devices)::
 
-  wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.0.0-amd64-netinst.iso
-  cdrskin dev=<cd_burning_drive_device_file> -eject -v -data debian-11.0.0-amd64-netinst.iso
+  wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.3.0-amd64-netinst.iso
+  cdrskin dev=<cd_burning_drive_device_file> -eject -v -data debian-11.3.0-amd64-netinst.iso
 
 You might want to verify the authenticity of the ISO image. Download the SHA512
 checksum and associated signature file::
@@ -90,7 +90,7 @@ burned CD. Just compare the output of the following command with the checksum
 from the downloaded checksum file as provided in file SHA512SUMS::
 
   dd if=/dev/<cd_burning_drive_device_file> bs=2048 \
-    count=$(($(stat -c %s debian-11.0.0-amd64-netinst.iso)/2048)) \
+    count=$(($(stat -c %s debian-11.3.0-amd64-netinst.iso)/2048)) \
     conv=notrunc,noerror | sha512sum
 
 
@@ -139,36 +139,69 @@ kind of screen:
 Disk partitioning
 -----------------
 
+
+Choosing the amount of swap space
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. index::
-  single: SSD
-  single: hard drive partitioning scheme
   single: swap
 
-At the disk partitioning stage, two non-trivial questions arise:
+I tend to follow the recommendations provided in this article by Abhishek
+Prakash: https://itsfoss.com/swap-size.
 
-* Which partitioning scheme to choose (in particular on a machine with two hard
-  drives (one `SSD <https://en.wikipedia.org/wiki/Solid-state_drive>`_ and one
-  `traditional spinning hard disk drive
-  <https://en.wikipedia.org/wiki/Hard_disk_drive>`_)? This link is helpful:
-  https://unix.stackexchange.com/a/89230.
 
-* What's the right amount of swap space? This article by Abhishek Prakash
-  helps: https://itsfoss.com/swap-size.
+Choosing the partitioning scheme
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-I settled on the following partitioning schemes:
+.. index::
+  single: hard drive partitioning scheme
 
-.. list-table::
-  :header-rows: 1
 
-  * - Machine with spinning HDD only
-    - Machine with 128GB SDD + spinning HDD
-  * - Single ``/`` partition + swap
-    - * ``/`` partition on SSD (20GB).
-      * ``/usr`` partition on SSD.
-      * ``/var`` partition on spinning HDD (20GB).
-      * ``/tmp`` partition on spinning HDD (10GB).
-      * swap partition on spinning HDD.
-      * ``/home`` partition on spinning HDD.
+When disk encryption is not wanted (and with legacy BIOS mode boot)
+___________________________________________________________________
+
+.. index::
+  single: SSD
+
+If the machine has only one hard drives, I choose a simple partitioning scheme:
+a single ``/`` partition plus a swap partition. I find it easy enough to set up
+(using either the "Guided - use entire disk" or "manual" method proposed by the
+Debian installer).
+
+If the machine has one `SSD <https://en.wikipedia.org/wiki/Solid-state_drive>`_
+and one `traditional spinning hard disk drive
+<https://en.wikipedia.org/wiki/Hard_disk_drive>`_, I choose the following
+partitioning scheme:
+
+  * ``/`` partition on SSD (20GB).
+  * ``/usr`` partition on SSD.
+  * ``/var`` partition on spinning HDD (20GB).
+  * ``/tmp`` partition on spinning HDD (10GB).
+  * swap partition on spinning HDD.
+  * ``/home`` partition on spinning HDD.
+
+(This link was helpful: https://unix.stackexchange.com/a/89230).
+
+
+When disk encryption is wanted (and with UEFI mode boot)
+________________________________________________________
+
+.. index::
+  single: LVM
+  single: Disk encryption
+  single: ESP
+  single: UEFI
+
+I've setup disk encryption once on a 2022 laptop with a single hard drive. I've
+done it using the "Guided - use entire disk and set up encrypted LVM" method
+proposed by the Debian installer. It is of course possible to do it using the
+"manual" method, but I find it too easy to forget something (e.g. `ESP
+<https://en.wikipedia.org/wiki/EFI_system_partition>`_ partition, ``/boot``
+partition).
+
+I struggled to set up the wanted swap space size, but eventually understood I
+had to go into "Configure the Logical Volume Manager", delete the logical
+volumes and create them again with the wanted sizes.
 
 
 Postponing the installation of a graphical environment
