@@ -41,6 +41,12 @@ unprivileged user)::
   cd ~/.tmux/plugins
   git clone https://github.com/tmux-plugins/tmux-resurrect resurrect
 
+At the time of this writing (2022-04-17), current version of tmux-resurrect is
+4.0.0. I have experienced som issues with session restoration with version
+4.0.0 so **I'm sticking with version 3.0.0 for now**::
+
+  git checkout v3.0.0
+
 The default key bindings for tmux-resurrect are ``prefix Ctrl-s`` (save
 session) and ``prefix Ctrl-r`` (restore session).
 
@@ -248,6 +254,10 @@ If you're in a tmux session and want to kill all the other sessions, use::
 To kill a specific session, read session ID from ``tmux ls`` and do::
 
   tmux kill-session -t <session_id>
+
+I usually have only one tmux session and I close it with ``prefix s`` (which
+brings you to a "session list" screen), and then ``x`` to require to stop the
+current session and ``y`` to confirm.
 
 
 Detaching client / attaching session
