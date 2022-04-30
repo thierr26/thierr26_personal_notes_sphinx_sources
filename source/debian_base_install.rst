@@ -446,6 +446,18 @@ machine and select the Memtest86+ grub entry to start Memtest86+)::
 
   apt-get install memtest86+ # As root.
 
+On one of my machines (a 2022 laptop), Memtest86+ does not work (black screen).
+I tried `Memtest86 <https://www.memtest86.com/>`_, more precisely `its
+(unsupported) ISO image <https://www.memtest86.com/tech_booting-cd-dvd.html>`_,
+which worked.
+
+I downloaded and burned the ISO image to a blank CD-R using the following
+commands::
+
+  wget https://www.memtest86.com/downloads/memtest86-iso.zip
+  unzip memtest86-iso.zip
+  cdrskin -eject -v -data memtest86-iso.iso
+
 
 Installing a wireless devices status management tool
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
