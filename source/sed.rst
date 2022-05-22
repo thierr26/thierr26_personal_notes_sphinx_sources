@@ -64,12 +64,13 @@ Substituting starting at a specific line number
 Taking the same example file as in the previous section, if you need to add a
 leading minus sign starting a line 2, you can use the following command::
 
-  sed "2,/x/s/^/-/" numbers
+  sed "2,/\d0/s/^/-/" numbers
 
-Here "3" is the first line where the substitution should be done and "/x/" is a
-regular expression used to match the last line where the substitution should be
-done (starting on the line following line 2 in this case). "/x/" does not match
-any line number, so the substitution is done on every remaining line.
+Here "3" is the first line where the substitution should be done and "/\d0/" is
+a regular expression used to match the last line where the substitution should
+be done (starting on the line following line 2 in this case). "/\d0/" does not
+match any line (well, unless you have null characters in your input), so the
+substitution is done on every remaining line.
 
 See `the "addresses" section of the GNU sed manual
 <https://www.gnu.org/software/sed/manual/html_node/sed-addresses.html#sed-addresses>`_
