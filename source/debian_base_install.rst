@@ -225,6 +225,7 @@ Shutting down and rebooting a Debian system
 .. index::
   pair: systemctl commands; poweroff
   pair: systemctl commands; reboot
+  single: shutdown
 
 After the installation, you should be able to boot into the newly installed
 system and log in as root or normal user. But it may not be obvious how to
@@ -232,6 +233,12 @@ shutdown or reboot the system::
 
   systemctl poweroff # Shut down.
   systemctl reboot   # Reboot.
+
+If you want to shutdown but not immediately, you can use the ``shutdown``
+command::
+
+  shutdown    # Power-off the machine in 1 minute.
+  shutdown +2 # Power-off the machine in 2 minutes.
 
 
 Immediate post-install actions
