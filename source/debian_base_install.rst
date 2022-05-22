@@ -532,6 +532,17 @@ has been changed, with::
   locate -S
 
 
+Creating new users
+~~~~~~~~~~~~~~~~~~
+
+.. index::
+  single: adduser
+
+Just use the ``adduser`` script::
+
+  adduser new_user_name
+
+
 Post-install maintenance
 ------------------------
 
