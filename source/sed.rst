@@ -14,7 +14,7 @@ Sed
 Introduction
 ------------
 
-This page is where I note the `sed <https://en.wikipedia.org/wiki/Sed>`_
+This page is where I note the `GNU sed <https://www.gnu.org/software/sed/>`_
 commands I found difficult to elaborate.
 
 
@@ -26,7 +26,7 @@ Left-padding numbers with zeros
   pair: sed commands; s
   pair: sed commands; t
 
-Let's say we have a file called "numbers" containing integer numbers (without
+Let's say we have a file called ``numbers`` containing integer numbers (without
 any sign):
 
 | 123
@@ -37,10 +37,40 @@ any sign):
 The following Bash command line outputs the same numbers, but with leading
 zeros (for the numbers having less than 4 digits)::
 
-  N=4; cat numbers \
-      | sed -e ":loop;s/^\([^:]\+\):\([0-9]\{1,$(($N-1))\}\):/\1:0\2:/;t loop"
+  sed -e ":redo;s/^\([0-9]\{1,3\}\)$/0\1/; t redo" numbers
 
 | 0123
 | 0004
 | 5678
 | 99999
+
+The ``t`` command causes sed to restart at the ``:redo`` label as long as the
+``s`` command performs a substitution. The ``s`` command here substitutes a
+line with a number made of one to three digits with the same number with a zero
+prepended.
+
+Here is the same command with the parameter (number of digits) set as a bash
+variable::
+
+  N=4; sed -e ":redo;s/^\([0-9]\{1,$(($N-1))\}\)$/0\1/; t redo" numbers
+
+
+Substituting starting at a specific line number
+-----------------------------------------------
+
+.. index::
+  pair: sed commands; addresses specifications
+
+Taking the same example file as in the previous section, if you need to add a
+leading minus sign starting a line 2, you can use the following command::
+
+  sed "2,/x/s/^/-/" numbers
+
+Here "3" is the first line where the substitution should be done and "/x/" is a
+regular expression used to match the last line where the substitution should be
+done (starting on the line following line 2 in this case). "/x/" does not match
+any line number, so the substitution is done on every remaining line.
+
+See `the "addresses" section of the GNU sed manual
+<https://www.gnu.org/software/sed/manual/html_node/sed-addresses.html#sed-addresses>`_
+for all the details about line selection.
