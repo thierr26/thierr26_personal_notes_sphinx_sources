@@ -538,7 +538,7 @@ Creating new users
 .. index::
   single: adduser
 
-Just use the ``adduser`` script::
+Just use the ``adduser`` script **as root**::
 
   adduser new_user_name
 
