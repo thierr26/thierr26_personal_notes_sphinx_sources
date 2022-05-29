@@ -543,6 +543,34 @@ Just use the ``adduser`` script **as root**::
   adduser new_user_name
 
 
+Creating a "super user" account, disabling root login
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  single: sudo
+  single: adduser
+  single: usermod
+
+You may want, for security reasons, to use an account other than root to
+perform administrative tasks (via sudo), and to disable root login.
+
+Make sure ``sudo`` is installed::
+
+  apt-get install sudo
+
+Create (**as root**) a new user (the new "super user")::
+
+  adduser super_user_user_name
+
+Add (**as root**) the "super user" to the ``sudo`` group::
+
+  usermod -aG sudo super_user_user_name
+
+Disable root login (**as the "super user"**, via ``sudo``)::
+
+  sudo usermod -L root
+
+
 Post-install maintenance
 ------------------------
 
