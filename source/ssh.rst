@@ -37,6 +37,7 @@ installed. You can install is **as root** with::
 Usage
 -----
 
+
 Logging into the remote machine and executing commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -91,6 +92,7 @@ Server configuration
 .. index::
   pair: SSH; root password login
   pair: SSH; X11 forwarding
+  pair: SSH; Denying access to a group
   single: /etc/ssh/sshd_config
   pair: systemctl commands; reload
 
@@ -105,6 +107,11 @@ lines in `/etc/ssh/sshd_config`.
 Note however that enabling root password login is not recommended in the
 general case as it leaves the server root account as a possible target for a
 `brute force attack <https://linuxhint.com/bruteforce_ssh_ftp>`_.
+
+For the same reason, you may want to deny SSH access to the members of group
+``sudo``. Just add this line in `/etc/ssh/sshd_config`:
+
+| DenyGroups sudo
 
 If you have the following line in `/etc/ssh/sshd_config`, then X11 forwarding
 is enabled:
