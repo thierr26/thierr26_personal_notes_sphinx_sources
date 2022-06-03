@@ -45,6 +45,7 @@ At the time of this writing (2022-04-17), current version of tmux-resurrect is
 4.0.0. I have experienced som issues with session restoration with version
 4.0.0 so **I'm sticking with version 3.0.0 for now**::
 
+  cd ~/.tmux/plugins/resurrect
   git checkout v3.0.0
 
 The default key bindings for tmux-resurrect are ``prefix Ctrl-s`` (save
