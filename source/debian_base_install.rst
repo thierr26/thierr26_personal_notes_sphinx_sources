@@ -18,7 +18,7 @@ These are my notes about the installation of a `Debian GNU/Linux
 <https://www.debian.org>`_ system on a 64-bit ("AMD64" architecture) PC. A
 significant part of these notes describe the preparation of the installation
 medias. The assumption is made that you have access to a working machine with a
-Debian GNU/Linux system installed a fast enough internet connection (to
+Debian GNU/Linux system installed and a fast enough internet connection (to
 download a few hundreds of megabytes). This machine will be used to prepare the
 installation medias for the new system.
 
