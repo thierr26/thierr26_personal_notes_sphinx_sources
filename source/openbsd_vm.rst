@@ -107,7 +107,7 @@ One precision though: This doesn't work on one of my PC (one with a AMD Phenom
 II X2 555 CPU). OpenBSD fails to boot (kernel panic). The console says "Fatal
 protection fault in supervisor mode". It looks very much like the problem
 discussed in this `OpenBSD guest in bhyve on AMD CPU
-<http://freebsd.1045724.x6.nabble.com/OpenBSD-guest-in-bhyve-on-AMD-CPU-td5987830.html>`_
+<https://web.archive.org/web/20170719063441/http://freebsd.1045724.x6.nabble.com/OpenBSD-guest-in-bhyve-on-AMD-CPU-td5987830.html>`_
 thread.
 
 One solution is to expose a different CPU to the guest (using the ``--cpu``
