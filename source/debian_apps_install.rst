@@ -329,21 +329,37 @@ Claws Mail
   single: ~/.claws-mail/accountrc
   single: ~/.signature
 
-Setup MH directory properly, restore files ``~/.claws-mail/accountrc`` and
-``~/.signature``, and directory ``~/.claws-mail/addrbook``.
+When starting Claws Mail for the first time, you're welcomed with the setup
+wizard which helps you setting up an E-Mail account asks you in which folder
+the messages should be stored. This is the "Mailbox name" which defaults to
+"Mail" which means that the messages are stored in directory ``~/Mail``.
 
-In Preferences, Themes: orbit-claws.
+The "Mailbox name" ends up in configuration file
+``~/.claws-mail/folderlist.xml``.
 
-In Preferences, Other, Miscellaneous: Confirm on exit.
+The E-Mail account parameters ends up in configuration file
+``~/.claws-mail/accountrc``.
 
-In Preferences, Message View, External Programs: Uncheck "Use system defaults
-when possible". Enter external programs as follows:
+Claws Mail stores the address book related files in directory
+``~/.claws-mail/addrbook``.
 
-* Web browser: firefox '%s'
+I keep my signature in ``~/.signature``. (You can provide the signature file in
+the "Compose" tab of the "Account preferences" dialog box.)
 
-* Text editor: gvim '%s'
+Other settings:
 
-* Command for 'Display as text': gvim '%s'
+* In Preferences, Themes: orbit-claws.
+
+* In Preferences, Other, Miscellaneous: Confirm on exit.
+
+* In Preferences, Message View, External Programs: Uncheck "Use system defaults
+  when possible". Enter external programs as follows:
+
+  - Web browser: firefox '%s'
+
+  - Text editor: gvim '%s'
+
+  - Command for 'Display as text': gvim '%s'
 
 
 Pan
@@ -357,7 +373,9 @@ In Edit News Servers, add a news server. I use news.free.fr, with my Free
 E-Mail login. This works even when connecting through an ISP other than `Free
 <https://www.free.fr>`_.
 
-In Edit Preferences, Applications, Web browser: Custom Command: firefox
+In Edit Preferences, Applications:
+* Web browser: Custom Command: firefox
+* Text editor: gvim
 
 The two settings are saved in ``~/.pan2/servers.xml`` and
 ``~/.pan2/preferences.xml`` respectively.
@@ -614,14 +632,21 @@ Wireshark installation
 
 .. index::
   single: Wireshark
+  single: wireshark-common
   single: usermod
+  single: dpkg-reconfigure
 
-When installing Wireshark (Debian package wireshark), I choose to allow
-"normal" users that are members of the ``wireshark`` group to capture packets.
-
-You can add a user to group ``wireshark`` with a command like (**as root**)::
+When installing Wireshark (Debian package wireshark), you're prompted to choose
+whether non-superusers should be able to capture packets. I answer "Yes". It
+causes the ``wireshark`` group to be created. Then you just have to add a user
+to the ``wireshark`` group to grant this user the right to capture packets with
+Wireshark. Use a command like the one below (**as root**) to add a user a user
+to the ``wireshark`` group::
 
   usermod -aG wireshark user_name # As root.
+
+If you have answered "No" and have changed your mind, run ``dpkg-reconfigure
+wireshark-common``.
 
 
 Session for desktop installation
