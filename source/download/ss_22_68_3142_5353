@@ -1,0 +1,9 @@
+Netid State  Recv-Q Send-Q   Local Address:Port     Peer Address:Port Process
+udp   UNCONN 0      0              0.0.0.0:68            0.0.0.0:*     ino:12047 sk:1 cgroup:/system.slice/ifup@enp7s0.service <->
+udp   UNCONN 0      0              0.0.0.0:5353          0.0.0.0:*     uid:111 ino:489 sk:2 cgroup:/system.slice/avahi-daemon.service <->
+udp   UNCONN 0      0                 [::]:5353             [::]:*     uid:111 ino:490 sk:8 cgroup:/system.slice/avahi-daemon.service v6only:1 <->
+tcp   LISTEN 0      250            0.0.0.0:3142          0.0.0.0:*     uid:106 ino:16253 sk:d cgroup:/system.slice/apt-cacher-ng.service <->
+tcp   LISTEN 0      128            0.0.0.0:22            0.0.0.0:*     ino:14711 sk:e cgroup:/system.slice/ssh.service <->
+tcp   ESTAB  0      0      XXX.XXX.XXX.XXX:40868 YYY.YYY.YYY.YYY:22    timer:(keepalive,9min27sec,0) uid:1000 ino:171337 sk:1002 cgroup:/user.slice/user-1000.slice/session-1.scope <->
+tcp   LISTEN 0      250               [::]:3142             [::]:*     uid:106 ino:16254 sk:18 cgroup:/system.slice/apt-cacher-ng.service v6only:1 <->
+tcp   LISTEN 0      128               [::]:22               [::]:*     ino:14713 sk:19 cgroup:/system.slice/ssh.service v6only:1 <->

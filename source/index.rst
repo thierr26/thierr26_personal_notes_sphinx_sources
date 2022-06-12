@@ -13,6 +13,7 @@ Personal Notes
   debian_base_install
   openbox_on_debian
   debian_apps_install
+  linux_firewalling
   debian_unstable_vm
   ssh
   external_usb_drives
