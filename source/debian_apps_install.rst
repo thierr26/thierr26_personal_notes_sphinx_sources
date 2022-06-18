@@ -276,6 +276,7 @@ Firefox ESR
 
 At about:config, set the following options to true:
 
+* browser.quitShortcut.disabled
 * browser.sessionstore.warnOnQuit
 * browser.tabs.warnOnClose
 * browser.tabs.warnOnCloseOtherTabs
