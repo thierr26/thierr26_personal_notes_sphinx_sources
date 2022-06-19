@@ -517,8 +517,8 @@ Install locate and updatedb with::
   apt-get install locate # As root.
 
 If you don't leave your machine running all the time, the database update may
-not happen every day if package ``anacron`` is not installed. So make sure to
-install it::
+not happen every day if package ``anacron`` is not installed. You can install
+it (**as root**) with::
 
   apt-get install anacron # As root.
 
