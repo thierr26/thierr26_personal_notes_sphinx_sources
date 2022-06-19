@@ -24,13 +24,17 @@ Installation
   single: Openbox
   single: X.org
   single: X Window
+  single: startx
+  single: /etc/X11/Xwrapper.config
 
 I install `X.Org X Window System <https://www.x.org>`_ and Openbox with the
 following command (**as root**)::
 
   apt-get install xorg openbox openbox-menu menu # As root.
 
-Then an unprivileged user can start Openbox with::
+Then (and assuming that the ``/etc/X11/Xwrapper.config`` file contains the line
+``allowed_users=console`` or ``allowed_users=anybody``) an unprivileged user
+can start Openbox from the console with::
 
   startx
 
@@ -42,6 +46,57 @@ If the keyboard layout is wrong, try rebooting.
 At this point, I :doc:`install and tweak the applications I want on the system
 <debian_apps_install>`. Then I proceed with the configuration of
 the Openbox environment and that's what is described in the rest of this page.
+
+
+Addition of a RDP server (for a remote machine)
+-----------------------------------------------
+
+.. index::
+  single: Remote Desktop Protocol (RDP)
+  single: RDP
+  pair: xrdp; RDP server
+  pair: xfreerdp; RDP client
+  single: ssl-cert
+  pair: Display manager; lightdm
+  single: /etc/X11/Xwrapper.config
+
+On a remote machine with no physical access, I use the `Remote Desktop Protocol
+(RDP) <https://en.wikipedia.org/wiki/Remote_Desktop_Protocol>`_ to work in
+Openbox. I did the installation just like I would have done for a desktop
+machine (same ``apt-get install`` command as in the previous section), and
+installed a display manager (`LightDM
+<https://en.wikipedia.org/wiki/LightDM>`_) as well as a RDP server (`xrdp
+<http://xrdp.org>`_)::
+
+  apt-get install lightdm xrdp # As root.
+
+Package ``ssl-cert`` gets installed as well (it's a dependency of ``xrdp``) and
+the installation of ``ssl-cert`` causes the creation of a self-signed
+certificate stored at ``/etc/ssl/certs/ssl-cert-snakeoil.pem``
+(``/etc/ssl/private/ssl-cert-snakeoil.key`` for the private key). It is
+necessary to add user ``xrdp`` to group ``ssl-cert``. Without that, xrdp is not
+able to read the certificate, using the following command (**as root**)::
+
+  adduser xrdp ssl-cert # As root.
+
+Then I restarted the server and was able to open an Openbox session on the
+remote machine from my local desktop machine using a ``xfreerdp`` command like
+the following one::
+
+  xfreerdp +glyph-cache /relax-order-checks \
+      /u:<my_user_name_on_the_remote_machine> \
+      /v:<remote_machine_address> \
+      /kbd:0x40c /f
+
+I use the ``/kbd:0x40c`` option becasue I have a french keyboard on my local
+machine and the ``/f`` option to start ``xfreerdp`` full screen. Toggling the
+full screen state is possible with ``Ctrl+Alt+Enter``.
+
+On a Debian GNU/Linux system, the ``xfreerdp`` executable is provided by the
+``freerdp2-x11`` package.
+
+Note that on the remote machine, the ``/etc/X11/Xwrapper.config`` file contains
+the line ``allowed_users=rootonly``.
 
 
 Thunar for file, archive and removable media management
