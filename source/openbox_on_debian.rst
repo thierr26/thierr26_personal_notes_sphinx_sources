@@ -21,7 +21,6 @@ Installation
 ------------
 
 .. index::
-  pair: Debian; installer
   single: Openbox
   single: X.org
   single: X Window
