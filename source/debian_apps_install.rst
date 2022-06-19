@@ -29,6 +29,7 @@ Installation
 **As root**::
 
   apt-get install \
+      apt-rdepends \
       firefox-esr midori \
       webext-ublock-origin \
       w3m \
@@ -89,6 +90,7 @@ Installation
       network-manager \
       openconnect \
       freerdp2-x11 \
+      whois \
       wireshark \
       tcpdump \
       ncat \
@@ -106,6 +108,8 @@ Installation
 
 .. list-table::
 
+  * - apt-rdepends
+    - Package dependencies listing tool
   * - firefox-esr, midori
     - Graphical Web browsers
   * - webext-ublock-origin
@@ -232,6 +236,8 @@ Installation
       https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=954203#10. My command
       line is like: ``xfreerdp +glyph-cache /relax-order-checks /u:my_user_name
       /v:my.server /kbd:0x40c /f``)
+  * - whois
+    - Command-line WHOIS client
   * - wireshark
     - Graphical network traffic analyzer
   * - tcpdump
