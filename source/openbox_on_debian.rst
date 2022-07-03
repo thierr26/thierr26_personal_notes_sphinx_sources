@@ -59,6 +59,9 @@ Addition of a RDP server (for a remote machine)
   single: ssl-cert
   pair: Display manager; lightdm
   single: /etc/X11/Xwrapper.config
+  single: ~/.profile
+  single: ~/.xsessionrc
+  single: logname
 
 On a remote machine with no physical access, I use the `Remote Desktop Protocol
 (RDP) <https://en.wikipedia.org/wiki/Remote_Desktop_Protocol>`_ to work in
@@ -97,6 +100,11 @@ On a Debian GNU/Linux system, the ``xfreerdp`` executable is provided by the
 
 Note that on the remote machine, the ``/etc/X11/Xwrapper.config`` file contains
 the line ``allowed_users=rootonly``.
+
+Let's also mention that there is no login shell involved when opening a session
+with ``xfreerdp``. It implies that the ``logname`` command does not output your
+user name but outputs "logname: no login name" instead, and your ``~/.profile``
+file is not sourced. But ``~/.xsessionrc`` is sourced.
 
 
 Thunar for file, archive and removable media management

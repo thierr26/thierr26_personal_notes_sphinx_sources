@@ -56,6 +56,7 @@ Installation
   single: search path
   single: $PATH
   single: ~/.profile
+  single: ~/.xsessionrc
 
 On a `Debian GNU/Linux <https://www.debian.org>`_ system, install fetchmail and
 nmh (**as root**) with::
@@ -64,7 +65,7 @@ nmh (**as root**) with::
 
 The nmh programs are installed in ``/usr/bin/mh``. This directory is not in the
 search path by default. You can add it to the search path by adding this line
-to your ``~/.profile`` file::
+to  a startup file (e.g. ``~/.profile``, ``.xsessionrc``)::
 
   PATH="$PATH:/usr/bin/mh"
 
