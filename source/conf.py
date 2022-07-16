@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath('../extensions/sphinx-linklang/src'))
 # -- Project information -----------------------------------------------------
 
 project = 'Personal Notes'
-copyright = '2018-2021, Thierry Rascle'
+copyright = '2018-2022, Thierry Rascle'
 author = 'Thierry Rascle'
 
 # The short X.Y version
