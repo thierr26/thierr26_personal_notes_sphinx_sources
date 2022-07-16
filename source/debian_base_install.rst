@@ -537,10 +537,26 @@ Creating new users
 
 .. index::
   single: adduser
+  single: /etc/adduser.conf
+  single: chmod
 
-Just use the ``adduser`` script **as root**::
+Check whether the ``DIR_MODE`` (default permissions for users home directories)
+setting in file ``/etc/adduser.conf`` is appropriate for your needs. The
+default value is "0755". It implies that any unprivileged user have read access
+to the files of other users. You may want to change (**as root**) the value to
+"0750" to avoid that::
+
+  sed -i s/DIR_MODE=0755/DIR_MODE=0750/ /etc/adduser.conf
+
+Then, to create a new user, just use the ``adduser`` script (**as root**)::
 
   adduser new_user_name
+
+If some users have already been created with inappropriate home directories
+permissions, you can update their home directories permissions with a command
+like (**as root**)::
+
+  chmod 750 /home/*
 
 
 Creating a "super user" account, disabling root login
