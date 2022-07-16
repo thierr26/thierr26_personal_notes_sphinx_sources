@@ -54,8 +54,8 @@ that ``cups`` is a dependency of ``hplip``)::
 
   apt-get install hplip # As root.
 
-If you want to be able to install a printer as an unprivilged user, you need to
-add yourself to group ``lpadmin`` with a command like::
+If you want to be able to install a printer as an unprivileged user, you need
+to add yourself to group ``lpadmin`` with a command like::
 
   usermod -a -G lpadmin my_user_name # As root.
 
