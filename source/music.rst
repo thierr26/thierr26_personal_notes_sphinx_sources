@@ -193,7 +193,7 @@ And here is the code::
   mkdir -p "$INTERMEDIATE_FILES_DIR";
   rm "$INTERMEDIATE_FILES_DIR"/*;
 
-  K=0;                # implies 1-based track numbering. Adapt to your needs.
+  K=0;                # Implies 1-based track numbering. Adapt to your needs.
 
   # Loop over the lines of the here-document below.
   while IFS= read -r LINE; do
@@ -313,7 +313,7 @@ And here is the code::
 
   mkdir -p "$OUTPUT_DIR";
 
-  TRACK_NUM_OFFS=0;   # implies 1-based track numbering. Adapt to your needs.
+  TRACK_NUM_OFFS=0;   # Implies 1-based track numbering. Adapt to your needs.
 
   K=0;
 
