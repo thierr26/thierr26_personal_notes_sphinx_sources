@@ -386,6 +386,64 @@ All the ``nft`` commands below have to be run **as root**::
   nft add rule inet firewall fw_out udp sport 5353 accept
 
 
+Allow outgoing Web queries to a set of specific servers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+On a remote machine, I initially used the configuration above (stopping after
+allowing incoming SSH connections), and then realized I couldn't upgrade the
+system anymore (i.e. ``apt-get update`` and of course ``apt-get dist-upgrade``
+didn't work any more) because nftables was blocking the DNS queries, and also
+the Web queries to the Debian repositories.
+
+Obviously, I allowed the outgoing DNS queries with the commands provided above,
+defined a set of addresses for the servers used by the ``apt-get update`` and
+``apt-get dist-upgrade`` commands, and allowed outgoing Web (http and https)
+queries.
+
+Note that the list of servers used depends on your APT configuration.
+
+I used the following commands (**as root**) to create and populate the set of
+addresses::
+
+  # Create a set named "debian_sources" (in table "firewall") that can store
+  # multiple individual IPv4 addresses.
+  nft add set inet firewall debian_sources { type ipv4_addr \; }
+
+  # Add some addresses to the set. Both numerical addresses and domain names
+  # are valid.
+  nft add element inet firewall debian_sources { XXX.XXX.XXX.XXX, \
+                                                 YYY.YYY.YYY.YYY, \
+                                                 ZZZ.ZZZ.ZZZ.ZZZ }
+
+Finally I used the following commands (**as root**) to allow the Web queries
+(http and https) to the servers in the set::
+
+  nft add rule inet firewall fw_out \
+      ip daddr @debian_sources tcp dport http accept
+  nft add rule inet firewall fw_out \
+      ip daddr @debian_sources tcp dport https accept
+
+
+Deleting rules or sets
+~~~~~~~~~~~~~~~~~~~~~~
+
+To delete an nftables rule, you first have to find its handle (a numerical
+value). To see the handles of the rules, use option ``-a`` in the ``nft list
+ruleset`` command::
+
+  nft -a list ruleset
+
+Then delete the rule with a command like the following (example of deletion of
+a rule in the "fw_out" chain of the "firewall" table)::
+
+  nft delete rule inet firewall fw_out handle <handle_value>
+
+To delete a set, use a command like (example of deletion of a set in the table
+"firewall")::
+
+  nft delete set inet firewall <set_name>
+
+
 Note about DHCP
 ~~~~~~~~~~~~~~~
 
