@@ -19,6 +19,7 @@ Personal Notes
   external_usb_drives
   git
   gnu_privacy_guard
+  hexdump
   sed
   sphinx
   reminder

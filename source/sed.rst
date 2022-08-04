@@ -77,3 +77,26 @@ See `the "addresses" section of the GNU sed manual
 for all the details about line selection.
 
 
+Joining lines matching a pattern
+--------------------------------
+
+.. index::
+  pair: sed commands; N
+  pair: sed commands; t
+  pair: sed commands; P
+  pair: sed commands; D
+
+Still taking the same example file, the following command substitutes the
+preceding end of line line sequence with a space character if the line matches
+a pattern (here pattern "67")::
+
+  sed -e ':redo; N; s/\n\(.*67\)/ \1/; t redo; P; D' numbers
+
+The ``N`` command adds the next input line into the pattern space. The ``s``
+command substitutes the end of line sequence with a space if the added line
+contains the searched pattern. The ``t`` command causes sed to restart at the
+``:redo`` label as long as the ``s`` command performs a substitution. After
+exiting the loop, the ``P`` command causes the pattern space to be output up to
+the first end of line sequence and the ``D`` command deletes the pattern space
+up to the first end of line sequence (only if the pattern space contains an end
+of line sequence).
