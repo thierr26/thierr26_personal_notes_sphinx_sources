@@ -52,7 +52,7 @@ prepended.
 Here is the same command with the parameter (number of digits) set as a bash
 variable::
 
-  N=4; sed -e ":redo;s/^\([0-9]\{1,$(($N-1))\}\)$/0\1/; t redo" numbers
+  N=4; sed -e ":redo; s/^\([0-9]\{1,$(($N-1))\}\)$/0\1/; t redo" numbers
 
 
 Substituting starting at a specific line number
@@ -62,9 +62,9 @@ Substituting starting at a specific line number
   pair: sed commands; addresses specifications
 
 Taking the same example file as in the previous section, if you need to add a
-leading minus sign starting a line 2, you can use the following command::
+leading minus sign starting at line 3, you can use the following command::
 
-  sed "2,/\d0/s/^/-/" numbers
+  sed "3,/\d0/s/^/-/" numbers
 
 Here "3" is the first line where the substitution should be done and "/\d0/" is
 a regular expression used to match the last line where the substitution should
@@ -75,3 +75,5 @@ substitution is done on every remaining line.
 See `the "addresses" section of the GNU sed manual
 <https://www.gnu.org/software/sed/manual/html_node/sed-addresses.html#sed-addresses>`_
 for all the details about line selection.
+
+
