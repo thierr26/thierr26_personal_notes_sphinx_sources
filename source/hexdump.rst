@@ -30,7 +30,7 @@ Byte-by-byte output only
 
 I use a format string for that (16 is the number of bytes per line)::
 
-  hexdump -e '16/1 "%02x " "\n"' input_file
+  hexdump -v -e '16/1 "%02x " "\n"' input_file
 
 
 Other resources
