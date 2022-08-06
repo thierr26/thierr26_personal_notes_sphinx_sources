@@ -26,16 +26,16 @@ Left-padding numbers with zeros
   pair: sed commands; s
   pair: sed commands; t
 
-Let's say we have a file called ``numbers`` containing integer numbers (without
-any sign):
+Let's say we have a text file called ``numbers`` containing integer numbers
+(one per line, and without any sign):
 
 | 123
 | 4
 | 5678
 | 99999
 
-The following Bash command line outputs the same numbers, but with leading
-zeros (for the numbers having less than 4 digits)::
+The following command outputs the same numbers, but with leading zeros (for the
+numbers having less than 4 digits)::
 
   sed -e ":redo;s/^\([0-9]\{1,3\}\)$/0\1/; t redo" numbers
 
