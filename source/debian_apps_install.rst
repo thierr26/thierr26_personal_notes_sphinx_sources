@@ -87,6 +87,7 @@ Installation
       time \
       tree \
       mmv \
+      bc \
       network-manager \
       openconnect \
       freerdp2-x11 \
@@ -225,6 +226,8 @@ Installation
     - Indented directory listing tool
   * - mmv
     - Tool to move/copy/append/link multiple files by wildcard patterns
+  * - bc
+    - Calculator language, to be used in scripts or interactively
   * - network-manager
     - Network management framework
   * - openconnect

@@ -20,6 +20,7 @@ Personal Notes
   git
   gnu_privacy_guard
   hexdump
+  bc
   sed
   sphinx
   reminder
