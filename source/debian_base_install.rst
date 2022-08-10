@@ -425,6 +425,35 @@ If the configuration is not correct, you can change it **as root** with::
   dpkg-reconfigure tzdata # As root.
 
 
+Cheking systemd-timesyncd service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  single: systemd-timesyncd
+  single: /etc/systemd/timesyncd.conf
+  single: /run/systemd/timesync/synchronized
+  single: /var/log/syslog
+  single: stat
+
+Service systemd-timesyncd (network time synchronization service) should have
+been automatically enabled::
+
+  systemctl status systemd-timesyncd
+
+The service logs its initial synchronization to ``/var/log/syslog``. Check (**as
+root**) with::
+
+  grep systemd-timesyncd /var/log/syslog
+
+You can find the lastest synchronization date by checking the modification time
+of file ``/run/systemd/timesync/synchronized``::
+
+  stat /run/systemd/timesync/synchronized|grep ^Modify
+
+The configuration file for systemd-timesyncd is
+``/etc/systemd/timesyncd.conf``.
+
+
 Installing a console locker
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
