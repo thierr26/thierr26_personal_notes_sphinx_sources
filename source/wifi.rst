@@ -53,8 +53,14 @@ the cloned repository::
 
   mkdir -p ~/local_builds
   cd ~/local_builds
-  git clone https://github.com/jeremyb31/rtl8192eu-linux-driver.git
-  cd rtl8192eu-linux-driver
+
+  # Leads to a compilation failure (2022-08-30).
+  # git clone https://github.com/jeremyb31/rtl8192eu-linux-driver.git
+  # cd rtl8192eu-linux-driver
+
+  # Compiles successfully (2022-08-30).
+  git clone https://github.com/drygdryg/RTL8192EU.git
+  cd RTL8192EU
 
 Change user to **root**, change directory to the directory you where in as a
 normal user, and compile and install the driver::
@@ -63,7 +69,8 @@ normal user, and compile and install the driver::
   make install # As root.
 
 Plug in the Wi-Fi network adapter and restart the computer. After reboot, you
-should see 8192eu in the list of loaded modules::
+should see 8192eu in the list of loaded modules (if not, try ``modprobe
+8192eu`` **as root**)::
 
   lsmod|grep 8192eu
 
