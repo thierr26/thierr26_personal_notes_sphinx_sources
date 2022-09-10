@@ -362,17 +362,21 @@ All the ``nft`` commands below have to be run **as root**::
   # Allow incoming SSH connections.
   nft add rule inet firewall fw_in tcp dport ssh accept
 
-  # NOTE: If you just need SSH access to the machine, you can stop here.
+  # Allow outgoing DNS queries.
+  nft add rule inet firewall fw_out tcp dport 53 accept
+  nft add rule inet firewall fw_out udp dport 53 accept
+
+  # Allow outgoing NTP (Network Time Protocol) client requests.
+  nft add rule inet firewall fw_out udp dport 123 accept
+
+  # NOTE: If you just need SSH access to the machine and time synchronization,
+  # you can stop here.
 
   # Allow outgoing SSH connections.
   nft add rule inet firewall fw_out tcp dport ssh accept
 
   # Allow RDP.
   nft add rule inet firewall fw_in tcp dport 3389 accept
-
-  # Allow outgoing DNS queries.
-  nft add rule inet firewall fw_out tcp dport 53 accept
-  nft add rule inet firewall fw_out udp dport 53 accept
 
   # Allow outgoing Web (http and https) queries.
   nft add rule inet firewall fw_out tcp dport http accept
