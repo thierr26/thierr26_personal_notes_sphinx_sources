@@ -424,8 +424,8 @@ Finally I used the following commands (**as root**) to allow the Web queries
       ip daddr @debian_sources tcp dport https accept
 
 
-Deleting rules or sets
-~~~~~~~~~~~~~~~~~~~~~~
+Deleting individual rules or sets
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To delete an nftables rule, you first have to find its handle (a numerical
 value). To see the handles of the rules, use option ``-a`` in the ``nft list
@@ -442,6 +442,14 @@ To delete a set, use a command like (example of deletion of a set in the table
 "firewall")::
 
   nft delete set inet firewall <set_name>
+
+
+Deleting the whole ruleset
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To delete the whole nftables ruleset, do::
+
+  nft flush ruleset
 
 
 Note about DHCP
