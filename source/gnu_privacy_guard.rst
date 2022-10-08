@@ -105,6 +105,17 @@ a line like the following in the ``~/.gnupg/gpg.conf`` file:
 | default-recipient <key_id>
 
 
+Extension of the expiration date of a key
+-----------------------------------------
+
+.. index::
+  pair: gpg; key expiration date extension
+
+To extend the expiration date of a key, just follow the instructions on this
+`G-Loaded Journal article
+<https://www.g-loaded.eu/2010/11/01/change-expiration-date-gpg-key>`_.
+
+
 Other resources
 ---------------
 
