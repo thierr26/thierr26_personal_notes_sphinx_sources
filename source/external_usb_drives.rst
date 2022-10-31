@@ -59,8 +59,8 @@ Answer ``p`` (primary), ``1`` (partition number) and just press enter when
 asked for the first and last sectors. fdisk may propose to remove the
 signature, accept.
 
-Then use command ``t`` to select the partition type. Choose type 83 (Linux).
-Use ``L`` to see the list of possible codes.
+Then use command ``t`` to select the partition type. Enter "linux". Use ``L``
+to see the list of possible codes.
 
 Finally, write the new partition table to the disk with command ``w``.
 
