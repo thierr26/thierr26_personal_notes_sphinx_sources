@@ -11,25 +11,31 @@ Debian applications installation
 Introduction
 ------------
 
-This page gives the packages I install on my `Debian GNU/Linux
+This page describes most of the installations I do on my `Debian GNU/Linux
 <https://www.debian.org>`_ machines just after the :doc:`base installation
 <debian_base_install>` and in my first :doc:`Openbox <openbox_on_debian>`
 session.
 
-Some packages I install are not mentioned here because I have written dedicated
-pages for them. Please see the :doc:`home page <index>`.
+The first section is about Debian GNU/Linux packages installations, the second
+one is about third party applications installations.
+
+Some of the applications I install have a dedicated page on this site (please
+see the :doc:`home page <index>`) and are not mentionned here.
 
 
-Installation
-------------
+Debian GNU/Linux packages installation
+--------------------------------------
 
-.. index::
-  single: xfreerdp
 
-**As root**::
+Instalation command
+~~~~~~~~~~~~~~~~~~~
+
+The command to be run (**as root**) to perform the Debian GNU/Linux packages
+installation is::
 
   apt-get install \
       apt-rdepends \
+      curl \
       firefox-esr midori \
       webext-ublock-origin \
       w3m \
@@ -107,10 +113,21 @@ Installation
       ruby-nokogiri \
       sakura # As root.
 
+
+Short description
+~~~~~~~~~~~~~~~~~
+
+.. index::
+  single: xfreerdp
+
+Here's a short description of the packages:
+
 .. list-table::
 
   * - apt-rdepends
     - Package dependencies listing tool
+  * - curl
+    - Data transfer tool
   * - firefox-esr, midori
     - Graphical Web browsers
   * - webext-ublock-origin
@@ -188,8 +205,9 @@ Installation
   * - libncurses5
     - Libraries for terminal handling (legacy version), needed to run `GNAT
       Programming Studio
-      <https://en.wikipedia.org/wiki/GNAT_Programming_Studio>`_ as provided
-      with `GNAT Community <https://www.adacore.com/community>`_ 2018 and 2019.
+      <https://learn.adacore.com/courses/GNAT_Toolchain_Intro/chapters/gnat_studio.html>`_
+      as provided with `GNAT Community <https://www.adacore.com/download>`_
+      2018 and 2019.
   * - libb-lint-perl
     - Perl code checker
   * - gimp, jhead, imagemagick
@@ -273,10 +291,10 @@ Installation
 
 
 Configuration, preferences
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Firefox ESR
-~~~~~~~~~~~
+___________
 
 .. index::
   pair: Firefox ESR; confirm on exit
@@ -300,7 +318,7 @@ websites".
 .. _chromium_config:
 
 Chromium
-~~~~~~~~
+________
 
 .. index::
   pair: Chromium; default search engine
@@ -314,7 +332,7 @@ sign-in".
 
 
 Irssi
-~~~~~
+_____
 
 .. index::
   pair: Irssi; theme
@@ -331,7 +349,7 @@ issue a ``/SET theme <theme_name>`` command in Irssi.
 
 
 Claws Mail
-~~~~~~~~~~
+__________
 
 .. index::
   pair: Claws Mail; confirm on exit
@@ -373,7 +391,7 @@ Other settings:
 
 
 Pan
-~~~
+___
 
 .. index::
   pair: Pan; custom browser
@@ -392,7 +410,7 @@ The two settings are saved in ``~/.pan2/servers.xml`` and
 
 
 GIMP
-~~~~
+____
 
 .. index::
   pair: Gimp; theme
@@ -407,7 +425,7 @@ In Keyboard Shortcuts, View: Set Zoom in shortcut to '='.
 
 
 Music On Console
-~~~~~~~~~~~~~~~~
+________________
 
 .. index::
   single: Music On Console
@@ -424,7 +442,7 @@ when quitting ``mocp`` (due to the program reading the tags in the files).
 
 
 Taskwarrior
-~~~~~~~~~~~
+___________
 
 .. index::
   single: Taskwarrior
@@ -438,7 +456,7 @@ set another directory. See `my ~/.taskrc file
 
 
 xzgv
-~~~~
+____
 
 .. index::
   single: xzgv
@@ -453,7 +471,7 @@ the Z key.
 
 
 Vim
-~~~
+___
 
 .. index::
   pair: Vim; backup files
@@ -521,7 +539,7 @@ You may also be interested in :doc:`using the Base16 color schemes
 
 
 Sakura
-~~~~~~
+______
 
 .. index::
   single: Sakura
@@ -529,8 +547,12 @@ Sakura
 Set font to Inconsolata Medium 12.
 
 
+Third party applications installation
+-------------------------------------
+
+
 Google Chrome installation
---------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. index::
   single: Google Chrome
@@ -563,8 +585,53 @@ I then tweaked Google Chrome's settings as for
 :ref:`Chromium <chromium_config>`.
 
 
+GNAT Community Edition 2021
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  single: GNAT Community Edition
+  single: xhost
+
+GNAT Community Edition is available on `Adacore's download page
+<https://www.adacore.com/download/more>`_. Download the binary executable
+archive gnat-2021-20210519-x86_64-linux-bin and execute it **as root** to
+perform the installation. Before that, you probably have to make sure that the
+executable can connect to the X server using the following commands::
+
+  xhost +local: # As "normal" user.
+
+and::
+
+  export DISPLAY=:0.0 # As root.
+
+
+Alire (Ada LIbrary REpository) installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  single: Alire (Ada LIbrary REpository)
+  single: ~/.profile
+
+The `Alire <https://alire.ada.dev/>`_ distribution is available as a Zip
+archive on Github. I download it using ``wget`` (example for version 1.2.1)::
+
+  cd Downloads
+  wget https://github.com/alire-project/alire/releases/download/v1.2.1/alr-1.2.1-bin-x86_64-linux.zip
+
+Then I extract it using ``unzip`` **as root**::
+
+  cd <directory_containing_the_archive> # As root.
+  mkdir -p /opt/alire # As root.
+  unzip alr-1.2.1-bin-x86_64-linux.zip -d /opt/alire # As root.
+
+Finally I add ``/opt/alire/bin`` to my path, via a line in my ``~/.profile``
+file:
+
+| PATH="$PATH":/opt/alire/bin
+
+
 signal-desktop installation and linking to a "dumb phone"
----------------------------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. index::
   single: signal-desktop
@@ -638,7 +705,7 @@ your phone::
 
 
 Wireshark installation
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 .. index::
   single: Wireshark
@@ -660,7 +727,7 @@ wireshark-common``.
 
 
 Session for desktop installation
---------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. index::
   single: Session
