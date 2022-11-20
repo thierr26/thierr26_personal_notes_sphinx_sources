@@ -27,8 +27,8 @@ Debian GNU/Linux packages installation
 --------------------------------------
 
 
-Instalation command
-~~~~~~~~~~~~~~~~~~~
+Installation command
+~~~~~~~~~~~~~~~~~~~~
 
 The command to be run (**as root**) to perform the Debian GNU/Linux packages
 installation is::
