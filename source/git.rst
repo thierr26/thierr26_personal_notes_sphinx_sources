@@ -505,6 +505,12 @@ to see if the patch is applicable or not::
 
   git apply --check my_patch
 
+There is an alternative to ``git diff`` which is ``git difftool``, that you can
+configure to use a specific tool to show differences between files (e.g. `Meld
+<https://meldmerge.org>`_). A `Stackoverflow answer provides all the details
+about using Meld as the Git difftool (and mergetool too)
+<https://stackoverflow.com/questions/34119866/setting-up-and-using-meld-as-your-git-difftool-and-mergetool>`_.
+
 
 Committing
 ----------

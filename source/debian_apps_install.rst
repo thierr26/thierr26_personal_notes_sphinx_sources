@@ -108,6 +108,7 @@ installation is::
       lm-sensors \
       hwloc \
       zbar-tools \
+      meld \
       hexedit \
       python3-sphinx \
       ruby-nokogiri \
@@ -280,6 +281,8 @@ Here's a short description of the packages:
     - Hardware Locality tool suite
   * - zbar-tools
     - Bar code / QR-code related utilities
+  * - meld
+    - Graphical tool to show differences between text files
   * - hexedit
     - Hexadecimal editor
   * - python3-sphinx
