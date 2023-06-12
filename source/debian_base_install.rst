@@ -107,6 +107,9 @@ Note that this step is **not necessary if your installation CD already includes
 firmware** (that is if you have downloaded the image from a subdirectory of
 cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware).
 
+Note also that this section does not apply any more, starting with Debian 12.
+(Firmware is now included in the normal Debian installer images.)
+
 The `Debian Wiki <https://wiki.debian.org/Firmware>`_ provides some
 instructions, but here are the details of what I've done (for a Debian Bullseye
 install, and including the authenticity verification of the archive)::
@@ -402,8 +405,16 @@ firmware archive has been required) or post-installation, manually::
 
   apt-get install firmware-linux-nonfree # As root.
 
-Note that the ``/etc/apt/sources.list`` file must have the non-free section.
-You can :download:`download my /etc/apt/sources.list<download/sources.list>`.
+Note that the ``/etc/apt/sources.list`` file must have the non-free section
+(and even **the non-free-firmware section**, starting with Debian 12).
+
+You can :download:`download my /etc/apt/sources.list for Debian 11
+<download/sources.list>`.
+
+You can `download my /etc/apt/sources.list for the current Debian
+stable release
+<https://raw.githubusercontent.com/thierr26/thierr26_config_files/master/system_config/etc/apt/sources.list>`_.
+
 Make sure you issue a ``apt-get update`` command after changing
 ``/etc/apt/sources.list``.
 
@@ -640,9 +651,109 @@ Post-install maintenance
   pair: apt-get commands; dist-upgrade
   pair: apt-get commands; autoremove
   pair: apt-get commands; autoclean
+  single: dpkg
+  single: ar
+  single: tar
+  single: rm
+  single: diff
 
 I regularly run the following commands to keep the system up to date::
 
   apt-get update && apt-get dist-upgrade
   apt-get autoremove # Useful if some packages have become unneeded.
   apt-get autoclean  # Useful to avoid that the APT cache grows out of control.
+
+The package management system (`APT
+<https://en.wikipedia.org/wiki/APT_(software)>`_) logs to files in
+``/var/log/apt``. ``/var/log/apt/term.log`` is not easy to read due to ``^M``
+characters. When I need to read it, I make a copy of it and edit the copy in
+Vim to remove the ``^M`` characters (``:%s/<Crl-V><Ctrl-M>/\r/g``).
+
+After, say, a major upgrade, you might want to find which of your configuration
+files are different from the default configuration files. I wrote the following
+shell script which helps answering the question.
+
+It's meant to be run **as root, in an empty directory created for the
+occasion**.
+
+Here is a short description of the script:
+
+For every installed package on the system, the script searches the ``.deb``
+file (found in ``/var/cache/apt/archives``) for the list of configuration files
+for the package (file ``conffiles`` in the ``control.tar`` archive of the
+``.deb`` file).
+
+For every configuration file, the default version of the file (as found in the
+``data.tar`` archive of the ``.deb`` file) is compared (using ``diff``) with
+the installed version.
+
+Of course, there are some particular cases which are not handled by the script.
+For example, for the package ``openssh-server``, the configuration file
+``/etc/ssh/sshd_config`` is not mentionned in ``conffiles`` (and the default
+version is ``/usr/share/openssh/sshd_config``).
+
+And here is the code::
+
+  #!/bin/sh
+
+  set -o nounset
+  set -o errexit
+
+  APT_ARCHIVE_DIR=/var/cache/apt/archives;
+  CONF_FILE_LIST=conffiles;
+  CTRL_ARCHIVE=control.tar;
+
+  dpkg -l \
+      | grep ^ii \
+      | while IFS= read -r LINE; do
+
+            LINE_TAIL="$(echo "$LINE" | sed "s/^ii\s\+//")";
+            PACKAGE_NAME="$(echo "$LINE_TAIL" | sed "s/\([^ :]\+\).\+$/\1/")";
+            LINE_TAIL="${LINE_TAIL#$PACKAGE_NAME}";
+            LINE_TAIL="$(echo "$LINE_TAIL" | sed "s/^\(:[^ ]\+\)\?\s\+//")";
+            PACKAGE_VER="$(echo "$LINE_TAIL" | sed "s/\([^ ]\+\).\+$/\1/")";
+            PACKAGE_VER="$(echo "$PACKAGE_VER" | sed "s/:/%3a/g")";
+            LINE_TAIL="$(echo "$LINE_TAIL" | sed "s/^[^ ]\+\s\+//")";
+            PACKAGE_ARCH="${LINE_TAIL%% *}";
+            PACKAGE_DEB="${PACKAGE_NAME}_${PACKAGE_VER}_${PACKAGE_ARCH}.deb";
+
+            PACKAGE_DEB_PATH="$APT_ARCHIVE_DIR/$PACKAGE_DEB";
+
+            if [ -f "$PACKAGE_DEB_PATH" ]; then
+
+                rm -rf "$PACKAGE_NAME";
+                mkdir "$PACKAGE_NAME";
+                cd "$PACKAGE_NAME";
+
+                cp "$PACKAGE_DEB_PATH" .;
+                ar -x "$PACKAGE_DEB";
+
+                if [ -f "$CTRL_ARCHIVE.xz" ]; then
+                    COMPRESSED_CTRL_ARCHIVE=control.tar.xz;
+                else
+                    COMPRESSED_CTRL_ARCHIVE=control.tar.gz;
+                fi;
+                tar -xf "$COMPRESSED_CTRL_ARCHIVE";
+
+                if [ -f "$CONF_FILE_LIST" ]; then
+
+                    tar -xf data.tar.xz;
+
+                    for CONF_FILE in $(cat "$CONF_FILE_LIST"); do
+                        echo "*** $PACKAGE_NAME configuration file $CONF_FILE";
+                        set +o errexit
+                        diff "$CONF_FILE" "${CONF_FILE#/}";
+                        set -o errexit
+                    done;
+                fi;
+
+                cd ..;
+                rm -rf "$PACKAGE_NAME";
+
+            else
+
+                echo "Cannot find $PACKAGE_DEB_PATH" 1>&2;
+
+            fi;
+
+        done;
