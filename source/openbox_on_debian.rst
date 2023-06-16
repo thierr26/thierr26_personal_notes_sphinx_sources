@@ -62,6 +62,8 @@ Addition of a RDP server (for a remote machine)
   single: ~/.profile
   single: ~/.xsessionrc
   single: logname
+  single: openssl
+  pair: certificate; snake oil
 
 On a remote machine with no physical access, I use the `Remote Desktop Protocol
 (RDP) <https://en.wikipedia.org/wiki/Remote_Desktop_Protocol>`_ to work in
@@ -81,6 +83,14 @@ necessary to add user ``xrdp`` to group ``ssl-cert``. Without that, xrdp is not
 able to read the certificate, using the following command (**as root**)::
 
   adduser xrdp ssl-cert # As root.
+
+When you need to regenerate the certificate, use a command like the follwing
+one (**as root**)::
+
+  openssl req -x509 -newkey rsa:4096 \
+      -keyout /etc/ssl/private/ssl-cert-snakeoil.key \
+      -out /etc/ssl/certs/ssl-cert-snakeoil.pem \
+      -sha256 -days 365 -nodes                         # As root.
 
 Then I restarted the server and was able to open an Openbox session on the
 remote machine from my local desktop machine using a ``xfreerdp`` command like
