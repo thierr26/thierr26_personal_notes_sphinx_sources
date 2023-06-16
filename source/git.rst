@@ -698,6 +698,11 @@ The following commands fetch changes from the given repository for branch
   git pull <repository_url_or_path> master # Specify the repository using an
                                            # URL or a directory path.
 
+The following command downloads changes from the branch "branch_name" of remote
+"origine" and updates the local branch, no need to check out "branch_name"::
+
+  git fetch origin branch_name:branch_name
+
 You can list the URLs for remote "origin" with::
 
   git remote get-url --all origin
