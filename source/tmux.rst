@@ -272,7 +272,7 @@ Detach the current client with ``prefix d`` or::
 
   tmux detach
 
-Reattach with one off::
+Reattach with one of::
 
   tmux attach
   tmux a
