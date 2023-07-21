@@ -217,6 +217,9 @@ Here's a short description of the packages:
     - Includes exiftool (image metadata extraction)
   * - xsane
     - Frontend for SANE (Scanner Access Now Easy), includes Gimp plugin
+      (the Gimp plugin may not work, on Debian Bookworm at least, but `there is
+      a fix
+      <https://askubuntu.com/questions/1427978/lubuntu-22-04-1-xsane-gimp-plugin-doesnt-work>`_)
   * - xzgv
     - Image viewer
   * - rawtherapee
