@@ -137,7 +137,7 @@ also get the ability to easily open and create archives. Do the installation
   apt-get install thunar thunar-archive-plugin thunar-volman # As root.
 
 `Follow the link for instructions about how to enable and configure the volume
-management. <https://docs.xfce.org/xfce/thunar/using-removable-media#managing_removable_drives_and_media>`_
+management <https://docs.xfce.org/xfce/thunar/using-removable-media#managing_removable_drives_and_media>`_.
 
 
 Requiring confirmation before exiting

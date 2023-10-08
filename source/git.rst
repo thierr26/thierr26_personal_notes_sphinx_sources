@@ -574,7 +574,7 @@ Tagging
 Basic tag manipulations (creation, deletion) are done using the ``git tag``
 command and its various option. But there are more things to do with tags
 (cloning, pushing). `A Stack Otherflow answer gives many details about tagging
-in Git. <https://stackoverflow.com/a/35979751>`_
+in Git <https://stackoverflow.com/a/35979751>`_.
 
 Note also the following commands, useful to find tags and corresponding
 commits::
@@ -752,8 +752,8 @@ Switch to branch named "branch_name" with::
                                     # started from are automatically staged).
 
 This of course raises the question of which naming scheme to use for the
-branches. `This Stack Overflow answer by Phil Hord helps.
-<https://stackoverflow.com/questions/273695/what-are-some-examples-of-commonly-used-practices-for-naming-git-branches/6065944#6065944>`_
+branches. `This Stack Overflow answer by Phil Hord helps
+<https://stackoverflow.com/questions/273695/what-are-some-examples-of-commonly-used-practices-for-naming-git-branches/6065944#6065944>`_.
 
 Working with branches, you inevitably have to do some merging (using the ``git
 merge`` command) or rebasing (using the ``git rebase`` command). Rebasing is
