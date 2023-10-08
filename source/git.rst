@@ -779,6 +779,11 @@ about the ``git commit --fixup`` / ``git rebase`` combination)::
   git commit --fixup=target_commit \
       && git rebase -i -autosquash commit_before_target_commit
 
+The ``--update-refs`` option, introduced with Git 2.38, may make your life much
+easier, especially if you use stacked branches. See `this article by Andrew
+Lock
+<https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/>`_.
+
 Merge the branch named "branch_name" into the current branch with one of the
 following commands::
 
@@ -1291,6 +1296,7 @@ Other resources
 * `A Git branching model <https://nvie.com/posts/a-successful-git-branching-model>`_
 * `How to fix your Git branches after a rebase <https://www.viget.com/articles/how-to-fix-your-git-branches-after-a-rebase>`_
 * `Getting solid at Git rebase vs. merge <https://delicious-insights.com/en/posts/getting-solid-at-git-rebase-vs-merge>`_
+* `Working with stacked branches in Git is easier with --update-refs <https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs>`_
 * `git fixup: --amend for older commits <https://blog.filippo.io/git-fixup-amending-an-older-commit>`_
 * `Git: To squash or not to squash? <https://jamescooke.info/git-to-squash-or-not-to-squash.html>`_
 * `Git Submodules <https://blog.github.com/2016-02-01-working-with-submodules>`_
