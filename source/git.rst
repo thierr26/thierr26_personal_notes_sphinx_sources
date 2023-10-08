@@ -1106,6 +1106,44 @@ root**) with::
   apt-get install gitk
 
 
+Resetting the commit and author dates
+-------------------------------------
+
+.. index::
+  pair: Git; log
+  pair: Git; rebase
+  pair: Git; commit
+
+Two dates are associated with a given commit: `the author date and the commit
+date  <https://stackoverflow.com/a/11857467>`_.
+
+One way to show both dates is to use ``git log`` with option
+``--pretty=fuller``::
+
+  git log --pretty=fuller
+
+If for any reason you want to reset those dates to the current date for all the
+commits (well, except the initial commit) of the current branch, you can do it
+with::
+
+  git rebase <branch_name> \
+      --exec 'git commit --amend --date="now" --no-edit --allow-empty'
+
+You may want to add the ``--update-refs`` option to preserve the branching
+structure::
+
+  git rebase <branch_name> \
+      --exec 'git commit --amend --date="now" --no-edit --allow-empty' \
+      --update-refs
+
+If you also want to reset the dates of the initial commit, you can check it out
+and do::
+
+  git commit --amend --date="now" --no-edit --allow-empty
+
+But then you will have to rebase your working branch on the new initial commit.
+
+
 Creating an archive of the latest commit (without any history)
 --------------------------------------------------------------
 
