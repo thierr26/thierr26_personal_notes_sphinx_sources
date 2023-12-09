@@ -366,7 +366,7 @@ Converting Ogg files to MP3
 Converting an Ogg file to `MP3 <https://en.wikipedia.org/wiki/MP3>`_ is pretty
 easy with ``ffmpeg``::
 
-  ffmpeg -i my_audio_file.ogg my_audio_file.mp3
+  ffmpeg -i my_audio_file/usr/share/music/kptn/flammes/10\ -\ Irresistant.mp3.ogg my_audio_file.mp3
 
 Metadata can be included in the MP3 output file. Example::
 
@@ -481,3 +481,16 @@ Here's the code of the script::
   for DIR in $(find "$OGG_TREE_ROOT" -type d); do
       process_dir "$DIR";
   done;
+
+
+Converting MP3 files to Ogg
+---------------------------
+
+.. index::
+  single: Ogg
+  single: ffmpeg
+  pair: MP3; converting
+
+You can also convert MP3 files to Ogg with ``ffmpeg``::
+
+  ffmpeg -i my_audio_file.mp3 -codec libvorbis my_audio_file.ogg
