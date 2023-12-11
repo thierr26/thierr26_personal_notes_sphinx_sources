@@ -20,6 +20,7 @@ Dir.glob(path + "/**/*.html").each do |html_file|
     doc.xpath('//table/thead').remove_attr("valign")
     doc.xpath('//table/tbody').remove_attr("valign")
     doc.xpath('//table/colgroup').remove
+    doc.xpath('//input').remove_attr("autocorrect")
 
     doc.xpath('//a[starts-with(@href, "mailto:ssh")]').each do |anchor|
         anchor.replace anchor.children
