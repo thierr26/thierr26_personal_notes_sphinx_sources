@@ -91,6 +91,9 @@ Checking Taskwarrior data files
 rsync checksum and trial run options
 ------------------------------------
 
+.. index::
+  single: rsync
+
 If you use rsync to maintain a backup copy of some files, and you have a doubt
 about the integrity of one of the sources, you may want to use the following
 rsync options:
