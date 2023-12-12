@@ -13,6 +13,7 @@ Personal Notes
   debian_base_install
   openbox_on_debian
   debian_apps_install
+  when_things_go_wrong
   linux_firewalling
   debian_unstable_vm
   ssh
