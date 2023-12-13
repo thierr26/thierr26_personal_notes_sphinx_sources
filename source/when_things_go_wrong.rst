@@ -24,6 +24,7 @@ Reconfiguring GRUB to boot an older kernel by default
   single: /etc/default/grub
   single: /boot/grub/grub.cfg
   single: update-grub
+  pair: apt-get commands; purge
 
 The kernel GRUB boots by default is determined by the "GRUB_DEFAULT" line in
 file ``/etc/default/grub``. By default, it is "GRUB_DEFAULT=0" which designates
@@ -42,6 +43,11 @@ The entry and submenu names can be found in file ``/boot/grub/grub.cfg``.
 
 After modifying (**as root** of course) the ``/etc/default/grub`` file, run
 ``update-grub`` (still **as root**) and reboot.
+
+Anyway, to durably avoid booting a kernel, the best thing to do is probably to
+uninstall it, with ``apt-get purge``::
+
+  apt-get purge linux-image-6.1.0-14-amd64
 
 
 Checking file systems with fsck
