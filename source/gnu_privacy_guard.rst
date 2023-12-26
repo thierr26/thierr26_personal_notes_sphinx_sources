@@ -44,6 +44,11 @@ List the pinentry versions available on a Debian system with::
 
   apt-cache search pinentry|grep ^pinentry
 
+Pinentry may not work if you don't own the tty (e.g. when you have changed user
+with ``su``). In such cases, one solution is to invoke ``gpg`` with the
+``--pinentry-mode loopback`` option. Installing and selecting ``pinentry-tty``
+package may also be a solution (but I haven't tested yet).
+
 
 Configuring the passphrase caching time
 ---------------------------------------
