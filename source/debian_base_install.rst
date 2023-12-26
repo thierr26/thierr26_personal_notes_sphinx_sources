@@ -459,7 +459,7 @@ root**) with::
 You can find the lastest synchronization date by checking the modification time
 of file ``/run/systemd/timesync/synchronized``::
 
-  stat /run/systemd/timesync/synchronized|grep ^Modify
+  stat /run/systemd/timesync/synchronized|grep ^Modif
 
 The configuration file for systemd-timesyncd is
 ``/etc/systemd/timesyncd.conf``.
