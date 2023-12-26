@@ -34,10 +34,11 @@ The command to be run (**as root**) to perform the Debian GNU/Linux packages
 installation is::
 
   apt-get install \
+      rsyslog \
       apt-rdepends \
       curl \
-      firefox-esr midori \
-      webext-ublock-origin \
+      firefox-esr \
+      webext-ublock-origin-firefox webext-ublock-origin-chromium \
       w3m \
       chromium \
       smartmontools \
@@ -61,16 +62,15 @@ installation is::
       taskwarrior \
       gcal \
       gftp \
-      dlume \
       xpdf \
       evince \
       catdoc \
       octave \
-      gnat gprbuild libaunit20-dev \
+      gnat gprbuild libaunit22-dev \
       ada-reference-manual-2012 \
-      libxmlada-dom10-dev libxmlada-input10-dev libxmlada-sax10-dev \
-      libxmlada-schema10-dev libxmlada-unicode10-dev \
-      libgtkada-bin libgtkada-doc libgtkada20 libgtkada20-dev \
+      libxmlada-dom12-dev libxmlada-input12-dev libxmlada-sax12-dev \
+      libxmlada-schema12-dev libxmlada-unicode12-dev \
+      libgtkada-bin libgtkada-doc libgtkada22 libgtkada22-dev \
       gdb gdb-doc gdbserver \
       valgrind \
       lcov \
@@ -125,13 +125,15 @@ Here's a short description of the packages:
 
 .. list-table::
 
+  * - rsyslog
+    - System and kernel logging daemon
   * - apt-rdepends
     - Package dependencies listing tool
   * - curl
     - Data transfer tool
-  * - firefox-esr, midori
-    - Graphical Web browsers
-  * - webext-ublock-origin
+  * - firefox-esr
+    - Graphical Web browser
+  * - webext-ublock-origin-firefox, webext-ublock-origin-chromium
     - Ads, malware, trackers blocker
   * - w3m
     - Text-based Web browser
@@ -179,8 +181,6 @@ Here's a short description of the packages:
     - Calendar program
   * - gftp
     - FTP client
-  * - dlume
-    - Address book
   * - xpdf
     - PDF reader
   * - evince
@@ -189,13 +189,13 @@ Here's a short description of the packages:
     - Text extractor for MS-Office files
   * - octave
     - GNU Octave language (similar to Matlab)
-  * - gnat, gprbuild, libaunit20-dev
+  * - gnat, gprbuild, libaunit22-dev
     - Ada programming tools
   * - ada-reference-manual-2012
     - Ada 2012 reference manual
-  * - libxmlada-dom10-dev, libxmlada-input10-dev, libxmlada-sax10-dev,
-      libxmlada-schema10-dev, libxmlada-unicode10-dev,
-      libgtkada-bin libgtkada-doc, libgtkada20, libgtkada20-dev
+  * - libxmlada-dom12-dev, libxmlada-input12-dev, libxmlada-sax12-dev,
+      libxmlada-schema12-dev, libxmlada-unicode12-dev,
+      libgtkada-bin libgtkada-doc, libgtkada22, libgtkada22-dev
     - Ada libraries (XML/Ada and GtkAda)
   * - gdb, gdb-doc, gdbserver
     - GNU debugger (including remote server)
@@ -310,7 +310,6 @@ ___________
 At about:config, set the following options to true:
 
 * browser.quitShortcut.disabled
-* browser.sessionstore.warnOnQuit
 * browser.tabs.warnOnClose
 * browser.tabs.warnOnCloseOtherTabs
 * browser.warnOnQuit

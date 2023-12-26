@@ -30,7 +30,7 @@ Installation
 I install `X.Org X Window System <https://www.x.org>`_ and Openbox with the
 following command (**as root**)::
 
-  apt-get install xorg openbox openbox-menu menu # As root.
+  apt-get install xorg openbox menu # As root.
 
 Then (and assuming that the ``/etc/X11/Xwrapper.config`` file contains the line
 ``allowed_users=console`` or ``allowed_users=anybody``) an unprivileged user
@@ -304,13 +304,13 @@ Benefiting from Vim clipboard feature
 
 .. index::
   pair: Vim; clipboard
-  single: vim-gtk
+  single: vim-gtk3
 
 Even if using Vim only in a terminal and not as a graphical application, it is
-useful to install the ``vim-gtk`` package instead of just the ``vim`` package,
+useful to install the ``vim-gtk3`` package instead of just the ``vim`` package,
 to benefit from the clipboard feature::
 
-  apt-get install vim-gtk # As root.
+  apt-get install vim-gtk3 # As root.
 
 `Follow the link for an interesting discussion on that topic on
 vi.stackexchange.com

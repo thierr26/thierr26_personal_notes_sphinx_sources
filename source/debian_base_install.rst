@@ -48,16 +48,16 @@ installation CDs.
 If you have a fast enough internet connection and a CD burning drive, you can
 download a `small (approximately 300MB) installation image
 <https://www.debian.org/distrib/netinst>`_ and burn it to a blank CD-R.
-Commands like the ones below should do it. The example is for Debian 11.3.0
-(Bullseye). Note also that it is assumed that you have `cdrskin
+Commands like the ones below should do it. The example is for Debian 12.4.0
+(Bookworm). Note also that it is assumed that you have `cdrskin
 <http://scdbackup.sourceforge.net/cdrskin_eng.html>`_ installed. Run ``apt-get
 install cdrskin`` **as root** if not. Note also that the
 ``dev=<cd_burning_drive_device_file>`` option is probably not mandatory as
 cdrskin can detect CD burning devices (``cdrskin --devices`` lists the detected
 devices)::
 
-  wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-11.3.0-amd64-netinst.iso
-  cdrskin dev=<cd_burning_drive_device_file> -eject -v -data debian-11.3.0-amd64-netinst.iso
+  wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.4.0-amd64-netinst.iso
+  cdrskin dev=<cd_burning_drive_device_file> -eject -v -data debian-12.4.0-amd64-netinst.iso
 
 You might want to verify the authenticity of the ISO image. Download the SHA512
 checksum and associated signature file::
@@ -90,7 +90,7 @@ burned CD. Just compare the output of the following command with the checksum
 from the downloaded checksum file as provided in file SHA512SUMS::
 
   dd if=/dev/<cd_burning_drive_device_file> bs=2048 \
-    count=$(($(stat -c %s debian-11.3.0-amd64-netinst.iso)/2048)) \
+    count=$(($(stat -c %s debian-12.4.0-amd64-netinst.iso)/2048)) \
     conv=notrunc,noerror | sha512sum
 
 
@@ -111,17 +111,17 @@ Note also that this section does not apply any more, starting with Debian 12.
 (Firmware is now included in the normal Debian installer images.)
 
 The `Debian Wiki <https://wiki.debian.org/Firmware>`_ provides some
-instructions, but here are the details of what I've done (for a Debian Bullseye
+instructions, but here are the details of what I've done (for a Debian Bookworm
 install, and including the authenticity verification of the archive)::
 
-  mkdir -p ~/download/debian_bullseye_firmware # Create a directory somewhere.
-  cd ~/download/debian_bullseye_firmware       # Move to that directory.
+  mkdir -p ~/download/debian_bookworm_firmware # Create a directory somewhere.
+  cd ~/download/debian_bookworm_firmware       # Move to that directory.
 
   # Download the firmware archive, its SHA512 checksum and associated signature
   # file.
-  wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/bullseye/current/firmware.tar.gz
-  wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/bullseye/current/SHA512SUMS
-  wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/bullseye/current/SHA512SUMS.sign
+  wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/bookworm/current/firmware.tar.gz
+  wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/bookworm/current/SHA512SUMS
+  wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/bookworm/current/SHA512SUMS.sign
 
 I've checked the SHA512 checksum of ``firmware.tar.gz`` by issuing a
 ``sha512sum -c --ignore-missing SHA512SUMS``.
@@ -378,10 +378,10 @@ installed Debian system (see `this linuxconfig.org article
 
 http://deb-multimedia.org provides some instructions:
 
-First, add **as root** a line like this one (example for Debian Bullseye) in
+First, add **as root** a line like this one (example for Debian bookworm) in
 your ``/etc/apt/sources.list``:
 
-| deb https://www.deb-multimedia.org bullseye main non-free
+| deb https://www.deb-multimedia.org bookworm main non-free
 
 Then, issue **as root** the following commands::
 

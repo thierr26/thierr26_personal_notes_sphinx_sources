@@ -270,7 +270,7 @@ Install X.org and Openbox
 I then install X.org and :doc:`Openbox <openbox_on_debian>` on
 the virtual machine::
 
-  apt-get install xorg openbox openbox-menu menu # As root, on the guest.
+  apt-get install xorg openbox menu # As root, on the guest.
 
 
 Enable copy'n'paste between host and guest
