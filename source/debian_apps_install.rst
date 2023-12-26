@@ -470,7 +470,7 @@ ____
 
 `Such a ~/.xzgvrc file
 <https://github.com/thierr26/thierr26_config_files/blob/master/.xzgvrc>`_
-ensure that the program starts in "fit to window" mode for high resolution
+ensures that the program starts in "fit to window" mode for high resolution
 images or in 100% mode for images smaller than the window. For high resolution
 images, switching between "fit to window" mode and 100% mode is possible with
 the Z key.
