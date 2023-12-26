@@ -552,6 +552,28 @@ ______
 Set font to Inconsolata Medium 12.
 
 
+Wireshark
+_________
+
+.. index::
+  single: Wireshark
+  single: wireshark-common
+  single: usermod
+  single: dpkg-reconfigure
+
+When installing Wireshark (Debian package wireshark), you're prompted to choose
+whether non-superusers should be able to capture packets. I answer "Yes". It
+causes the ``wireshark`` group to be created. Then you just have to add a user
+to the ``wireshark`` group to grant this user the right to capture packets with
+Wireshark. Use a command like the one below (**as root**) to add a user a user
+to the ``wireshark`` group::
+
+  usermod -aG wireshark user_name # As root.
+
+If you have answered "No" and have changed your mind, run ``dpkg-reconfigure
+wireshark-common``.
+
+
 Third party applications installation
 -------------------------------------
 
@@ -707,28 +729,6 @@ your phone::
 
   /opt/signal-cli-0.7.4/bin/signal-cli -u +336xxxxxxxx \
     addDevice --uri "<tsdevice_link>"
-
-
-Wireshark installation
-~~~~~~~~~~~~~~~~~~~~~~
-
-.. index::
-  single: Wireshark
-  single: wireshark-common
-  single: usermod
-  single: dpkg-reconfigure
-
-When installing Wireshark (Debian package wireshark), you're prompted to choose
-whether non-superusers should be able to capture packets. I answer "Yes". It
-causes the ``wireshark`` group to be created. Then you just have to add a user
-to the ``wireshark`` group to grant this user the right to capture packets with
-Wireshark. Use a command like the one below (**as root**) to add a user a user
-to the ``wireshark`` group::
-
-  usermod -aG wireshark user_name # As root.
-
-If you have answered "No" and have changed your mind, run ``dpkg-reconfigure
-wireshark-common``.
 
 
 Session for desktop installation
