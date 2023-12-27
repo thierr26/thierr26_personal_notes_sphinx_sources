@@ -13,8 +13,12 @@ Introduction
 
 These are my notes about the installation and configuration of `Openbox
 <https://en.wikipedia.org/wiki/Openbox>`_ on `Debian GNU/Linux
-<https://www.debian.org>`_. I'm doing this installation just after the
-:doc:`Debian base installation <debian_base_install>`.
+<https://www.debian.org>`_. Openbox is a window manager which provides a
+minimalist environment, that is a configurable "root menu" you open with a
+right click on the background and configurable key bindings.
+
+I'm doing this installation just after the :doc:`Debian base installation
+<debian_base_install>`.
 
 
 Installation
