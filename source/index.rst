@@ -28,6 +28,7 @@ Personal Notes
   reminder
   base16_color_schemes_xterm_and_vim
   tmux
+  pdf_files_manipulation_with_cli_programs
   email_with_nmh_and_other_cli_programs
   wifi
   music
