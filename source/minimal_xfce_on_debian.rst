@@ -26,6 +26,7 @@ Installation
   single: LightDM
   single: X.org
   single: tasksel
+  single: xfce4-power-manager
 
 When I installed Xfce, I had already Openbox and X.org installed.
 
@@ -37,6 +38,13 @@ using the Debian package selection (``tasksel``). I just installed the
 
 This triggered the installation of the `LightDM display manager
 <https://en.wikipedia.org/wiki/LightDM>`_, which is fine.
+
+If you don't like the default behaviour of the system with regard to automatic
+screen locking, install ``xfce4-power-manager``, and you'll get access to the
+power manager settings panel, which makes it possible to tune the automatic
+screen locking feature::
+
+  apt-get install xfce4-power-manager
 
 
 Theming
