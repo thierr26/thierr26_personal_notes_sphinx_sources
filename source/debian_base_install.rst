@@ -306,11 +306,16 @@ System update
 .. index::
   pair: apt-get commands; update
   pair: apt-get commands; dist-upgrade
+  single: /var/run/reboot-required
 
 Update the system **as root** with::
 
   apt-get update       # As root.
   apt-get dist-upgrade # As root.
+
+After an update, the presence of file ``/var/run/reboot-required`` indicates
+that a reboot is required due to a new kernel or to the update of a critical
+library.
 
 
 Preventing the system from beeping
