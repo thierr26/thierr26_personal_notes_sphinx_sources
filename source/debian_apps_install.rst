@@ -596,13 +596,6 @@ fix the system::
 
   apt install -f # As root.
 
-This caused the following packages to be installed:
-
-* libappindicator3-1
-* libdbusmenu-glib4
-* libdbusmenu-gtk3-4
-* libindicator3-7
-
 I didn't want Google Chrome to be the default browser, so I reselected Firefox
 ESR in the `Debian alternatives system
 <https://wiki.debian.org/DebianAlternatives>`_ with ``update-alternatives
