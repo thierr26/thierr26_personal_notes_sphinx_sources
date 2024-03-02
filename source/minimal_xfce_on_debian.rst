@@ -74,3 +74,20 @@ theme with::
   update-alternatives --config desktop-grub # As root.
 
 Then run ``update-grub``.
+
+
+Showing (or not) the user list on LightDM login screen
+------------------------------------------------------
+
+.. index::
+  single: LightDM
+  single: /etc/lightdm/lightdm.conf
+
+The ``greeter-hide-users`` option in ``/etc/lightdm/lightdm.conf`` determines
+whether the system user list is visible or not on the LightDM login screen.
+
+On a Debian GNU/Linux system at least, this option is absent (well, commented
+out) by default and the user list is not visible on the LightDM login screen.
+
+Uncomment the option (``greeter-hide-users=false``) **as root** and reboot the
+system to make the user list visible on the login screen.
