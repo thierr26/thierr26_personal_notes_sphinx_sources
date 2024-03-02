@@ -237,8 +237,11 @@ shutdown or reboot the system::
   systemctl poweroff # Shut down.
   systemctl reboot   # Reboot.
 
-If you want to shutdown but not immediately, you can use the ``shutdown``
-command::
+You can delay the execution of the command::
+
+  system-run --on-active=90 systemctl poweroff # Shut down in 90 seconds.
+
+Alternatively, you can use the ``shutdown`` command::
 
   shutdown    # Power-off the machine in 1 minute.
   shutdown +2 # Power-off the machine in 2 minutes.
