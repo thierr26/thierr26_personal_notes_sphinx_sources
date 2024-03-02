@@ -228,6 +228,7 @@ Shutting down and rebooting a Debian system
 .. index::
   pair: systemctl commands; poweroff
   pair: systemctl commands; reboot
+  single: system-run
   single: shutdown
 
 After the installation, you should be able to boot into the newly installed
