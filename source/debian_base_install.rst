@@ -502,10 +502,12 @@ machine and select the Memtest86+ grub entry to start Memtest86+)::
 
   apt-get install memtest86+ # As root.
 
-On one of my machines (a 2022 laptop), Memtest86+ does not work (black screen).
-I tried `Memtest86 <https://www.memtest86.com/>`_, more precisely `its
-(unsupported) ISO image <https://www.memtest86.com/tech_booting-cd-dvd.html>`_,
-which worked.
+On one of my machines (a 2022 laptop), Memtest86+ did not work (black screen,
+possibly because `Secure Boot
+<https://www.businessinsider.com/guides/tech/what-is-secure-boot>`_ was
+enabled). I tried `Memtest86 <https://www.memtest86.com/>`_, more precisely
+`its (unsupported) ISO image
+<https://www.memtest86.com/tech_booting-cd-dvd.html>`_, which worked.
 
 I downloaded and burned the ISO image to a blank CD-R using the following
 commands::
