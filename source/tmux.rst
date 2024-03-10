@@ -30,7 +30,7 @@ root**) with::
 
   apt-get install tmux # As root.
 
-You can launch tmux with command ``tmux``. I always use tmux in an `xterm
+You can launch tmux with command ``tmux``. I usually use tmux in an `xterm
 <https://en.wikipedia.org/wiki/Xterm>`_ and launch both with a single ``xterm
 tmux`` command.
 
@@ -122,6 +122,9 @@ in ``if ... else ... fi;`` constructs. Text coloring in the tmux status line is
 controlled using strings like ``#[fg=colour184]``. Example::
 
   set -g status-right "#(printf '#[fg=colour184]yellow#[fg=colour0] black') %a"
+
+(Note that I don't use text coloring any more in my ``~/.tmux.conf`` because I
+now use base16-tmux (see :doc:`Base16 color schemes <base16_color_schemes>`).)
 
 The Caps lock mode indicator is build from the content of a file like
 ``/sys/class/leds/input5::capslock/brightness``. But there might be multiple

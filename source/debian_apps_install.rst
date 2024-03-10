@@ -540,7 +540,7 @@ affectation of the ``backupdir`` and ``directory`` options::
 .. highlight:: shell
 
 You may also be interested in :doc:`using the Base16 color schemes
-<base16_color_schemes_xterm_and_vim>`.
+<base16_color_schemes>`.
 
 
 Sakura
