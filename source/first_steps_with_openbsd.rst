@@ -204,8 +204,6 @@ Installing the GCC 8.3.0p4 package
   pair: OpenBSD package management commands; pkg_add
 
 Command ``pkg_info -Q gcc`` shows the existence of a ``gcc-8.3.0p4`` package.
-The `openports.se page for this GCC package <http://openports.se/lang/gcc/8>`_
-shows that the package has two flavors: no_ada and full.
 
 Let's install the package (**as root**)::
 

@@ -39,7 +39,7 @@ Disabling iptables
 nftables, and used to be the default network filtering framework in `Debian
 GNU/Linux <https://www.debian.org>`_. `Starting with Debian 10 (Buster), the
 default network filtering framework is nftables
-<https://www.debian.org/releases/buster/amd64/release-nojjtes/ch-whats-new.en.html#nftables>`_.
+<https://www.debian.org/releases/buster/amd64/release-notes/ch-whats-new.en.html#nftables>`_.
 
 if iptables is installed on your system, you can list the rules (**as root**)
 with ``iptables -L`` (for the IPv4 protocol) and ``ip6tables -L`` (for the IPv6

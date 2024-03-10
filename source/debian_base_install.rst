@@ -286,10 +286,7 @@ initramfs image (**as root** for both operations)::
 As for the change to ``/lib/udev/rules.d/60-persistent-storage.rules``, the
 internet gives two solutions:
 
-* Commenting out entirely the ATAPI device rule, as suggested on `Paul
-  Philippov's website
-  <https://paulphilippov.com/articles/how-to-fix-slow-boot-with-ata-errors>`_,
-  with this command::
+* Commenting out entirely the ATAPI device rule using this command::
 
     sed -i '/ATAPI/,+1s/^/#/' /lib/udev/rules.d/60-persistent-storage.rules # As root.
 

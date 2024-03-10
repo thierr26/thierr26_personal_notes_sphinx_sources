@@ -122,25 +122,6 @@ originating from `Debian GNU/Linux <https://www.debian.org>`_ with no issue.
 You might be interested by my :doc:`general page about Git <git>`.
 
 
-GNAT Community Edition
-----------------------
-
-.. index::
-  single: GNAT Community Edition (on Windows)
-
-GNAT Community Edition is Adacore's programming tools (most notably the `Ada
-<https://en.wikipedia.org/wiki/Ada_%28programming_language%29>`_ Compiler and
-the `GNAT Programming Studio
-<https://en.wikipedia.org/wiki/GNAT_Programming_Studio>`_ integrated
-development environment) for free software developers.
-
-Download GNAT Community Edition from https://www.adacore.com/download and run
-the installation program.
-
-Again, update your ``Path`` variable (add the ``bin`` subdirectory of the GNAT
-Community Edition installation).
-
-
 GNU Octave
 ----------
 

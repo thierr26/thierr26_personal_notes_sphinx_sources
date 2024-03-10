@@ -270,8 +270,8 @@ If you have issues with accented letters, try::
 
   cdown -H gnudb.gnudb.org -P 8880|iconv -f latin1
 
-Alternatively, you can search your audio CD directly on the `freedb.org
-<http://www.freedb.org>`_ website.
+Alternatively, you can search your audio CD directly on the `gnudb.org
+<https://gnudb.org>`_ website.
 
 Building audio (Ogg) files from an audio CD
 -------------------------------------------

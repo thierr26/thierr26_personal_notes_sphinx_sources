@@ -75,7 +75,7 @@ Openbox. I did the installation just like I would have done for a desktop
 machine (same ``apt-get install`` command as in the previous section), and
 installed a display manager (`LightDM
 <https://en.wikipedia.org/wiki/LightDM>`_) as well as a RDP server (`xrdp
-<http://xrdp.org>`_)::
+<https://www.xrdp.org>`_)::
 
   apt-get install lightdm xrdp # As root.
 
