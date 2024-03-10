@@ -34,7 +34,8 @@ Let's say we have a text file called ``hexnum`` containing hexadecimal numbers
 | f
 | FF
 
-The following Bash command line outputs the same numbers converted to decimal::
+The following `Bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_ command
+line outputs the same numbers converted to decimal::
 
   while IFS= read -r LINE; \
      do echo "ibase=16; $(echo $LINE|tr '[:lower:]' '[:upper:]')" | bc; \

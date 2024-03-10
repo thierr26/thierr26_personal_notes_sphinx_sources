@@ -49,7 +49,7 @@ The ``t`` command causes sed to restart at the ``:redo`` label as long as the
 line with a number made of one to three digits with the same number with a zero
 prepended.
 
-Here is the same command with the parameter (number of digits) set as a bash
+Here is the same command with the parameter (number of digits) set as a shell
 variable::
 
   N=4; sed -e ":redo; s/^\([0-9]\{1,$(($N-1))\}\)$/0\1/; t redo" numbers

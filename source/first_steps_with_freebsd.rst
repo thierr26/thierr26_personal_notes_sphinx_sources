@@ -90,7 +90,7 @@ is not stored to file by default. The following two commands add lines to the
 ``.cshrc``.)
 
 
-Installing bash
+Installing Bash
 ---------------
 
 .. index::
@@ -99,9 +99,10 @@ Installing bash
   pair: FreeBSD package management commands; pkg install
 
 For non root users, the default shell on FreeBSD is ``/bin/sh``. Linux users
-may feel more comfortable with bash instead.
+may feel more comfortable with `Bash
+<https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_ instead.
 
-The following command shows that bash is available on FreeBSD::
+The following command shows that Bash is available on FreeBSD::
 
   pkg search bash
 
@@ -109,23 +110,23 @@ The following command shows that bash is available on FreeBSD::
 **as root** because it will fetch and install the package management tool and
 this will fail if you are not root.)
 
-Install bash **as root** with::
+Install Bash **as root** with::
 
   pkg install bash bash-completion # As root.
 
 
-Changing user's shell to bash
+Changing user's shell to Bash
 -----------------------------
 
 .. index::
   single: chsh
   single: ~/.bashrc
 
-As a "normal" (non root) user, you can change your shell to bash with::
+As a "normal" (non root) user, you can change your shell to Bash with::
 
   chsh -s /usr/local/bin/bash
 
-Create a ``~/.bashrc`` file with the following content to enable the bash
+Create a ``~/.bashrc`` file with the following content to enable the Bash
 completion library:
 
 | [[ $PS1 && -f /usr/local/share/bash-completion/bash-completion.sh ]] \
