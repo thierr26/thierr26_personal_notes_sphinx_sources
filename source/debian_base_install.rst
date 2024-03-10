@@ -417,12 +417,8 @@ firmware archive has been required) or post-installation, manually::
 Note that the ``/etc/apt/sources.list`` file must have the non-free section
 (and even **the non-free-firmware section**, starting with Debian 12).
 
-You can :download:`download my /etc/apt/sources.list for Debian 11
+You can :download:`download my /etc/apt/sources.list for Debian 12
 <download/sources.list>`.
-
-You can `download my /etc/apt/sources.list for the current Debian
-stable release
-<https://raw.githubusercontent.com/thierr26/thierr26_config_files/master/system_config/etc/apt/sources.list>`_.
 
 Make sure you issue a ``apt-get update`` command after changing
 ``/etc/apt/sources.list``.
