@@ -597,6 +597,8 @@ Disable root login (**as the "super user"**, via ``sudo``)::
   sudo usermod -L root
 
 
+.. _installing_locate_updatedb:
+
 Installing locate / updatedb
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

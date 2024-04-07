@@ -22,6 +22,7 @@ Personal Notes
   git
   gnu_privacy_guard
   hexdump
+  find
   bc
   sed
   sphinx
