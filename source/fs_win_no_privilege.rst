@@ -132,9 +132,9 @@ GNU Octave
 `GNU Octave <https://wiki.octave.org/GNU_Octave_Wiki>`_ is an interpreted
 language, similar to `Matlab <https://en.wikipedia.org/wiki/MATLAB>`_.
 
-Download the Zip archive for the latest version (octave-6.4.0-w64.zip at the
-time of this writing) from https://ftp.gnu.org/gnu/octave/windows, unzip it and
-run the ``post-install.bat`` file.
+Download the Zip archive for the latest version (``octave-9.1.0-w64.zip`` at
+the time of this writing) from https://ftp.gnu.org/gnu/octave/windows, unzip it
+and run the ``post-install.bat`` file.
 
 Once more, update your ``Path`` variable (add the directory containing the
 ``octave.vbs`` file).
@@ -153,12 +153,37 @@ your current directory is the one containing the ``octave.vbs`` file)::
   set PATH=%PATH%;%CD%\usr\bin & set "LC_ALL=C" & octave.vbs
 
 An Octave icon file is available in the Octave installation:
-``mingw64\share\octave\6.4.0\imagelib\octave-logo.ico``. That's good to have
+``mingw64\share\octave\9.1.0\imagelib\octave-logo.ico``. That's good to have
 for the case where you want a shortcut on the destop.
 
 GNU Octave for Windows comes with `MSYS2 <https://www.msys2.org>`_, and that is
 another solution (beside :ref:`UnxUtils <unxutils_win>`) to use the GNU
 commands on Windows. Launch ``msys2_shell.cmd``.
+
+
+Ada programming tools (Alire and GNAT Studio)
+---------------------------------------------
+
+.. index::
+  single: Ada
+  single: Alire
+  single: GNAT Studio
+  single: MSYS2
+
+To install Alire, download the installer from `<https://alire.ada.dev>`_
+("Download for Windows" link) and run it.
+
+On first use, Alire installs the Ada toolchain (the GNAT compiler and the GPRbuild
+build system) and other things (like `MSYS2 <https://www.msys2.org>`_). If you
+have already installed GNU Octave, you end up with two installations of MSYS2,
+but it's not an issue.
+
+Make sure to add the ``bin`` subdirectory of Alire to your ``Path`` variable.
+
+Then download the GNAT Studio installer from
+`<https://github.com/AdaCore/gnatstudio/releases>`_
+(``gnatstudio-25.0w-20240506-x86_64-windows64-bin.exe`` at the time of this
+writing) and run it.
 
 
 GNU Privacy Guard
