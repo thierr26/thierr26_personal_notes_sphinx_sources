@@ -112,7 +112,8 @@ installation is::
       hexedit \
       python3-sphinx \
       ruby-nokogiri \
-      sakura # As root.
+      sakura \
+      foobillardplus # As root.
 
 
 Short description
@@ -294,6 +295,8 @@ Here's a short description of the packages:
     - HTML, XML, SAX, and Reader parser for Ruby
   * - sakura
     - Terminal emulator
+  * - foobillardplus
+    - 3D OpenGL billiard game
 
 
 Configuration, preferences
