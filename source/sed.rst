@@ -60,6 +60,7 @@ Substituting starting at a specific line number
 
 .. index::
   pair: sed commands; addresses specifications
+  pair: sed commands; s
 
 Taking the same example file as in the previous section, if you need to add a
 leading minus sign starting at line 3, you can use the following command::
@@ -77,6 +78,25 @@ See `the "addresses" section of the GNU sed manual
 for all the details about line selection.
 
 
+Deleting one out of N lines
+---------------------------
+
+.. index::
+  pair: sed commands; addresses specifications
+  pair: sed commands; d
+
+To drop one out of three (for example) lines from file ``f``, starting at line
+(for exemple) 2, use the following command::
+
+  sed "2~3d" f
+
+The ``d`` here is for "delete".
+
+See `the "addresses" section of the GNU sed manual
+<https://www.gnu.org/software/sed/manual/html_node/sed-addresses.html#sed-addresses>`_
+for all the details about line selection.
+
+
 Joining lines matching a pattern
 --------------------------------
 
@@ -85,6 +105,7 @@ Joining lines matching a pattern
   pair: sed commands; t
   pair: sed commands; P
   pair: sed commands; D
+  pair: sed commands; s
 
 Still taking the same example file, the following command substitutes the
 preceding end of line line sequence with a space character if the line matches
@@ -100,3 +121,43 @@ exiting the loop, the ``P`` command causes the pattern space to be output up to
 the first end of line sequence and the ``D`` command deletes the pattern space
 up to the first end of line sequence (only if the pattern space contains an end
 of line sequence).
+
+
+Keep end of line only for lines matching a pattern
+--------------------------------------------------
+
+.. index::
+  pair: sed commands; N
+  pair: sed commands; b
+
+Let's say we have a text file called ``f`` with the following content:
+
+| f
+| o
+| o
+| b
+| a
+| r
+| b
+| a
+| z
+| .
+
+The following command outputs the same content but with end of lines removed
+except for lines matching "o", "r" or "z"::
+
+  sed ":redo /[orz]/b; N; s/\n//; b redo" f
+
+| fo
+| o
+| bar
+| baz
+| .
+
+For lines matching ``[orz]``, nothing special is done which implies that all
+the content accumulated in memory is output. (The ``b`` in ``/[orz]/b;`` means
+"branch to end of script".)
+
+Other lines are accumulated in memory (thanks to ``N;``), their end of line is
+removed (``s/\n//;``) and they're not output immediately. (The ``b redo``
+causes a jump to the ``:redo`` label.)
