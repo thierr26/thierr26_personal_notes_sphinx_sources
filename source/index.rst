@@ -21,6 +21,7 @@ Personal Notes
   external_usb_drives
   git
   taskset
+  linux_process_thread_list
   gnu_privacy_guard
   hexdump
   find
