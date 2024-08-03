@@ -20,6 +20,7 @@ Personal Notes
   ssh
   external_usb_drives
   git
+  taskset
   gnu_privacy_guard
   hexdump
   find
