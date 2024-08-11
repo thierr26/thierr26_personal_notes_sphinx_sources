@@ -25,6 +25,7 @@ Personal Notes
   gnu_privacy_guard
   hexdump
   find
+  xargs
   bc
   sed
   sphinx
