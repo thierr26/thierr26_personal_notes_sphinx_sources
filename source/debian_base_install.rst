@@ -639,6 +639,16 @@ generate their own database, with a command like::
 
   updatedb --output=/home/$USER/.locatedb 2>/dev/null
 
+or::
+
+  updatedb \
+      --prunepaths='/tmp /usr/tmp /var/tmp /afs /media' \
+      --output=/home/$USER/.locatedb 2>/dev/null
+
+(The ``--prunepaths`` option instructs ``updatedb`` to ignore the listed paths.
+By default, ``/tmp``, ``/usr/tmp``, ``/var/tmp`` and ``/afs`` are ignored and I
+added ``/media`` to prevent ``updatedb`` from exploring any mounted drive.)
+
 Users can use the ``-d`` option of command ``locate`` to search in their
 database. The database contains the files in their home directory and also the
 system files they have permissions to see::
