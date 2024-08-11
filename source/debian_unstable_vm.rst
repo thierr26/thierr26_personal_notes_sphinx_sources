@@ -34,6 +34,7 @@ Checking the virtualizations extensions presence on the CPU
 .. index::
   pair: CPU; virtualization extensions
   pair: CPU; flags
+  pair: proc filesystem; cpuinfo
 
 If your hardware has virtualization support, then you should enable it **in the
 BIOS**.
