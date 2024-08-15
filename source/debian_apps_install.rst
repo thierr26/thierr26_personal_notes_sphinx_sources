@@ -76,7 +76,7 @@ installation is::
       lcov \
       libncurses5 \
       libb-lint-perl \
-      gimp jhead imagemagick \
+      gimp gimp-plugin-registry jhead imagemagick \
       libimage-exiftool-perl \
       xsane \
       xzgv \
@@ -212,7 +212,7 @@ Here's a short description of the packages:
       2018 and 2019.
   * - libb-lint-perl
     - Perl code checker
-  * - gimp, jhead, imagemagick
+  * - gimp, gimp-plugin-registry, jhead, imagemagick
     - Image manipulation programs
   * - libimage-exiftool-perl
     - Includes exiftool (image metadata extraction)
