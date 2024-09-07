@@ -118,6 +118,23 @@ escaped parentheses)::
   find . -type f \( -name "*foo*" -or -name "*bar*" \)
 
 
+Counting found files
+--------------------
+
+.. index::
+  single: wc
+
+When you need to count the found files (and not print their name), you can use
+a command like::
+
+  find . type f -exec printf %c {} + | wc -c
+
+The ``printf %c`` part causes the name of each found files to be printed as a
+single character (a dot). The ``+`` causes the whole output to be on a single
+line (without end of line sequence) and ``wc -c`` counts the number of
+character in the output line.
+
+
 Other resources
 ---------------
 
