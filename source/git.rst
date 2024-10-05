@@ -587,6 +587,11 @@ With ``git rev-list``, you get only the commit hash::
 
   git rev-list -1 my_tag
 
+And if you need to know whether the currently checked out commit has a tag or
+not, use::
+
+  git describe --exact-match --tags
+
 
 Viewing the commit log
 ----------------------
@@ -1202,6 +1207,8 @@ Here are a few Git commands that are useful for scripting::
   git symbolic-ref --short HEAD             # Outputs the checked out branch.
   git rev-parse --abbrev-ref HEAD           # Same output (but listed as
                                             # porcelain).
+  git branch --show-current                 # Same output (but with Git 2.22 or
+                                            # newer).
 
   git for-each-ref \                        # Lists the local branches.
       --format='%(refname:short)' \
