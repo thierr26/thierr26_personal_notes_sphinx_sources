@@ -135,6 +135,30 @@ line (without end of line sequence) and ``wc -c`` counts the number of
 character in the output line.
 
 
+Printing full paths
+-------------------
+
+.. index::
+  pair: Bash; ~+
+  single: pwd
+
+The ``find`` command prints the found files names as relative or absolute paths
+depending on how the searched directories were specified.
+
+Of course, a common case is searching in the current directory with a command
+starting with ``find .``. ``.`` designates the current directory **relative
+to** the current directory. This causes ``find`` to print the found files names
+as relative.
+
+If you want to get the full files names instead, and **assuming your shell is
+Bash**, the easiest way is to use ``~+`` instead of ``.``. Bash expands ``~+``
+to the current directory.
+
+A much more portable alternative is to use ``pwd``::
+
+  find "$(pwd)" ...
+
+
 Other resources
 ---------------
 

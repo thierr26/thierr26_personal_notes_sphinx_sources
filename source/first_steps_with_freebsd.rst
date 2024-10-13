@@ -94,7 +94,7 @@ Installing Bash
 ---------------
 
 .. index::
-  single: bash (on FreeBSD)
+  single: Bash (on FreeBSD)
   pair: FreeBSD package management commands; pkg search
   pair: FreeBSD package management commands; pkg install
 
