@@ -674,10 +674,6 @@ want to check the `Signal official site <https://signal.org/download>`_)::
   apt-get install signal-desktop
   chmod 4755 /opt/Signal/chrome-sandbox
 
-The rest of this section is largely taken from the `"How to install and use
-Signal messenger without a smartphone" ctrl.alt.coop page
-<https://ctrl.alt.coop/en/post/signal-without-a-smartphone>`_.
-
 If your phone is not able to read `QR codes
 <https://en.wikipedia.org/wiki/QR_code>`_ (like my "dumb phone"), you can link
 it using `signal-cli <https://github.com/AsamK/signal-cli>`_. You will also
