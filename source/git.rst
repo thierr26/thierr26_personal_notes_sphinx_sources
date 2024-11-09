@@ -721,6 +721,27 @@ You can remove a remote with::
   git remote rm remote_name
 
 
+Case of SSH access
+~~~~~~~~~~~~~~~~~~
+
+.. index::
+  pair: Git; Through SSH
+  pair: Git; In a Jenkins pipeline
+  pair: Git; GIT_SSH_COMMAND
+  pair: Jenkins; withCredentials
+  pair: Jenkins; withEnv
+  pair: SSH; For Git server access
+
+You might need to specify the SSH key to use. The following links should help:
+
+* `How to tell git which private key to use?
+  <https://superuser.com/questions/232373/how-to-tell-git-which-private-key-to-use>`_
+* `Managing multiple SSH keys
+  <https://www.syedaslam.com/managing-multiple-ssh-keys/>`_
+* `Push git changes through ssh (in a Jenkins pipeline)
+  <https://wiki.autopdutop.fr/jenkins/jenkinsfile/#push-git-changes-through-ssh>`_
+
+
 Working with branches
 ---------------------
 
@@ -1160,6 +1181,25 @@ The following commands create archives of the working directory in "tar" and
 
   git archive -o latest.tar HEAD
   git archive -o latest.zip HEAD
+
+
+Cleaning a working directory
+----------------------------
+
+.. index::
+  pair: Git; clean
+  pair: Git; reset
+
+The ``git clean -fdx`` deletes all untracked file (including ignored files).
+**Use with great care !** You can do a dry run with ``git clean -ndx``.
+
+If you also want to reset the changes made to tracked files and in staging
+area, add a ``git reset --hard`` command::
+
+  git reset --hard
+  git clean -fdx
+
+Again, **use with care!**
 
 
 Scripting
