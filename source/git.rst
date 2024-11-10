@@ -777,9 +777,22 @@ Switch to branch named "branch_name" with::
                                     # files of the branch the orphan branch is
                                     # started from are automatically staged).
 
-This of course raises the question of which naming scheme to use for the
-branches. `This Stack Overflow answer by Phil Hord helps
-<https://stackoverflow.com/questions/273695/what-are-some-examples-of-commonly-used-practices-for-naming-git-branches/6065944#6065944>`_.
+This of course raises the question of which branching model and branche naming
+scheme to use. The following links should help:
+
+* `What are some examples of commonly used practices for naming git branches?
+  (a stack overflow answer by Phil Hord)
+  <https://stackoverflow.com/questions/273695/what-are-some-examples-of-commonly-used-practices-for-naming-git-branches/6065944#6065944>`_
+* `4 branching workflows for Git
+  <https://medium.com/@patrickporto/4-branching-workflows-for-git-30d0aaee7bf>`_
+* `Git-flow, a successful Git branching model
+  <https://nvie.com/posts/a-successful-git-branching-model/>`_
+* `A stable mainline branching model for Git
+  <https://www.bitsnbites.eu/a-stable-mainline-branching-model-for-git/>`_
+* `Git Branching Strategies vs. Trunk-Based Development
+  <https://launchdarkly.com/blog/git-branching-strategies-vs-trunk-based-development/>`_
+* `Work-In-Progress (WIP) commits: a git technique in Trunk-Based Development
+  <https://www.dmitriydubson.com/post/trunk-dev-wip-commits/>`_
 
 Working with branches, you inevitably have to do some merging (using the ``git
 merge`` command) or rebasing (using the ``git rebase`` command). Rebasing is
