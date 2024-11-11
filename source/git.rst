@@ -1165,13 +1165,13 @@ If for any reason you want to reset those dates to the current date for all the
 commits (well, except the initial commit) of the current branch, you can do it
 with::
 
-  git rebase <branch_name> \
+  git rebase <commit_hash_of_the_initial_commit> \
       --exec 'git commit --amend --date="now" --no-edit --allow-empty'
 
 You may want to add the ``--update-refs`` option to preserve the branching
 structure::
 
-  git rebase <branch_name> \
+  git rebase <commit_hash_of_the_initial_commit> \
       --exec 'git commit --amend --date="now" --no-edit --allow-empty' \
       --update-refs
 
