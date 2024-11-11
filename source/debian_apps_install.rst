@@ -62,10 +62,12 @@ installation is::
       taskwarrior \
       gcal \
       gftp \
+      ghostwriter \
       xpdf \
       evince \
       catdoc \
       octave \
+      shellcheck \
       gnat gprbuild libaunit22-dev \
       ada-reference-manual-2012 \
       libxmlada-dom12-dev libxmlada-input12-dev libxmlada-sax12-dev \
@@ -182,6 +184,8 @@ Here's a short description of the packages:
     - Calendar program
   * - gftp
     - FTP client
+  * - ghostwriter
+    - Markdown editor
   * - xpdf
     - PDF reader
   * - evince
@@ -190,6 +194,8 @@ Here's a short description of the packages:
     - Text extractor for MS-Office files
   * - octave
     - GNU Octave language (similar to Matlab)
+  * - shellcheck
+    - Shell script analysis tool
   * - gnat, gprbuild, libaunit22-dev
     - Ada programming tools
   * - ada-reference-manual-2012
