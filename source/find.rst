@@ -159,6 +159,18 @@ A much more portable alternative is to use ``pwd``::
   find "$(pwd)" ...
 
 
+Excluding some paths
+--------------------
+
+In some cases, you don't want ``find`` to explore all directories and you need
+a way to exclude some paths from the search. For example, you may want to
+search some files in the working directory of a :doc:`Git <git>` repository,
+excluding the ``.git`` directory. Here's an example of a find command that
+excludes the ``.git`` directory::
+
+  find . -not -path '*/\.git\/*' -name "*info*"
+
+
 Other resources
 ---------------
 
