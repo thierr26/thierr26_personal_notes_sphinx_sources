@@ -65,6 +65,9 @@ installation is::
       ghostwriter \
       xpdf \
       evince \
+      librsvg2-bin \
+      lyx texlive-lang-* \
+      pandoc \
       catdoc \
       octave \
       shellcheck \
@@ -190,6 +193,12 @@ Here's a short description of the packages:
     - PDF reader
   * - evince
     - Document viewer (can fill in forms in PDF files)
+  * - librsvg2-bin
+    - Command-line utility to convert Scalable Vector Graphics (SVG) file
+  * - lyx texlive-lang-*
+    - Document processor (almost WYSIWYG-frontend for LaTeX)
+  * - pandoc
+    - General markup converter
   * - catdoc
     - Text extractor for MS-Office files
   * - octave
@@ -581,6 +590,32 @@ to the ``wireshark`` group::
 
 If you have answered "No" and have changed your mind, run ``dpkg-reconfigure
 wireshark-common``.
+
+
+Lyx
+---
+
+.. index::
+  single: Lyx
+  single: rsvg-convert
+  single: librsvg2-bin
+  single: Gimp
+  single: Evince
+
+By default, the configured PDF viewer in Lyx is Gimp. You can change this
+configuration via the Tools | Preferences menu dialog box. File Handling | File
+formats section. For the "PDF (pdflatex)" file format, I choose "evince" as the
+viewer.
+
+In the same dialog box, section File Handling | Converters, I create a new
+converter for "SVG (compressed)" to "PDF (graphics)" conversions. In the
+"Converter" edition field I type::
+
+  rsvg-convert -f pdf -o $$o $$i
+
+Without this converter, Lyx fails to compile the ``splash.lyx`` file (located
+in ``/usr/share/lyx/examples``). (See
+`this Stackoverflow answer <https://tex.stackexchange.com/a/698032>`_.)
 
 
 Third party applications installation
