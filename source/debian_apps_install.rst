@@ -593,7 +593,7 @@ wireshark-common``.
 
 
 Lyx
----
+___
 
 .. index::
   single: Lyx
@@ -602,20 +602,23 @@ Lyx
   single: Gimp
   single: Evince
 
-By default, the configured PDF viewer in Lyx is Gimp. You can change this
-configuration via the Tools | Preferences menu dialog box. File Handling | File
-formats section. For the "PDF (pdflatex)" file format, I choose "evince" as the
-viewer.
 
-In the same dialog box, section File Handling | Converters, I create a new
-converter for "SVG (compressed)" to "PDF (graphics)" conversions. In the
-"Converter" edition field I type::
+The ``lyx`` package should preferably be installed along with the
+``librsvg2-bin`` package, otherwise Lyx could fail to compile the
+``splash.lyx`` file (located in ``/usr/share/lyx/examples``). This is due to a
+missing converter (the "SVG (compressed)" to "PDF (graphics)" converter).
+
+You can also install ``librsvg2-bin`` later and then add the "SVG (compressed)"
+to "PDF (graphics)" converter manually via the Tools | Preferences menu dialog
+box, File Handling | Converters section. The converter command line must be::
 
   rsvg-convert -f pdf -o $$o $$i
 
-Without this converter, Lyx fails to compile the ``splash.lyx`` file (located
-in ``/usr/share/lyx/examples``). (See
-`this Stackoverflow answer <https://tex.stackexchange.com/a/698032>`_.)
+(See `this Stackoverflow answer <https://tex.stackexchange.com/a/698032>`_.)
+
+If you want to change the configured PDF viewer, you can do it via the Tools |
+Preferences menu dialog box, File Handling | File formats section. I choose
+"evince" as the viewer for the "PDF (pdflatex)" file format.
 
 
 Third party applications installation
