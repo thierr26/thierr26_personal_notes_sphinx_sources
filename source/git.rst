@@ -602,6 +602,7 @@ Viewing the commit log
   triple: Git; log; commit date formatting
   triple: Git; log; commit hash
   pair: Git; show
+  pair: Git; rev-list
 
 Show the commit log with::
 
@@ -652,6 +653,13 @@ When interested in a specific commit, ``git show`` can be used instead of ``git
 log``::
 
   git show -s git log --pretty="%ci %h" e66cceb
+
+``git rev-list branch_name`` shows the commit hashes in reverse chronological
+order for the branch "branch_name". Some options make it possible to filter by
+date. Example::
+
+  git rev-list -1 --before "2025-01-19 11:48" master # Most recent commit
+                                                     # before a date.
 
 
 Working with remote repositories
