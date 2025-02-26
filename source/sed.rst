@@ -108,8 +108,8 @@ Joining lines matching a pattern
   pair: sed commands; s
 
 Still taking the same example file, the following command substitutes the
-preceding end of line line sequence with a space character if the line matches
-a pattern (here pattern "67")::
+preceding end of line sequence with a space character if the line matches a
+pattern (here pattern "67")::
 
   sed -e ':redo; N; s/\n\(.*67\)/ \1/; t redo; P; D' numbers
 
