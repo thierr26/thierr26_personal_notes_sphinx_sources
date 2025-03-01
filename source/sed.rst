@@ -161,3 +161,29 @@ the content accumulated in memory is output. (The ``b`` in ``/[orz]/b;`` means
 Other lines are accumulated in memory (thanks to ``N;``), their end of line is
 removed (``s/\n//;``) and they're not output immediately. (The ``b redo``
 causes a jump to the ``:redo`` label.)
+
+
+Filter by line numbers
+----------------------
+
+.. index::
+  pair: sed commands; p
+  pair: sed commands; d
+
+The following pages show how to use sed to solve some line number-based output
+problems:
+
+* `Printing Specified Lines From a File
+  <https://www.baeldung.com/linux/print-specified-lines-file>`_,
+* `Read a Specific Line From a File in Linux
+  <https://www.baeldung.com/linux/read-specific-line-from-file>`_.
+
+Here are a few more examples.
+
+To output lines number 2 to 4 and 7 to 9 of file ``f``, do::
+
+  sed -n '2,4p; 7,9p;' f
+
+To output all but lines number 2 to 4 of file ``f``, do::
+
+  sed '2,4d;' f
