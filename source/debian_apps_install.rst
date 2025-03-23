@@ -78,6 +78,7 @@ installation is::
       libgtkada-bin libgtkada-doc libgtkada22 libgtkada22-dev \
       gdb gdb-doc gdbserver \
       valgrind \
+      strace \
       lcov \
       libncurses5 \
       libb-lint-perl \
@@ -217,6 +218,8 @@ Here's a short description of the packages:
     - GNU debugger (including remote server)
   * - valgrind
     - Program profiling tools
+  * - strace
+    - System call tracer
   * - lcov
     - Test coverage report generation tools
   * - libncurses5
