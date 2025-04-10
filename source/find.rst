@@ -168,7 +168,7 @@ search some files in the working directory of a :doc:`Git <git>` repository,
 excluding the ``.git`` directory. Here's an example of a find command that
 excludes the ``.git`` directory::
 
-  find . -not -path '*/\.git\/*' -name "*info*"
+  find . -not -path '*/.git/*' -name "*info*"
 
 
 Other resources
