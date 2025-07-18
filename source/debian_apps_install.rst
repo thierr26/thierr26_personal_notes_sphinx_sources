@@ -116,6 +116,7 @@ installation is::
       zbar-tools \
       meld \
       hexedit \
+      gawk \
       python3-sphinx \
       ruby-nokogiri \
       sakura \
@@ -307,6 +308,8 @@ Here's a short description of the packages:
     - Graphical tool to show differences between text files
   * - hexedit
     - Hexadecimal editor
+  * - gawk
+    - GNU awk, a pattern scanning and processing language
   * - python3-sphinx
     - Documentation generator
   * - ruby-nokogiri
