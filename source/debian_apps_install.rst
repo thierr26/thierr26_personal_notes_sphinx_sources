@@ -57,7 +57,6 @@ installation is::
       vlc \
       ffmpeg \
       sox \
-      wkhtmltopdf \
       default-jre default-jdk \
       taskwarrior \
       gcal \
@@ -71,16 +70,17 @@ installation is::
       catdoc \
       octave \
       shellcheck \
-      gnat gprbuild libaunit22-dev \
+      reuse \
+      exuberant-ctags \
+      gnat gprbuild libaunit-dev libaunit-doc \
       ada-reference-manual-2012 \
-      libxmlada-dom12-dev libxmlada-input12-dev libxmlada-sax12-dev \
-      libxmlada-schema12-dev libxmlada-unicode12-dev \
-      libgtkada-bin libgtkada-doc libgtkada22 libgtkada22-dev \
+      libxmlada-dom-dev libxmlada-input-dev libxmlada-sax-dev \
+      libxmlada-schema-dev libxmlada-unicode-dev libxmlada-doc \
+      libgtkada-dev libgtkada-doc libgtkada-bin \
       gdb gdb-doc gdbserver \
       valgrind \
       strace \
       lcov \
-      libncurses5 \
       libb-lint-perl \
       gimp gimp-plugin-registry jhead imagemagick \
       libimage-exiftool-perl \
@@ -102,7 +102,7 @@ installation is::
       bc \
       network-manager \
       openconnect \
-      freerdp2-x11 \
+      freerdp3-x11 \
       whois \
       wireshark \
       tcpdump \
@@ -179,8 +179,6 @@ Here's a short description of the packages:
     - Multimedia files transcoding, playing, ...
   * - sox
     - Audio files manipulation programs
-  * - wkhtmltopdf
-    - HTML to PDF conversion tool
   * - default-jre, default-jdk
     - Java runtime, Java development kit
   * - taskwarrior
@@ -197,7 +195,7 @@ Here's a short description of the packages:
     - Document viewer (can fill in forms in PDF files)
   * - librsvg2-bin
     - Command-line utility to convert Scalable Vector Graphics (SVG) file
-  * - lyx texlive-lang-*
+  * - lyx, texlive-lang-*
     - Document processor (almost WYSIWYG-frontend for LaTeX)
   * - pandoc
     - General markup converter
@@ -207,13 +205,17 @@ Here's a short description of the packages:
     - GNU Octave language (similar to Matlab)
   * - shellcheck
     - Shell script analysis tool
-  * - gnat, gprbuild, libaunit22-dev
+  * - reuse
+    - Tool for REUSE copyright and license recommendations
+  * - exuberant-ctags
+    - Generator of source code definitions indexes
+  * - gnat, gprbuild, libaunit-dev, libaunit-doc
     - Ada programming tools
   * - ada-reference-manual-2012
     - Ada 2012 reference manual
-  * - libxmlada-dom12-dev, libxmlada-input12-dev, libxmlada-sax12-dev,
-      libxmlada-schema12-dev, libxmlada-unicode12-dev,
-      libgtkada-bin libgtkada-doc, libgtkada22, libgtkada22-dev
+  * - libxmlada-dom-dev, libxmlada-input-dev, libxmlada-sax-dev,
+      libxmlada-schema-dev, libxmlada-unicode-dev, libxmlada-doc,
+      libgtkada-dev, libgtkada-doc, libgtkada-bin
     - Ada libraries (XML/Ada and GtkAda)
   * - gdb, gdb-doc, gdbserver
     - GNU debugger (including remote server)
@@ -223,12 +225,6 @@ Here's a short description of the packages:
     - System call tracer
   * - lcov
     - Test coverage report generation tools
-  * - libncurses5
-    - Libraries for terminal handling (legacy version), needed to run `GNAT
-      Programming Studio
-      <https://learn.adacore.com/courses/GNAT_Toolchain_Intro/chapters/gnat_studio.html>`_
-      as provided with `GNAT Community <https://www.adacore.com/download>`_
-      2018 and 2019.
   * - libb-lint-perl
     - Perl code checker
   * - gimp, gimp-plugin-registry, jhead, imagemagick
@@ -274,7 +270,7 @@ Here's a short description of the packages:
     - Network management framework
   * - openconnect
     - Client for GlobalProtect VPN (among others)
-  * - freerdp2-x11
+  * - freerdp3-x11
     - X11 based Remote Desktop Protocol client (On Debian Buster, I have to
       append options ``/relax-order-checks`` and ``+glyph-cache`` to the
       ``xfreerdp`` command line. See
@@ -351,13 +347,16 @@ ________
 
 .. index::
   pair: Chromium; default search engine
-  single: DuckDuckGo
-
-In Settings | Search engines, set DuckDuckGo as the search engine used in the
-adress bar.
+  single: GNOME Keyring
 
 In Settings | Autofill | Passwords, disable "Offer to save passwords" and "Auto
 sign-in".
+
+Chromium may issue a warning on every startup, asking the pasword to unlock the
+default GNOME Keyring. To get rid of the warning, I clear my GNOME Keyring
+files::
+
+  rm -rf ~/.local/share/keyrings/*
 
 
 Irssi
@@ -611,7 +610,7 @@ ___
 
 The ``lyx`` package should preferably be installed along with the
 ``librsvg2-bin`` package, otherwise Lyx could fail to compile the
-``splash.lyx`` file (located in ``/usr/share/lyx/examples``). This is due to a
+``welcome.lyx`` file (located in ``/usr/share/lyx/examples``). This is due to a
 missing converter (the "SVG (compressed)" to "PDF (graphics)" converter).
 
 You can also install ``librsvg2-bin`` later and then add the "SVG (compressed)"
@@ -644,11 +643,6 @@ and installed it **as root** with::
 
   dpkg -i google-chrome-stable_current_amd64.deb # As root.
 
-The installation was not successful. I had to issue the following command to
-fix the system::
-
-  apt install -f # As root.
-
 I didn't want Google Chrome to be the default browser, so I reselected Firefox
 ESR in the `Debian alternatives system
 <https://wiki.debian.org/DebianAlternatives>`_ with ``update-alternatives
@@ -658,24 +652,16 @@ I then tweaked Google Chrome's settings as for
 :ref:`Chromium <chromium_config>`.
 
 
-GNAT Community Edition 2021
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+GNAT Studio
+~~~~~~~~~~~
 
 .. index::
-  single: GNAT Community Edition
-  single: xhost
+  single: GNAT Studio
 
-GNAT Community Edition is available on `Adacore's download page
-<https://www.adacore.com/download/more>`_. Download the binary executable
-archive gnat-2021-20210519-x86_64-linux-bin and execute it **as root** to
-perform the installation. Before that, you probably have to make sure that the
-executable can connect to the X server using the following commands::
+Follow the instructions at https://github.com/AdaCore/gnatstudio/releases.
 
-  xhost +local: # As "normal" user.
-
-and::
-
-  export DISPLAY=:0.0 # As root.
+I installed the Continuous Release 20250417, running the ``do_install.sh``
+script as root.
 
 
 Alire (Ada LIbrary REpository) installation
@@ -686,16 +672,16 @@ Alire (Ada LIbrary REpository) installation
   single: ~/.profile
 
 The `Alire <https://alire.ada.dev/>`_ distribution is available as a Zip
-archive on Github. I download it using ``wget`` (example for version 1.2.1)::
+archive on Github. I download it using ``wget`` (example for version 2.1.0)::
 
   cd Downloads
-  wget https://github.com/alire-project/alire/releases/download/v1.2.1/alr-1.2.1-bin-x86_64-linux.zip
+  wget https://github.com/alire-project/alire/releases/download/v2.1.0/alr-2.1.0-bin-x86_64-linux.zip
 
 Then I extract it using ``unzip`` **as root**::
 
   cd <directory_containing_the_archive> # As root.
   mkdir -p /opt/alire # As root.
-  unzip alr-1.2.1-bin-x86_64-linux.zip -d /opt/alire # As root.
+  unzip alr-2.1.0-bin-x86_64-linux.zip -d /opt/alire # As root.
 
 Finally I add ``/opt/alire/bin`` to my path, via a line in my ``~/.profile``
 file:

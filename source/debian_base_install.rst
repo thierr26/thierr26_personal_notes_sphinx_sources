@@ -22,11 +22,34 @@ Debian GNU/Linux system installed and a fast enough internet connection (to
 download a few hundreds of megabytes). This machine will be used to prepare the
 installation medias for the new system.
 
-Many software packages are also downloaded during the installation, so the
-target machine should also have a fast enough internet connection.
+Most of the software packages are also downloaded during the installation, so
+the target machine should also have a fast enough internet connection.
+
+The easiest way nowadays is probably to make a bootable USB stick. I used to
+make a `"netinst" CD <https://www.debian.org/CD/netinst>`_, but Debian
+"netinst" images have become bigger and they don't fit on a 700MB CD-ROM
+anymore.
 
 
 .. _getting_debian_iso_image:
+
+Making a bootable USB stick
+---------------------------
+
+.. index::
+  triple: Debian; stable; installer
+  single: wget
+  single: cp
+  single: sync
+
+Just download the tiny (64MB) "netboot" image (mini.iso) and write it (**as
+root**) to the device corresponding to your USB stick (e.g. ``/dev/sdc``, check
+using ``lsblk``)::
+
+  wget https://deb.debian.org/debian/dists/testing/main/installer-amd64/current/images/netboot/mini.iso
+  cp mini.iso /dev/sdc; # As root.
+  sync; # As root.
+
 
 Getting an installation CD
 --------------------------
@@ -41,23 +64,16 @@ Getting an installation CD
   single: sha512sum
   single: gpg
 
-See the `Getting Debian page <https://www.debian.org/distrib/>`_ for
-information about how to download a Debian installer CD image or buy
-installation CDs.
-
-If you have a fast enough internet connection and a CD burning drive, you can
-download a `small (approximately 300MB) installation image
-<https://www.debian.org/distrib/netinst>`_ and burn it to a blank CD-R.
-Commands like the ones below should do it. The example is for Debian 12.4.0
-(Bookworm). Note also that it is assumed that you have `cdrskin
-<http://scdbackup.sourceforge.net/cdrskin_eng.html>`_ installed. Run ``apt-get
-install cdrskin`` **as root** if not. Note also that the
+If you choose to go the CD-ROM route, here is what you need to do. The provided
+URLs are for Debian 13.0.0 (Trixie). Note also that it is assumed that you have
+`cdrskin <http://scdbackup.sourceforge.net/cdrskin_eng.html>`_ installed. Run
+``apt-get install cdrskin`` **as root** if not. Note also that the
 ``dev=<cd_burning_drive_device_file>`` option is probably not mandatory as
 cdrskin can detect CD burning devices (``cdrskin --devices`` lists the detected
 devices)::
 
-  wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.4.0-amd64-netinst.iso
-  cdrskin dev=<cd_burning_drive_device_file> -eject -v -data debian-12.4.0-amd64-netinst.iso
+  wget https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-13.0.0-amd64-netinst.iso
+  cdrskin dev=<cd_burning_drive_device_file> -eject -v -data debian-13.0.0-amd64-netinst.iso
 
 You might want to verify the authenticity of the ISO image. Download the SHA512
 checksum and associated signature file::
@@ -90,53 +106,8 @@ burned CD. Just compare the output of the following command with the checksum
 from the downloaded checksum file as provided in file SHA512SUMS::
 
   dd if=/dev/<cd_burning_drive_device_file> bs=2048 \
-    count=$(($(stat -c %s debian-12.4.0-amd64-netinst.iso)/2048)) \
+    count=$(($(stat -c %s debian-13.0.0-amd64-netinst.iso)/2048)) \
     conv=notrunc,noerror | sha512sum
-
-
-Preparing a media with firmware archive, just in case
------------------------------------------------------
-
-.. index::
-  single: Debian firmware archive
-  single: wget
-  triple: archives; .tar.gz archives; tar
-  single: sha512sum
-
-Note that this step is **not necessary if your installation CD already includes
-firmware** (that is if you have downloaded the image from a subdirectory of
-cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware).
-
-Note also that this section does not apply any more, starting with Debian 12.
-(Firmware is now included in the normal Debian installer images.)
-
-The `Debian Wiki <https://wiki.debian.org/Firmware>`_ provides some
-instructions, but here are the details of what I've done (for a Debian Bookworm
-install, and including the authenticity verification of the archive)::
-
-  mkdir -p ~/download/debian_bookworm_firmware # Create a directory somewhere.
-  cd ~/download/debian_bookworm_firmware       # Move to that directory.
-
-  # Download the firmware archive, its SHA512 checksum and associated signature
-  # file.
-  wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/bookworm/current/firmware.tar.gz
-  wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/bookworm/current/SHA512SUMS
-  wget http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/bookworm/current/SHA512SUMS.sign
-
-I've checked the SHA512 checksum of ``firmware.tar.gz`` by issuing a
-``sha512sum -c --ignore-missing SHA512SUMS``.
-
-I've checked the signature by issuing a ``gpg --verify SHA512SUMS.sign``
-command.
-
-The final steps consisted in extracting the files from the firmware archive
-(``tar xvzf firmware.tar.gz``) and copy all the files with ``.deb`` extension
-to a "firmware" directory located at the root of a USB stick.
-
-During Debian installation, plug in this USB stick when (and if) you get this
-kind of screen:
-
-.. image:: image/debian_install_screenshot_hw-detect_load_firmware_0.png
 
 
 Disk partitioning
@@ -385,10 +356,10 @@ installed Debian system (see `this linuxconfig.org article
 
 http://deb-multimedia.org provides some instructions:
 
-First, add **as root** a line like this one (example for Debian bookworm) in
+First, add **as root** a line like this one (example for Debian 13 (Trixie)) in
 your ``/etc/apt/sources.list``:
 
-| deb https://www.deb-multimedia.org bookworm main non-free
+| deb https://www.deb-multimedia.org trixie main non-free
 
 Then, issue **as root** the following commands::
 
@@ -415,7 +386,7 @@ firmware archive has been required) or post-installation, manually::
 Note that the ``/etc/apt/sources.list`` file must have the non-free section
 (and even **the non-free-firmware section**, starting with Debian 12).
 
-You can :download:`download my /etc/apt/sources.list for Debian 12
+You can :download:`download my /etc/apt/sources.list for Debian 13
 <download/sources.list>`.
 
 Make sure you issue a ``apt-get update`` command after changing
@@ -427,12 +398,17 @@ Checking the configured time zone
 
 .. index::
   single: /etc/timezone
+  single: /etc/localtime
   single: tzdata
   single: dpkg-reconfigure
 
 Check the configured time zone with::
 
-  cat /etc/timezone
+  cat /etc/timezone # For Debian 12 (Bookworm) and earlier.
+
+or::
+
+  ls -l /etc/localtime # Starting with Debian 13 (Trixie).
 
 If the configuration is not correct, you can change it **as root** with::
 
@@ -446,18 +422,12 @@ Checking systemd-timesyncd service
   single: systemd-timesyncd
   single: /etc/systemd/timesyncd.conf
   single: /run/systemd/timesync/synchronized
-  single: /var/log/syslog
   single: stat
 
 Service systemd-timesyncd (network time synchronization service) should have
 been automatically enabled::
 
   systemctl status systemd-timesyncd
-
-The service logs its initial synchronization to ``/var/log/syslog``. Check (**as
-root**) with::
-
-  grep systemd-timesyncd /var/log/syslog
 
 You can find the lastest synchronization date by checking the modification time
 of file ``/run/systemd/timesync/synchronized``::
@@ -552,11 +522,12 @@ Creating new users
 
 Check whether the ``DIR_MODE`` (default permissions for users home directories)
 setting in file ``/etc/adduser.conf`` is appropriate for your needs. The
-default value is "0755". It implies that any unprivileged user have read access
-to the files of other users. You may want to change (**as root**) the value to
-"0750" to avoid that::
+default value is nox "0700" (which seems OK to me) but it used to be "0755".
+"0755" implies that any unprivileged user have read access to the files of
+other users. You may want to change (**as root**) the value to "0700" to avoid
+that::
 
-  sed -i s/DIR_MODE=0755/DIR_MODE=0750/ /etc/adduser.conf
+  sed -i s/DIR_MODE=0755/DIR_MODE=0700/ /etc/adduser.conf
 
 Then, to create a new user, just use the ``adduser`` script (**as root**)::
 
@@ -566,7 +537,7 @@ If some users have already been created with inappropriate home directories
 permissions, you can update their home directories permissions with a command
 like (**as root**)::
 
-  chmod 750 /home/*
+  chmod 700 /home/*
 
 
 Creating a "super user" account, disabling root login
