@@ -11,10 +11,8 @@ SSH
 Introduction
 ------------
 
-These are quick notes about `SSH
-<https://www.secureblackbox.com/kb/articles/SSH-Authentication-methods.rst>`_.
-SSH is useful for me as a way to :ref:`connect to virtual machines
-<finding_vm_ip>`.
+These are my notes about `SSH <https://en.wikipedia.org/wiki/Secure_Shell>`_
+and `rsync <https://en.wikipedia.org/wiki/Rsync>`_.
 
 
 Installation (on a Debian GNU/Linux system)

@@ -42,7 +42,7 @@ messages with `Bogofilter <http://bogofilter.sourceforge.net/>`_ (anti-spam
 filter) is also covered. Some basic commands for message management (deletion,
 search) are also provided. Of course, nmh programs have many options that are
 not covered here. Please refer to the `nmh man pages
-<http://manpages.org/nmh/7>`_ for all the details.
+<http://manpages.debian.org/nmh/7>`_ for all the details.
 
 
 Installation
@@ -297,10 +297,10 @@ programs, **this causes this folder to be selected as the current folder for
 the subsequent commands**.
 
 Note also that when no message (or `message sequence
-<http://manpages.org/mh-sequence/5>`_) is provided on the command line, an nmh
-program operates on the current message **or** on all messages in the current
-folder. The `nmh man pages <http://manpages.org/nmh/7>`_ state clearly what the
-default message (or message sequence) is for each program.
+<http://manpages.debian.org/mh-sequence/5>`_) is provided on the command line,
+an nmh program operates on the current message **or** on all messages in the
+current folder. The `nmh man pages <http://manpages.debian.org/nmh/7>`_ state
+clearly what the default message (or message sequence) is for each program.
 
 
 Deleting mails
@@ -405,7 +405,8 @@ Other resources
 ---------------
 
 * `nmh home page <http://www.nongnu.org/nmh>`_
-* `MH & nmh (book by Jerry Peek) <https://rand-mh.sourceforge.io/book/>`_
-* `nmh man pages <http://manpages.org/nmh/7>`_
+* `MH & nmh (book by Jerry Peek)
+  <https://sourceforge.net/projects/rand-mh/files/MH%20Book/200605/>`_
+* `nmh man pages <http://manpages.debian.org/nmh/7>`_
 * `Getting bogofilter to work with procmail, fetchmail, and mutt
   <http://www.exstrom.com/journal/comp/bogofilter.html>`_

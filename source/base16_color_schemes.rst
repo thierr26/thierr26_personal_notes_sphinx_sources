@@ -154,9 +154,6 @@ You can see the list of the base16 schemes with this command::
 
   alias | grep "^alias base16_"|sed "s/=.\+$//"|sed "s/^.\+ //"
 
-The `Base16 Gallery <https://tinted-theming.github.io/base16-gallery>`_ helps
-to make a choice.
-
 Alternatively, you can cycle through all the schemes with the following
 commands (3 seconds delay before switching to the next scheme)::
 

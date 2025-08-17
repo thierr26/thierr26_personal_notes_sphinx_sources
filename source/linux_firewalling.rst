@@ -529,5 +529,5 @@ Other resources
   support WireGuard VPN"
   <https://xdeb.org/post/2019/setting-up-a-server-firewall-with-nftables-that-support-wireguard-vpn>`_
 * `Beginners guide to nftables traffic filtering
-  <https://linux-audit.com/nftables-beginners-guide-to-traffic-filtering>`_
+  <https://linux-audit.com/networking/nftables/nftables-beginners-guide-to-traffic-filtering>`_
 * `Nmap cheat sheet <https://www.stationx.net/nmap-cheat-sheet>`_

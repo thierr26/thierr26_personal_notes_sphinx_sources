@@ -433,8 +433,6 @@ and::
   export DISPLAY=:0.0 # As root.
 
 
-.. _finding_vm_ip:
-
 Finding the IP address of the virtual machine
 ---------------------------------------------
 

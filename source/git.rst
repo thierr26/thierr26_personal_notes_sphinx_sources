@@ -480,10 +480,10 @@ You sometimes want to filter the output of git diff. The ``-G`` and ``-S``
 options can help.
 
 * `Documentation for git diff -S option
-  <https://git-scm.com/docs/git-diff#Documentation/git-diff.txt--Sltstringgt>`_,
+  <https://git-scm.com/docs/git-diff#Documentation/git-diff.txt--Sstring>`_,
 
 * `Documentation for git diff -G option
-  <https://git-scm.com/docs/git-diff#Documentation/git-diff.txt--Gltregexgt>`_.
+  <https://git-scm.com/docs/git-diff#Documentation/git-diff.txt--Gregex>`_.
 
 If you don't want to see the lines changed by the addition or the removal of
 whites spaces only, use option ``-w`` (equivalent to ``--ignore-all-space``)::

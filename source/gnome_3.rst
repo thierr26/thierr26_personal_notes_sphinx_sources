@@ -19,7 +19,8 @@ favorite desktop and I'm happier with the sleek :doc:`Openbox desktop I have on
 my Debian box <openbox_on_debian>` (along with :doc:`tmux <tmux>`), I have to
 use a machine with GNOME 3.28.2 for some kind of work. I actually use the
 `GNOME Classic
-<https://help.gnome.org/users/gnome-help/stable/gnome-classic.html>`_ flavor.
+<https://help.gnome.org/users/gnome-help/stable/gnome-classic.html.en>`_
+flavor.
 
 I haven't done much tweaking in this environment and haven't much to say here,
 but I felt the need to keep track of the `dconf
