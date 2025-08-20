@@ -56,6 +56,7 @@ installation is::
       genisoimage \
       vlc \
       ffmpeg \
+      libdvdcss2 \
       sox \
       default-jre default-jdk \
       taskwarrior \
@@ -177,6 +178,8 @@ Here's a short description of the packages:
     - Multimedia player
   * - ffmpeg
     - Multimedia files transcoding, playing, ...
+  * - libdvdcss2
+    - Useful for reading DVDs
   * - sox
     - Audio files manipulation programs
   * - default-jre, default-jdk
