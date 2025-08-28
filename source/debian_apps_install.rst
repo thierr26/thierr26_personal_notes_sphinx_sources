@@ -83,7 +83,7 @@ installation is::
       strace \
       lcov \
       libb-lint-perl \
-      gimp gimp-plugin-registry jhead imagemagick \
+      gimp jhead imagemagick \
       libimage-exiftool-perl \
       xsane \
       xzgv \
@@ -230,7 +230,7 @@ Here's a short description of the packages:
     - Test coverage report generation tools
   * - libb-lint-perl
     - Perl code checker
-  * - gimp, gimp-plugin-registry, jhead, imagemagick
+  * - gimp, jhead, imagemagick
     - Image manipulation programs
   * - libimage-exiftool-perl
     - Includes exiftool (image metadata extraction)
