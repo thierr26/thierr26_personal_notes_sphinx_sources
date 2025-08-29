@@ -448,11 +448,12 @@ ____
   pair: Gimp; icon theme
   pair: Gimp; Keyboard Shortcuts
 
-In Preferences, Interface, Theme: System.
+In Preferences, Interface, Theme: System, Light Colors.
 
-In Preferences, Interface, Icon Theme: Color.
+In Preferences, Interface, Icon Theme: Legacy.
 
-In Keyboard Shortcuts, View: Set Zoom in shortcut to '='.
+In Keyboard Shortcuts, View: Set Zoom in shortcut to '=' (if you use a French
+keyboard).
 
 
 Music On Console
