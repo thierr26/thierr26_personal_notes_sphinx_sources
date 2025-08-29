@@ -352,8 +352,8 @@ ________
   pair: Chromium; default search engine
   single: GNOME Keyring
 
-In Settings | Autofill | Passwords, disable "Offer to save passwords" and "Auto
-sign-in".
+In Settings | Autofill and passwords | Password Manager | Settings, disable
+"Offer to save passwords and passkeys" and "Sign in automatically".
 
 Chromium may issue a warning on every startup, asking the pasword to unlock the
 default GNOME Keyring. To get rid of the warning, I clear my GNOME Keyring
