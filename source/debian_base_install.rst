@@ -456,7 +456,11 @@ Installing a memory (RAM) tester
 .. index::
   triple: Random Access Memory (RAM); tester; memtest86+
   single: Memtest86+
+  single: Memtest86
   single: Grub
+  single: wget
+  single: unzip
+  single: cdrskin
 
 RAM failures are not so rare in my experience. A tester like `Memtest86+
 <https://www.memtest.org/>`_ can really help diagnosing a RAM failure. The

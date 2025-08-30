@@ -349,7 +349,6 @@ Chromium
 ________
 
 .. index::
-  pair: Chromium; default search engine
   single: GNOME Keyring
 
 In Settings | Autofill and passwords | Password Manager | Settings, disable
