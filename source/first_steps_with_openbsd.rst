@@ -274,7 +274,7 @@ Ada compilation test (failed)
 Compiling an Ada program is still not possible. No ``gnatmake`` is installed
 and an ``egcc -c hello.adb`` command fails:
 
-| egcc: error trying to exec 'gnat1': execvp: No such file or directory
+| egcc: error trying to exec \'gnat1\': execvp: No such file or directory
 
 
 Installing the GNAT 8.3.0p4 package

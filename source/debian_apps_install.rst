@@ -689,7 +689,7 @@ Then I extract it using ``unzip`` **as root**::
 Finally I add ``/opt/alire/bin`` to my path, via a line in my ``~/.profile``
 file:
 
-| PATH="$PATH":/opt/alire/bin
+| PATH=\"$PATH\":/opt/alire/bin
 
 
 signal-desktop installation and linking to a "dumb phone"

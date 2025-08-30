@@ -56,13 +56,13 @@ you are currently reading:
 | Selected root path: .
 |
 | You have two options for placing the build directory for Sphinx output.
-| Either, you use a directory "_build" within the root path, or you separate
-| "source" and "build" directories within the root path.
+| Either, you use a directory \"_build\" within the root path, or you separate
+| \"source\" and \"build\" directories within the root path.
 | > Separate source and build directories (y/n) [n]: y
 |
-| Inside the root directory, two more directories will be created; "_templates"
-| for custom HTML templates and "_static" for custom stylesheets and other static
-| files. You can enter another prefix (such as ".") to replace the underscore.
+| Inside the root directory, two more directories will be created; \"_templates\"
+| for custom HTML templates and \"_static\" for custom stylesheets and other static
+| files. You can enter another prefix (such as \".\") to replace the underscore.
 | > Name prefix for templates and static dir [_]: 
 |
 | The project name will occur in several places in the built documentation.
@@ -76,13 +76,13 @@ you are currently reading:
 |
 | > Project language [en]: 
 |
-| The file name suffix for source files. Commonly, this is either ".txt"
-| or ".rst".  Only files with this suffix are considered documents.
+| The file name suffix for source files. Commonly, this is either \".txt\"
+| or \".rst\".  Only files with this suffix are considered documents.
 | > Source file suffix [.rst]: 
 |
 | One document is special in that it is considered the top node of the
-| "contents tree", that is, it is the root of the hierarchical structure
-| of the documents. Normally, this is "index", but if your "index"
+| \"contents tree\", that is, it is the root of the hierarchical structure
+| of the documents. Normally, this is \"index\", but if your \"index\"
 | document is a custom template, you can also set this to another filename.
 | > Name of your master document (without suffix) [index]: 
 |
@@ -92,7 +92,7 @@ you are currently reading:
 | > autodoc: automatically insert docstrings from modules (y/n) [n]: 
 | > doctest: automatically test code snippets in doctest blocks (y/n) [n]: 
 | > intersphinx: link between Sphinx documentation of different projects (y/n) [n]: 
-| > todo: write "todo" entries that can be shown or hidden on build (y/n) [n]: 
+| > todo: write \"todo\" entries that can be shown or hidden on build (y/n) [n]: 
 | > coverage: checks for documentation coverage (y/n) [n]: 
 | > imgmath: include math, rendered as PNG or SVG images (y/n) [n]: 
 | > mathjax: include math, rendered in the browser by MathJax (y/n) [n]: 
@@ -101,7 +101,7 @@ you are currently reading:
 | > githubpages: create .nojekyll file to publish the document on GitHub pages (y/n) [n]: y
 |
 | A Makefile and a Windows command file can be generated for you so that you
-| only have to run e.g. 'make html' instead of invoking sphinx-build
+| only have to run e.g. \'make html\' instead of invoking sphinx-build
 | directly.
 | > Create Makefile? (y/n) [y]: 
 | > Create Windows command file? (y/n) [y]: n
@@ -115,7 +115,7 @@ you are currently reading:
 | You should now populate your master file ./source/index.rst and create other documentation
 | source files. Use the Makefile to build the docs, like so:
 |    make builder
-| where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
+| where \"builder\" is one of the supported builders, e.g. html, latex or linkcheck.
 
 
 Generating HTML output

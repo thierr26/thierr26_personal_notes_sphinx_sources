@@ -129,7 +129,7 @@ As a "normal" (non root) user, you can change your shell to Bash with::
 Create a ``~/.bashrc`` file with the following content to enable the Bash
 completion library:
 
-| [[ $PS1 && -f /usr/local/share/bash-completion/bash-completion.sh ]] \
+| [[ $PS1 && -f /usr/local/share/bash-completion/bash-completion.sh ]] \\
 |     source /usr/local/share/bash-completion/bash-completion.sh
 
 

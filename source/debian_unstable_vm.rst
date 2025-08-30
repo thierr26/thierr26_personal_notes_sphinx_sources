@@ -312,9 +312,9 @@ identifier ``Monitor0``. I add "Modelines" in this section.
 
 "Modelines" look like:
 
-| Modeline     "1024x768_24"   65.00  1024 1048 1184 1344  768 771 777 806 -hsync -vsync
-| Modeline     "1920x1080_24"  148.50  1920 2008 2052 2200  1080 1084 1089 1125 -hsync -vsync
-| Modeline     "1600x900_24"  108.00  1600 1624 1704 1800 900 901 904 1000 +hsync +vsync
+| Modeline     \"1024x768_24\"   65.00  1024 1048 1184 1344  768 771 777 806 -hsync -vsync
+| Modeline     \"1920x1080_24\"  148.50  1920 2008 2052 2200  1080 1084 1089 1125 -hsync -vsync
+| Modeline     \"1600x900_24\"  108.00  1600 1624 1704 1800 900 901 904 1000 +hsync +vsync
 
 We can find the data that those "Modelines" are made of in a X.org log file
 generated with (in this example, the file is called ``xlog.txt``)::
@@ -337,20 +337,20 @@ by the Debian package ``psmisc``::
 In ``xlog.txt``, we find lines like the following, which help building the
 "Modelines":
 
-| (II) qxl(0): Modeline "1920x1080"x60.0  148.50  1920 2008 2052 2200  1080 1084 1089 1125 -hsync -vsync (67.5 kHz eP)
-| (II) qxl(0): Modeline "1600x900"x60.0  108.00  1600 1624 1704 1800  900 901 904 1000 +hsync +vsync (60.0 kHz e)
-| (II) qxl(0): Modeline "1024x768"x60.0   65.00  1024 1048 1184 1344  768 771 777 806 -hsync -vsync (48.4 kHz e)
+| (II) qxl(0): Modeline \"1920x1080\"x60.0  148.50  1920 2008 2052 2200  1080 1084 1089 1125 -hsync -vsync (67.5 kHz eP)
+| (II) qxl(0): Modeline \"1600x900\"x60.0  108.00  1600 1624 1704 1800  900 901 904 1000 +hsync +vsync (60.0 kHz e)
+| (II) qxl(0): Modeline \"1024x768\"x60.0   65.00  1024 1048 1184 1344  768 771 777 806 -hsync -vsync (48.4 kHz e)
 
 Once I have added the "Modelines" in ``/root/xorg.conf.new``, I edit the
 ``Screen`` section and add a ``Display`` subsection with a ``Modes`` line
 matching the resolution I want:
 
-| Section "Screen"
-| 	Identifier "Screen0"
-| 	Device     "Card0"
-| 	Monitor    "Monitor0"
-| 	SubSection "Display"
-| 		Modes "1920x1080"
+| Section \"Screen\"
+| 	Identifier \"Screen0\"
+| 	Device     \"Card0\"
+| 	Monitor    \"Monitor0\"
+| 	SubSection \"Display\"
+| 		Modes \"1920x1080\"
 | 	EndSubSection
 | EndSection
 

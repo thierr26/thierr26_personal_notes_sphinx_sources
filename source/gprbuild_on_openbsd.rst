@@ -118,7 +118,7 @@ The ``gprconfig --config Ada --config C`` command should output something like:
 |    3. GCC-ASM for Asm2 in /usr/local/bin/ version 8.3.0
 |    4. GCC-ASM for Asm_Cpp in /usr/local/bin/ version 8.3.0
 | *  5. GCC for C in /usr/local/bin/ version 8.3.0
-| Select or unselect the following compiler (or "s" to save):
+| Select or unselect the following compiler (or \"s\" to save):
 
 (Press Ctrl-c to exit without saving.)
 

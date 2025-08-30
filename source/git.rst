@@ -1121,7 +1121,7 @@ above could be a file containing:
 
 | #!/bin/sh
 |
-| sed "s/^\(.*html[ :].*\)$/# \1/" $1
+| sed \"s/^\(.*html[ :].*\)$/# \1/\" $1
 
 Assuming that this file is named ``clean_filter`` is located in a subdirectory
 called ``filter`` of the working directory, the

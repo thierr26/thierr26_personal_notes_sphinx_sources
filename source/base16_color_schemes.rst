@@ -40,10 +40,13 @@ Cloning Base16 repositories locally
 Just issue some ``git clone`` commands (as a normal user) in specific
 subdirectories of your home directory::
 
+  mkdir -p ~/.config
   cd ~/.config
   git clone https://github.com/tinted-theming/base16-shell.git
+  mkdir -p ~/.vim
   cd ~/.vim
   git clone https://github.com/tinted-theming/base16-vim.git
+  mkdir -p ~/.tmux/plugins
   cd ~/.tmux/plugins
   git clone https://github.com/tinted-theming/base16-tmux.git
 
@@ -76,10 +79,10 @@ added the following snippet to my ``~/.bashrc``:
 
 | BASE16_SHELL_PATH=$HOME/.config/base16-shell/
 | unset BASE16_THEME
-| ! shopt -q login_shell || [ -n "$TMUX" ] \
-|     && [ -s "$BASE16_SHELL_PATH/profile_helper.sh" ] \
-|     && BASE16_SHELL_SET_BACKGROUND=false \
-|     && source "$BASE16_SHELL_PATH/profile_helper.sh"
+| ! shopt -q login_shell || [ -n \"$TMUX\" ] \\
+|     && [ -s \"$BASE16_SHELL_PATH/profile_helper.sh\" ] \\
+|     && BASE16_SHELL_SET_BACKGROUND=false \\
+|     && source \"$BASE16_SHELL_PATH/profile_helper.sh\"
 
 It makes sure that the color scheme is applied only when you're in a terminal
 or in a tmux session, not when you're in a login shell in a text console.
@@ -105,12 +108,12 @@ First I created the ``~/.vim/colors`` symbolic link with
 
 Then I added the following snippet to my ``~/.vimrc``:
 
-| if exists('$BASE16_THEME')
-|             \ && (!exists('g:colors_name')
-|             \ || g:colors_name != 'base16-$BASE16_THEME')
+| if exists(\'$BASE16_THEME\')
+|             \\ && (!exists(\'g:colors_name\')
+|             \\ || g:colors_name != \'base16-$BASE16_THEME\')
 |
 |     let base16colorspace=256
-|     if !has("gui_running")
+|     if !has(\"gui_running\")
 |         let base16_background_transparent=1
 |     endif
 |     colorscheme base16-$BASE16_THEME
@@ -136,13 +139,13 @@ The Base16 theming system seems to work well with the following lines at the
 top of the ``~/.tmux/conf`` file:
 
 | # Use a 256 color terminal.
-| set -g default-terminal "tmux-256color"
+| set -g default-terminal \"tmux-256color\"
 |
 | # Useful if using base16-shell.
 | set -g allow-passthrough on
 |
 | # Add base16-tmux plugin to the list of TPM (Tmux Plugin Manager) plugins.
-| set -g @plugin 'tinted-theming/base16-tmux'
+| set -g @plugin \'tinted-theming/base16-tmux\'
 
 
 Choosing a color scheme

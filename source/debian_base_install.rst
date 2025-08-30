@@ -99,7 +99,7 @@ You can import the key with::
 A new attempt to check the signature with ``gpg --verify SHA512SUMS.sign`` now
 produces a line like
 
-| gpg: Good signature from "Debian CD signing key <debian-cd@lists.debian.org>"
+| gpg: Good signature from \"Debian CD signing key <debian-cd@lists.debian.org>\"
 
 When the burning is done, you might also want to check the integrity of the
 burned CD. Just compare the output of the following command with the checksum

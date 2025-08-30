@@ -155,20 +155,20 @@ I want to be prompted for confirmation when exiting Openbox via the root-menu.
 The same when shuting down the system or rebooting. I could obtain that with
 entries like the following in ``~/.config/openbox/menu.xml``:
 
-|     <item label="Exit Openbox">
-|       <action name="Execute">
+|     <item label=\"Exit Openbox\">
+|       <action name=\"Execute\">
 |         <prompt>Are you sure you want to exit Openbox?</prompt>
 |         <execute>openbox --exit</execute>
 |       </action>
 |     </item>
-|     <item label="Reboot the system">
-|       <action name="Execute">
+|     <item label=\"Reboot the system\">
+|       <action name=\"Execute\">
 |         <prompt>Are you sure you want to reboot the system?</prompt>
 |         <execute>systemctl reboot</execute>
 |       </action>
 |     </item>
-|     <item label="Shutdown the system">
-|       <action name="Execute">
+|     <item label=\"Shutdown the system\">
+|       <action name=\"Execute\">
 |         <prompt>Are you sure you want to shutdown the system?</prompt>
 |         <execute>systemctl poweroff</execute>
 |       </action>
@@ -228,8 +228,8 @@ may want to bind it to the Openbox root-menu. Make sure your
 
 |   </keyboard>
 |     ...
-|     <keybind key="Menu">
-|       <action name="ShowMenu">
+|     <keybind key=\"Menu\">
+|       <action name=\"ShowMenu\">
 |         <menu>root-menu</menu>
 |       </action>
 |     </keybind>
@@ -253,8 +253,8 @@ following in my ``~/.config/openbox/rc.xml``:
 
 |   </keyboard>
 |     ...
-|     <keybind key="W-e">
-|       <action name="Execute">
+|     <keybind key=\"W-e\">
+|       <action name=\"Execute\">
 |         <command>thunar</command>
 |       </action>
 |     </keybind>
@@ -283,17 +283,17 @@ I could achieve that by adding something like the following in my
 
 |   </applications>
 |     ...
-|     <application class="XTerm">
+|     <application class=\"XTerm\">
 |       <decor>no</decor>
 |       <maximized>yes</maximized>
 |     </application>
-|     <application class="Firefox-esr">
+|     <application class=\"Firefox-esr\">
 |       <maximized>yes</maximized>
 |     </application>
-|     <application class="Claws-mail">
+|     <application class=\"Claws-mail\">
 |       <maximized>yes</maximized>
 |     </application>
-|     <application type="dialog">
+|     <application type=\"dialog\">
 |       <maximized>no</maximized>
 |     </application>
 |     ...
