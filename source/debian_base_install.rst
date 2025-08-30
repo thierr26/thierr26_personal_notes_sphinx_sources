@@ -450,6 +450,19 @@ There are many screen and/or console locker programs. I've installed `physlock
   apt-get install physlock # As root.
 
 
+Installing a CD burning tool
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  single: cdrskin
+  single: CD burning
+
+I use cdrskin to burn CDs (in particular the Debian installation CDs) on an
+internal or external (USB) CD burning drive::
+
+  apt-get install cdrskin # As root.
+
+
 Installing a memory (RAM) tester
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -501,19 +514,6 @@ possible::
 Check the statuses with::
 
   /usr/sbin/rfkill list
-
-
-Installing a CD burning tool
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. index::
-  single: cdrskin
-  single: CD burning
-
-I use cdrskin to burn CDs (in particular the Debian installation CDs) on an
-internal or external (USB) CD burning drive::
-
-  apt-get install cdrskin # As root.
 
 
 Creating new users
