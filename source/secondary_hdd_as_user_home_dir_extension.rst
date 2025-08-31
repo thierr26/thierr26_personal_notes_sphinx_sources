@@ -62,7 +62,7 @@ The following command (to be run **as root**)::
 outputs "Command successful." which means that ``sda1`` is a LUKS container.
 
 With the ``-f`` switch, ``lsblk`` gives more details and makes it easier to
-find the LUKS container (but be aware that **the output of ``lsblk`` is
+find the LUKS container (but be aware that the output of ``lsblk`` **is
 sensible to terminal width**, so you may not always get the same output):
 
 | NAME                    FSTYPE      FSVER    LABEL UUID                                   FSAVAIL FSUSE% MOUNTPOINTS
