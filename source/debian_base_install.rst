@@ -113,69 +113,19 @@ from the downloaded checksum file as provided in file SHA512SUMS::
 Disk partitioning
 -----------------
 
+Not much to say here. I used to configure manually some "sophisticated"
+partitioning schemes (without using encryption), but I now prefer to use
+encryption and put all files in one partition. The Debian installer makes it
+easy to achieve.
 
-Choosing the amount of swap space
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. index::
-  single: swap
-
-I tend to follow the recommendations provided in this article by Abhishek
-Prakash: https://itsfoss.com/swap-size.
-
-
-Choosing the partitioning scheme
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. index::
-  single: hard drive partitioning scheme
-
-
-When disk encryption is not wanted (and with legacy BIOS mode boot)
-___________________________________________________________________
-
-.. index::
-  single: SSD
-
-If the machine has only one hard drives, I choose a simple partitioning scheme:
-a single ``/`` partition plus a swap partition. I find it easy enough to set up
-(using either the "Guided - use entire disk" or "manual" method proposed by the
-Debian installer).
-
-If the machine has one `SSD <https://en.wikipedia.org/wiki/Solid-state_drive>`_
-and one `traditional spinning hard disk drive
-<https://en.wikipedia.org/wiki/Hard_disk_drive>`_, I choose the following
-partitioning scheme:
-
-  * ``/`` partition on SSD (20GB).
-  * ``/usr`` partition on SSD.
-  * ``/var`` partition on spinning HDD (20GB).
-  * ``/tmp`` partition on spinning HDD (10GB).
-  * swap partition on spinning HDD.
-  * ``/home`` partition on spinning HDD.
-
-(This link was helpful: https://unix.stackexchange.com/a/89230).
-
-
-When disk encryption is wanted (and with UEFI mode boot)
-________________________________________________________
-
-.. index::
-  single: LVM
-  single: Disk encryption
-  single: ESP
-  single: UEFI
-
-I've setup disk encryption once on a 2022 laptop with a single hard drive. I've
-done it using the "Guided - use entire disk and set up encrypted LVM" method
-proposed by the Debian installer. It is of course possible to do it using the
-"manual" method, but I find it too easy to forget something (e.g. `ESP
-<https://en.wikipedia.org/wiki/EFI_system_partition>`_ partition, ``/boot``
-partition).
-
-I struggled to set up the wanted swap space size, but eventually understood I
-had to go into "Configure the Logical Volume Manager", delete the logical
-volumes and create them again with the wanted sizes.
+In the particular case of a machine having two disks (one `SSD
+<https://en.wikipedia.org/wiki/Solid-state_drive>`_ and one larger `traditional
+spinning hard disk drive <https://en.wikipedia.org/wiki/Hard_disk_drive>`_) and
+only one user, I required the encryption of both disks but installed all files
+on the SSD. I later used the spinning hard disk as an extension of the user
+home directory, as described in the :doc:`Using secondary hard disk drive to
+extend a specific user home directory
+<secondary_hdd_as_user_home_dir_extension>` page.
 
 
 Postponing the installation of a graphical environment

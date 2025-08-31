@@ -12,6 +12,7 @@ Personal Notes
 
   debian_base_install
   openbox_on_debian
+  secondary_hdd_as_user_home_dir_extension
   minimal_xfce_on_debian
   debian_apps_install
   when_things_go_wrong
