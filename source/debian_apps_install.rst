@@ -61,7 +61,7 @@ installation is::
       default-jre default-jdk \
       taskwarrior \
       gcal \
-      gftp \
+      gftp filezilla \
       ghostwriter \
       xpdf \
       evince \
@@ -188,8 +188,8 @@ Here's a short description of the packages:
     - Console based todo list manager
   * - gcal
     - Calendar program
-  * - gftp
-    - FTP client
+  * - gftp, filezilla
+    - FTP clients (text mode only for gftp in Debian 13 (Trixie))
   * - ghostwriter
     - Markdown editor
   * - xpdf
