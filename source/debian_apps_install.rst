@@ -432,6 +432,7 @@ E-Mail login. This works even when connecting through an ISP other than `Free
 <https://www.free.fr>`_.
 
 In Edit Preferences, Applications:
+
 * Web browser: Custom Command: firefox
 * Text editor: gvim
 
