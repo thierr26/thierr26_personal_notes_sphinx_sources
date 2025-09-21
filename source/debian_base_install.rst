@@ -326,10 +326,11 @@ Installing firmware-linux-nonfree
   single: firmware-linux-nonfree
   single: /etc/apt/sources.list
 
-Depending on your hardware, you may not need the ``firmware-linux-nonfree``. On
-my machines, this package makes life easier (most notably with Wi-Fi network
-adapter and/or graphics) and is installed either during installation (if the
-firmware archive has been required) or post-installation, manually::
+Depending on your hardware, you may not need the ``firmware-linux-nonfree``
+package. On my machines, this package makes life easier (most notably with
+Wi-Fi network adapter and/or graphics) and is installed either during
+installation (if the firmware archive has been required) or post-installation,
+manually::
 
   apt-get install firmware-linux-nonfree # As root.
 
