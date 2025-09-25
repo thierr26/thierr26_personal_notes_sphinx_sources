@@ -72,6 +72,7 @@ installation is::
       octave \
       shellcheck \
       reuse \
+      lintian \
       exuberant-ctags \
       gnat gprbuild libaunit-dev libaunit-doc \
       ada-reference-manual-2012 \
@@ -210,6 +211,8 @@ Here's a short description of the packages:
     - Shell script analysis tool
   * - reuse
     - Tool for REUSE copyright and license recommendations
+  * - lintian
+    - Debian package checker
   * - exuberant-ctags
     - Generator of source code definitions indexes
   * - gnat, gprbuild, libaunit-dev, libaunit-doc
