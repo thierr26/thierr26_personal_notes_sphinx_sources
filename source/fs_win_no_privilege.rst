@@ -47,7 +47,7 @@ windows command, you have to prepend the exact path to the command::
 
   ...\UnxUtils\usr\local\wbin\find ...
 
-To make live a little bit easier, I've substituted a drive letter ('U', but is
+To make live a little bit easier, I've substituted a drive letter ('U', but it
 doesn't have to be 'U') for the path. So I can invoke the GNU ``find`` command
 with::
 
