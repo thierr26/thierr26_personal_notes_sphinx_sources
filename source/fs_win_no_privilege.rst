@@ -65,6 +65,26 @@ adding the ``/k`` option:
 This ensures that ``startup.bat`` is run when I launch cmd.
 
 
+.. _cygwin_no_privilege:
+
+Cygwin
+------
+
+.. index::
+  single: Cygwin
+
+`Cygwin <https://www.cygwin.com>`_ is another solution to have on Windows the
+kind of commands  (ls, grep, sed, find, ...) you have on a \*nix shell.
+
+To install Cygwin as an unprivileged user, use the ``--no-admin`` option of the
+installer.
+
+The installer prompts you for an installation type. I choose "Install from
+Internet". Then the installer prompts for a mirror.
+https://mirrors.kernel.org/sourceware/cygwin seems to be a good choice. (Not
+all mirrors have the full package collection.)
+
+
 ccrypt
 ------
 
@@ -157,8 +177,9 @@ An Octave icon file is available in the Octave installation:
 for the case where you want a shortcut on the destop.
 
 GNU Octave for Windows comes with `MSYS2 <https://www.msys2.org>`_, and that is
-another solution (beside :ref:`UnxUtils <unxutils_win>`) to use the GNU
-commands on Windows. Launch ``msys2_shell.cmd``.
+another solution (beside :ref:`UnxUtils <unxutils_win>` and :ref:`Cygwin
+<cygwin_no_privilege>`) to use the GNU commands on Windows. Launch
+``msys2_shell.cmd``.
 
 
 Ada programming tools (Alire and GNAT Studio)
