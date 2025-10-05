@@ -357,8 +357,8 @@ ________
 In Settings | Autofill and passwords | Password Manager | Settings, disable
 "Offer to save passwords and passkeys" and "Sign in automatically".
 
-Chromium may issue a warning on every startup, asking the pasword to unlock the
-default GNOME Keyring. To get rid of the warning, I clear my GNOME Keyring
+Chromium may issue a warning on every startup, asking the password to unlock
+the default GNOME Keyring. To get rid of the warning, I clear my GNOME Keyring
 files::
 
   rm -rf ~/.local/share/keyrings/*
