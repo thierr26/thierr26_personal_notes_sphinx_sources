@@ -72,6 +72,12 @@ Cygwin
 
 .. index::
   single: Cygwin
+  single: Cygwin/X
+  single: mintty
+  single: XWin
+  single: X.org (on Windows via Cygwin)
+  single: Openbox (on Windows via Cygwin)
+  single: Vim (on Windows via Cygwin)
 
 `Cygwin <https://www.cygwin.com>`_ is another solution to have on Windows the
 kind of commands  (ls, grep, sed, find, ...) you have on a \*nix shell.
@@ -80,9 +86,48 @@ To install Cygwin as an unprivileged user, use the ``--no-admin`` option of the
 installer.
 
 The installer prompts you for an installation type. I choose "Install from
-Internet". Then the installer prompts for a mirror.
-https://mirrors.kernel.org/sourceware/cygwin seems to be a good choice. (Not
-all mirrors have the full package collection.)
+Internet". Then the installer prompts for a mirror. https://ftp.fau.de/cygwin
+or https://mirrors.kernel.org/sourceware/cygwin seem to be good choices (not
+all mirrors have the full package collection). Then you can select packages to
+install. The default selection may be enough if you just need the basic tools
+(the Vim version you get in this case is vim-minimal).
+
+After the Cygwin installation, you should have a desktop icon that launches the
+Cygwin terminal emulator (mintty).
+
+Cygwin makes it possible to run graphical applications (e.g. gvim). If you need
+to run graphical applications, make sure to select the following packages for
+installation:
+
+* xorg-server
+* xinit
+* xorg-docs
+* openbox (there might be other window managers though)
+* gvim (if you need graphical Vim)
+
+To be able to use a graphical application, you first have to start X.org, by
+running the XWin command in the Cygwin terminal emulator. Examples::
+
+  XWin
+
+Or::
+
+  XWin -clipboard -multiwindow
+
+The first example opens an "X screen", and graphical applications will be
+displayed in this screen. The second example does not show any X screen, and graphical applications will
+be displayed in their own windows.
+
+From another Cygwin terminal emulator, set and export the ``DISPLAY`` variable
+(``export DISPLAY=:0.0``), and start your graphical application (e.g.
+``gvim``).
+
+Also start Openbox to get window management capacities (windows moving and
+resizing) and Openbox menu in the X screen.
+
+See `Windowing mode
+<https://x.cygwin.com/docs/ug/overview-windowing-modes.html>`_ in the Cygwin/X
+documentation.
 
 
 ccrypt
