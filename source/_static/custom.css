@@ -40,6 +40,7 @@ div.topic {
 /* Set custom background color for elements with "code" role. */
 code {
     background-color: #fdffe6;
+    color: #992266;
     font-size: 1.25em;
 }
 
