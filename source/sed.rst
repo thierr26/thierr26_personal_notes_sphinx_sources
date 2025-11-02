@@ -15,7 +15,22 @@ Introduction
 ------------
 
 This page is where I note the `GNU sed <https://www.gnu.org/software/sed/>`_
-commands I found difficult to elaborate.
+commands I found difficult to elaborate and/or remember.
+
+
+Discarding all but one line of a file
+-------------------------------------
+
+.. index::
+  pair: sed commands; d
+
+The following command outputs only line number 7 of file ``input``::
+
+  sed '7!d' input
+
+Use single quotes here (rather that double quotes or no quotes at all). Without
+that the exclamation mark invokes history expansion (at least when using the
+bash shell or some other intercative shells).
 
 
 Left-padding numbers with zeros
