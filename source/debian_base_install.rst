@@ -46,7 +46,7 @@ Just download the tiny (64MB) "netboot" image (mini.iso) and write it (**as
 root**) to the device corresponding to your USB stick (e.g. ``/dev/sdc``, check
 using ``lsblk``)::
 
-  wget https://deb.debian.org/debian/dists/testing/main/installer-amd64/current/images/netboot/mini.iso
+  wget https://deb.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
   cp mini.iso /dev/sdc; # As root.
   sync; # As root.
 
