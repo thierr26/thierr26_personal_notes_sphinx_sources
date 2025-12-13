@@ -157,7 +157,13 @@ or::
 this case the key is not encrypted and anyone obtaining your private key can
 use it.
 
-The generated key pair is stored in ``~/.ssh``.
+The generated key pair is stored by default in ``~/.ssh`` (e.g.
+``~/.ssh/id_ed25519.pub`` for the public key and ``~/.ssh/id_ed25519`` for the
+private key).
+
+There is a comment associated with the key in the ``.pub`` file. By default, it
+is like "username@hostname". Use option ``-C`` in ``ssh-keygen`` command to
+provide a non default comment.
 
 The next step is to copy the public key to the server with a command like::
 
