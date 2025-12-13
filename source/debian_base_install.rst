@@ -477,7 +477,7 @@ Creating new users
 
 Check whether the ``DIR_MODE`` (default permissions for users home directories)
 setting in file ``/etc/adduser.conf`` is appropriate for your needs. The
-default value is nox "0700" (which seems OK to me) but it used to be "0755".
+default value is now "0700" (which seems OK to me) but it used to be "0755".
 "0755" implies that any unprivileged user have read access to the files of
 other users. You may want to change (**as root**) the value to "0700" to avoid
 that::
