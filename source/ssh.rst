@@ -79,7 +79,9 @@ For a dry run, use option ``-n``::
 
 Check the `rsync documentation
 <https://download.samba.org/pub/rsync/rsync.1>`_. Rsync has a lot of options.
-You may, for example, prefer to use ``--update`` rather than ``--delete``.
+You may, for example, prefer to use ``--update`` rather than ``--delete``. You
+may also need to use options ``-L`` and/or ``-K``, depending on how you want to
+treat symbolic links.
 
 
 .. _sshd_configuration:
@@ -168,6 +170,27 @@ provide a non default comment.
 The next step is to copy the public key to the server with a command like::
 
   ssh-copy-id username@192.168.122.250 # Use server IP address.
+
+If you need to use public key authentication to multiple servers, you can use
+the same key for all the servers. Just repeat the ``ssh-copy-id`` command for
+all the servers.
+
+You can also use a different key for each server, for increased security. When
+running ``ssh-keygen``, just give the path to a specific key file for the
+server (e.g. ``~/.ssh/id_ed25519_servername``). But then you have to specify to
+the ssh client programs (``ssh``, ``scp``, ``ssh-copy-id``) which key to use
+using option ``-i`` (e.g. ``ssh -i ~/.ssh/id_ed25519_servername servername``).
+For rsync, you can use the ``-e`` option to specify the ``ssh`` command to use
+(``rsync -e '/home/username/.ssh/id_ed25519_servername servername' ...``).
+Alternatively, you can specify the key file to use for a given server using the
+ssh configuration file (``~/.ssh/config``). Here is a simple example of
+``~/.ssh/config`` file:
+
+| Host servername
+|     IdentityFile ~/.ssh/id_ed25519_servername
+|
+| Host other-servername
+|     IdentityFile ~/.ssh/id_ed25519_other-servername
 
 
 Other resources
