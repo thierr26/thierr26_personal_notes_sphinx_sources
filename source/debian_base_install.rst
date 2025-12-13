@@ -319,20 +319,21 @@ Then, issue **as root** the following commands::
   apt-get dist-upgrade
 
 
-Installing firmware-linux-nonfree
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Installing binary firmware packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. index::
   single: firmware-linux-nonfree
+  single: firmware-iwlwifi
   single: /etc/apt/sources.list
 
-Depending on your hardware, you may not need the ``firmware-linux-nonfree``
-package. On my machines, this package makes life easier (most notably with
-Wi-Fi network adapter and/or graphics) and is installed either during
-installation (if the firmware archive has been required) or post-installation,
-manually::
+Depending on your hardware, you may not need the ``firmware-linux-nonfree`` or
+``firmware-iwlwifi`` packages. On my machines, I need them to enable graphics
+and/or Wi-Fi network adapter. Depending on the installation media you use, they
+are installed during installation or not. If not, you can install them manually
+post-installation::
 
-  apt-get install firmware-linux-nonfree # As root.
+  apt-get install firmware-linux-nonfree firmware-iwlwifi # As root.
 
 Note that the ``/etc/apt/sources.list`` file must have the non-free section
 (and even **the non-free-firmware section**, starting with Debian 12).
