@@ -141,7 +141,7 @@ Using public key authentication
 
 .. index::
   pair: SSH; public key authentication
-  single: ~/.ssh
+  single: ~/.ssh/config
   single: ssh-keygen
   single: ssh-copy-id
 
