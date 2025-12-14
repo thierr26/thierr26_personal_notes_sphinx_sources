@@ -230,15 +230,20 @@ Installing / configuring an APT proxy
   single: auto-apt-proxy
   single: avahi-daemon
   single: avahi-browse
+  single: dpkg-reconfigure
 
 If you have multiple Debian boxes on a local network, using an APT caching
 proxy like apt-cacher-ng can save bandwidth when updating the systems.
 
 On the machine which you want to act as the proxy, install ``apt-cacher-ng``
-and ``auto-apt-proxy``. On the other ones (the clients), just install
-``auto-apt-proxy``. If ``avahi-daemon`` is installed on all the machines (and
-apt-cacher-ng is advertised (use ``avahi-browse -art`` to check)), this should
-be enough.
+and ``auto-apt-proxy``. If you have APT sources that have "https://" URLs, you
+probably need to allow HTTP tunnels through Apt-Cacher NG. (You can change that
+after installation using (**as root**) ``dpkg-reconfigure apt-cacher-ng``).
+
+On the other machines (the clients), just install ``auto-apt-proxy``. If
+``avahi-daemon`` is installed on all the machines (and apt-cacher-ng is
+advertised (use ``avahi-browse -rt _apt-proxy._tcp`` to check)), this should be
+enough.
 
 You can see statistics on apt-cacher-ng activity on
 ``http://<ip_address>:3142/acng-report.html`` (with ``<ip_address>`` being the
