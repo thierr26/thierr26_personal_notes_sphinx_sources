@@ -61,6 +61,7 @@ installation is::
       default-jre default-jdk \
       taskwarrior \
       gcal \
+      gnome-disk-utility \
       gftp filezilla \
       ghostwriter \
       xpdf \
@@ -189,6 +190,11 @@ Here's a short description of the packages:
     - Console based todo list manager
   * - gcal
     - Calendar program
+  * - gnome-disk-utility
+    - Disk drives and media management tool (makes it easy to reformat and set
+      up full disk encryption (`LUKS
+      <https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup>`_) for external
+      disks).
   * - gftp, filezilla
     - FTP clients (text mode only for gftp in Debian 13 (Trixie))
   * - ghostwriter
