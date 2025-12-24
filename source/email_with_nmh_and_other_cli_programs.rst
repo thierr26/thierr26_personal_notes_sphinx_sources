@@ -57,6 +57,7 @@ Installation
   single: $PATH
   single: ~/.profile
   single: ~/.xsessionrc
+  single: /etc/profile.d
 
 On a `Debian GNU/Linux <https://www.debian.org>`_ system, install fetchmail and
 nmh (**as root**) with::
@@ -65,12 +66,17 @@ nmh (**as root**) with::
 
 The nmh programs are installed in ``/usr/bin/mh``. This directory is not in the
 search path by default. You can add it to the search path by adding this line
-to  a startup file (e.g. ``~/.profile``, ``.xsessionrc``)::
+to a user startup file (e.g. ``~/.profile``, ``.xsessionrc``)::
 
   PATH="$PATH:/usr/bin/mh"
 
 This makes it possible to invoke the nmh programs by their base name (e.g.
 ``inc``) instead of their full path (e.g. ``/usr/bin/mh/inc``).
+
+Alternatively, and if you want all the users to be able to invoke the nmh
+programs by their base name, you can add (**as root**) a file named for example
+``mh_path.sh`` (don't omit the ``\.sh`` suffix) in ``/etc/profile.d``,
+containing the same ``PATH="$PATH:/usr/bin/mh"`` line.
 
 If exim4 is not already installed, install it (**as root**) with::
 
