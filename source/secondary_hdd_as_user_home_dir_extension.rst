@@ -22,8 +22,9 @@ I also wanted encryption on both disks.
 
 After the run of the Debian installer, the system was entirely installed on the
 SSD (device ``/dev/nvme0n1``), and the other drive (device ``/dev/sda``) had an
-(empty) ext4 partition in a `LUKS <https://fr.wikipedia.org/wiki/LUKS>`_
-container (``/dev/sda1``), unused (i.e. not mounted).
+(empty) ext4 partition in a `LUKS
+<https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup>`_ container
+(``/dev/sda1``), unused (i.e. not mounted).
 
 
 Finding the LUKS containers
