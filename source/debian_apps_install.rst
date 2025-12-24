@@ -670,11 +670,19 @@ GNAT Studio
 
 .. index::
   single: GNAT Studio
+  single: /etc/profile.d
 
 Follow the instructions at https://github.com/AdaCore/gnatstudio/releases.
 
 I installed the Continuous Release 20250417, running the ``doinstall`` script
-as root.
+**as root**.
+
+To make sure that GNAT Studio is in the search path for all users, I added
+(**as root**) a ``gnatstudio_path.sh`` file in ``/etc/profile.d`` containing:
+
+| if [ -d /opt/gnatstudio/bin ] ; then
+|     PATH="$PATH":/opt/gnatstudio/bin
+| fi
 
 
 Alire (Ada LIbrary REpository) installation
@@ -682,12 +690,12 @@ Alire (Ada LIbrary REpository) installation
 
 .. index::
   single: Alire (Ada LIbrary REpository)
-  single: ~/.profile
+  single: /etc/profile.d
 
 The `Alire <https://alire.ada.dev/>`_ distribution is available as a Zip
 archive on Github. I download it using ``wget`` (example for version 2.1.0)::
 
-  cd Downloads
+  cd ~/Downloads
   wget https://github.com/alire-project/alire/releases/download/v2.1.0/alr-2.1.0-bin-x86_64-linux.zip
 
 Then I extract it using ``unzip`` **as root**::
@@ -696,10 +704,18 @@ Then I extract it using ``unzip`` **as root**::
   mkdir -p /opt/alire # As root.
   unzip alr-2.1.0-bin-x86_64-linux.zip -d /opt/alire # As root.
 
-Finally I add ``/opt/alire/bin`` to my path, via a line in my ``~/.profile``
-file:
+To make sure that Alire (more precisely the ``alr`` program ) is in the search
+path for all users, I added (**as root**) a ``alire_path.sh`` file in
+``/etc/profile.d`` containing:
 
-| PATH=\"$PATH\":/opt/alire/bin
+| if [ -d /opt/alire/bin ] ; then
+|     PATH="$PATH":/opt/alire/bin
+| fi
+
+The first time you run an ``alr edit`` command, Alire proposes to configure
+your preferred editor. Choose "Other" and enter the following command line::
+
+  /opt/gnatstudio/bin/gnatstudio -P ${GPR_FILE}
 
 
 signal-desktop installation and linking to a "dumb phone"
