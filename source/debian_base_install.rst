@@ -351,17 +351,24 @@ Installing binary firmware packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. index::
-  single: firmware-linux-nonfree
   single: firmware-iwlwifi
+  single: firmware-sof-signed
+  single: firmware-linux-nonfree
   single: /etc/apt/sources.list
 
-Depending on your hardware, you may not need the ``firmware-linux-nonfree`` or
-``firmware-iwlwifi`` packages. On my machines, I need them to enable graphics
-and/or Wi-Fi network adapter. Depending on the installation media you use, they
-are installed during installation or not. If not, you can install them manually
-post-installation::
+On my machines, I need some or all of the following packages, to enable
+graphics, sound and Wi-Fi network adapter:
 
-  apt-get install firmware-linux-nonfree firmware-iwlwifi # As root.
+* ``firmware-iwlwifi``
+* ``firmware-sof-signed``
+* ``firmware-linux-nonfree``
+
+Depending on the installation media you use, they are installed during
+installation or not. If not, you can install them manually post-installation::
+
+  apt-get install firmware-iwlwifi \
+                  firmware-sof-signed \
+                  firmware-linux-nonfree # As root.
 
 Note that the ``/etc/apt/sources.list`` file must have the non-free section
 (and even **the non-free-firmware section**, starting with Debian 12).
@@ -369,7 +376,7 @@ Note that the ``/etc/apt/sources.list`` file must have the non-free section
 You can :download:`download my /etc/apt/sources.list for Debian 13
 <download/sources.list>`.
 
-Make sure you issue a ``apt-get update`` command after changing
+Make sure you issue a ``apt-get update`` (**as root**) command after changing
 ``/etc/apt/sources.list``.
 
 
