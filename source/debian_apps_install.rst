@@ -673,8 +673,8 @@ GNAT Studio
 
 Follow the instructions at https://github.com/AdaCore/gnatstudio/releases.
 
-I installed the Continuous Release 20250417, running the ``do_install.sh``
-script as root.
+I installed the Continuous Release 20250417, running the ``doinstall`` script
+as root.
 
 
 Alire (Ada LIbrary REpository) installation
