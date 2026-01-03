@@ -42,6 +42,7 @@ installation is::
       w3m \
       chromium \
       smartmontools \
+      nvme-cli \
       fonts-inconsolata \
       ccrypt \
       rsync \
@@ -104,6 +105,7 @@ installation is::
       mmv \
       bc \
       network-manager \
+      tigervnc-viewer \
       openconnect \
       freerdp3-x11 \
       whois \
@@ -154,6 +156,8 @@ Here's a short description of the packages:
     - Storage systems control and monitoring tools using `S.M.A.R.T.
       <https://en.wikipedia.org/wiki/S.M.A.R.T.>`_ (see this `good
       smartmontools tutorial by Random Bits <https://blog.shadypixel.com/monitoring-hard-drive-health-on-linux-with-smartmontools>`_)
+  * - nvme-cli
+    - `NVMe <https://en.wikipedia.org/wiki/NVM_Express>`_ management tool
   * - fonts-inconsolata
     - Monospace font
   * - ccrypt
@@ -280,6 +284,8 @@ Here's a short description of the packages:
     - Calculator language, to be used in scripts or interactively
   * - network-manager
     - Network management framework
+  * - tigervnc-viewer
+    - `VNC <https://en.wikipedia.org/wiki/VNC>`_ client
   * - openconnect
     - Client for GlobalProtect VPN (among others)
   * - freerdp3-x11
