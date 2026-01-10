@@ -570,6 +570,9 @@ Tagging
   pair: Git; tag
   pair: Git; ls-remote
   pair: Git; rev-list
+  pair: Git; log
+  single: sed
+  single: grep
 
 Basic tag manipulations (creation, deletion) are done using the ``git tag``
 command and its various option. But there are more things to do with tags
@@ -591,6 +594,17 @@ And if you need to know whether the currently checked out commit has a tag or
 not, use::
 
   git describe --exact-match --tags
+
+It should print on the standard output the tag (if any) of the currently
+checked out commit.
+
+Another option, especially interesting in the case when the commit has multiple
+tags, is to process the ``git log`` output to get the list of all the tags::
+
+  git log -1 --oneline --decorate \
+    | sed "s/\<\(tag: [^,)]\+\)/\n\1\n/g" \
+    | grep "^tag: " \
+    | sed "s/^tag: //"
 
 
 Viewing the commit log
