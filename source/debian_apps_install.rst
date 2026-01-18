@@ -679,9 +679,7 @@ Docker installation
   single: curl
   pair: apt-get commands; update
   pair: systemctl commands; status
-  pair: systemctl commands; start
   pair: systemctl commands; disable
-  single: loginctl
 
 I installed Docker as provided by the Docker repository
 (https://download.docker.com/linux/debian/). Another option (that I haven't
