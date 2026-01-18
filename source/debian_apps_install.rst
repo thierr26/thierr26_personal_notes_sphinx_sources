@@ -748,8 +748,8 @@ and you can run containers without root privileges::
   docker run hello-world # As unprivileged user.
 
 
-GNAT Studio
-~~~~~~~~~~~
+GNAT Studio installation
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. index::
   single: GNAT Studio
