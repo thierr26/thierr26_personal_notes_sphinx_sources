@@ -234,7 +234,7 @@ requires the installation of a SSH server.
 .. image:: image/debian_vm_install_screenshot_tasksel_first_0.png
 
 Once the installation is complete, the virtual machine automatically restarts.
-I lauch ``virt-viewer`` (as root) to get a window to the virtual machine::
+I launch ``virt-viewer`` (as root) to get a window to the virtual machine::
 
   virt-viewer debian_unstable & # As root.
 
