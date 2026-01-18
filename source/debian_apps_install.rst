@@ -671,6 +671,83 @@ I then tweaked Google Chrome's settings as for
 :ref:`Chromium <chromium_config>`.
 
 
+Docker installation
+~~~~~~~~~~~~~~~~~~~
+
+.. index::
+  single: Docker
+  single: curl
+  pair: apt-get commands; update
+  pair: systemctl commands; status
+  pair: systemctl commands; start
+  pair: systemctl commands; disable
+  single: loginctl
+
+I installed Docker as provided by the Docker repository
+(https://download.docker.com/linux/debian/). Another option (that I haven't
+tested) is to just install the ``docker.io`` Debian package (using, **as
+root**, ``apt-get install docker.io``).
+
+First, make sure that Debian packages ``curl`` and ``ca-certificates`` are
+installed::
+
+  apt-get install curl ca-certificates # As root.
+
+Then import the Docker repository signature key::
+
+  curl -fsSL https://download.docker.com/linux/debian/gpg \
+    | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+You can now add the Docker repository to your APT sources, by creating file
+``/etc/apt/sources.list.d/docker.list`` containing the following line:
+
+| deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian trixie stable
+
+and resynchronize your local package index::
+
+  apt-get update
+
+Install Docker (**as root**) with::
+
+  apt-get install docker-ce \
+                  docker-ce-cli \
+                  containerd.io \
+                  docker-buildx-plugin \
+                  docker-compose-plugin # As root.
+
+You end up with the Docker service and socket enabled::
+
+  systemctl status docker.service
+  systemctl status docker.socket
+
+And the ability to run containers (the ``hello-world demo for example``), but
+only **as root**::
+
+  docker run hello-world # As root.
+
+If you need to run containers as an unprivileged user, you can use Docker
+"rootless". For that, you need to have ``uidmap`` installed::
+
+  apt-get install uidmap # As root.
+
+You should probably also disable the normal Docker service and socket::
+
+  systemctl disable --now docker.service docker.socket
+  rm /var/run/docker.sock
+
+Install Docker "rootless" with::
+
+  dockerd-rootless-setuptool.sh install # As unprivileged user.
+
+Your own Docker service is now enabled::
+
+  systemctl --user status docker.service # As unprivileged user.
+
+and you can run containers without root privileges::
+
+  docker run hello-world # As unprivileged user.
+
+
 GNAT Studio
 ~~~~~~~~~~~
 
