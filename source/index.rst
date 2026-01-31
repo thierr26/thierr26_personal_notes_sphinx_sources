@@ -45,6 +45,7 @@ Personal Notes
   gprbuild_on_openbsd
   freebsd_vm
   first_steps_with_freebsd
+  frama-c_install
   fs_win_no_privilege
   about
 
