@@ -868,6 +868,12 @@ current branch without keeping the commit history::
   git merge --squash branch_name # A "git commit" command is needed after that
                                  # to actually create a merge commit.
 
+You can also merge without commiting (just staging) to have the
+opportunity to check the result before actually commiting. Use the `--no-ff`
+and `--no-commit` options. (See this `Stack
+Overflow question about a git merge "dry run" option
+<https://stackoverflow.com/questions/501407/is-there-a-git-merge-dry-run-option>`_.)
+
 Delete the local branch named "branch_name" with one of the following
 commands::
 
