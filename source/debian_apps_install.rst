@@ -97,6 +97,7 @@ installation is::
       claws-mail-themes \
       vim \
       unaccent \
+      basez \
       psmisc \
       sudo \
       pwgen \
@@ -268,6 +269,8 @@ Here's a short description of the packages:
     - Vim text editor
   * - unaccent
     - Tool to replace accented letters by unaccented equivalent
+  * - basez
+    - Base 16/32/64 encoder/decoder
   * - psmisc
     - killall, ...
   * - sudo
