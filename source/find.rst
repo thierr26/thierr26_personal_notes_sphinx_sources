@@ -67,6 +67,7 @@ Executing one or more commands for each found file
 .. index::
   single: sh
   single: stat
+  single: xargs
 
 The ``-exec`` option of ``find`` makes it possible to execute a shell command
 for each found file. For example, the following command runs ``stat`` for each
@@ -106,6 +107,20 @@ spaces:
 
 * the MD5 digest value (due to the ``md5sum "$1"`` part, the piping to ``sed``
   is used to remove the file name from the ``md5sum`` output).
+
+When ``-exec`` is used as demonstrated in the examples above, the exit status
+of ``find`` is not affected by the exit status of the commands run.
+
+There is another way of using ``-exec``, which is to terminate the command with
+``+`` instead of ``\;``. In this case, the command is run once and ``{}``
+contains the whole list of found files (and there can be only one occurrence of
+``{}``, that must be just before the ``+``). And the exit status of ``find`` is
+affected by the exit status of the command (a non zero exit status of the
+command implies a non zero exit status of ``find``).
+
+When you need to run a command for every found file an want a non zero exit
+status if one of the invocation of the command fails, then you should consider
+to use :doc:`xargs` instead of the ``-exec`` option of ``find``.
 
 
 Combining (logical "or") search criteria

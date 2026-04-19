@@ -58,7 +58,8 @@ A command like::
   any_command | xargs -n 1 other_command
 
 causes ``other_command`` to be executed once for each item output by
-``any_command``.
+``any_command``. If any invocation of ``other_command`` exits with a non zero
+exit status, then the exit status of ``xargs`` is non zero.
 
 
 Executing a command for each item (with item used anywhere in the command)
@@ -77,6 +78,7 @@ version-control and configuration management software)::
   cleartool lsco -all -me -short -cview \
       | xargs -I {} sh -c \
       'diff --unified $(cleartool describe -fmt '%En@@%PVn\\\\n' {}) {}'
+
 
 Other resources
 ---------------
