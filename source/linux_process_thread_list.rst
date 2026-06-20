@@ -29,6 +29,7 @@ process with a given PID::
 
   ps -T -p <PID>
   ps -L -p <PID>
+  ps -L -o pid,tid,tname,policy,pri,nice,%cpu,time,wchan:12,comm -p <PID>
   ps -mo pid,tid,%cpu,psr,comm -p <PID>
 
 
