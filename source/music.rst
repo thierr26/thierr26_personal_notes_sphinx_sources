@@ -493,4 +493,4 @@ Converting MP3 files to Ogg
 
 You can also convert MP3 files to Ogg with ``ffmpeg``::
 
-  ffmpeg -i my_audio_file.mp3 -codec libvorbis my_audio_file.ogg
+  ffmpeg -i my_audio_file.mp3 -c:a libvorbis my_audio_file.ogg
