@@ -197,7 +197,8 @@ install it with::
   apt-get install iproute2
 
 For example, to see which services uses the ports that Nmap has found opened,
-you can do something like::
+you can do something like (see the :doc:`AWK <awk>` page for more
+details)::
 
   ss -ane | awk "NR == 1 || /[0-9a-zA-Z\]]:(22 |68 |3142 |5353 )/"
 

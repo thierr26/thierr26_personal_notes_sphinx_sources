@@ -29,6 +29,7 @@ Personal Notes
   xargs
   bc
   sed
+  awk
   sphinx
   reminder
   base16_color_schemes
