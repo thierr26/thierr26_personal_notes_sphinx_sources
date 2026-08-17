@@ -641,7 +641,7 @@ box, File Handling | Converters section. The converter command line must be::
 
   rsvg-convert -f pdf -o $$o $$i
 
-(See `this Stackoverflow answer <https://tex.stackexchange.com/a/698032>`_.)
+(See `this Stack Exchange answer <https://tex.stackexchange.com/a/698032>`_.)
 
 If you want to change the configured PDF viewer, you can do it via the Tools |
 Preferences menu dialog box, File Handling | File formats section. I choose

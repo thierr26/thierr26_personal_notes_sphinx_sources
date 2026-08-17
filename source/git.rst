@@ -507,7 +507,7 @@ to see if the patch is applicable or not::
 
 There is an alternative to ``git diff`` which is ``git difftool``, that you can
 configure to use a specific tool to show differences between files (e.g. `Meld
-<https://meldmerge.org>`_). A `Stackoverflow answer provides all the details
+<https://meldmerge.org>`_). A `Stack Overflow answer provides all the details
 about using Meld as the Git difftool (and mergetool too)
 <https://stackoverflow.com/questions/34119866/setting-up-and-using-meld-as-your-git-difftool-and-mergetool>`_.
 
@@ -803,7 +803,7 @@ This of course raises the question of which branching model and branche naming
 scheme to use. The following links should help:
 
 * `What are some examples of commonly used practices for naming git branches?
-  (a stack overflow answer by Phil Hord)
+  (a Stack Overflow answer by Phil Hord)
   <https://stackoverflow.com/questions/273695/what-are-some-examples-of-commonly-used-practices-for-naming-git-branches/6065944#6065944>`_
 * `4 branching workflows for Git
   <https://medium.com/@patrickporto/4-branching-workflows-for-git-30d0aaee7bf>`_
@@ -868,10 +868,9 @@ current branch without keeping the commit history::
   git merge --squash branch_name # A "git commit" command is needed after that
                                  # to actually create a merge commit.
 
-You can also merge without commiting (just staging) to have the
-opportunity to check the result before actually commiting. Use the `--no-ff`
-and `--no-commit` options. (See this `Stack
-Overflow question about a git merge "dry run" option
+You can also merge without commiting (just staging) to have the opportunity to
+check the result before actually commiting. Use the `--no-ff` and `--no-commit`
+options. (See this `Stack Overflow question about a git merge "dry run" option
 <https://stackoverflow.com/questions/501407/is-there-a-git-merge-dry-run-option>`_.)
 
 Delete the local branch named "branch_name" with one of the following

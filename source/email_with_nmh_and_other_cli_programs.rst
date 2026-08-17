@@ -38,7 +38,7 @@ system (provided by package ``nmh`` on a Debian GNU/Linux system). It is
 
 This page gives the various actions I had to take to be able to receive and
 send emails using the nmh command-line programs. Filtering the incoming
-messages with `Bogofilter <http://bogofilter.sourceforge.net/>`_ (anti-spam
+messages with `Bogofilter <http://bogofilter.sourceforge.io/>`_ (anti-spam
 filter) is also covered. Some basic commands for message management (deletion,
 search) are also provided. Of course, nmh programs have many options that are
 not covered here. Please refer to the `nmh man pages
