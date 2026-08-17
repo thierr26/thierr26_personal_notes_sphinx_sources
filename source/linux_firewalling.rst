@@ -199,7 +199,7 @@ install it with::
 For example, to see which services uses the ports that Nmap has found opened,
 you can do something like::
 
-  ss -ane|awk "NR == 1 || /[0-9\]]:(22 |68 |3142 |5353 )/"
+  ss -ane | awk "NR == 1 || /[0-9a-zA-Z\]]:(22 |68 |3142 |5353 )/"
 
 The output obtained on my Debian machines :download:`is available for download
 (file ss_22_68_3142_5353)<download/ss_22_68_3142_5353>`.
